@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="50%" stop-color="#0f0a1a"/>
+      <stop offset="100%" stop-color="#0a0a12"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg2)"/>
+  <rect x="0" y="0" width="600" height="400" fill="url(#accent2)" opacity="0.04"/>
+  <circle cx="550" cy="50" r="180" fill="#a855f7" opacity="0.05"/>
+  <circle cx="50" cy="400" r="150" fill="#ec4899" opacity="0.04"/>
+  <!-- Top bar -->
+  <rect x="40" y="40" width="520" height="30" rx="6" fill="#1a1030" stroke="#2a2050" stroke-width="0.5"/>
+  <circle cx="55" cy="55" r="4" fill="#ef4444" opacity="0.8"/>
+  <circle cx="70" cy="55" r="4" fill="#eab308" opacity="0.8"/>
+  <circle cx="85" cy="55" r="4" fill="#22c55e" opacity="0.8"/>
+  <rect x="150" y="48" width="80" height="14" rx="3" fill="#2a2050"/>
+  <!-- KPI Cards Row -->
+  <rect x="40" y="85" width="120" height="70" rx="8" fill="#151025" stroke="#2a2050" stroke-width="0.5"/>
+  <rect x="55" y="98" width="60" height="6" rx="3" fill="#a855f7" opacity="0.3"/>
+  <text x="55" y="130" fill="#a855f7" font-family="monospace" font-size="18" font-weight="bold" opacity="0.6">1,284</text>
+  <rect x="55" y="140" width="40" height="4" rx="2" fill="#2a2050"/>
+  <rect x="175" y="85" width="120" height="70" rx="8" fill="#151025" stroke="#2a2050" stroke-width="0.5"/>
+  <rect x="190" y="98" width="50" height="6" rx="3" fill="#ec4899" opacity="0.3"/>
+  <text x="190" y="130" fill="#ec4899" font-family="monospace" font-size="18" font-weight="bold" opacity="0.6">856</text>
+  <rect x="190" y="140" width="35" height="4" rx="2" fill="#2a2050"/>
+  <rect x="310" y="85" width="120" height="70" rx="8" fill="#151025" stroke="#2a2050" stroke-width="0.5"/>
+  <rect x="325" y="98" width="45" height="6" rx="3" fill="#d946ef" opacity="0.3"/>
+  <text x="325" y="130" fill="#d946ef" font-family="monospace" font-size="18" font-weight="bold" opacity="0.6">47</text>
+  <rect x="325" y="140" width="30" height="4" rx="2" fill="#2a2050"/>
+  <rect x="445" y="85" width="115" height="70" rx="8" fill="#151025" stroke="#2a2050" stroke-width="0.5"/>
+  <rect x="460" y="98" width="55" height="6" rx="3" fill="#c084fc" opacity="0.3"/>
+  <text x="460" y="130" fill="#c084fc" font-family="monospace" font-size="18" font-weight="bold" opacity="0.6">93%</text>
+  <rect x="460" y="140" width="25" height="4" rx="2" fill="#2a2050"/>
+  <!-- Main content -->
+  <rect x="40" y="170" width="360" height="195" rx="8" fill="#151025" stroke="#2a2050" stroke-width="0.5"/>
+  <rect x="55" y="185" width="120" height="8" rx="3" fill="#a855f7" opacity="0.3"/>
+  <rect x="55" y="200" width="330" height="6" rx="3" fill="#2a2050"/>
+  <rect x="55" y="213" width="310" height="6" rx="3" fill="#2a2050"/>
+  <rect x="55" y="226" width="330" height="6" rx="3" fill="#2a2050"/>
+  <rect x="55" y="239" width="290" height="6" rx="3" fill="#2a2050"/>
+  <rect x="55" y="258" width="100" height="24" rx="4" fill="#a855f7" opacity="0.1"/>
+  <rect x="165" y="258" width="100" height="24" rx="4" fill="#ec4899" opacity="0.1"/>
+  <!-- Progress bars -->
+  <rect x="55" y="295" width="200" height="6" rx="3" fill="#2a2050"/>
+  <rect x="55" y="295" width="160" height="6" rx="3" fill="#a855f7" opacity="0.5"/>
+  <rect x="55" y="310" width="200" height="6" rx="3" fill="#2a2050"/>
+  <rect x="55" y="310" width="120" height="6" rx="3" fill="#ec4899" opacity="0.5"/>
+  <rect x="55" y="325" width="200" height="6" rx="3" fill="#2a2050"/>
+  <rect x="55" y="325" width="180" height="6" rx="3" fill="#c084fc" opacity="0.5"/>
+  <!-- Right panel -->
+  <rect x="415" y="170" width="145" height="195" rx="8" fill="#151025" stroke="#2a2050" stroke-width="0.5"/>
+  <rect x="430" y="185" width="80" height="8" rx="3" fill="#ec4899" opacity="0.3"/>
+  <rect x="430" y="200" width="115" height="6" rx="3" fill="#2a2050"/>
+  <rect x="430" y="213" width="100" height="6" rx="3" fill="#2a2050"/>
+  <rect x="430" y="226" width="110" height="6" rx="3" fill="#2a2050"/>
+  <rect x="430" y="246" width="80" height="30" rx="6" fill="#a855f7" opacity="0.15"/>
+  <rect x="430" y="286" width="80" height="30" rx="6" fill="#ec4899" opacity="0.15"/>
+  <rect x="430" y="326" width="80" height="30" rx="6" fill="#c084fc" opacity="0.15"/>
+  <text x="300" y="380" text-anchor="middle" fill="#a855f7" font-family="monospace" font-size="11" opacity="0.5">Enterprise ERP System</text>
+</svg>

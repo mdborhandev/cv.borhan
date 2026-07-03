@@ -1,0 +1,261 @@
+/* ===== THEMES ===== */
+[data-theme="dark"] {
+  --accent: #00d4ff;
+  --accent-hover: #33ddff;
+  --accent-rgb: 0, 212, 255;
+  --bg: #070708;
+  --bg-sidebar: #0a0a0f;
+  --bg-card: rgba(var(--accent-rgb), 0.03);
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5ea;
+  --text-muted: #c7c7cc;
+  --text-dim: #98989d;
+  --border: rgba(var(--accent-rgb), 0.08);
+  --border-light: rgba(var(--accent-rgb), 0.05);
+  --shadow: rgba(var(--accent-rgb), 0.05);
+}
+[data-theme="light"] {
+  --accent: #0891b2;
+  --accent-hover: #0e9ec4;
+  --accent-rgb: 8, 145, 178;
+  --bg: #f0f2f5;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a5a;
+  --text-muted: #6b6b7b;
+  --text-dim: #9a9aaa;
+  --border: #e2e4e9;
+  --border-light: #e8eaf0;
+  --shadow: rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background: rgba(var(--accent-rgb), 0.2);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* ===== Ambient Orbs ===== */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.6s ease;
+}
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  top: -15%;
+  left: -10%;
+  background: rgba(var(--accent-rgb), 0.04);
+  animation: orbFloat 25s ease-in-out infinite;
+}
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -10%;
+  right: -5%;
+  background: rgba(var(--accent-rgb), 0.03);
+  animation: orbFloat 30s ease-in-out infinite reverse;
+}
+.orb-3 {
+  width: 350px;
+  height: 350px;
+  top: 40%;
+  right: 30%;
+  background: rgba(var(--accent-rgb), 0.02);
+  animation: orbFloat 20s ease-in-out infinite 5s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(40px, -60px) scale(1.1); }
+  50% { transform: translate(-30px, 30px) scale(0.95); }
+  75% { transform: translate(60px, 40px) scale(1.05); }
+}
+
+/* ===== Grid Overlay ===== */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.008;
+  background-image:
+    linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+[data-theme="light"] .grid-overlay {
+  opacity: 0.02;
+  background-image:
+    linear-gradient(rgba(0,0,0,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.06) 1px, transparent 1px);
+}
+
+/* ===== Sidebar ===== */
+aside {
+  background: var(--bg-sidebar) !important;
+  transition: background 0.4s ease;
+}
+
+/* ===== Animations ===== */
+@keyframes cursorPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+#typing-cursor {
+  animation: cursorPulse 1s ease-in-out infinite;
+}
+
+/* ===== Reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Skill Badge ===== */
+.skill-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.7rem;
+  border-radius: 0.375rem;
+  background: rgba(var(--accent-rgb), 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  cursor: default;
+  line-height: 1.4;
+}
+.skill-badge:hover {
+  background: rgba(var(--accent-rgb), 0.1);
+  border-color: rgba(var(--accent-rgb), 0.25);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* ===== Project Thumbnails ===== */
+.project-thumb {
+  background: #070708;
+}
+[data-theme="light"] .project-thumb {
+  background: #1a1a2e;
+}
+.project-label {
+  background: rgba(7, 7, 8, 0.8);
+}
+[data-theme="light"] .project-label {
+  background: rgba(26, 26, 46, 0.85);
+}
+.project-gradient {
+  background: linear-gradient(to top, #070708, rgba(7, 7, 8, 0.2), transparent);
+}
+[data-theme="light"] .project-gradient {
+  background: linear-gradient(to top, #1a1a2e, rgba(26, 26, 46, 0.2), transparent);
+}
+
+/* ===== Back to Top ===== */
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ===== Form ===== */
+input, textarea {
+  transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.15), 0 0 20px rgba(var(--accent-rgb), 0.05);
+}
+
+/* ===== Sections ===== */
+section[id] {
+  scroll-margin-top: 20px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1023px) {
+  main {
+    margin-left: 0;
+    width: 100%;
+  }
+  .orb {
+    filter: blur(80px);
+  }
+  .orb-1 { width: 300px; height: 300px; }
+  .orb-2 { width: 250px; height: 250px; }
+  .orb-3 { width: 200px; height: 200px; }
+  .reveal {
+    transform: translateY(16px);
+  }
+}
+
+/* ===== Theme Utility Classes ===== */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-dim { color: var(--text-dim); }
+.bg-body { background: var(--bg); }
+.bg-sidebar { background: var(--bg-sidebar); }
+.bg-card { background: var(--bg-card); }
+.bg-body\/80 { background: color-mix(in srgb, var(--bg) 80%, transparent); }
+.border-theme { border-color: var(--border); }
+.border-theme-light { border-color: var(--border-light); }
+.shadow-card { box-shadow: 0 0 0 1px var(--border); }
+
+/* ===== Light Mode Overrides ===== */
+[data-theme="light"] .bg-\[#070708\] {
+  background-color: var(--bg);
+}
+[data-theme="light"] input,
+[data-theme="light"] textarea {
+  border-color: var(--border) !important;
+}
+[data-theme="light"] input:focus,
+[data-theme="light"] textarea:focus {
+  border-color: var(--accent) !important;
+  background: rgba(var(--accent-rgb), 0.03) !important;
+}
+[data-theme="light"] .shadow-\[0_0_20px_var\(--accent\)_at_50\%_50\%\] {
+  box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.15);
+}
+[data-theme="light"] .hover\:shadow-\[0_0_30px_var\(--accent\)_at_50\%_50\%\]:hover {
+  box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.2);
+}
+
+/* ===== Smooth ===== */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

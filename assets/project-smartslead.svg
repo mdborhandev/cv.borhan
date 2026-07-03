@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2e0a0a"/>
+      <stop offset="50%" stop-color="#1a0a0a"/>
+      <stop offset="100%" stop-color="#0a0a12"/>
+    </linearGradient>
+    <linearGradient id="accent5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg5)"/>
+  <rect x="0" y="0" width="600" height="400" fill="url(#accent5)" opacity="0.04"/>
+  <circle cx="500" cy="50" r="200" fill="#f97316" opacity="0.04"/>
+  <circle cx="80" cy="450" r="180" fill="#e11d48" opacity="0.04"/>
+  <!-- Top bar -->
+  <rect x="40" y="40" width="520" height="30" rx="6" fill="#2a1010" stroke="#3a2020" stroke-width="0.5"/>
+  <circle cx="55" cy="55" r="4" fill="#ef4444" opacity="0.8"/>
+  <circle cx="70" cy="55" r="4" fill="#eab308" opacity="0.8"/>
+  <circle cx="85" cy="55" r="4" fill="#22c55e" opacity="0.8"/>
+  <rect x="400" y="48" width="60" height="14" rx="3" fill="#f97316" opacity="0.2"/>
+  <rect x="470" y="48" width="70" height="14" rx="3" fill="#e11d48" opacity="0.2"/>
+  <!-- Pipeline stages -->
+  <rect x="40" y="85" width="110" height="60" rx="8" fill="#2a1010" stroke="#3a2020" stroke-width="0.5"/>
+  <text x="55" y="105" fill="#f97316" font-family="monospace" font-size="10" opacity="0.5">NEW LEADS</text>
+  <text x="55" y="130" fill="#f97316" font-family="monospace" font-size="22" font-weight="bold" opacity="0.6">24</text>
+  <rect x="165" y="85" width="110" height="60" rx="8" fill="#2a1010" stroke="#3a2020" stroke-width="0.5"/>
+  <text x="180" y="105" fill="#fb923c" font-family="monospace" font-size="10" opacity="0.5">QUALIFIED</text>
+  <text x="180" y="130" fill="#fb923c" font-family="monospace" font-size="22" font-weight="bold" opacity="0.6">12</text>
+  <rect x="290" y="85" width="110" height="60" rx="8" fill="#2a1010" stroke="#3a2020" stroke-width="0.5"/>
+  <text x="305" y="105" fill="#e11d48" font-family="monospace" font-size="10" opacity="0.5">OPPORTUNITY</text>
+  <text x="305" y="130" fill="#e11d48" font-family="monospace" font-size="22" font-weight="bold" opacity="0.6">7</text>
+  <rect x="415" y="85" width="110" height="60" rx="8" fill="#2a1010" stroke="#3a2020" stroke-width="0.5"/>
+  <text x="430" y="105" fill="#f43f5e" font-family="monospace" font-size="10" opacity="0.5">WON</text>
+  <text x="430" y="130" fill="#f43f5e" font-family="monospace" font-size="22" font-weight="bold" opacity="0.6">3</text>
+  <!-- Pipeline arrows -->
+  <text x="156" y="120" fill="#3a2020" font-family="monospace" font-size="14">→</text>
+  <text x="281" y="120" fill="#3a2020" font-family="monospace" font-size="14">→</text>
+  <text x="406" y="120" fill="#3a2020" font-family="monospace" font-size="14">→</text>
+  <!-- Main content area -->
+  <rect x="40" y="160" width="360" height="130" rx="8" fill="#2a1010" stroke="#3a2020" stroke-width="0.5"/>
+  <rect x="55" y="175" width="100" height="8" rx="3" fill="#f97316" opacity="0.3"/>
+  <rect x="55" y="190" width="330" height="1" fill="#3a2020"/>
+  <rect x="55" y="200" width="140" height="6" rx="3" fill="#3a2020"/>
+  <rect x="55" y="213" width="100" height="6" rx="3" fill="#3a2020"/>
+  <rect x="220" y="200" width="60" height="20" rx="4" fill="#f97316" opacity="0.15"/>
+  <rect x="295" y="200" width="80" height="20" rx="4" fill="#e11d48" opacity="0.15"/>
+  <rect x="55" y="232" width="140" height="6" rx="3" fill="#3a2020"/>
+  <rect x="55" y="245" width="100" height="6" rx="3" fill="#3a2020"/>
+  <rect x="220" y="232" width="60" height="20" rx="4" fill="#fb923c" opacity="0.1"/>
+  <rect x="295" y="232" width="80" height="20" rx="4" fill="#f43f5e" opacity="0.1"/>
+  <rect x="55" y="265" width="120" height="6" rx="3" fill="#3a2020"/>
+  <rect x="55" y="278" width="90" height="6" rx="3" fill="#3a2020"/>
+  <!-- Right sidebar -->
+  <rect x="415" y="160" width="145" height="130" rx="8" fill="#2a1010" stroke="#3a2020" stroke-width="0.5"/>
+  <rect x="430" y="175" width="80" height="8" rx="3" fill="#e11d48" opacity="0.3"/>
+  <rect x="430" y="190" width="115" height="6" rx="3" fill="#3a2020"/>
+  <rect x="430" y="203" width="100" height="6" rx="3" fill="#3a2020"/>
+  <rect x="430" y="216" width="110" height="6" rx="3" fill="#3a2020"/>
+  <rect x="430" y="235" width="80" height="24" rx="4" fill="#f97316" opacity="0.15"/>
+  <rect x="430" y="265" width="100" height="6" rx="3" fill="#3a2020"/>
+  <rect x="430" y="278" width="80" height="6" rx="3" fill="#3a2020"/>
+  <!-- Bottom conversion bar -->
+  <rect x="40" y="305" width="520" height="60" rx="8" fill="#2a1010" stroke="#3a2020" stroke-width="0.5"/>
+  <rect x="55" y="318" width="120" height="8" rx="3" fill="#f97316" opacity="0.2"/>
+  <rect x="55" y="335" width="490" height="6" rx="3" fill="#3a2020"/>
+  <rect x="55" y="335" width="200" height="6" rx="3" fill="url(#accent5)" opacity="0.5"/>
+  <rect x="55" y="350" width="40" height="4" rx="2" fill="#3a2020"/>
+  <text x="300" y="380" text-anchor="middle" fill="#f97316" font-family="monospace" font-size="11" opacity="0.5">SmartSLead – CRM &amp; Lead Management System</text>
+</svg>
