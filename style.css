@@ -169,19 +169,21 @@ aside {
   background: #070708;
 }
 [data-theme="light"] .project-thumb {
-  background: #1a1a2e;
+  background: #e8eaed;
 }
 .project-label {
   background: rgba(7, 7, 8, 0.8);
 }
 [data-theme="light"] .project-label {
-  background: rgba(26, 26, 46, 0.85);
+  background: rgba(240, 242, 245, 0.9);
+  border-color: var(--border) !important;
+  color: var(--text-dim) !important;
 }
 .project-gradient {
   background: linear-gradient(to top, #070708, rgba(7, 7, 8, 0.2), transparent);
 }
 [data-theme="light"] .project-gradient {
-  background: linear-gradient(to top, #1a1a2e, rgba(26, 26, 46, 0.2), transparent);
+  background: linear-gradient(to top, #e8eaed, rgba(232, 234, 237, 0.2), transparent);
 }
 
 /* ===== Back to Top ===== */
@@ -233,6 +235,14 @@ section[id] {
 .border-theme { border-color: var(--border); }
 .border-theme-light { border-color: var(--border-light); }
 .shadow-card { box-shadow: 0 0 0 1px var(--border); }
+
+/* ===== Project Card Borders (Light Mode) ===== */
+[data-theme="light"] .project-card {
+  border-color: var(--border) !important;
+}
+[data-theme="light"] .project-card:hover {
+  border-color: var(--text-muted) !important;
+}
 
 /* ===== Light Mode Overrides ===== */
 [data-theme="light"] .bg-\[#070708\] {
