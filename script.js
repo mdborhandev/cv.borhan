@@ -157,9 +157,14 @@
     });
   });
 
-  // ===== Contact Form =====
+  // ===== Contact Form (EmailJS) =====
+  (function () {
+    emailjs.init('UfmpMSg2KlcJjyIX0');
+  })();
+
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
+  const submitBtn = document.getElementById('submit-btn');
 
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -179,14 +184,20 @@
         return;
       }
 
-      const mailtoLink =
-        'mailto:mdborhan.dev@gmail.com' +
-        '?subject=' + encodeURIComponent(document.getElementById('subject').value || 'Portfolio Contact') +
-        '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
 
-      window.open(mailtoLink, '_blank');
-      showFormMessage('Thank you! Your message has been prepared.', true);
-      contactForm.reset();
+      emailjs.sendForm('service_vxkwckv', 'template_txkht7q', this)
+        .then(function () {
+          showFormMessage('Message sent successfully!', true);
+          contactForm.reset();
+          submitBtn.textContent = 'Send Message';
+          submitBtn.disabled = false;
+        }, function () {
+          showFormMessage('Failed to send message. Please try again.', false);
+          submitBtn.textContent = 'Send Message';
+          submitBtn.disabled = false;
+        });
     });
   }
 
@@ -198,7 +209,9 @@
     } else {
       formMessage.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/15');
     }
-    setTimeout(() => formMessage.classList.add('hidden'), 5000);
+    setTimeout(function () {
+      formMessage.classList.add('hidden');
+    }, 5000);
   }
 
   // ===== Init =====
