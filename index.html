@@ -65,26 +65,7 @@
 
     </div>
 
-    <div class="px-8 py-6 border-t border-[var(--accent)]/5">
-      <div class="flex items-center justify-center gap-4">
-        <a href="https://github.com/mdborhandev" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/in/borhan-uddin-fahim" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.instagram.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="mailto:mdborhan.dev@gmail.com" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-      <p class="text-[10px] text-dim text-center mt-3 tracking-wider font-['JetBrains_Mono']">&copy; 2026 BF</p>
-    </div>
+
 
     <!-- Scroll progress -->
     <div id="scroll-progress" class="absolute bottom-0 left-0 h-[2px] bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]" style="width:0%"></div>
@@ -721,14 +702,14 @@
   </main>
 
   <!-- ===== THEME SWITCHER ===== -->
-  <div class="fixed bottom-6 left-6 z-50 flex gap-2">
-    <button id="theme-switcher" class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg" title="Toggle theme">
-      <i id="theme-icon" class="fas fa-moon"></i>
-    </button>
-    <button id="back-to-top" class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center opacity-0 invisible translate-y-3 transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-  </div>
+  <button id="theme-switcher" class="fixed top-6 right-6 z-50 w-10 h-10 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg" title="Toggle theme">
+    <i id="theme-icon" class="fas fa-moon"></i>
+  </button>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center opacity-0 invisible translate-y-3 transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js?v=2"></script>
