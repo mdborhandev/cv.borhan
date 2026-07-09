@@ -245,17 +245,16 @@
     services: {
       tag: 'Services',
       title: 'What I Can Do For You',
-      desc: 'I offer a range of software development services focused on backend engineering, SaaS platforms, and enterprise solutions.',
+      desc: 'I build scalable backend systems and SaaS platforms. Click a service to inquire about it.',
       features: [
-        'Custom web application development with ASP.NET Core',
-        'SaaS platform development with multi-tenant architecture',
-        'RESTful API design and implementation',
-        'Database design and optimization (PostgreSQL, SQL Server)',
-        'Authentication and authorization (JWT, RBAC)',
-        'Code review and architecture consultation',
-        'Website development with modern frontend technologies'
+        'Custom Software Development',
+        'Backend API Development',
+        'SaaS Platform Development',
+        'Database Design & Optimization',
+        'Website Development'
       ],
-      tech: ['ASP.NET Core', 'C#', 'PostgreSQL', 'Entity Framework Core', 'Docker', 'Azure']
+      tech: ['ASP.NET Core', 'C#', 'PostgreSQL', 'Entity Framework Core'],
+      clickable: true
     }
   };
 
@@ -277,8 +276,24 @@
     modalFeatures.innerHTML = '';
     p.features.forEach(function (f) {
       var li = document.createElement('li');
-      li.className = 'flex items-start gap-2.5 text-xs text-muted max-md:text-[11px]';
-      li.innerHTML = '<span class="text-[var(--accent)] mt-0.5 font-[\'JetBrains_Mono\'] text-[10px]">&#9656;</span><span>' + f + '</span>';
+      if (p.clickable) {
+        li.className = 'flex items-center gap-2.5 text-xs text-muted max-md:text-[11px] p-2.5 rounded-lg bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 cursor-pointer transition-all duration-300';
+        li.innerHTML = '<i class="fas fa-arrow-right text-[var(--accent)]/50 text-[10px]"></i><span class="text-primary">' + f + '</span>';
+        li.addEventListener('click', function () {
+          closeModal();
+          setTimeout(function () {
+            openTabByIndex(4);
+            var subjectInput = document.getElementById('subject');
+            if (subjectInput) {
+              subjectInput.value = f;
+              subjectInput.focus();
+            }
+          }, 350);
+        });
+      } else {
+        li.className = 'flex items-start gap-2.5 text-xs text-muted max-md:text-[11px]';
+        li.innerHTML = '<span class="text-[var(--accent)] mt-0.5 font-[\'JetBrains_Mono\'] text-[10px]">&#9656;</span><span>' + f + '</span>';
+      }
       modalFeatures.appendChild(li);
     });
 
