@@ -267,15 +267,24 @@ body {
 .timeline {
   position: relative;
 }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: rgba(var(--accent-rgb), 0.15);
+}
 .timeline-container {
-  padding-left: 1.5rem;
-  border-left: 2px solid rgba(var(--accent-rgb), 0.1);
+  position: relative;
+  padding-left: 2rem;
 }
 .timeline-container::before {
   content: '';
   position: absolute;
-  left: -5px;
-  top: 0.5rem;
+  left: 0;
+  top: 6px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -360,10 +369,10 @@ input:focus, textarea:focus {
 
   /* Timeline on mobile */
   .timeline-container {
-    padding-left: 1rem;
+    padding-left: 1.5rem;
   }
   .timeline-container::before {
-    left: -4px;
+    left: 0;
     width: 6px;
     height: 6px;
   }
