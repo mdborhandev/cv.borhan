@@ -44,7 +44,7 @@ body {
 
 ::selection {
   background: rgba(var(--accent-rgb), 0.2);
-  color: white;
+  color: var(--text-primary);
 }
 
 ::-webkit-scrollbar {
@@ -401,11 +401,45 @@ input:focus, textarea:focus {
   border-color: var(--accent) !important;
   background: rgba(var(--accent-rgb), 0.03) !important;
 }
+[data-theme="light"] .btn-primary {
+  color: #ffffff;
+}
+[data-theme="light"] .modal-overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+[data-theme="light"] .modal-content {
+  background: var(--bg-sidebar);
+  border-color: var(--border);
+}
+[data-theme="light"] .sidebar-panel {
+  border-bottom-color: var(--border);
+}
+[data-theme="light"] ::selection {
+  background: rgba(var(--accent-rgb), 0.2);
+  color: var(--text-primary);
+}
 
 /* ===== Smooth ===== */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Light Mode Additional Overrides ===== */
+[data-theme="light"] .orb-1 {
+  background: rgba(var(--accent-rgb), 0.06);
+}
+[data-theme="light"] .orb-2 {
+  background: rgba(var(--accent-rgb), 0.05);
+}
+[data-theme="light"] .orb-3 {
+  background: rgba(var(--accent-rgb), 0.04);
+}
+[data-theme="light"] .timeline::before {
+  background: rgba(var(--accent-rgb), 0.12);
+}
+[data-theme="light"] .timeline-container::before {
+  box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.3);
 }
 
 /* ===== Modal ===== */
