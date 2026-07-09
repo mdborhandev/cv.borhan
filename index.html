@@ -408,60 +408,79 @@
 
         <!-- Contact Tab -->
         <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="contact">
-          <div class="flex min-h-full w-full gap-6 p-[5%] max-lg:flex-col">
-            <div class="w-full max-w-[500px]">
-              <h2 class="text-2xl font-semibold text-primary tracking-tight mb-2">Let's Build Something Great</h2>
-              <p class="text-xs text-muted mb-6">Feel free to reach out for collaborations or just a friendly hello!</p>
+          <div class="flex min-h-full w-full gap-10 p-[5%] px-[8%] max-lg:flex-col max-md:px-3">
+            <!-- Left: Contact Info -->
+            <div class="flex-1 flex flex-col justify-center">
+              <h2 class="text-3xl font-semibold text-primary tracking-tight mb-2">Let's Talk</h2>
+              <p class="text-sm text-muted mb-8 leading-relaxed">Have a project in mind or just want to say hello?<br>I'd love to hear from you.</p>
 
-              <form id="contact-form" class="space-y-3">
-                <div class="grid sm:grid-cols-2 gap-3">
-                  <input type="text" id="name" name="name" required placeholder="Your Name"
-                    class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
-                  <input type="email" id="email" name="email" required placeholder="Your Email"
-                    class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
-                </div>
-                <input type="text" id="subject" name="subject" placeholder="Subject"
-                  class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
-                <textarea id="message" name="message" rows="4" required placeholder="Your Message"
-                  class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 resize-none"></textarea>
-                <button type="submit" id="submit-btn"
-                  class="w-full btn-primary flex items-center justify-center gap-2">
-                  <i class="fas fa-paper-plane text-xs"></i>
-                  Send Message
-                </button>
-                <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-lg"></div>
-              </form>
-
-              <!-- Contact Info -->
-              <div class="mt-6 space-y-3">
-                <a href="mailto:mdborhan.dev@gmail.com" class="flex items-center gap-3 group p-3 rounded-lg bg-card border border-[var(--accent)]/8">
-                  <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+              <div class="space-y-4">
+                <a href="mailto:mdborhan.dev@gmail.com" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300">
+                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm group-hover:scale-105 transition-transform">
                     <i class="fas fa-envelope"></i>
                   </div>
                   <div>
-                    <p class="text-[10px] text-dim font-['JetBrains_Mono']">email</p>
-                    <p class="text-xs text-primary">mdborhan.dev@gmail.com</p>
+                    <p class="text-[10px] text-dim font-['JetBrains_Mono'] uppercase tracking-wider">email</p>
+                    <p class="text-sm text-primary">mdborhan.dev@gmail.com</p>
                   </div>
                 </a>
-                <a href="tel:01906750597" class="flex items-center gap-3 group p-3 rounded-lg bg-card border border-[var(--accent)]/8">
-                  <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+                <a href="tel:01906750597" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300">
+                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm group-hover:scale-105 transition-transform">
                     <i class="fas fa-phone"></i>
                   </div>
                   <div>
-                    <p class="text-[10px] text-dim font-['JetBrains_Mono']">phone</p>
-                    <p class="text-xs text-primary">01906750597</p>
+                    <p class="text-[10px] text-dim font-['JetBrains_Mono'] uppercase tracking-wider">phone</p>
+                    <p class="text-sm text-primary">01906750597</p>
                   </div>
                 </a>
-                <div class="flex items-center gap-3 p-3 rounded-lg bg-card border border-[var(--accent)]/8">
-                  <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-card border border-[var(--accent)]/8">
+                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm">
                     <i class="fas fa-location-dot"></i>
                   </div>
                   <div>
-                    <p class="text-[10px] text-dim font-['JetBrains_Mono']">location</p>
-                    <p class="text-xs text-primary">Chattogram, Bangladesh</p>
+                    <p class="text-[10px] text-dim font-['JetBrains_Mono'] uppercase tracking-wider">location</p>
+                    <p class="text-sm text-primary">Chattogram, Bangladesh</p>
                   </div>
                 </div>
               </div>
+
+              <!-- Social Links -->
+              <div class="flex items-center gap-3 mt-8">
+                <a href="https://github.com/mdborhandev" target="_blank" rel="noopener noreferrer" class="link" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/borhan-uddin-fahim" target="_blank" rel="noopener noreferrer" class="link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="link" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="link" aria-label="Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Contact Form -->
+            <div class="flex-1 flex flex-col justify-center">
+              <form id="contact-form" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <input type="text" id="name" name="name" required placeholder="Your Name"
+                    class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                  <input type="email" id="email" name="email" required placeholder="Your Email"
+                    class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                </div>
+                <input type="text" id="subject" name="subject" placeholder="Subject"
+                  class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                <textarea id="message" name="message" rows="5" required placeholder="Your Message"
+                  class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 resize-none"></textarea>
+                <button type="submit" id="submit-btn"
+                  class="w-full btn-primary !py-3.5 flex items-center justify-center gap-2">
+                  <i class="fas fa-paper-plane text-xs"></i>
+                  Send Message
+                </button>
+                <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-xl"></div>
+              </form>
             </div>
           </div>
         </section>
