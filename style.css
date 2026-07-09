@@ -39,6 +39,7 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -55,6 +56,15 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 2px;
+}
+
+/* ===== Hide Scrollbar ===== */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* ===== Sidebar Panel ===== */
@@ -169,18 +179,6 @@ body {
 }
 .tab-content[data-tab-active="true"] {
   display: flex;
-}
-
-/* ===== Scrollbar Styling ===== */
-.right-panel::-webkit-scrollbar {
-  width: 4px;
-}
-.right-panel::-webkit-scrollbar-track {
-  background: transparent;
-}
-.right-panel::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 2px;
 }
 
 /* ===== Scrollable Tab Content ===== */
@@ -332,7 +330,7 @@ input:focus, textarea:focus {
 .bg-card { background: var(--bg-card); }
 .border-theme { border-color: var(--border); }
 
-/* ===== Responsive ===== */
+/* ===== Responsive: Tablet (max-width: 1023px) ===== */
 @media (max-width: 1023px) {
   .orb {
     filter: blur(80px);
@@ -340,9 +338,27 @@ input:focus, textarea:focus {
   .orb-1 { width: 300px; height: 300px; }
   .orb-2 { width: 250px; height: 250px; }
   .orb-3 { width: 200px; height: 200px; }
+
+  /* Sidebar visible on top on mobile */
+  .sidebar-panel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.08);
+  }
 }
 
+/* ===== Responsive: Mobile (max-width: 767px) ===== */
 @media (max-width: 767px) {
+  .orb {
+    filter: blur(60px);
+  }
+  .orb-1 { width: 200px; height: 200px; }
+  .orb-2 { width: 150px; height: 150px; }
+  .orb-3 { width: 120px; height: 120px; }
+
+  /* Timeline on mobile */
   .timeline-container {
     padding-left: 1rem;
   }
@@ -350,6 +366,19 @@ input:focus, textarea:focus {
     left: -4px;
     width: 6px;
     height: 6px;
+  }
+
+  /* Tab buttons smaller on mobile */
+  .tab-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.65rem;
+  }
+
+  /* Link buttons smaller on mobile */
+  .link {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.875rem;
   }
 }
 

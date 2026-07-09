@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=8">
   <title>Mohammed Borhan Uddin Fahim | Software Engineer</title>
 </head>
 <body class="bg-body text-primary font-['Inter']">
@@ -29,22 +29,22 @@
   <!-- Grid overlay -->
   <div class="grid-overlay"></div>
 
-  <main class="flex h-screen w-full overflow-hidden max-lg:flex-col">
+  <main class="flex h-screen w-full overflow-hidden max-lg:flex-col max-lg:h-auto max-lg:min-h-screen max-lg:overflow-y-auto">
 
     <!-- ===== SIDEBAR ===== -->
-    <aside class="sidebar-panel flex h-full w-[400px] flex-col items-center justify-center gap-5 p-6 max-lg:w-full max-lg:h-auto max-lg:min-h-[420px] lg:shadow-xl overflow-y-auto">
+    <aside class="sidebar-panel flex h-full w-[400px] flex-col items-center justify-center gap-5 p-6 max-lg:w-full max-lg:h-auto max-lg:min-h-0 max-lg:py-10 max-md:py-8 max-md:gap-4 lg:shadow-xl overflow-y-auto">
       <!-- Profile Image -->
       <div class="relative mb-2">
-        <div class="w-48 h-48 rounded-full overflow-hidden ring-2 ring-[var(--accent)]/15 shadow-lg shadow-[var(--accent)]/5">
+        <div class="w-48 h-48 rounded-full overflow-hidden ring-2 ring-[var(--accent)]/15 shadow-lg shadow-[var(--accent)]/5 max-md:w-36 max-md:h-36">
           <img src="assets/profile.png" alt="Mohammed Borhan Uddin Fahim" class="w-full h-full object-cover">
         </div>
       </div>
 
-      <h1 class="text-xl font-semibold text-primary text-center leading-tight">Mohammed Borhan<br>Uddin Fahim</h1>
+      <h1 class="text-xl font-semibold text-primary text-center leading-tight max-md:text-lg">Mohammed Borhan<br>Uddin Fahim</h1>
 
-      <p class="text-[var(--accent)] text-sm font-medium text-center font-['JetBrains_Mono']">&gt; Software Engineer</p>
+      <p class="text-[var(--accent)] text-sm font-medium text-center font-['JetBrains_Mono'] max-md:text-xs">&gt; Software Engineer</p>
 
-      <div class="flex items-center gap-1.5 text-xs text-muted">
+      <div class="flex items-center gap-1.5 text-xs text-muted max-md:text-[11px]">
         <i class="fas fa-map-pin text-[var(--accent)]/50 text-[10px]"></i>
         <span>Chattogram, Bangladesh</span>
       </div>
@@ -85,11 +85,11 @@
     </aside>
 
     <!-- ===== RIGHT PANEL ===== -->
-    <div class="h-full w-full flex flex-col min-w-0">
+    <div class="h-full w-full flex flex-col min-w-0 max-lg:h-auto max-lg:min-h-0 max-lg:flex-1">
       <!-- Header with Tabs -->
-      <header class="relative flex w-full shrink-0 p-2 max-lg:h-[130px] max-lg:flex-col lg:h-[72px]">
+      <header class="relative flex w-full shrink-0 p-2 lg:h-[72px] max-lg:h-16 max-lg:items-center max-lg:justify-center">
         <!-- Tabs -->
-        <div class="absolute left-1/2 top-3 flex h-[52px] -translate-x-1/2 gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-md:w-full max-md:justify-center md:w-fit">
+        <div class="flex gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-w-full scrollbar-hide mx-auto">
           <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
           <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
           <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
@@ -98,31 +98,29 @@
         </div>
 
         <!-- Theme Controls -->
-        <div class="m-2 ml-auto flex items-center gap-2 max-lg:mt-auto">
-          <button id="theme-switcher" class="link text-sm" title="Toggle theme">
-            <i id="theme-icon" class="fas fa-moon"></i>
-          </button>
-        </div>
+        <button id="theme-switcher" class="absolute right-3 top-1/2 -translate-y-1/2 link text-sm" title="Toggle theme">
+          <i id="theme-icon" class="fas fa-moon"></i>
+        </button>
       </header>
 
       <!-- Tab Contents -->
-      <div class="flex-1 overflow-y-auto min-h-0">
+      <div class="flex-1 overflow-y-auto min-h-0 max-lg:min-h-0">
 
         <!-- About Tab -->
-        <section class="tab-content relative flex min-h-full w-full flex-col max-lg:p-4" data-tab-name="about">
-          <div class="flex min-h-full w-full gap-8 p-[5%] max-lg:flex-col">
+        <section class="tab-content relative flex min-h-full w-full flex-col" data-tab-name="about">
+          <div class="flex min-h-full w-full gap-8 p-[5%] max-lg:flex-col max-lg:gap-6 max-lg:p-6 max-md:p-4">
             <!-- Left: Text + Buttons -->
             <div class="flex-1 flex flex-col justify-center">
-              <div class="text-5xl font-semibold leading-[70px] max-lg:text-3xl max-md:leading-snug">
+              <div class="text-5xl font-semibold leading-[70px] max-xl:text-4xl max-lg:text-3xl max-md:text-2xl max-lg:leading-tight max-md:leading-snug">
                 Hi,<br>
                 I am <span class="text-[var(--accent)]">Borhan Fahim</span>
               </div>
-              <div class="mt-4 max-w-[500px] p-2 text-justify max-lg:max-w-full text-sm text-muted leading-relaxed">
+              <div class="mt-4 max-w-[500px] text-justify max-lg:max-w-full text-sm text-muted leading-relaxed max-md:text-xs">
                 Backend-focused Software Engineer with 2+ years of experience developing scalable SaaS and enterprise applications using C#, ASP.NET Core, EF Core, and PostgreSQL.
                 <br><br>
                 Skilled in designing secure RESTful APIs, implementing RBAC, and optimizing database performance. Strong understanding of Clean Architecture, SOLID principles, and Agile development.
               </div>
-              <div class="mt-6 flex gap-4 p-2">
+              <div class="mt-6 flex gap-4">
                 <a href="#projects" onclick="openTabByIndex(3)" class="btn-primary !bg-[rgba(var(--accent-rgb),0.15)] !text-[var(--accent)] transition-transform duration-300 hover:scale-x-[1.03]">
                   <span>Projects</span>
                 </a>
@@ -133,41 +131,41 @@
             </div>
 
             <!-- Right: Stats -->
-            <div class="flex-1 grid grid-cols-2 gap-4 content-center">
-              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center">
-                <div class="text-3xl font-semibold text-primary" data-target="2">0</div>
-                <div class="text-xs text-muted mt-1">Years Experience</div>
-                <div class="text-[10px] text-dim mt-0.5">Enterprise SaaS</div>
+            <div class="flex-1 grid grid-cols-2 gap-4 content-center max-md:gap-3">
+              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4">
+                <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="2">0</div>
+                <div class="text-xs text-muted mt-1 max-md:text-[11px]">Years Experience</div>
+                <div class="text-[10px] text-dim mt-0.5 max-md:hidden">Enterprise SaaS</div>
               </div>
-              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center">
-                <div class="text-3xl font-semibold text-primary" data-target="10">0</div>
-                <div class="text-xs text-muted mt-1">Projects Delivered</div>
-                <div class="text-[10px] text-dim mt-0.5">SaaS & Enterprise</div>
+              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4">
+                <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="10">0</div>
+                <div class="text-xs text-muted mt-1 max-md:text-[11px]">Projects Delivered</div>
+                <div class="text-[10px] text-dim mt-0.5 max-md:hidden">SaaS & Enterprise</div>
               </div>
-              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center">
-                <div class="text-3xl font-semibold text-primary" data-target="40">0</div>
-                <div class="text-xs text-muted mt-1">Students Mentored</div>
-                <div class="text-[10px] text-dim mt-0.5">Frontend Training</div>
+              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4">
+                <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="40">0</div>
+                <div class="text-xs text-muted mt-1 max-md:text-[11px]">Students Mentored</div>
+                <div class="text-[10px] text-dim mt-0.5 max-md:hidden">Frontend Training</div>
               </div>
-              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center">
-                <div class="text-3xl font-semibold text-primary" data-target="30">0</div>
-                <div class="text-xs text-muted mt-1">Perf. Improvement</div>
-                <div class="text-[10px] text-dim mt-0.5">API Optimization %</div>
+              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4">
+                <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="30">0</div>
+                <div class="text-xs text-muted mt-1 max-md:text-[11px]">Perf. Improvement</div>
+                <div class="text-[10px] text-dim mt-0.5 max-md:hidden">API Optimization %</div>
               </div>
             </div>
           </div>
         </section>
 
         <!-- Skills Tab -->
-        <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="skills">
-          <div class="flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[12%] max-lg:px-[5%] max-md:px-2 content-start">
+        <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="skills">
+          <div class="flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[10%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
             <!-- Languages & Frameworks -->
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <div class="flex items-center gap-2.5 mb-3">
                 <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                   <i class="fas fa-code"></i>
                 </div>
-                <span class="text-sm font-medium text-primary">Languages & Frameworks</span>
+                <span class="text-sm font-medium text-primary max-md:text-xs">Languages & Frameworks</span>
               </div>
               <div class="flex flex-wrap gap-1.5">
                 <span class="skill-badge">C#</span>
@@ -180,12 +178,12 @@
             </div>
 
             <!-- Frontend -->
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <div class="flex items-center gap-2.5 mb-3">
                 <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                   <i class="fab fa-html5"></i>
                 </div>
-                <span class="text-sm font-medium text-primary">Frontend</span>
+                <span class="text-sm font-medium text-primary max-md:text-xs">Frontend</span>
               </div>
               <div class="flex flex-wrap gap-1.5">
                 <span class="skill-badge">HTML5</span>
@@ -198,12 +196,12 @@
             </div>
 
             <!-- Databases -->
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <div class="flex items-center gap-2.5 mb-3">
                 <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                   <i class="fas fa-database"></i>
                 </div>
-                <span class="text-sm font-medium text-primary">Databases</span>
+                <span class="text-sm font-medium text-primary max-md:text-xs">Databases</span>
               </div>
               <div class="flex flex-wrap gap-1.5">
                 <span class="skill-badge">PostgreSQL</span>
@@ -213,12 +211,12 @@
             </div>
 
             <!-- Architecture -->
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <div class="flex items-center gap-2.5 mb-3">
                 <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                   <i class="fas fa-sitemap"></i>
                 </div>
-                <span class="text-sm font-medium text-primary">Architecture</span>
+                <span class="text-sm font-medium text-primary max-md:text-xs">Architecture</span>
               </div>
               <div class="flex flex-wrap gap-1.5">
                 <span class="skill-badge">Clean Architecture</span>
@@ -230,12 +228,12 @@
             </div>
 
             <!-- Security -->
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <div class="flex items-center gap-2.5 mb-3">
                 <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                   <i class="fas fa-shield-halved"></i>
                 </div>
-                <span class="text-sm font-medium text-primary">Security</span>
+                <span class="text-sm font-medium text-primary max-md:text-xs">Security</span>
               </div>
               <div class="flex flex-wrap gap-1.5">
                 <span class="skill-badge">JWT Authentication</span>
@@ -245,12 +243,12 @@
             </div>
 
             <!-- Tools -->
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <div class="flex items-center gap-2.5 mb-3">
                 <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                   <i class="fas fa-tools"></i>
                 </div>
-                <span class="text-sm font-medium text-primary">Tools</span>
+                <span class="text-sm font-medium text-primary max-md:text-xs">Tools</span>
               </div>
               <div class="flex flex-wrap gap-1.5">
                 <span class="skill-badge">Git</span>
@@ -266,18 +264,18 @@
         </section>
 
         <!-- Experience Tab -->
-        <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="experience">
-          <div class="flex min-h-full w-full flex-col gap-10 p-[5%] px-[8%] max-md:px-3">
+        <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="experience">
+          <div class="flex min-h-full w-full flex-col gap-10 p-[5%] px-[8%] max-lg:px-6 max-md:px-4 max-md:gap-8">
             <!-- Job Experience -->
             <div>
-              <h3 class="text-sm font-medium text-primary mb-4 font-['JetBrains_Mono']">// experience</h3>
+              <h3 class="text-sm font-medium text-primary mb-4 font-['JetBrains_Mono'] max-md:text-xs">// experience</h3>
               <div class="timeline flex flex-col gap-5">
                 <!-- Job 1 -->
                 <div class="timeline-container relative mb-6">
                   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                      <h3 class="text-lg font-medium text-primary">Junior Software Engineer</h3>
-                      <p class="text-[var(--accent)] text-sm">Genuine Technology & Research Ltd</p>
+                      <h3 class="text-lg font-medium text-primary max-md:text-base">Junior Software Engineer</h3>
+                      <p class="text-[var(--accent)] text-sm max-md:text-xs">Genuine Technology & Research Ltd</p>
                     </div>
                     <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">Mar 2024 – Present</span>
                   </div>
@@ -287,8 +285,8 @@
                 <div class="timeline-container relative mb-6">
                   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                      <h3 class="text-lg font-medium text-primary">Guest Trainer - Frontend Development</h3>
-                      <p class="text-[var(--accent)] text-sm">A K Khan UCEP TVET Institute</p>
+                      <h3 class="text-lg font-medium text-primary max-md:text-base">Guest Trainer - Frontend Development</h3>
+                      <p class="text-[var(--accent)] text-sm max-md:text-xs">A K Khan UCEP TVET Institute</p>
                     </div>
                     <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">Dec 2023 – Feb 2024</span>
                   </div>
@@ -298,14 +296,14 @@
 
             <!-- Education -->
             <div>
-              <h3 class="text-sm font-medium text-primary mb-4 font-['JetBrains_Mono']">// education</h3>
+              <h3 class="text-sm font-medium text-primary mb-4 font-['JetBrains_Mono'] max-md:text-xs">// education</h3>
               <div class="timeline flex flex-col gap-5">
                 <!-- BSc -->
                 <div class="timeline-container relative mb-6">
                   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                      <h3 class="text-lg font-medium text-primary">BSc in CSE</h3>
-                      <p class="text-[var(--accent)] text-sm">Port City International University</p>
+                      <h3 class="text-lg font-medium text-primary max-md:text-base">BSc in CSE</h3>
+                      <p class="text-[var(--accent)] text-sm max-md:text-xs">Port City International University</p>
                     </div>
                     <div class="flex items-center gap-2">
                       <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">2026 – Present</span>
@@ -318,8 +316,8 @@
                 <div class="timeline-container relative mb-6">
                   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                      <h3 class="text-lg font-medium text-primary">Diploma in Computer Science</h3>
-                      <p class="text-[var(--accent)] text-sm">A K Khan UCEP Polytechnic</p>
+                      <h3 class="text-lg font-medium text-primary max-md:text-base">Diploma in Computer Science</h3>
+                      <p class="text-[var(--accent)] text-sm max-md:text-xs">A K Khan UCEP Polytechnic</p>
                     </div>
                     <div class="flex items-center gap-2">
                       <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">2020 – 2024</span>
@@ -333,71 +331,71 @@
         </section>
 
         <!-- Projects Tab -->
-        <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="projects">
-          <div class="flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[12%] max-lg:px-[5%] max-md:px-2 content-start">
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+        <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="projects">
+          <div class="flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[10%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Enterprise</span>
-              <h3 class="text-sm font-medium text-primary mt-3">Halda - Enterprise SaaS HRM</h3>
-              <p class="text-xs text-muted mt-2 leading-relaxed">Multi-tenant HRM with payroll, attendance, RBAC, and performance reviews.</p>
+              <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Halda - Enterprise SaaS HRM</h3>
+              <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-[11px]">Multi-tenant HRM with payroll, attendance, RBAC, and performance reviews.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
               </div>
             </div>
 
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">ERP</span>
-              <h3 class="text-sm font-medium text-primary mt-3">Enterprise ERP System</h3>
-              <p class="text-xs text-muted mt-2 leading-relaxed">Inventory, supply chain, HR, finance with workflow automation.</p>
+              <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Enterprise ERP System</h3>
+              <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-[11px]">Inventory, supply chain, HR, finance with workflow automation.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Clean Architecture</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
               </div>
             </div>
 
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Finance</span>
-              <h3 class="text-sm font-medium text-primary mt-3">Atrai - Accounting System</h3>
-              <p class="text-xs text-muted mt-2 leading-relaxed">Expense tracking, general ledger, financial reporting, analytics.</p>
+              <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Atrai - Accounting System</h3>
+              <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-[11px]">Expense tracking, general ledger, financial reporting, analytics.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
               </div>
             </div>
 
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Productivity</span>
-              <h3 class="text-sm font-medium text-primary mt-3">OKR & Task Management</h3>
-              <p class="text-xs text-muted mt-2 leading-relaxed">KPI tracking, goal monitoring, analytics dashboards, task management.</p>
+              <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">OKR & Task Management</h3>
+              <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-[11px]">KPI tracking, goal monitoring, analytics dashboards, task management.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
               </div>
             </div>
 
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">CRM</span>
-              <h3 class="text-sm font-medium text-primary mt-3">SmartSLead - CRM</h3>
-              <p class="text-xs text-muted mt-2 leading-relaxed">Lead tracking, sales pipeline, conversion analytics, automation.</p>
+              <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">SmartSLead - CRM</h3>
+              <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-[11px]">Lead tracking, sales pipeline, conversion analytics, automation.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
               </div>
             </div>
 
-            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
               <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Services</span>
-              <h3 class="text-sm font-medium text-primary mt-3">What I Can Do For You</h3>
+              <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">What I Can Do For You</h3>
               <div class="space-y-2 mt-2">
-                <div class="flex items-start gap-2 text-xs text-muted">
+                <div class="flex items-start gap-2 text-xs text-muted max-md:text-[11px]">
                   <i class="fas fa-laptop-code text-[var(--accent)]/50 mt-0.5 text-[10px]"></i>
                   <span>Custom Web Software</span>
                 </div>
-                <div class="flex items-start gap-2 text-xs text-muted">
+                <div class="flex items-start gap-2 text-xs text-muted max-md:text-[11px]">
                   <i class="fas fa-cloud text-[var(--accent)]/50 mt-0.5 text-[10px]"></i>
                   <span>SaaS Development</span>
                 </div>
-                <div class="flex items-start gap-2 text-xs text-muted">
+                <div class="flex items-start gap-2 text-xs text-muted max-md:text-[11px]">
                   <i class="fas fa-globe text-[var(--accent)]/50 mt-0.5 text-[10px]"></i>
                   <span>Website Building</span>
                 </div>
@@ -407,45 +405,45 @@
         </section>
 
         <!-- Contact Tab -->
-        <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="contact">
-          <div class="flex min-h-full w-full gap-10 p-[5%] px-[8%] max-lg:flex-col max-md:px-3">
+        <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="contact">
+          <div class="flex min-h-full w-full gap-10 p-[5%] px-[8%] max-lg:flex-col max-lg:gap-8 max-lg:px-6 max-md:px-4 max-md:gap-6">
             <!-- Left: Contact Info -->
             <div class="flex-1 flex flex-col justify-center">
-              <h2 class="text-3xl font-semibold text-primary tracking-tight mb-2">Let's Talk</h2>
-              <p class="text-sm text-muted mb-8 leading-relaxed">Have a project in mind or just want to say hello?<br>I'd love to hear from you.</p>
+              <h2 class="text-3xl font-semibold text-primary tracking-tight mb-2 max-md:text-2xl">Let's Talk</h2>
+              <p class="text-sm text-muted mb-8 leading-relaxed max-md:text-xs max-md:mb-6">Have a project in mind or just want to say hello?<br class="max-md:hidden">I'd love to hear from you.</p>
 
-              <div class="space-y-4">
-                <a href="mailto:mdborhan.dev@gmail.com" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300">
-                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm group-hover:scale-105 transition-transform">
+              <div class="space-y-4 max-md:space-y-3">
+                <a href="mailto:mdborhan.dev@gmail.com" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300 max-md:p-3 max-md:gap-3">
+                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm group-hover:scale-105 transition-transform max-md:w-9 max-md:h-9 max-md:text-xs">
                     <i class="fas fa-envelope"></i>
                   </div>
                   <div>
                     <p class="text-[10px] text-dim font-['JetBrains_Mono'] uppercase tracking-wider">email</p>
-                    <p class="text-sm text-primary">mdborhan.dev@gmail.com</p>
+                    <p class="text-sm text-primary max-md:text-xs">mdborhan.dev@gmail.com</p>
                   </div>
                 </a>
-                <a href="tel:01906750597" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300">
-                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm group-hover:scale-105 transition-transform">
+                <a href="tel:01906750597" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300 max-md:p-3 max-md:gap-3">
+                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm group-hover:scale-105 transition-transform max-md:w-9 max-md:h-9 max-md:text-xs">
                     <i class="fas fa-phone"></i>
                   </div>
                   <div>
                     <p class="text-[10px] text-dim font-['JetBrains_Mono'] uppercase tracking-wider">phone</p>
-                    <p class="text-sm text-primary">01906750597</p>
+                    <p class="text-sm text-primary max-md:text-xs">01906750597</p>
                   </div>
                 </a>
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-card border border-[var(--accent)]/8">
-                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-card border border-[var(--accent)]/8 max-md:p-3 max-md:gap-3">
+                  <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm max-md:w-9 max-md:h-9 max-md:text-xs">
                     <i class="fas fa-location-dot"></i>
                   </div>
                   <div>
                     <p class="text-[10px] text-dim font-['JetBrains_Mono'] uppercase tracking-wider">location</p>
-                    <p class="text-sm text-primary">Chattogram, Bangladesh</p>
+                    <p class="text-sm text-primary max-md:text-xs">Chattogram, Bangladesh</p>
                   </div>
                 </div>
               </div>
 
               <!-- Social Links -->
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-8 max-md:mt-6">
                 <a href="https://github.com/mdborhandev" target="_blank" rel="noopener noreferrer" class="link" aria-label="GitHub">
                   <i class="fab fa-github"></i>
                 </a>
@@ -463,19 +461,19 @@
 
             <!-- Right: Contact Form -->
             <div class="flex-1 flex flex-col justify-center">
-              <form id="contact-form" class="space-y-4">
-                <div class="grid sm:grid-cols-2 gap-4">
+              <form id="contact-form" class="space-y-4 max-md:space-y-3">
+                <div class="grid sm:grid-cols-2 gap-4 max-md:gap-3">
                   <input type="text" id="name" name="name" required placeholder="Your Name"
-                    class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                    class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 max-md:py-3 max-md:text-xs">
                   <input type="email" id="email" name="email" required placeholder="Your Email"
-                    class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                    class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 max-md:py-3 max-md:text-xs">
                 </div>
                 <input type="text" id="subject" name="subject" placeholder="Subject"
-                  class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                  class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 max-md:py-3 max-md:text-xs">
                 <textarea id="message" name="message" rows="5" required placeholder="Your Message"
-                  class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 resize-none"></textarea>
+                  class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 resize-none max-md:py-3 max-md:text-xs max-md:rows-4"></textarea>
                 <button type="submit" id="submit-btn"
-                  class="w-full btn-primary !py-3.5 flex items-center justify-center gap-2">
+                  class="w-full btn-primary !py-3.5 flex items-center justify-center gap-2 max-md:!py-3">
                   <i class="fas fa-paper-plane text-xs"></i>
                   Send Message
                 </button>
@@ -491,6 +489,6 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
