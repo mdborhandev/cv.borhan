@@ -46,7 +46,7 @@
     // Re-trigger counter animation if switching to about tab
     if (tabName === 'about') {
       countersAnimated = false;
-      setTimeout(animateCounters, 200);
+      setTimeout(animateCounters, 100);
     }
   }
 
@@ -68,6 +68,8 @@
   if (firstTab) {
     firstTab.style.display = 'flex';
     firstTab.setAttribute('data-tab-active', 'true');
+    // Trigger counters after first tab is visible
+    setTimeout(animateCounters, 300);
   }
 
   // ===== Animated Counters =====
@@ -88,6 +90,7 @@
 
     counters.forEach(function (counter) {
       const target = parseInt(counter.getAttribute('data-target'));
+      const suffix = counter.getAttribute('data-suffix') || '+';
       const increment = target / 35;
       let current = 0;
 
@@ -97,15 +100,13 @@
           counter.textContent = Math.ceil(current);
           requestAnimationFrame(updateCounter);
         } else {
-          counter.textContent = target + '+';
+          counter.textContent = target + suffix;
         }
       };
 
       updateCounter();
     });
   }
-
-  animateCounters();
 
   // ===== Contact Form (EmailJS) =====
   (function () {
