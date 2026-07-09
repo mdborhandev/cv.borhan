@@ -407,3 +407,26 @@ input:focus, textarea:focus {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ===== Modal ===== */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.modal-show {
+  opacity: 1;
+}
+.modal-content {
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.modal-overlay.modal-show .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* ===== Project Card Hover ===== */
+.project-card:hover {
+  transform: translateY(-2px);
+}

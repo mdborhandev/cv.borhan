@@ -164,4 +164,151 @@
       formMessage.classList.add('hidden');
     }, 5000);
   }
+
+  // ===== Project Modals =====
+  var projects = {
+    halda: {
+      tag: 'Enterprise',
+      title: 'Halda - Enterprise SaaS HRM',
+      desc: 'A comprehensive multi-tenant Human Resource Management system designed for enterprise-level organizations. Built with Clean Architecture and modern .NET practices to handle complex HR workflows at scale.',
+      features: [
+        'Multi-tenant architecture with isolated data per organization',
+        'Payroll management with automated salary calculations',
+        'Attendance tracking with shift scheduling',
+        'Role-Based Access Control (RBAC) with granular permissions',
+        'Performance review and appraisal management',
+        'Employee onboarding and offboarding workflows',
+        'Reporting and analytics dashboards'
+      ],
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'JWT Auth', 'RBAC', 'Clean Architecture']
+    },
+    erp: {
+      tag: 'ERP',
+      title: 'Enterprise ERP System',
+      desc: 'A full-featured Enterprise Resource Planning system integrating inventory, supply chain, human resources, and finance modules with automated workflow engine.',
+      features: [
+        'Inventory management with real-time stock tracking',
+        'Supply chain management and vendor tracking',
+        'HR module with employee lifecycle management',
+        'Finance module with general ledger and reporting',
+        'Workflow automation for approval processes',
+        'Role-based dashboards for different departments',
+        'Audit logging and compliance tracking'
+      ],
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'Clean Architecture', 'SOLID Principles']
+    },
+    atrai: {
+      tag: 'Finance',
+      title: 'Atrai - Accounting System',
+      desc: 'A modern accounting system providing comprehensive financial management capabilities including expense tracking, general ledger, and financial reporting.',
+      features: [
+        'Expense tracking and categorization',
+        'General ledger with double-entry bookkeeping',
+        'Financial reporting with profit & loss statements',
+        'Bank reconciliation and transaction matching',
+        'Invoice generation and management',
+        'Tax calculation and reporting',
+        'Analytics dashboards with key financial metrics'
+      ],
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API']
+    },
+    okr: {
+      tag: 'Productivity',
+      title: 'OKR & Task Management',
+      desc: 'An objectives and key results platform with integrated task management, designed to align team goals with organizational strategy.',
+      features: [
+        'OKR creation and tracking with progress indicators',
+        'KPI monitoring with customizable metrics',
+        'Goal alignment across departments',
+        'Task management with priorities and deadlines',
+        'Analytics dashboards for performance insights',
+        'Team collaboration and status updates',
+        'Automated progress reporting'
+      ],
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API']
+    },
+    smartslead: {
+      tag: 'CRM',
+      title: 'SmartSLead - CRM',
+      desc: 'A customer relationship management system focused on lead tracking, sales pipeline management, and conversion analytics.',
+      features: [
+        'Lead capture and qualification workflows',
+        'Sales pipeline with stage-based tracking',
+        'Contact and company management',
+        'Conversion analytics and reporting',
+        'Email integration for communication tracking',
+        'Task and follow-up reminders',
+        'Sales forecasting and target management'
+      ],
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API']
+    },
+    services: {
+      tag: 'Services',
+      title: 'What I Can Do For You',
+      desc: 'I offer a range of software development services focused on backend engineering, SaaS platforms, and enterprise solutions.',
+      features: [
+        'Custom web application development with ASP.NET Core',
+        'SaaS platform development with multi-tenant architecture',
+        'RESTful API design and implementation',
+        'Database design and optimization (PostgreSQL, SQL Server)',
+        'Authentication and authorization (JWT, RBAC)',
+        'Code review and architecture consultation',
+        'Website development with modern frontend technologies'
+      ],
+      tech: ['ASP.NET Core', 'C#', 'PostgreSQL', 'Entity Framework Core', 'Docker', 'Azure']
+    }
+  };
+
+  var modal = document.getElementById('project-modal');
+  var modalTag = document.getElementById('modal-tag');
+  var modalTitle = document.getElementById('modal-title');
+  var modalDesc = document.getElementById('modal-desc');
+  var modalFeatures = document.getElementById('modal-features');
+  var modalTech = document.getElementById('modal-tech');
+
+  window.openModal = function (projectKey) {
+    var p = projects[projectKey];
+    if (!p) return;
+
+    modalTag.textContent = p.tag;
+    modalTitle.textContent = p.title;
+    modalDesc.textContent = p.desc;
+
+    modalFeatures.innerHTML = '';
+    p.features.forEach(function (f) {
+      var li = document.createElement('li');
+      li.className = 'flex items-start gap-2.5 text-xs text-muted max-md:text-[11px]';
+      li.innerHTML = '<span class="text-[var(--accent)] mt-0.5 font-[\'JetBrains_Mono\'] text-[10px]">&#9656;</span><span>' + f + '</span>';
+      modalFeatures.appendChild(li);
+    });
+
+    modalTech.innerHTML = '';
+    p.tech.forEach(function (t) {
+      var span = document.createElement('span');
+      span.className = 'text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60';
+      span.textContent = t;
+      modalTech.appendChild(span);
+    });
+
+    modal.classList.remove('hidden');
+    requestAnimationFrame(function () {
+      modal.classList.add('modal-show');
+    });
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeModal = function (e) {
+    if (e && e.target !== modal) return;
+    modal.classList.remove('modal-show');
+    setTimeout(function () {
+      modal.classList.add('hidden');
+    }, 300);
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      window.closeModal();
+    }
+  });
 })();
