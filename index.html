@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=5">
   <title>Mohammed Borhan Uddin Fahim | Software Engineer</title>
 </head>
 <body class="bg-body text-primary font-['Inter']">
@@ -29,617 +29,413 @@
   <!-- Grid overlay -->
   <div class="grid-overlay"></div>
 
-  <!-- ===== SIDEBAR ===== -->
-  <aside class="fixed top-0 left-0 z-40 w-full lg:w-1/4 h-screen bg-sidebar border-r border-[var(--accent)]/5 flex flex-col overflow-y-auto">
-    <div class="flex-1 flex flex-col items-center justify-center px-8 py-12">
+  <main class="flex h-screen w-full overflow-hidden max-lg:flex-col">
 
-      <!-- Logo -->
-      <a href="#home" class="mb-10 text-lg font-semibold tracking-tight font-['JetBrains_Mono']">
-        <span class="text-[var(--accent)]">&lt;</span>
-        <span class="text-primary">BF</span>
-        <span class="text-[var(--accent)]">/&gt;</span>
-      </a>
-
-      <!-- Profile -->
-      <div class="relative mb-6">
-        <div class="w-36 h-36 rounded-2xl overflow-hidden ring-2 ring-[var(--accent)]/10 shadow-lg shadow-[var(--accent)]/5">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar-panel flex h-full w-[400px] flex-col items-center justify-center gap-5 p-6 max-lg:w-full max-lg:h-auto max-lg:min-h-[420px] lg:shadow-xl overflow-y-auto">
+      <!-- Profile Image -->
+      <div class="relative mb-2">
+        <div class="w-48 h-48 rounded-full overflow-hidden ring-2 ring-[var(--accent)]/15 shadow-lg shadow-[var(--accent)]/5">
           <img src="assets/profile.png" alt="Mohammed Borhan Uddin Fahim" class="w-full h-full object-cover">
         </div>
-        <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[var(--accent)] border-2 border-[var(--bg-sidebar)] shadow-[0_0_8px_var(--accent)]"></span>
       </div>
 
-      <h1 class="text-xl font-semibold text-primary text-center">Mohammed Borhan Uddin Fahim</h1>
-      <p class="text-[var(--accent)] text-sm font-medium mt-1 text-center font-['JetBrains_Mono']">&gt; Software Engineer</p>
+      <h1 class="text-xl font-semibold text-primary text-center leading-tight">Mohammed Borhan<br>Uddin Fahim</h1>
 
-      <div class="flex items-center gap-1.5 mt-3 text-xs text-muted">
+      <p class="text-[var(--accent)] text-sm font-medium text-center font-['JetBrains_Mono']">&gt; Software Engineer</p>
+
+      <div class="flex items-center gap-1.5 text-xs text-muted">
         <i class="fas fa-map-pin text-[var(--accent)]/50 text-[10px]"></i>
         <span>Chattogram, Bangladesh</span>
       </div>
 
-      <div class="flex items-center gap-1.5 mt-4 px-3 py-1 rounded-full bg-[var(--accent)]/5 border border-[var(--accent)]/10">
+      <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--accent)]/5 border border-[var(--accent)]/10">
         <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_6px_var(--accent)]"></span>
         <span class="text-[10px] text-[var(--accent)]/60 tracking-wider uppercase font-['JetBrains_Mono']">Open to work</span>
       </div>
 
+      <!-- Contact Me Button -->
+      <a href="#contact" onclick="openTabByIndex(4)" class="btn-primary w-full max-w-[280px] transition-transform duration-300 hover:scale-[1.02] mt-2">
+        Contact Me
+      </a>
+
       <!-- CV Download -->
-      <a href="assets/Borhan-Fahim-Resume.pdf" download
-         class="mt-5 px-5 py-2 rounded-lg bg-[var(--accent)] text-[var(--bg)] text-xs font-medium font-['JetBrains_Mono'] hover:opacity-90 transition-opacity">
+      <a href="assets/Borhan-Fahim-Resume.pdf" download class="btn-outline w-full max-w-[280px] transition-transform duration-300 hover:scale-[1.02]">
         <i class="fas fa-download mr-1.5"></i>Download CV
       </a>
 
       <!-- Social Icons -->
-      <div class="flex items-center gap-3 mt-5">
-        <a href="https://github.com/mdborhandev" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:bg-[var(--accent)]/20 transition-all duration-300 text-xs" aria-label="GitHub">
+      <div class="flex items-center gap-3 mt-3">
+        <a href="https://github.com/mdborhandev" target="_blank" rel="noopener noreferrer" class="link" aria-label="GitHub">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://linkedin.com/in/borhan-uddin-fahim" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:bg-[var(--accent)]/20 transition-all duration-300 text-xs" aria-label="LinkedIn">
+        <a href="https://linkedin.com/in/borhan-uddin-fahim" target="_blank" rel="noopener noreferrer" class="link" aria-label="LinkedIn">
           <i class="fab fa-linkedin-in"></i>
         </a>
-        <a href="https://www.instagram.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:bg-[var(--accent)]/20 transition-all duration-300 text-xs" aria-label="Instagram">
+        <a href="https://www.instagram.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="link" aria-label="Instagram">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.facebook.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:bg-[var(--accent)]/20 transition-all duration-300 text-xs" aria-label="Facebook">
+        <a href="https://www.facebook.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="link" aria-label="Facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="mailto:mdborhan.dev@gmail.com" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:bg-[var(--accent)]/20 transition-all duration-300 text-xs" aria-label="Email">
+        <a href="mailto:mdborhan.dev@gmail.com" class="link" aria-label="Email">
           <i class="fas fa-envelope"></i>
         </a>
       </div>
+    </aside>
 
-    </div>
-
-
-
-    <!-- Scroll progress -->
-    <div id="scroll-progress" class="absolute bottom-0 left-0 h-[2px] bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]" style="width:0%"></div>
-  </aside>
-
-  <!-- ===== MAIN CONTENT ===== -->
-  <main class="relative z-10 lg:ml-[25%] w-full lg:w-3/4 min-h-screen">
-
-    <!-- Hero -->
-    <section id="home" class="min-h-screen flex items-center px-6 lg:px-16 py-24">
-      <div class="w-full max-w-3xl reveal">
-        <div class="flex items-center gap-3 text-xs text-muted mb-6 font-['JetBrains_Mono'] tracking-wide">
-          <span class="w-6 h-[1px] bg-card0"></span>
-          <span class="text-[var(--accent)]">01.</span>
-          <span>// INTRODUCING</span>
-        </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
-          <span class="text-secondary font-normal">Hi, I'm</span><br>
-          <span class="text-primary">Mohammed Borhan</span><br>
-          <span class="text-[var(--accent)]">Uddin Fahim</span>
-        </h1>
-        <div class="mt-6 text-lg sm:text-xl text-muted flex items-center gap-2 flex-wrap">
-          <span>I engineer</span>
-          <span id="typing-text" class="text-primary"></span>
-          <span id="typing-cursor" class="inline-block w-[2px] h-6 bg-[var(--accent)] shadow-[0_0_8px_var(--accent)]"></span>
-        </div>
-        <p class="mt-6 text-muted leading-relaxed max-w-xl text-sm sm:text-base">
-          Backend-focused Software Engineer crafting scalable SaaS and enterprise solutions with <span class="text-secondary">C#</span>, <span class="text-secondary">ASP.NET Core</span>, and modern architecture patterns.
-        </p>
-        <div class="flex flex-wrap gap-3 mt-8">
-          <a href="#contact" class="group bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[#070708] text-sm font-semibold px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_var(--accent)_at_50%_50%] hover:shadow-[0_0_30px_var(--accent)_at_50%_50%]">
-            Get In Touch
-            <i class="fas fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
-          </a>
-          <a href="assets/Borhan-Fahim-Resume.pdf" download
-            class="border border-[var(--accent)]/20 hover:border-[var(--accent)]/40 text-secondary hover:text-primary text-sm font-medium px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2">
-            <i class="fas fa-download text-xs"></i>
-            Download CV
-          </a>
-          <a href="#projects" class="border border-[var(--accent)]/20 hover:border-[var(--accent)]/40 text-secondary hover:text-primary text-sm font-medium px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2">
-            <i class="far fa-eye text-xs"></i>
-            View Projects
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="px-6 lg:px-16 py-24 border-t border-[var(--accent)]/5">
-      <div class="max-w-4xl">
-        <div class="reveal">
-          <div class="flex items-center gap-3 text-xs text-muted font-['JetBrains_Mono'] tracking-wide mb-6">
-            <span class="text-[var(--accent)]">02.</span>
-            <span class="w-8 h-[1px] bg-[var(--accent)]/20"></span>
-            <span>// ABOUT</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-semibold text-primary tracking-tight">Behind the Code</h2>
+    <!-- ===== RIGHT PANEL ===== -->
+    <div class="h-full w-full flex flex-col min-w-0">
+      <!-- Header with Tabs -->
+      <header class="relative flex w-full shrink-0 p-2 max-lg:h-[130px] max-lg:flex-col lg:h-[72px]">
+        <!-- Tabs -->
+        <div class="absolute left-1/2 top-3 flex h-[52px] -translate-x-1/2 gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-md:w-full max-md:justify-center md:w-fit">
+          <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
+          <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
+          <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
+          <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
+          <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-10 mt-10">
-          <div class="reveal space-y-4 text-sm text-muted leading-relaxed">
-            <p>
-              Backend-focused <span class="text-secondary">Software Engineer</span> with <span class="text-secondary">2+ years</span> of experience developing scalable SaaS and enterprise applications using <span class="text-secondary">C#</span>, <span class="text-secondary">ASP.NET Core</span>, <span class="text-secondary">EF Core</span>, and <span class="text-secondary">PostgreSQL</span>.
-            </p>
-            <p>
-              Skilled in designing secure RESTful APIs, implementing RBAC, and optimizing database performance to improve application efficiency and response times.
-            </p>
-            <p>
-              Strong understanding of <span class="text-secondary">Clean Architecture</span>, <span class="text-secondary">SOLID principles</span>, and <span class="text-secondary">Agile</span> development. Dedicated to building high-performance, maintainable, and business-driven software.
-            </p>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="text-xs px-3 py-1.5 rounded-md bg-[var(--accent)]/5 border border-[var(--accent)]/10 text-[var(--accent)]/80">C#</span>
-              <span class="text-xs px-3 py-1.5 rounded-md bg-[var(--accent)]/5 border border-[var(--accent)]/10 text-[var(--accent)]/80">ASP.NET Core</span>
-              <span class="text-xs px-3 py-1.5 rounded-md bg-[var(--accent)]/5 border border-[var(--accent)]/10 text-[var(--accent)]/80">EF Core</span>
-              <span class="text-xs px-3 py-1.5 rounded-md bg-[var(--accent)]/5 border border-[var(--accent)]/10 text-[var(--accent)]/80">PostgreSQL</span>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3 reveal">
-            <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card">
-              <div class="text-2xl font-semibold text-primary" data-target="2">0</div>
-              <div class="text-xs text-muted mt-1">Years Experience</div>
-              <div class="text-[10px] text-dim mt-0.5">Enterprise SaaS</div>
-            </div>
-            <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card">
-              <div class="text-2xl font-semibold text-primary" data-target="10">0</div>
-              <div class="text-xs text-muted mt-1">Projects Delivered</div>
-              <div class="text-[10px] text-dim mt-0.5">SaaS & Enterprise</div>
-            </div>
-            <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card">
-              <div class="text-2xl font-semibold text-primary" data-target="40">0</div>
-              <div class="text-xs text-muted mt-1">Students Mentored</div>
-              <div class="text-[10px] text-dim mt-0.5">Frontend Training</div>
-            </div>
-            <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card">
-              <div class="text-2xl font-semibold text-primary" data-target="30">0</div>
-              <div class="text-xs text-muted mt-1">Perf. Improvement</div>
-              <div class="text-[10px] text-dim mt-0.5">API Optimization %</div>
-            </div>
-          </div>
+        <!-- Theme Controls -->
+        <div class="m-2 ml-auto flex items-center gap-2 max-lg:mt-auto">
+          <button id="theme-switcher" class="link text-sm" title="Toggle theme">
+            <i id="theme-icon" class="fas fa-moon"></i>
+          </button>
         </div>
-      </div>
-    </section>
+      </header>
 
-    <!-- Skills -->
-    <section id="skills" class="px-6 lg:px-16 py-24 border-t border-[var(--accent)]/5">
-      <div class="max-w-5xl">
-        <div class="reveal">
-          <div class="flex items-center gap-3 text-xs text-muted font-['JetBrains_Mono'] tracking-wide mb-6">
-            <span class="text-[var(--accent)]">03.</span>
-            <span class="w-8 h-[1px] bg-[var(--accent)]/20"></span>
-            <span>// SKILLS</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-semibold text-primary tracking-tight">Tech Stack & Expertise</h2>
-        </div>
+      <!-- Tab Contents -->
+      <div class="flex-1 overflow-y-auto min-h-0">
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-10">
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="flex items-center gap-2.5 mb-4">
-              <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-                <i class="fas fa-code"></i>
+        <!-- About Tab -->
+        <section class="tab-content relative flex min-h-full w-full flex-col max-lg:p-4" data-tab-name="about">
+          <div class="flex min-h-full w-full gap-8 p-[5%] max-lg:flex-col">
+            <!-- Left: Text + Buttons -->
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-5xl font-semibold leading-[70px] max-lg:text-3xl max-md:leading-snug">
+                Hi,<br>
+                I am <span class="text-[var(--accent)]">Borhan Fahim</span>
               </div>
-              <span class="text-sm font-medium text-primary">Languages & Frameworks</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="skill-badge">C#</span>
-              <span class="skill-badge">ASP.NET Core MVC</span>
-              <span class="skill-badge">ASP.NET Core Web API</span>
-              <span class="skill-badge">.NET 6/7/8</span>
-              <span class="skill-badge">Entity Framework Core</span>
-              <span class="skill-badge">LINQ</span>
-            </div>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="flex items-center gap-2.5 mb-4">
-              <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-                <i class="fab fa-html5"></i>
+              <div class="mt-4 max-w-[500px] p-2 text-justify max-lg:max-w-full text-sm text-muted leading-relaxed">
+                Backend-focused Software Engineer with 2+ years of experience developing scalable SaaS and enterprise applications using C#, ASP.NET Core, EF Core, and PostgreSQL.
+                <br><br>
+                Skilled in designing secure RESTful APIs, implementing RBAC, and optimizing database performance. Strong understanding of Clean Architecture, SOLID principles, and Agile development.
               </div>
-              <span class="text-sm font-medium text-primary">Frontend</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="skill-badge">HTML5</span>
-              <span class="skill-badge">CSS3</span>
-              <span class="skill-badge">JavaScript</span>
-              <span class="skill-badge">Bootstrap 5</span>
-              <span class="skill-badge">Tailwind CSS</span>
-              <span class="skill-badge">jQuery</span>
-            </div>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="flex items-center gap-2.5 mb-4">
-              <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-                <i class="fas fa-database"></i>
+              <div class="mt-6 flex gap-4 p-2">
+                <a href="#projects" onclick="openTabByIndex(3)" class="btn-primary !bg-[rgba(var(--accent-rgb),0.15)] !text-[var(--accent)] transition-transform duration-300 hover:scale-x-[1.03]">
+                  <span>Projects</span>
+                </a>
+                <a href="#contact" onclick="openTabByIndex(4)" class="btn-primary transition-transform duration-300 hover:scale-x-[1.03]">
+                  Contact
+                </a>
               </div>
-              <span class="text-sm font-medium text-primary">Databases</span>
             </div>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="skill-badge">PostgreSQL</span>
-              <span class="skill-badge">Microsoft SQL Server</span>
-              <span class="skill-badge">MySQL</span>
-            </div>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="flex items-center gap-2.5 mb-4">
-              <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-                <i class="fas fa-sitemap"></i>
-              </div>
-              <span class="text-sm font-medium text-primary">Architecture & Patterns</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="skill-badge">Clean Architecture</span>
-              <span class="skill-badge">SOLID Principles</span>
-              <span class="skill-badge">Repository Pattern</span>
-              <span class="skill-badge">Dependency Injection</span>
-              <span class="skill-badge">MVC Pattern</span>
-            </div>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="flex items-center gap-2.5 mb-4">
-              <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-                <i class="fas fa-shield-halved"></i>
-              </div>
-              <span class="text-sm font-medium text-primary">Security</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="skill-badge">JWT Authentication</span>
-              <span class="skill-badge">RBAC</span>
-              <span class="skill-badge">RESTful API Design</span>
-            </div>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="flex items-center gap-2.5 mb-4">
-              <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-                <i class="fas fa-tools"></i>
-              </div>
-              <span class="text-sm font-medium text-primary">Tools</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="skill-badge">Git</span>
-              <span class="skill-badge">GitHub</span>
-              <span class="skill-badge">Docker</span>
-              <span class="skill-badge">Microsoft Azure</span>
-              <span class="skill-badge">IIS</span>
-              <span class="skill-badge">Swagger/OpenAPI</span>
-              <span class="skill-badge">Postman</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Services -->
-    <section id="services" class="px-6 lg:px-16 py-24 border-t border-[var(--accent)]/5">
-      <div class="max-w-5xl">
-        <div class="reveal">
-          <div class="flex items-center gap-3 text-xs text-muted font-['JetBrains_Mono'] tracking-wide mb-6">
-            <span class="text-[var(--accent)]">04.</span>
-            <span class="w-8 h-[1px] bg-[var(--accent)]/20"></span>
-            <span>// SERVICES</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-semibold text-primary tracking-tight">What I Can Do For You</h2>
-        </div>
-
-        <div class="grid sm:grid-cols-3 gap-4 mt-10">
-          <div class="rounded-xl p-6 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-laptop-code"></i>
+            <!-- Right: Stats -->
+            <div class="flex-1 grid grid-cols-2 gap-4 content-center">
+              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center">
+                <div class="text-3xl font-semibold text-primary" data-target="2">0</div>
+                <div class="text-xs text-muted mt-1">Years Experience</div>
+                <div class="text-[10px] text-dim mt-0.5">Enterprise SaaS</div>
+              </div>
+              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center">
+                <div class="text-3xl font-semibold text-primary" data-target="10">0</div>
+                <div class="text-xs text-muted mt-1">Projects Delivered</div>
+                <div class="text-[10px] text-dim mt-0.5">SaaS & Enterprise</div>
+              </div>
+              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center">
+                <div class="text-3xl font-semibold text-primary" data-target="40">0</div>
+                <div class="text-xs text-muted mt-1">Students Mentored</div>
+                <div class="text-[10px] text-dim mt-0.5">Frontend Training</div>
+              </div>
+              <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center">
+                <div class="text-3xl font-semibold text-primary" data-target="30">0</div>
+                <div class="text-xs text-muted mt-1">Perf. Improvement</div>
+                <div class="text-[10px] text-dim mt-0.5">API Optimization %</div>
+              </div>
             </div>
-            <h3 class="text-sm font-medium text-primary">Custom Web Software</h3>
-            <p class="text-xs text-muted mt-2 leading-relaxed">Tailored web applications built with your specific business needs, using ASP.NET Core and modern technologies.</p>
           </div>
-          <div class="rounded-xl p-6 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-cloud"></i>
-            </div>
-            <h3 class="text-sm font-medium text-primary">SaaS Development</h3>
-            <p class="text-xs text-muted mt-2 leading-relaxed">Scalable multi-tenant SaaS applications with Clean Architecture, RBAC, payment integration, and cloud deployment.</p>
-          </div>
-          <div class="rounded-xl p-6 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-globe"></i>
-            </div>
-            <h3 class="text-sm font-medium text-primary">Website Building</h3>
-            <p class="text-xs text-muted mt-2 leading-relaxed">Responsive, modern websites and web portals with clean design, optimal performance, and SEO-friendly structure.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Experience -->
-    <section id="experience" class="px-6 lg:px-16 py-24 border-t border-[var(--accent)]/5">
-      <div class="max-w-4xl">
-        <div class="reveal">
-          <div class="flex items-center gap-3 text-xs text-muted font-['JetBrains_Mono'] tracking-wide mb-6">
-            <span class="text-[var(--accent)]">05.</span>
-            <span class="w-8 h-[1px] bg-[var(--accent)]/20"></span>
-            <span>// EXPERIENCE</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-semibold text-primary tracking-tight">Where I've Worked</h2>
-        </div>
-
-        <div class="mt-10 space-y-6 relative pl-6 before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-[1px] before:bg-[var(--accent)]/10">
-          <div class="relative pl-6 reveal">
-            <div class="absolute left-[-22px] top-1.5 w-[9px] h-[9px] rounded-full bg-[var(--accent)] border-2 border-[var(--bg)] shadow-[0_0_12px_var(--accent)]"></div>
-            <div class="rounded-xl p-6 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                <div>
-                  <h3 class="text-base font-medium text-primary">Junior Software Engineer</h3>
-                  <p class="text-[var(--accent)] text-sm">Genuine Technology & Research Ltd</p>
+        <!-- Skills Tab -->
+        <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="skills">
+          <div class="flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[12%] max-lg:px-[5%] max-md:px-2 content-start">
+            <!-- Languages & Frameworks -->
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+                  <i class="fas fa-code"></i>
                 </div>
-                <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">Mar 2024 – Present</span>
+                <span class="text-sm font-medium text-primary">Languages & Frameworks</span>
               </div>
-              <ul class="space-y-1.5 text-xs text-muted">
-                <li class="flex items-start gap-2.5">
-                  <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono']">&gt;_</span>
-                  <span>Architected and maintained SaaS-based HRM systems</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono']">&gt;_</span>
-                  <span>Built secure RBAC systems and RESTful APIs using ASP.NET Core</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono']">&gt;_</span>
-                  <span>Improved API performance by approximately 30%</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono']">&gt;_</span>
-                  <span>Worked with Clean Architecture, SOLID, and Agile practices</span>
-                </li>
-              </ul>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="skill-badge">C#</span>
+                <span class="skill-badge">ASP.NET Core MVC</span>
+                <span class="skill-badge">ASP.NET Core Web API</span>
+                <span class="skill-badge">.NET 6/7/8</span>
+                <span class="skill-badge">EF Core</span>
+                <span class="skill-badge">LINQ</span>
+              </div>
             </div>
-          </div>
-          <div class="relative pl-6 reveal">
-            <div class="absolute left-[-22px] top-1.5 w-[9px] h-[9px] rounded-full bg-card0 border-2 border-[var(--bg)]"></div>
-            <div class="rounded-xl p-6 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                <div>
-                  <h3 class="text-base font-medium text-primary">Guest Trainer – Frontend Development</h3>
-                  <p class="text-[var(--accent)] text-sm">A K Khan UCEP TVET Institute</p>
+
+            <!-- Frontend -->
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+                  <i class="fab fa-html5"></i>
                 </div>
-                <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">Dec 2023 – Feb 2024</span>
+                <span class="text-sm font-medium text-primary">Frontend</span>
               </div>
-              <ul class="space-y-1.5 text-xs text-muted">
-                <li class="flex items-start gap-2.5">
-                  <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono']">&gt;_</span>
-                  <span>Taught HTML5, CSS3, JavaScript to aspiring developers</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono']">&gt;_</span>
-                  <span>Mentored 40+ students through practical web projects</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono']">&gt;_</span>
-                  <span>Introduced backend fundamentals and databases</span>
-                </li>
-              </ul>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="skill-badge">HTML5</span>
+                <span class="skill-badge">CSS3</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">Bootstrap 5</span>
+                <span class="skill-badge">Tailwind CSS</span>
+                <span class="skill-badge">jQuery</span>
+              </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+                  <i class="fas fa-database"></i>
+                </div>
+                <span class="text-sm font-medium text-primary">Databases</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="skill-badge">PostgreSQL</span>
+                <span class="skill-badge">Microsoft SQL Server</span>
+                <span class="skill-badge">MySQL</span>
+              </div>
+            </div>
+
+            <!-- Architecture -->
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+                  <i class="fas fa-sitemap"></i>
+                </div>
+                <span class="text-sm font-medium text-primary">Architecture</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="skill-badge">Clean Architecture</span>
+                <span class="skill-badge">SOLID Principles</span>
+                <span class="skill-badge">Repository Pattern</span>
+                <span class="skill-badge">Dependency Injection</span>
+                <span class="skill-badge">MVC Pattern</span>
+              </div>
+            </div>
+
+            <!-- Security -->
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+                  <i class="fas fa-shield-halved"></i>
+                </div>
+                <span class="text-sm font-medium text-primary">Security</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="skill-badge">JWT Authentication</span>
+                <span class="skill-badge">RBAC</span>
+                <span class="skill-badge">RESTful API Design</span>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+                  <i class="fas fa-tools"></i>
+                </div>
+                <span class="text-sm font-medium text-primary">Tools</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">GitHub</span>
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">Azure</span>
+                <span class="skill-badge">IIS</span>
+                <span class="skill-badge">Swagger</span>
+                <span class="skill-badge">Postman</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Projects -->
-    <section id="projects" class="px-6 lg:px-16 py-24 border-t border-[var(--accent)]/5">
-      <div class="max-w-6xl">
-        <div class="reveal">
-          <div class="flex items-center gap-3 text-xs text-muted font-['JetBrains_Mono'] tracking-wide mb-6">
-            <span class="text-[var(--accent)]">06.</span>
-            <span class="w-8 h-[1px] bg-[var(--accent)]/20"></span>
-            <span>// PROJECTS</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-semibold text-primary tracking-tight">Featured Work</h2>
-        </div>
+        <!-- Experience Tab -->
+        <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="experience">
+          <div class="flex min-h-full w-full gap-8 p-[5%] px-[8%] max-lg:flex-col max-md:px-3">
+            <!-- Left: Job Experience -->
+            <div class="flex-1">
+              <h3 class="text-sm font-medium text-primary mb-4 font-['JetBrains_Mono']">// experience</h3>
+              <div class="timeline flex flex-col gap-5">
+                <!-- Job 1 -->
+                <div class="timeline-container relative mb-6">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                      <h3 class="text-lg font-medium text-primary">Junior Software Engineer</h3>
+                      <p class="text-[var(--accent)] text-sm">Genuine Technology & Research Ltd</p>
+                    </div>
+                    <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">Mar 2024 – Present</span>
+                  </div>
+                </div>
 
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 mt-10">
-          <div class="project-card group rounded-xl border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 overflow-hidden reveal">
-            <div class="h-44 relative overflow-hidden project-thumb">
-              <img src="assets/project-halda.svg" alt="Halda HRM" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
-              <div class="absolute inset-0 project-gradient"></div>
-              <span class="absolute bottom-3 left-3 text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 project-label px-2.5 py-1 rounded-md border border-[var(--accent)]/10">Enterprise</span>
+                <!-- Job 2 -->
+                <div class="timeline-container relative mb-6">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                      <h3 class="text-lg font-medium text-primary">Guest Trainer - Frontend Development</h3>
+                      <p class="text-[var(--accent)] text-sm">A K Khan UCEP TVET Institute</p>
+                    </div>
+                    <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">Dec 2023 – Feb 2024</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="p-5">
-              <h3 class="text-sm font-medium text-primary group-hover:text-[var(--accent)] transition-colors">Halda – Enterprise SaaS HRM</h3>
+
+            <!-- Right: Education -->
+            <div class="flex-1">
+              <h3 class="text-sm font-medium text-primary mb-4 font-['JetBrains_Mono']">// education</h3>
+              <div class="timeline flex flex-col gap-5">
+                <!-- BSc -->
+                <div class="timeline-container relative mb-6">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                      <h3 class="text-lg font-medium text-primary">BSc in CSE</h3>
+                      <p class="text-[var(--accent)] text-sm">Port City International University</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">2026 – Present</span>
+                      <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/10 text-[var(--accent)]/60 font-['JetBrains_Mono']">Ongoing</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Diploma -->
+                <div class="timeline-container relative mb-6">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                      <h3 class="text-lg font-medium text-primary">Diploma in Computer Science</h3>
+                      <p class="text-[var(--accent)] text-sm">A K Khan UCEP Polytechnic</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">2020 – 2024</span>
+                      <span class="text-[10px] text-dim font-['JetBrains_Mono']">GPA: 3.82/4.0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects Tab -->
+        <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="projects">
+          <div class="flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[12%] max-lg:px-[5%] max-md:px-2 content-start">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Enterprise</span>
+              <h3 class="text-sm font-medium text-primary mt-3">Halda - Enterprise SaaS HRM</h3>
               <p class="text-xs text-muted mt-2 leading-relaxed">Multi-tenant HRM with payroll, attendance, RBAC, and performance reviews.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
               </div>
             </div>
-          </div>
-          <div class="project-card group rounded-xl border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 overflow-hidden reveal">
-            <div class="h-44 relative overflow-hidden project-thumb">
-              <img src="assets/project-erp.svg" alt="ERP System" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
-              <div class="absolute inset-0 project-gradient"></div>
-              <span class="absolute bottom-3 left-3 text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 project-label px-2.5 py-1 rounded-md border border-[var(--accent)]/10">ERP</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-sm font-medium text-primary group-hover:text-[var(--accent)] transition-colors">Enterprise ERP System</h3>
+
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">ERP</span>
+              <h3 class="text-sm font-medium text-primary mt-3">Enterprise ERP System</h3>
               <p class="text-xs text-muted mt-2 leading-relaxed">Inventory, supply chain, HR, finance with workflow automation.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Clean Architecture</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
               </div>
             </div>
-          </div>
-          <div class="project-card group rounded-xl border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 overflow-hidden reveal">
-            <div class="h-44 relative overflow-hidden project-thumb">
-              <img src="assets/project-atrai.svg" alt="Atrai Accounting" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
-              <div class="absolute inset-0 project-gradient"></div>
-              <span class="absolute bottom-3 left-3 text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 project-label px-2.5 py-1 rounded-md border border-[var(--accent)]/10">Finance</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-sm font-medium text-primary group-hover:text-[var(--accent)] transition-colors">Atrai – Accounting System</h3>
+
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Finance</span>
+              <h3 class="text-sm font-medium text-primary mt-3">Atrai - Accounting System</h3>
               <p class="text-xs text-muted mt-2 leading-relaxed">Expense tracking, general ledger, financial reporting, analytics.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
               </div>
             </div>
-          </div>
-          <div class="project-card group rounded-xl border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 overflow-hidden reveal">
-            <div class="h-44 relative overflow-hidden project-thumb">
-              <img src="assets/project-okr.svg" alt="OKR System" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
-              <div class="absolute inset-0 project-gradient"></div>
-              <span class="absolute bottom-3 left-3 text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 project-label px-2.5 py-1 rounded-md border border-[var(--accent)]/10">Productivity</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-sm font-medium text-primary group-hover:text-[var(--accent)] transition-colors">OKR & Task Management</h3>
+
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Productivity</span>
+              <h3 class="text-sm font-medium text-primary mt-3">OKR & Task Management</h3>
               <p class="text-xs text-muted mt-2 leading-relaxed">KPI tracking, goal monitoring, analytics dashboards, task management.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
               </div>
             </div>
-          </div>
-          <div class="project-card group rounded-xl border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 overflow-hidden reveal">
-            <div class="h-44 relative overflow-hidden project-thumb">
-              <img src="assets/project-smartslead.svg" alt="SmartSLead CRM" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700">
-              <div class="absolute inset-0 project-gradient"></div>
-              <span class="absolute bottom-3 left-3 text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 project-label px-2.5 py-1 rounded-md border border-[var(--accent)]/10">CRM</span>
-            </div>
-            <div class="p-5">
-              <h3 class="text-sm font-medium text-primary group-hover:text-[var(--accent)] transition-colors">SmartSLead – CRM</h3>
+
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">CRM</span>
+              <h3 class="text-sm font-medium text-primary mt-3">SmartSLead - CRM</h3>
               <p class="text-xs text-muted mt-2 leading-relaxed">Lead tracking, sales pipeline, conversion analytics, automation.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
                 <span class="text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Education -->
-    <section id="education" class="px-6 lg:px-16 py-24 border-t border-[var(--accent)]/5">
-      <div class="max-w-5xl">
-        <div class="reveal">
-          <div class="flex items-center gap-3 text-xs text-muted font-['JetBrains_Mono'] tracking-wide mb-6">
-            <span class="text-[var(--accent)]">07.</span>
-            <span class="w-8 h-[1px] bg-[var(--accent)]/20"></span>
-            <span>// EDUCATION</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-semibold text-primary tracking-tight">Academic Background</h2>
-        </div>
-
-        <div class="grid sm:grid-cols-3 gap-4 mt-10">
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-university"></i>
-            </div>
-            <h3 class="text-sm font-medium text-primary">BSc in CSE</h3>
-            <p class="text-[var(--accent)] text-xs mt-0.5">Port City International University</p>
-            <div class="flex items-center gap-3 text-[10px] text-dim mt-3 font-['JetBrains_Mono']">
-              <span>2026 – Present</span>
-              <span class="px-1.5 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/10 text-[var(--accent)]/60">Ongoing</span>
-            </div>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <h3 class="text-sm font-medium text-primary">Diploma in Computer Science</h3>
-            <p class="text-[var(--accent)] text-xs mt-0.5">A K Khan UCEP Polytechnic</p>
-            <div class="flex items-center gap-3 text-[10px] text-dim mt-3 font-['JetBrains_Mono']">
-              <span>2020 – 2024</span>
-              <span>GPA: 3.82/4.0</span>
-            </div>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-school"></i>
-            </div>
-            <h3 class="text-sm font-medium text-primary">Secondary School Certificate</h3>
-            <p class="text-[var(--accent)] text-xs mt-0.5">West Kadhurkhil School & College</p>
-            <div class="flex items-center gap-3 text-[10px] text-dim mt-3 font-['JetBrains_Mono']">
-              <span>Completed</span>
-              <span>GPA: 3.94/5.0</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certificates -->
-    <section id="certificates" class="px-6 lg:px-16 py-24 border-t border-[var(--accent)]/5">
-      <div class="max-w-5xl">
-        <div class="reveal">
-          <div class="flex items-center gap-3 text-xs text-muted font-['JetBrains_Mono'] tracking-wide mb-6">
-            <span class="text-[var(--accent)]">08.</span>
-            <span class="w-8 h-[1px] bg-[var(--accent)]/20"></span>
-            <span>// CERTIFICATES</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-semibold text-primary tracking-tight">Professional Certifications</h2>
-        </div>
-
-        <div class="grid sm:grid-cols-3 gap-4 mt-10">
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-award"></i>
-            </div>
-            <h3 class="text-sm font-medium text-primary">.NET Core MVC</h3>
-            <p class="text-xs text-muted mt-2 leading-relaxed">Professional certification in .NET Core MVC development</p>
-            <a href="assets/Asp.net Certificate.pdf" download class="inline-flex items-center gap-1.5 text-xs text-[var(--accent)] hover:underline mt-3">
-              <i class="fas fa-download"></i> Download
-            </a>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-award"></i>
-            </div>
-            <h3 class="text-sm font-medium text-primary">The Structured Query Language (SQL)</h3>
-            <p class="text-xs text-muted mt-2 leading-relaxed">Professional certification in SQL from Coursera</p>
-            <a href="assets/Coursera 1MNNEEMLIYWJ.pdf" download class="inline-flex items-center gap-1.5 text-xs text-[var(--accent)] hover:underline mt-3">
-              <i class="fas fa-download"></i> Download
-            </a>
-          </div>
-          <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 reveal">
-            <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm mb-4">
-              <i class="fas fa-award"></i>
-            </div>
-            <h3 class="text-sm font-medium text-primary">HTML, CSS, and Javascript for Web Developers</h3>
-            <p class="text-xs text-muted mt-2 leading-relaxed">Professional certification in web development from Coursera</p>
-            <a href="assets/Coursera RON3ZVM884CK.pdf" download class="inline-flex items-center gap-1.5 text-xs text-[var(--accent)] hover:underline mt-3">
-              <i class="fas fa-download"></i> Download
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="px-6 lg:px-16 py-24 border-t border-[var(--accent)]/5">
-      <div class="max-w-5xl">
-        <div class="reveal">
-          <div class="flex items-center gap-3 text-xs text-muted font-['JetBrains_Mono'] tracking-wide mb-6">
-            <span class="text-[var(--accent)]">09.</span>
-            <span class="w-8 h-[1px] bg-[var(--accent)]/20"></span>
-            <span>// CONTACT</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-semibold text-primary tracking-tight">Let's Build Something Great</h2>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-8 mt-10">
-          <div class="reveal">
-            <form id="contact-form" class="space-y-4">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <input type="text" id="name" name="name" required placeholder="Your Name"
-                  class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 focus:bg-[var(--accent)]/5 transition-all duration-300">
-                <input type="email" id="email" name="email" required placeholder="Your Email"
-                  class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 focus:bg-[var(--accent)]/5 transition-all duration-300">
+            <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px]">
+              <span class="text-[10px] font-['JetBrains_Mono'] text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Services</span>
+              <h3 class="text-sm font-medium text-primary mt-3">What I Can Do For You</h3>
+              <div class="space-y-2 mt-2">
+                <div class="flex items-start gap-2 text-xs text-muted">
+                  <i class="fas fa-laptop-code text-[var(--accent)]/50 mt-0.5 text-[10px]"></i>
+                  <span>Custom Web Software</span>
+                </div>
+                <div class="flex items-start gap-2 text-xs text-muted">
+                  <i class="fas fa-cloud text-[var(--accent)]/50 mt-0.5 text-[10px]"></i>
+                  <span>SaaS Development</span>
+                </div>
+                <div class="flex items-start gap-2 text-xs text-muted">
+                  <i class="fas fa-globe text-[var(--accent)]/50 mt-0.5 text-[10px]"></i>
+                  <span>Website Building</span>
+                </div>
               </div>
-              <input type="text" id="subject" name="subject" placeholder="Subject"
-                class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 focus:bg-[var(--accent)]/5 transition-all duration-300">
-              <textarea id="message" name="message" rows="4" required placeholder="Your Message"
-                class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 focus:bg-[var(--accent)]/5 transition-all duration-300 resize-none"></textarea>
-              <button type="submit" id="submit-btn"
-                class="w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[#070708] text-sm font-semibold px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_var(--accent)_at_50%_50%] hover:shadow-[0_0_30px_var(--accent)_at_50%_50%]">
-                <i class="fas fa-paper-plane text-xs"></i>
-                Send Message
-              </button>
-              <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-lg"></div>
-            </form>
+            </div>
           </div>
+        </section>
 
-          <div class="space-y-4 reveal">
-            <div class="rounded-xl p-6 border border-[var(--accent)]/8 bg-card">
-              <h3 class="text-sm font-medium text-primary mb-5 font-['JetBrains_Mono']">// contact_info</h3>
-              <div class="space-y-4">
-                <a href="mailto:mdborhan.dev@gmail.com" class="flex items-center gap-3 group">
-                  <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs group-hover:scale-105 transition-transform">
+        <!-- Contact Tab -->
+        <section class="tab-content relative hidden min-h-full w-full flex-col max-lg:p-4" data-tab-name="contact">
+          <div class="flex min-h-full w-full gap-6 p-[5%] max-lg:flex-col">
+            <div class="w-full max-w-[500px]">
+              <h2 class="text-2xl font-semibold text-primary tracking-tight mb-2">Let's Build Something Great</h2>
+              <p class="text-xs text-muted mb-6">Feel free to reach out for collaborations or just a friendly hello!</p>
+
+              <form id="contact-form" class="space-y-3">
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <input type="text" id="name" name="name" required placeholder="Your Name"
+                    class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                  <input type="email" id="email" name="email" required placeholder="Your Email"
+                    class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                </div>
+                <input type="text" id="subject" name="subject" placeholder="Subject"
+                  class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300">
+                <textarea id="message" name="message" rows="4" required placeholder="Your Message"
+                  class="w-full px-4 py-3 bg-card border border-[var(--accent)]/10 rounded-lg text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 resize-none"></textarea>
+                <button type="submit" id="submit-btn"
+                  class="w-full btn-primary flex items-center justify-center gap-2">
+                  <i class="fas fa-paper-plane text-xs"></i>
+                  Send Message
+                </button>
+                <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-lg"></div>
+              </form>
+
+              <!-- Contact Info -->
+              <div class="mt-6 space-y-3">
+                <a href="mailto:mdborhan.dev@gmail.com" class="flex items-center gap-3 group p-3 rounded-lg bg-card border border-[var(--accent)]/8">
+                  <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                     <i class="fas fa-envelope"></i>
                   </div>
                   <div>
@@ -647,8 +443,8 @@
                     <p class="text-xs text-primary">mdborhan.dev@gmail.com</p>
                   </div>
                 </a>
-                <a href="tel:01906750597" class="flex items-center gap-3 group">
-                  <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs group-hover:scale-105 transition-transform">
+                <a href="tel:01906750597" class="flex items-center gap-3 group p-3 rounded-lg bg-card border border-[var(--accent)]/8">
+                  <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                     <i class="fas fa-phone"></i>
                   </div>
                   <div>
@@ -656,7 +452,7 @@
                     <p class="text-xs text-primary">01906750597</p>
                   </div>
                 </a>
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 p-3 rounded-lg bg-card border border-[var(--accent)]/8">
                   <div class="w-9 h-9 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
                     <i class="fas fa-location-dot"></i>
                   </div>
@@ -667,74 +463,15 @@
                 </div>
               </div>
             </div>
-            <div class="rounded-xl p-6 border border-[var(--accent)]/8 bg-card">
-              <h3 class="text-sm font-medium text-primary mb-4 font-['JetBrains_Mono']">// connect</h3>
-              <div class="flex gap-3 flex-wrap">
-                <a href="https://github.com/mdborhandev" target="_blank" rel="noopener noreferrer"
-                  class="w-9 h-9 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:border-[var(--accent)]/30 transition-all duration-300 text-xs">
-                  <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/borhan-uddin-fahim" target="_blank" rel="noopener noreferrer"
-                  class="w-9 h-9 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:border-[var(--accent)]/30 transition-all duration-300 text-xs">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.instagram.com/iamborhan07/" target="_blank" rel="noopener noreferrer"
-                  class="w-9 h-9 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:border-[var(--accent)]/30 transition-all duration-300 text-xs">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/iamborhan07/" target="_blank" rel="noopener noreferrer"
-                  class="w-9 h-9 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:border-[var(--accent)]/30 transition-all duration-300 text-xs">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="mailto:mdborhan.dev@gmail.com"
-                  class="w-9 h-9 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] hover:border-[var(--accent)]/30 transition-all duration-300 text-xs">
-                  <i class="fas fa-envelope"></i>
-                </a>
-              </div>
-            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="px-6 lg:px-16 py-10 border-t border-[var(--accent)]/5">
-      <div class="flex flex-col items-center gap-4">
-        <h3 class="text-sm font-medium text-primary font-['JetBrains_Mono']">Mohammed Borhan Uddin Fahim</h3>
-        <p class="text-xs text-muted">Backend-focused Software Engineer</p>
-        <div class="flex items-center gap-4">
-          <a href="https://github.com/mdborhandev" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/borhan-uddin-fahim" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="https://www.instagram.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com/iamborhan07/" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="mailto:mdborhan.dev@gmail.com" class="text-muted hover:text-[var(--accent)] transition-colors text-sm" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
-        <p class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider">&copy; 2026 Mohammed Borhan Uddin Fahim. All Rights Reserved.</p>
       </div>
-    </footer>
+
+    </div>
   </main>
 
-  <!-- ===== THEME SWITCHER ===== -->
-  <button id="theme-switcher" class="fixed top-6 right-6 z-50 w-10 h-10 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg" title="Toggle theme">
-    <i id="theme-icon" class="fas fa-moon"></i>
-  </button>
-
-  <!-- ===== BACK TO TOP ===== -->
-  <button id="back-to-top" class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-lg bg-[var(--accent)]/10 border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center opacity-0 invisible translate-y-3 transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
