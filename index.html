@@ -29,7 +29,11 @@
   <!-- Grid overlay -->
   <div class="grid-overlay"></div>
 
-  <main class="flex h-screen w-full overflow-hidden max-lg:flex-col max-lg:h-auto max-lg:min-h-screen max-lg:overflow-y-auto">
+  <main class="flex h-screen w-full overflow-hidden max-lg:flex-col max-lg:h-auto max-lg:min-h-screen max-lg:overflow-y-auto max-lg:pb-24">
+    <!-- Scroll Progress -->
+    <div class="fixed top-0 left-0 right-0 z-[120] h-1 bg-transparent pointer-events-none">
+      <div id="scroll-progress" class="h-full w-0 bg-[var(--accent)] shadow-[0_0_12px_var(--accent)] transition-[width] duration-100"></div>
+    </div>
 
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar-panel flex h-full w-[400px] flex-col items-center justify-center gap-5 p-6 max-lg:w-full max-lg:h-auto max-lg:min-h-0 max-lg:py-10 max-md:py-8 max-md:gap-4 lg:shadow-xl overflow-y-auto">
@@ -117,6 +121,13 @@
                 Backend-focused Software Engineer with 2.5+ years of experience building scalable SaaS and enterprise applications.
                 <br><br>
                 I design secure APIs, implement RBAC, and optimize performance with Clean Architecture and SOLID principles.
+              </div>
+              <div class="mt-5 flex flex-wrap gap-2.5 max-w-[540px]">
+                <span class="text-[10px] px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70 font-['JetBrains_Mono']">C#</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70 font-['JetBrains_Mono']">ASP.NET Core</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70 font-['JetBrains_Mono']">EF Core</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70 font-['JetBrains_Mono']">PostgreSQL</span>
+                <span class="text-[10px] px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70 font-['JetBrains_Mono']">Clean Architecture</span>
               </div>
               <div class="mt-6 flex flex-wrap gap-4">
                 <a href="#projects" onclick="openTabByIndex(3)" class="btn-primary !bg-[rgba(var(--accent-rgb),0.15)] !text-[var(--accent)] transition-transform duration-300 hover:scale-x-[1.03]">
@@ -282,6 +293,16 @@
                   </div>
                   <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">Mar 2024 – Present</span>
                 </div>
+                <ul class="mt-3 space-y-2 pl-4 text-xs text-muted max-md:text-[11px]">
+                  <li class="flex items-start gap-2">
+                    <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono'] text-[10px]">&#9656;</span>
+                    <span>Built and maintained backend features for enterprise SaaS workflows.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono'] text-[10px]">&#9656;</span>
+                    <span>Improved API reliability, access control, and database performance.</span>
+                  </li>
+                </ul>
               </div>
 
               <!-- Job 2 -->
@@ -293,6 +314,16 @@
                   </div>
                   <span class="text-[10px] text-dim font-['JetBrains_Mono'] tracking-wider whitespace-nowrap">Dec 2023 – Feb 2024</span>
                 </div>
+                <ul class="mt-3 space-y-2 pl-4 text-xs text-muted max-md:text-[11px]">
+                  <li class="flex items-start gap-2">
+                    <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono'] text-[10px]">&#9656;</span>
+                    <span>Trained students on frontend fundamentals and project workflow.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-[var(--accent)] mt-0.5 font-['JetBrains_Mono'] text-[10px]">&#9656;</span>
+                    <span>Guided learners through practical UI implementation exercises.</span>
+                  </li>
+                </ul>
               </div>
 
               <!-- Education Label -->
@@ -536,11 +567,21 @@
   </main>
 
   <!-- Theme Switcher -->
-  <button id="theme-switcher" class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-card border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg backdrop-blur-sm" title="Toggle theme">
+  <button id="theme-switcher" class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-card border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg backdrop-blur-sm max-lg:bottom-20 max-lg:right-4" title="Toggle theme">
     <i id="theme-icon" class="fas fa-moon"></i>
   </button>
 
+  <!-- Mobile Sticky CTA -->
+  <div class="fixed bottom-0 left-0 right-0 z-[90] hidden max-lg:flex items-center gap-3 p-3 bg-[var(--bg-sidebar)]/90 backdrop-blur-md border-t border-[var(--accent)]/10">
+    <a href="#contact" onclick="openTabByIndex(4)" class="flex-1 btn-primary !py-3 text-sm">
+      Contact
+    </a>
+    <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="flex-1 btn-outline !py-3 text-sm">
+      WhatsApp
+    </a>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>

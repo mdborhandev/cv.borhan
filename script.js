@@ -142,6 +142,7 @@
         targetTab.setAttribute('data-tab-state', 'active');
       });
     });
+    requestAnimationFrame(updateScrollProgress);
     // Re-trigger counter animation if switching to about tab
     if (tabName === 'about' && window.resetCounters) {
       setTimeout(window.resetCounters, 100);
@@ -230,6 +231,28 @@
   }
 
   setupCounterObserver();
+
+  // ===== Scroll Progress =====
+  var scrollProgress = document.getElementById('scroll-progress');
+  var scrollContainer = document.querySelector('main > div > div.flex-1.overflow-y-auto') || document.scrollingElement || document.documentElement;
+
+  function updateScrollProgress() {
+    if (!scrollProgress || !scrollContainer) return;
+
+    var scrollTop = scrollContainer.scrollTop || 0;
+    var scrollHeight = scrollContainer.scrollHeight || 0;
+    var clientHeight = scrollContainer.clientHeight || 0;
+    var maxScroll = scrollHeight - clientHeight;
+    var progress = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+
+    scrollProgress.style.width = progress + '%';
+  }
+
+  if (scrollContainer) {
+    scrollContainer.addEventListener('scroll', updateScrollProgress, { passive: true });
+  }
+  window.addEventListener('resize', updateScrollProgress);
+  requestAnimationFrame(updateScrollProgress);
 
   // ===== Contact Form (EmailJS) =====
   (function () {
