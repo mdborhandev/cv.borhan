@@ -44,9 +44,8 @@
     }
 
     // Re-trigger counter animation if switching to about tab
-    if (tabName === 'about') {
-      countersAnimated = false;
-      setTimeout(animateCounters, 100);
+    if (tabName === 'about' && window.resetCounters) {
+      setTimeout(window.resetCounters, 100);
     }
   }
 
@@ -68,45 +67,68 @@
   if (firstTab) {
     firstTab.style.display = 'flex';
     firstTab.setAttribute('data-tab-active', 'true');
-    // Trigger counters after first tab is visible
-    setTimeout(animateCounters, 300);
   }
 
   // ===== Animated Counters =====
-  const counters = document.querySelectorAll('[data-target]');
-  let countersAnimated = false;
+  function animateSingleCounter(counter) {
+    if (counter.dataset.animated) return;
+    counter.dataset.animated = 'true';
+    const target = parseInt(counter.getAttribute('data-target'));
+    const suffix = counter.getAttribute('data-suffix') || '+';
+    const duration = 1500;
+    const startTime = performance.now();
 
-  function animateCounters() {
-    if (countersAnimated) return;
-
-    let shouldAnimate = false;
-    counters.forEach(function (counter) {
-      const top = counter.getBoundingClientRect().top;
-      if (top < window.innerHeight * 0.8) shouldAnimate = true;
-    });
-
-    if (!shouldAnimate) return;
-    countersAnimated = true;
-
-    counters.forEach(function (counter) {
-      const target = parseInt(counter.getAttribute('data-target'));
-      const suffix = counter.getAttribute('data-suffix') || '+';
-      const increment = target / 35;
-      let current = 0;
-
-      const updateCounter = function () {
-        current += increment;
-        if (current < target) {
-          counter.textContent = Math.ceil(current);
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.textContent = target + suffix;
-        }
-      };
-
-      updateCounter();
-    });
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.ceil(eased * target) + (progress >= 1 ? suffix : '');
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
   }
+
+  function setupCounterObserver() {
+    const counters = document.querySelectorAll('[data-target]');
+    if (!counters.length) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateSingleCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      counters.forEach(function (counter) {
+        counter.dataset.animated = '';
+        observer.observe(counter);
+      });
+
+      // Also expose a reset function for tab switching
+      window.resetCounters = function () {
+        counters.forEach(function (c) {
+          c.dataset.animated = '';
+          c.textContent = '0';
+        });
+        // Re-observe
+        counters.forEach(function (counter) {
+          observer.observe(counter);
+        });
+      };
+    } else {
+      // Fallback: just show final values
+      counters.forEach(function (counter) {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const suffix = counter.getAttribute('data-suffix') || '+';
+        counter.textContent = target + suffix;
+      });
+    }
+  }
+
+  setupCounterObserver();
 
   // ===== Contact Form (EmailJS) =====
   (function () {
