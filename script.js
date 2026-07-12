@@ -371,9 +371,7 @@
       desc: 'I build scalable backend systems and SaaS platforms. Click a service to inquire about it.',
       features: [
         'Custom Software Development',
-        'Backend API Development',
         'SaaS Platform Development',
-        'Database Design & Optimization',
         'Website Development'
       ],
       tech: ['ASP.NET Core', 'C#', 'PostgreSQL', 'Entity Framework Core'],
