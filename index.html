@@ -106,22 +106,28 @@
           <div class="tab-panel-inner flex min-h-full w-full gap-8 p-[5%] max-lg:flex-col max-lg:gap-6 max-lg:p-6 max-md:p-4">
             <!-- Left: Text + Buttons -->
             <div class="flex-1 flex flex-col justify-center">
-              <div class="text-5xl font-semibold leading-[70px] max-xl:text-4xl max-lg:text-3xl max-md:text-2xl max-lg:leading-tight max-md:leading-snug">
-                Hi,<br>
-                I am <span class="text-[var(--accent)]">Borhan Fahim</span>
+              <div class="text-[10px] font-['JetBrains_Mono'] uppercase tracking-[0.25em] text-[var(--accent)]/60 mb-4">
+                // backend-focused software engineer
               </div>
-              <div class="mt-4 max-w-[500px] text-justify max-lg:max-w-full text-sm text-muted leading-relaxed max-md:text-xs">
-                Backend-focused Software Engineer with 2.5+ years of experience developing scalable SaaS and enterprise applications using C#, ASP.NET Core, EF Core, and PostgreSQL.
+              <div class="text-3xl font-semibold leading-[44px] max-xl:text-[2.25rem] max-lg:text-[1.9rem] max-md:text-[1.6rem] max-lg:leading-tight max-md:leading-snug">
+                Building reliable backend systems<br>
+                for SaaS and enterprise products
+              </div>
+              <div class="mt-4 max-w-[540px] text-justify max-lg:max-w-full text-sm text-muted leading-relaxed max-md:text-xs">
+                Backend-focused Software Engineer with 2.5+ years of experience building scalable SaaS and enterprise applications.
                 <br><br>
-                Skilled in designing secure RESTful APIs, implementing RBAC, and optimizing database performance. Strong understanding of Clean Architecture, SOLID principles, and Agile development.
+                I design secure APIs, implement RBAC, and optimize performance with Clean Architecture and SOLID principles.
               </div>
-              <div class="mt-6 flex gap-4">
+              <div class="mt-6 flex flex-wrap gap-4">
                 <a href="#projects" onclick="openTabByIndex(3)" class="btn-primary !bg-[rgba(var(--accent-rgb),0.15)] !text-[var(--accent)] transition-transform duration-300 hover:scale-x-[1.03]">
-                  <span>Projects</span>
+                  <span>View Projects</span>
                 </a>
                 <a href="#contact" onclick="openTabByIndex(4)" class="btn-primary transition-transform duration-300 hover:scale-x-[1.03]">
-                  Contact
+                  Contact Me
                 </a>
+              </div>
+              <div class="mt-4 text-[11px] text-dim font-['JetBrains_Mono'] tracking-wider max-md:text-[10px]">
+                Available for full-time roles and contract work
               </div>
             </div>
 
@@ -447,7 +453,7 @@
             <!-- Left: Contact Info -->
             <div class="flex-1 flex flex-col justify-center">
               <h2 class="text-3xl font-semibold text-primary tracking-tight mb-2 max-md:text-2xl">Let's Talk</h2>
-              <p class="text-sm text-muted mb-8 leading-relaxed max-md:text-xs max-md:mb-6">Have a project in mind or just want to say hello?<br class="max-md:hidden">I'd love to hear from you.</p>
+              <p class="text-sm text-muted mb-8 leading-relaxed max-md:text-xs max-md:mb-6">Have a project in mind or want to connect about a role?<br class="max-md:hidden">Email is fastest, WhatsApp works for quick questions.</p>
 
               <div class="space-y-4 max-md:space-y-3">
                 <a href="mailto:mdborhan.dev@gmail.com" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300 max-md:p-3 max-md:gap-3">
@@ -478,11 +484,27 @@
                   </div>
                 </div>
               </div>
+
+              <div class="mt-6">
+                <p class="text-[10px] text-dim font-['JetBrains_Mono'] uppercase tracking-wider mb-3">quick actions</p>
+                <div class="flex flex-wrap gap-3">
+                  <a href="mailto:mdborhan.dev@gmail.com" class="px-4 py-2 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] text-xs border border-[var(--accent)]/10 hover:bg-[var(--accent)]/15 transition-colors">
+                    Email
+                  </a>
+                  <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] text-xs border border-[var(--accent)]/10 hover:bg-[var(--accent)]/15 transition-colors">
+                    WhatsApp
+                  </a>
+                  <a href="https://linkedin.com/in/borhan-uddin-fahim" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] text-xs border border-[var(--accent)]/10 hover:bg-[var(--accent)]/15 transition-colors">
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
             </div>
 
             <!-- Right: Contact Form -->
             <div class="flex-1 flex flex-col justify-center">
               <h2 class="text-3xl font-semibold text-primary tracking-tight mb-4 max-md:text-2xl">Send a message</h2>
+              <p class="text-sm text-muted mb-5 leading-relaxed max-md:text-xs max-md:mb-4">Tell me what you're building, your timeline, and how you want to work together.</p>
               <form id="contact-form" class="space-y-4 max-md:space-y-3">
                 <div class="grid sm:grid-cols-2 gap-4 max-md:gap-3">
                   <input type="text" id="name" name="name" required placeholder="Your Name"
@@ -499,6 +521,9 @@
                   <i class="fas fa-paper-plane text-xs"></i>
                   Send Message
                 </button>
+                <p class="text-[10px] text-dim text-center font-['JetBrains_Mono'] tracking-wider">
+                  Typical response time: within 24 hours
+                </p>
                 <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-xl"></div>
               </form>
             </div>
