@@ -20,6 +20,38 @@
     applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
   });
 
+  // ===== Sidebar Entrance Motion =====
+  function setupSidebarMotion() {
+    var sidebar = document.querySelector('.sidebar-panel');
+    if (!sidebar) return;
+
+    var items = Array.prototype.slice.call(sidebar.children);
+    items.forEach(function (item, index) {
+      item.classList.add('sidebar-motion-item');
+      item.style.setProperty('--sidebar-item-index', index);
+    });
+
+    if (items[0]) {
+      items[0].classList.add('sidebar-motion-hero');
+    }
+
+    if (items[4]) {
+      items[4].classList.add('sidebar-motion-badge');
+    }
+
+    if (items[6]) {
+      items[6].classList.add('sidebar-motion-socials');
+    }
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        sidebar.classList.add('sidebar-ready');
+      });
+    });
+  }
+
+  setupSidebarMotion();
+
   // ===== Tab Switching =====
   var tabLeaveTimer = null;
 
