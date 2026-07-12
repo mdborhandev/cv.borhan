@@ -21,28 +21,95 @@
   });
 
   // ===== Tab Switching =====
-  function openTab(event, tabName) {
-    // Hide all tab contents
-    document.querySelectorAll('.tab-content').forEach(function (tab) {
-      tab.style.display = 'none';
-      tab.removeAttribute('data-tab-active');
+  var tabLeaveTimer = null;
+
+  function getTabByName(tabName) {
+    return document.querySelector('[data-tab-name="' + tabName + '"]');
+  }
+
+  function collectMotionItems(tab) {
+    var selectors = [
+      '.tab-panel-inner > *',
+      '.timeline-container',
+      '.project-card',
+      '.skill-badge',
+      '.link',
+      '.btn-primary',
+      '.btn-outline',
+      '#contact-form > *',
+      '#contact-form .grid > *'
+    ];
+    var items = [];
+    var seen = new Set();
+
+    selectors.forEach(function (selector) {
+      tab.querySelectorAll(selector).forEach(function (item) {
+        if (seen.has(item)) return;
+        seen.add(item);
+        items.push(item);
+      });
     });
 
-    // Deactivate all tab buttons
+    return items;
+  }
+
+  function replayTabMotion(tab) {
+    var items = collectMotionItems(tab);
+
+    items.forEach(function (item) {
+      item.classList.remove('tab-motion-item');
+      item.style.removeProperty('--tab-item-index');
+    });
+
+    void tab.offsetWidth;
+
+    items.forEach(function (item, index) {
+      item.style.setProperty('--tab-item-index', index);
+      item.classList.add('tab-motion-item');
+    });
+  }
+
+  function openTab(event, tabName) {
+    var targetTab = getTabByName(tabName);
+    if (!targetTab) return;
+
+    var currentTab = document.querySelector('.tab-content[data-tab-active="true"]');
+    var isSameTab = currentTab === targetTab;
+
+    // Deactivate all tab buttons first so the active tab can re-apply cleanly.
     document.querySelectorAll('.tab-btn').forEach(function (btn) {
       btn.classList.remove('tab-active');
     });
 
     // Activate clicked tab
-    event.currentTarget.classList.add('tab-active');
-
-    // Show selected tab content
-    var targetTab = document.querySelector('[data-tab-name="' + tabName + '"]');
-    if (targetTab) {
-      targetTab.style.display = 'flex';
-      targetTab.setAttribute('data-tab-active', 'true');
+    if (event && event.currentTarget) {
+      event.currentTarget.classList.add('tab-active');
     }
 
+    if (tabLeaveTimer) {
+      clearTimeout(tabLeaveTimer);
+      tabLeaveTimer = null;
+    }
+
+    if (currentTab && !isSameTab) {
+      currentTab.setAttribute('data-tab-state', 'leaving');
+      currentTab.removeAttribute('data-tab-active');
+      tabLeaveTimer = setTimeout(function () {
+        currentTab.classList.add('hidden');
+        currentTab.removeAttribute('data-tab-state');
+      }, 420);
+    }
+
+    targetTab.classList.remove('hidden');
+    targetTab.setAttribute('data-tab-active', 'true');
+    targetTab.setAttribute('data-tab-state', 'entering');
+    replayTabMotion(targetTab);
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        targetTab.setAttribute('data-tab-state', 'active');
+      });
+    });
     // Re-trigger counter animation if switching to about tab
     if (tabName === 'about' && window.resetCounters) {
       setTimeout(window.resetCounters, 100);
@@ -65,8 +132,10 @@
   // Initialize first tab
   var firstTab = document.querySelector('.tab-content[data-tab-name="about"]');
   if (firstTab) {
-    firstTab.style.display = 'flex';
+    firstTab.classList.remove('hidden');
     firstTab.setAttribute('data-tab-active', 'true');
+    firstTab.setAttribute('data-tab-state', 'active');
+    replayTabMotion(firstTab);
   }
 
   // ===== Animated Counters =====
