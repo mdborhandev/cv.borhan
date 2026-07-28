@@ -113,15 +113,15 @@
     <!-- Tabs -->
     <div class="flex gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-w-full scrollbar-hide mx-auto">
      <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
+     <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
      <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
      <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
-     <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
      <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
     </div>
    </header>
 
    <!-- Tab Contents -->
-   <div class="flex-1 overflow-y-auto min-h-0 max-lg:min-h-0">
+   
 
     <!-- About Tab -->
     <section class="tab-content relative flex min-h-full w-full flex-col" data-tab-name="about">
@@ -148,7 +148,7 @@
         <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70">Clean Architecture</span>
        </div>
        <div class="mt-6 flex flex-wrap gap-4">
-        <a href="#projects" onclick="openTabByIndex(3)" class="btn-primary !bg-[rgba(var(--accent-rgb),0.15)] !text-[var(--accent)] transition-transform duration-300 hover:scale-x-[1.03]">
+        <a href="#projects" onclick="openTabByIndex(1)" class="btn-primary !bg-[rgba(var(--accent-rgb),0.15)] !text-[var(--accent)] transition-transform duration-300 hover:scale-x-[1.03]">
          <span>View Projects</span>
         </a>
         <a href="#contact" onclick="openTabByIndex(4)" class="btn-primary transition-transform duration-300 hover:scale-x-[1.03]">
@@ -185,6 +185,102 @@
       </div>
      </div>
     </section>
+
+
+
+    <!-- Projects Tab -->
+    <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="projects">
+     <div class="tab-panel-inner flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[10%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
+      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('halda')">
+       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Enterprise</span>
+       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Halda - Enterprise SaaS HRM</h3>
+       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Multi-tenant HRM with payroll, attendance, RBAC, and performance reviews.</p>
+       <div class="flex flex-wrap gap-1.5 mt-3">
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
+       </div>
+       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
+        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
+       </div>
+      </div>
+
+      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('erp')">
+       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">ERP</span>
+       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Enterprise ERP System</h3>
+       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Inventory, supply chain, HR, finance with workflow automation.</p>
+       <div class="flex flex-wrap gap-1.5 mt-3">
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Clean Architecture</span>
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
+       </div>
+       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
+        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
+       </div>
+      </div>
+
+      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('atrai')">
+       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Finance</span>
+       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Atrai - Accounting System</h3>
+       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Expense tracking, general ledger, financial reporting, analytics.</p>
+       <div class="flex flex-wrap gap-1.5 mt-3">
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
+       </div>
+       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
+        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
+       </div>
+      </div>
+
+      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('okr')">
+       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Productivity</span>
+       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">OKR & Task Management</h3>
+       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">KPI tracking, goal monitoring, analytics dashboards, task management.</p>
+       <div class="flex flex-wrap gap-1.5 mt-3">
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
+       </div>
+       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
+        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
+       </div>
+      </div>
+
+      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('smartslead')">
+       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">CRM</span>
+       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">SmartSLead - CRM</h3>
+       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Lead tracking, sales pipeline, conversion analytics, automation.</p>
+       <div class="flex flex-wrap gap-1.5 mt-3">
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
+        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
+       </div>
+       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
+        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
+       </div>
+      </div>
+
+      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('services')">
+       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Services</span>
+       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">What I Can Do For You</h3>
+       <div class="space-y-2 mt-2">
+        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
+         <i class="fas fa-code text-[var(--accent)]/50 mt-0.5 text-10"></i>
+         <span>Custom Software Development</span>
+        </div>
+        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
+         <i class="fas fa-cloud text-[var(--accent)]/50 mt-0.5 text-10"></i>
+         <span>SaaS Platform Development</span>
+        </div>
+        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
+         <i class="fas fa-globe text-[var(--accent)]/50 mt-0.5 text-10"></i>
+         <span>Website Development</span>
+        </div>
+       </div>
+       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
+        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
+       </div>
+      </div>
+     </div>
+    </section>
+
+
 
     <!-- Skills Tab -->
     <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="skills">
@@ -293,6 +389,8 @@
      </div>
     </section>
 
+
+
     <!-- Experience Tab -->
     <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="experience">
      <div class="tab-panel-inner flex min-h-full w-full p-[5%] px-[8%] max-lg:px-6 max-md:px-4">
@@ -380,121 +478,7 @@
      </div>
     </section>
 
-    <!-- Projects Tab -->
-    <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="projects">
-     <div class="tab-panel-inner flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[10%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('halda')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Enterprise</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Halda - Enterprise SaaS HRM</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Multi-tenant HRM with payroll, attendance, RBAC, and performance reviews.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
-       </div>
-      </div>
 
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('erp')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">ERP</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Enterprise ERP System</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Inventory, supply chain, HR, finance with workflow automation.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Clean Architecture</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
-       </div>
-      </div>
-
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('atrai')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Finance</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Atrai - Accounting System</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Expense tracking, general ledger, financial reporting, analytics.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
-       </div>
-      </div>
-
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('okr')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Productivity</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">OKR & Task Management</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">KPI tracking, goal monitoring, analytics dashboards, task management.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
-       </div>
-      </div>
-
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('smartslead')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">CRM</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">SmartSLead - CRM</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Lead tracking, sales pipeline, conversion analytics, automation.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
-       </div>
-      </div>
-
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('services')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Services</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">What I Can Do For You</h3>
-       <div class="space-y-2 mt-2">
-        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
-         <i class="fas fa-code text-[var(--accent)]/50 mt-0.5 text-10"></i>
-         <span>Custom Software Development</span>
-        </div>
-        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
-         <i class="fas fa-cloud text-[var(--accent)]/50 mt-0.5 text-10"></i>
-         <span>SaaS Platform Development</span>
-        </div>
-        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
-         <i class="fas fa-globe text-[var(--accent)]/50 mt-0.5 text-10"></i>
-         <span>Website Development</span>
-        </div>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="fas fa-up-right-from-square text-10" aria-hidden="true"></i>
-       </div>
-      </div>
-     </div>
-    </section>
-
-    <!-- Project Modals -->
-    <div id="project-modal" class="modal-overlay hidden fixed inset-0 z-[100] flex items-center justify-center p-4" onclick="closeModal(event)">
-     <div class="modal-content bg-[var(--bg-sidebar)] border border-[var(--accent)]/15 rounded-2xl w-full max-w-[500px] max-h-[80vh] overflow-y-auto p-6 max-md:p-5" onclick="event.stopPropagation()">
-      <div class="flex items-start justify-between gap-4 mb-5">
-       <div>
-        <span id="modal-tag" class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10"></span>
-        <h2 id="modal-title" class="text-xl font-semibold text-primary mt-2 max-md:text-lg"></h2>
-       </div>
-       <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] transition-colors text-sm shrink-0">
-        <i class="fas fa-xmark"></i>
-       </button>
-      </div>
-      <p id="modal-desc" class="text-sm text-muted leading-relaxed mb-5 max-md:text-xs"></p>
-      <div id="modal-features-section">
-       <h4 class="text-xs font-medium text-primary mb-3">// features</h4>
-       <ul id="modal-features" class="space-y-2"></ul>
-      </div>
-      <div class="mt-5">
-       <h4 class="text-xs font-medium text-primary mb-3">// tech_stack</h4>
-       <div id="modal-tech" class="flex flex-wrap gap-1.5"></div>
-      </div>
-     </div>
-    </div>
 
     <!-- Contact Tab -->
     <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="contact">
@@ -578,6 +562,32 @@
       </div>
      </div>
     </section>
+
+<div class="flex-1 overflow-y-auto min-h-0 max-lg:min-h-0">
+
+    <!-- Project Modals -->
+    <div id="project-modal" class="modal-overlay hidden fixed inset-0 z-[100] flex items-center justify-center p-4" onclick="closeModal(event)">
+     <div class="modal-content bg-[var(--bg-sidebar)] border border-[var(--accent)]/15 rounded-2xl w-full max-w-[500px] max-h-[80vh] overflow-y-auto p-6 max-md:p-5" onclick="event.stopPropagation()">
+      <div class="flex items-start justify-between gap-4 mb-5">
+       <div>
+        <span id="modal-tag" class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10"></span>
+        <h2 id="modal-title" class="text-xl font-semibold text-primary mt-2 max-md:text-lg"></h2>
+       </div>
+       <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] transition-colors text-sm shrink-0">
+        <i class="fas fa-xmark"></i>
+       </button>
+      </div>
+      <p id="modal-desc" class="text-sm text-muted leading-relaxed mb-5 max-md:text-xs"></p>
+      <div id="modal-features-section">
+       <h4 class="text-xs font-medium text-primary mb-3">// features</h4>
+       <ul id="modal-features" class="space-y-2"></ul>
+      </div>
+      <div class="mt-5">
+       <h4 class="text-xs font-medium text-primary mb-3">// tech_stack</h4>
+       <div id="modal-tech" class="flex flex-wrap gap-1.5"></div>
+      </div>
+     </div>
+    </div>
 
    </div>
 
