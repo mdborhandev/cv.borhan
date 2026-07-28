@@ -436,7 +436,7 @@
         });
       } else {
         li.className = 'flex items-start gap-2.5 text-xs text-muted max-md:text-[11px]';
-        li.innerHTML = '<span class="text-[var(--accent)] mt-0.5 font-[\'JetBrains_Mono\'] text-[10px]">&#9656;</span><span>' + f + '</span>';
+        li.innerHTML = '<span class="text-[var(--accent)] mt-0.5 text-10">&#9656;</span><span>' + f + '</span>';
       }
       modalFeatures.appendChild(li);
     });

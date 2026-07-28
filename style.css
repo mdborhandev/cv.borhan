@@ -38,6 +38,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
   transition: background 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
 }
@@ -552,6 +553,14 @@ input:focus, textarea:focus {
 .bg-sidebar { background: var(--bg-sidebar); }
 .bg-card { background: var(--bg-card); }
 .border-theme { border-color: var(--border); }
+
+/* ===== Typography Utilities ===== */
+.text-10 { font-size: 10px; }
+.text-11 { font-size: 11px; }
+.heading-xl { font-size: 2.2rem; font-weight: 600; line-height: 48px; }
+@media (max-width: 1279px) { .heading-xl { font-size: 2.5rem; line-height: 48px; } }
+@media (max-width: 1023px) { .heading-xl { font-size: 2.1rem; line-height: 44px; } }
+@media (max-width: 767px) { .heading-xl { font-size: 1.85rem; line-height: 28px; } }
 
 /* ===== Responsive: Tablet (max-width: 1023px) ===== */
 @media (max-width: 1023px) {
