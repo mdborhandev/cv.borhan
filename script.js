@@ -11,7 +11,7 @@
     html.setAttribute('data-theme', theme);
     currentTheme = theme;
     localStorage.setItem('theme', theme);
-    themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    themeIcon.className = theme === 'dark' ? 'hgi-stroke hgi-sun-01' : 'hgi-stroke hgi-moon';
   }
 
   applyTheme(currentTheme);
@@ -422,7 +422,7 @@
       var li = document.createElement('li');
       if (p.clickable) {
         li.className = 'flex items-center gap-2.5 text-xs text-muted max-md:text-[11px] p-2.5 rounded-lg bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 cursor-pointer transition-all duration-300';
-        li.innerHTML = '<i class="fas fa-arrow-right text-[var(--accent)]/50 text-[10px]"></i><span class="text-primary">' + f + '</span>';
+        li.innerHTML = '<i class="hgi-stroke hgi-arrow-right-01 text-[var(--accent)]/50 text-10"></i><span class="text-primary">' + f + '</span>';
         li.addEventListener('click', function () {
           closeModal();
           setTimeout(function () {
