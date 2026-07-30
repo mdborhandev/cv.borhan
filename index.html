@@ -77,7 +77,7 @@
    </div>
 
    <!-- Contact Me Button -->
-   <a href="#contact" onclick="openTabByIndex(4)" class="btn-primary w-full max-w-[280px] transition-transform duration-300 hover:scale-[1.02] mt-2">
+    <a href="#contact" onclick="openTabByIndex(5)" class="btn-primary w-full max-w-[280px] transition-transform duration-300 hover:scale-[1.02] mt-2">
     Contact Me
    </a>
 
@@ -114,6 +114,7 @@
     <div class="flex gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-w-full scrollbar-hide mx-auto">
      <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
      <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
+     <button class="tab-btn" onclick="openTab(event, 'services')">Services</button>
      <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
      <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
      <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
@@ -151,9 +152,9 @@
         <a href="#projects" onclick="openTabByIndex(1)" class="btn-primary !bg-[rgba(var(--accent-rgb),0.15)] !text-[var(--accent)] transition-transform duration-300 hover:scale-x-[1.03]">
          <span>View Projects</span>
         </a>
-        <a href="#contact" onclick="openTabByIndex(4)" class="btn-primary transition-transform duration-300 hover:scale-x-[1.03]">
-         Contact Me
-        </a>
+         <a href="#contact" onclick="openTabByIndex(5)" class="btn-primary transition-transform duration-300 hover:scale-x-[1.03]">
+          Contact Me
+         </a>
        </div>
        <div class="mt-4 text-11 text-dim tracking-wider max-md:text-10">
         Available for full-time roles and contract work
@@ -282,7 +283,89 @@
 
 
 
-    <!-- Skills Tab -->
+     <!-- Services Tab -->
+     <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="services">
+      <div class="tab-panel-inner flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[8%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
+       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
+        <div class="flex items-center gap-2.5 mb-3">
+         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+          <i class="hgi-stroke hgi-code"></i>
+         </div>
+         <span class="text-sm font-medium text-primary max-md:text-xs">Custom Software Development</span>
+        </div>
+        <p class="text-xs text-muted leading-relaxed max-md:text-11">Tailored desktop and enterprise applications built with Clean Architecture, SOLID principles, and scalable .NET patterns.</p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">C#</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
+        </div>
+       </div>
+
+       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
+        <div class="flex items-center gap-2.5 mb-3">
+         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+          <i class="hgi-stroke hgi-cloud"></i>
+         </div>
+         <span class="text-sm font-medium text-primary max-md:text-xs">SaaS Platform Development</span>
+        </div>
+        <p class="text-xs text-muted leading-relaxed max-md:text-11">Multi-tenant SaaS products with RBAC, subscription management, real-time analytics, and cloud-native architecture.</p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Multi-tenancy</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">RBAC</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Azure</span>
+        </div>
+       </div>
+
+       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
+        <div class="flex items-center gap-2.5 mb-3">
+         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+          <i class="hgi-stroke hgi-globe"></i>
+         </div>
+         <span class="text-sm font-medium text-primary max-md:text-xs">Website Development</span>
+        </div>
+        <p class="text-xs text-muted leading-relaxed max-md:text-11">Modern, responsive frontends and full-stack websites with clean UI/UX, SEO optimization, and fast performance.</p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">HTML5</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">CSS3</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">JavaScript</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Bootstrap</span>
+        </div>
+       </div>
+
+       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
+        <div class="flex items-center gap-2.5 mb-3">
+         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+          <i class="hgi-stroke hgi-api"></i>
+         </div>
+         <span class="text-sm font-medium text-primary max-md:text-xs">API & Backend Development</span>
+        </div>
+        <p class="text-xs text-muted leading-relaxed max-md:text-11">Secure, high-performance RESTful APIs with JWT authentication, rate limiting, caching, and comprehensive documentation.</p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">REST API</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">JWT</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Swagger</span>
+        </div>
+       </div>
+
+       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
+        <div class="flex items-center gap-2.5 mb-3">
+         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
+          <i class="hgi-stroke hgi-database"></i>
+         </div>
+         <span class="text-sm font-medium text-primary max-md:text-xs">Database Design & Optimization</span>
+        </div>
+        <p class="text-xs text-muted leading-relaxed max-md:text-11">Robust data modeling, query optimization, indexing strategies, and migration planning for PostgreSQL and SQL Server.</p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">SQL Server</span>
+         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
+        </div>
+       </div>
+      </div>
+     </section>
+
+
+     <!-- Skills Tab -->
     <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="skills">
      <div class="tab-panel-inner flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[10%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
       <!-- Languages & Frameworks -->
@@ -601,7 +684,7 @@
 
  <!-- Mobile Sticky CTA -->
  <div class="fixed bottom-0 left-0 right-0 z-[90] hidden max-lg:flex items-center gap-3 p-3 bg-[var(--bg-sidebar)]/90 backdrop-blur-md border-t border-[var(--accent)]/10">
-  <a href="#contact" onclick="openTabByIndex(4)" class="flex-1 btn-primary !py-3 text-sm">
+   <a href="#contact" onclick="openTabByIndex(5)" class="flex-1 btn-primary !py-3 text-sm">
    Contact
   </a>
   <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="flex-1 btn-outline !py-3 text-sm">
