@@ -129,59 +129,61 @@
      <div class="tab-panel-inner flex min-h-full w-full gap-8 p-[5%] max-lg:flex-col max-lg:gap-6 max-lg:p-6 max-md:p-4">
       <!-- Left: Text + Buttons -->
       <div class="flex-1 flex flex-col justify-center">
-       <div class="text-10 uppercase tracking-[0.25em] text-[var(--accent)]/60 mb-4">
-        // backend-focused software engineer
+       <div class="text-10 uppercase tracking-[0.25em] text-[var(--accent)]/70 mb-3 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> // backend & saas software engineer
        </div>
-              <div class="heading-xl">
-        Building reliable backend systems<br>
-        for SaaS and enterprise products
+       <div class="heading-xl">
+        Building high-performance backends & scalable SaaS applications
        </div>
        <div class="mt-4 max-w-[540px] text-justify max-lg:max-w-full text-sm text-muted leading-relaxed max-md:text-xs">
-        Backend-focused Software Engineer with 2.5+ years of experience building scalable SaaS and enterprise applications.
-        <br><br>
-        I design secure APIs, implement RBAC, and optimize performance with Clean Architecture and SOLID principles.
+        I engineer production-grade web systems, multi-tenant SaaS platforms, and secure REST APIs for startups and businesses. Specializing in ASP.NET Core, PostgreSQL, and Clean Architecture for zero-downtime reliability.
        </div>
-       <div class="mt-5 flex flex-wrap gap-2.5 max-w-[540px]">
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70">C#</span>
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70">ASP.NET Core</span>
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70">EF Core</span>
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70">PostgreSQL</span>
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/10 text-[var(--accent)]/70">Clean Architecture</span>
+       
+       <div class="mt-5 flex flex-wrap gap-2 max-w-[540px]">
+        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">ASP.NET Core</span>
+        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">C#</span>
+        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">PostgreSQL</span>
+        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">Multi-Tenancy & RBAC</span>
+        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">Clean Architecture</span>
        </div>
-       <div class="mt-6 flex flex-wrap gap-4">
-        <a href="#projects" onclick="openTabByIndex(1)" class="btn-primary !bg-[rgba(var(--accent-rgb),0.15)] !text-[var(--accent)] transition-transform duration-300 hover:scale-x-[1.03]">
-         <span>View Projects</span>
+
+       <div class="mt-6 flex flex-wrap gap-3">
+        <button onclick="requestCustomService('New Project Consultation')" class="btn-primary transition-transform duration-300 hover:scale-[1.02] flex items-center gap-2">
+         <i class="hgi-stroke hgi-flash text-xs"></i>
+         <span>Hire / Start Project</span>
+        </button>
+        <a href="#projects" onclick="openTabByIndex(1)" class="btn-outline transition-transform duration-300 hover:scale-[1.02]">
+         <span>Explore Case Studies</span>
         </a>
-         <a href="#contact" onclick="openTabByIndex(5)" class="btn-primary transition-transform duration-300 hover:scale-x-[1.03]">
-          Contact Me
-         </a>
        </div>
-       <div class="mt-4 text-11 text-dim tracking-wider max-md:text-10">
-        Available for full-time roles and contract work
+       
+       <div class="mt-4 text-11 text-dim tracking-wide max-md:text-10 flex items-center gap-2">
+        <i class="hgi-stroke hgi-shield-check text-emerald-400 text-xs"></i>
+        <span>Available for project-based contracts & dedicated full-time engineering</span>
        </div>
       </div>
 
-      <!-- Right: Stats -->
+      <!-- Right: Stats & Trust Metrics -->
       <div class="flex-1 grid grid-cols-2 gap-4 content-center max-md:gap-3">
-       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4">
+       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4 hover:border-[var(--accent)]/25 transition-all">
         <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="2" data-suffix=".5+">0</div>
-        <div class="text-xs text-muted mt-1 max-md:text-11">Years Experience</div>
-        <div class="text-10 text-dim mt-0.5 max-md:hidden">Enterprise SaaS</div>
+        <div class="text-xs text-primary font-medium mt-1 max-md:text-11">Years Experience</div>
+        <div class="text-10 text-muted mt-0.5">Production .NET & SaaS</div>
        </div>
-       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4">
+       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4 hover:border-[var(--accent)]/25 transition-all">
         <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="10">0</div>
-        <div class="text-xs text-muted mt-1 max-md:text-11">Projects Delivered</div>
-        <div class="text-10 text-dim mt-0.5 max-md:hidden">SaaS & Enterprise</div>
+        <div class="text-xs text-primary font-medium mt-1 max-md:text-11">Projects Delivered</div>
+        <div class="text-10 text-muted mt-0.5">SaaS, ERP & FinTech</div>
        </div>
-       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4">
-        <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="40">0</div>
-        <div class="text-xs text-muted mt-1 max-md:text-11">Students Mentored</div>
-        <div class="text-10 text-dim mt-0.5 max-md:hidden">Frontend Training</div>
+       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4 hover:border-[var(--accent)]/25 transition-all">
+        <div class="text-3xl font-semibold text-emerald-400 max-md:text-2xl" data-target="99" data-suffix=".9%">0</div>
+        <div class="text-xs text-primary font-medium mt-1 max-md:text-11">Reliability & Uptime</div>
+        <div class="text-10 text-muted mt-0.5">Stable Architecture</div>
        </div>
-       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4">
-        <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="30">0</div>
-        <div class="text-xs text-muted mt-1 max-md:text-11">Perf. Improvement</div>
-        <div class="text-10 text-dim mt-0.5 max-md:hidden">API Optimization %</div>
+       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4 hover:border-[var(--accent)]/25 transition-all">
+        <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="30" data-suffix="%+">0</div>
+        <div class="text-xs text-primary font-medium mt-1 max-md:text-11">Performance Boost</div>
+        <div class="text-10 text-muted mt-0.5">API & DB Optimization</div>
        </div>
       </div>
      </div>
@@ -191,93 +193,175 @@
 
     <!-- Projects Tab -->
     <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="projects">
-     <div class="tab-panel-inner flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[10%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('halda')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Enterprise</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Halda - Enterprise SaaS HRM</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Multi-tenant HRM with payroll, attendance, RBAC, and performance reviews.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
+     <div class="tab-panel-inner flex min-h-full w-full flex-col p-[5%] px-[8%] max-lg:px-6 max-md:px-4 gap-6">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[var(--accent)]/10 pb-4">
+       <div>
+        <span class="text-10 text-dim uppercase tracking-wider">// proof_of_work & case_studies</span>
+        <h2 class="text-2xl font-semibold text-primary mt-1 max-md:text-xl">Featured Client & Enterprise Projects</h2>
        </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="hgi-stroke hgi-arrow-up-right-01 text-10" aria-hidden="true"></i>
-       </div>
+       <p class="text-xs text-muted max-w-[360px] max-md:text-11">
+        Production-grade systems built for stability, multi-tenant scalability, and real business performance.
+       </p>
       </div>
 
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('erp')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">ERP</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Enterprise ERP System</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Inventory, supply chain, HR, finance with workflow automation.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Clean Architecture</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="hgi-stroke hgi-arrow-up-right-01 text-10" aria-hidden="true"></i>
-       </div>
-      </div>
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('atrai')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Finance</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">Atrai - Accounting System</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Expense tracking, general ledger, financial reporting, analytics.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="hgi-stroke hgi-arrow-up-right-01 text-10" aria-hidden="true"></i>
-       </div>
-      </div>
-
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('okr')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Productivity</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">OKR & Task Management</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">KPI tracking, goal monitoring, analytics dashboards, task management.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="hgi-stroke hgi-arrow-up-right-01 text-10" aria-hidden="true"></i>
-       </div>
-      </div>
-
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('smartslead')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">CRM</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">SmartSLead - CRM</h3>
-       <p class="text-xs text-muted mt-2 leading-relaxed max-md:text-11">Lead tracking, sales pipeline, conversion analytics, automation.</p>
-       <div class="flex flex-wrap gap-1.5 mt-3">
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-        <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
-       </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="hgi-stroke hgi-arrow-up-right-01 text-10" aria-hidden="true"></i>
-       </div>
-      </div>
-
-      <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4 cursor-pointer" onclick="openModal('services')">
-       <span class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10">Services</span>
-       <h3 class="text-sm font-medium text-primary mt-3 max-md:text-xs">What I Can Do For You</h3>
-       <div class="space-y-2 mt-2">
-        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
-         <i class="hgi-stroke hgi-code text-[var(--accent)]/50 mt-0.5 text-10"></i>
-         <span>Custom Software Development</span>
+       <!-- Project 1: Halda -->
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('halda')">
+        <div>
+         <div class="flex items-center justify-between gap-2">
+          <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">Enterprise SaaS</span>
+          <span class="text-10 text-emerald-400 font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> Production</span>
+         </div>
+         <h3 class="text-base font-semibold text-primary mt-3 group-hover:text-[var(--accent)] transition-colors">Halda - Multi-Tenant SaaS HRM</h3>
+         <p class="text-xs text-muted mt-2 leading-relaxed">Engineered complex multi-tenant architecture with tenant isolation, automated payroll calculation, granular RBAC, and attendance management.</p>
+         
+         <div class="mt-4 p-2.5 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-11 text-secondary">
+          <span class="text-[var(--accent)] font-medium">Key Result:</span> Automated payroll for 1,000+ employees with zero calculation lag.
+         </div>
         </div>
-        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
-         <i class="hgi-stroke hgi-cloud text-[var(--accent)]/50 mt-0.5 text-10"></i>
-         <span>SaaS Platform Development</span>
-        </div>
-        <div class="flex items-start gap-2 text-xs text-muted max-md:text-11">
-         <i class="hgi-stroke hgi-globe text-[var(--accent)]/50 mt-0.5 text-10"></i>
-         <span>Website Development</span>
+
+        <div class="mt-4 pt-3 border-t border-[var(--accent)]/8 flex items-center justify-between">
+         <div class="flex flex-wrap gap-1.5">
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">ASP.NET Core</span>
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">PostgreSQL</span>
+         </div>
+         <span class="text-xs text-[var(--accent)] flex items-center gap-1 font-medium group-hover:translate-x-0.5 transition-transform">
+          Details <i class="hgi-stroke hgi-arrow-up-right-01 text-10"></i>
+         </span>
         </div>
        </div>
-       <div class="mt-4 flex justify-end text-[var(--accent)]/55 transition-colors group-hover:text-[var(--accent)]">
-        <i class="hgi-stroke hgi-arrow-up-right-01 text-10" aria-hidden="true"></i>
+
+       <!-- Project 2: ERP -->
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('erp')">
+        <div>
+         <div class="flex items-center justify-between gap-2">
+          <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">ERP Platform</span>
+          <span class="text-10 text-emerald-400 font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> High Load</span>
+         </div>
+         <h3 class="text-base font-semibold text-primary mt-3 group-hover:text-[var(--accent)] transition-colors">Enterprise Supply & Finance ERP</h3>
+         <p class="text-xs text-muted mt-2 leading-relaxed">Integrated inventory tracking, purchase workflows, vendor lifecycle, and automated approval engines using Clean Architecture.</p>
+         
+         <div class="mt-4 p-2.5 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-11 text-secondary">
+          <span class="text-[var(--accent)] font-medium">Key Result:</span> Reduced multi-department approval delays by 40% with workflow automation.
+         </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-[var(--accent)]/8 flex items-center justify-between">
+         <div class="flex flex-wrap gap-1.5">
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">Clean Architecture</span>
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">EF Core</span>
+         </div>
+         <span class="text-xs text-[var(--accent)] flex items-center gap-1 font-medium group-hover:translate-x-0.5 transition-transform">
+          Details <i class="hgi-stroke hgi-arrow-up-right-01 text-10"></i>
+         </span>
+        </div>
        </div>
+
+       <!-- Project 3: Atrai Accounting -->
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('atrai')">
+        <div>
+         <div class="flex items-center justify-between gap-2">
+          <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">FinTech & Ledger</span>
+          <span class="text-10 text-emerald-400 font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> Secure</span>
+         </div>
+         <h3 class="text-base font-semibold text-primary mt-3 group-hover:text-[var(--accent)] transition-colors">Atrai - Accounting & Invoicing</h3>
+         <p class="text-xs text-muted mt-2 leading-relaxed">Double-entry bookkeeping engine, automated reconciliation, multi-currency invoicing, tax calculations, and real-time financial reporting.</p>
+         
+         <div class="mt-4 p-2.5 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-11 text-secondary">
+          <span class="text-[var(--accent)] font-medium">Key Result:</span> Instant P&L and Balance Sheet reports with 100% audit accuracy.
+         </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-[var(--accent)]/8 flex items-center justify-between">
+         <div class="flex flex-wrap gap-1.5">
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">ASP.NET Core</span>
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">PostgreSQL</span>
+         </div>
+         <span class="text-xs text-[var(--accent)] flex items-center gap-1 font-medium group-hover:translate-x-0.5 transition-transform">
+          Details <i class="hgi-stroke hgi-arrow-up-right-01 text-10"></i>
+         </span>
+        </div>
+       </div>
+
+       <!-- Project 4: SmartSLead CRM -->
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('smartslead')">
+        <div>
+         <div class="flex items-center justify-between gap-2">
+          <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">CRM & Sales</span>
+          <span class="text-10 text-emerald-400 font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> Analytics</span>
+         </div>
+         <h3 class="text-base font-semibold text-primary mt-3 group-hover:text-[var(--accent)] transition-colors">SmartSLead - Sales & Lead CRM</h3>
+         <p class="text-xs text-muted mt-2 leading-relaxed">Lead pipeline visualization, deal staging, conversion funnels, follow-up notifications, and client engagement analytics.</p>
+         
+         <div class="mt-4 p-2.5 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-11 text-secondary">
+          <span class="text-[var(--accent)] font-medium">Key Result:</span> Accelerated sales closing cycles by providing real-time pipeline visibility.
+         </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-[var(--accent)]/8 flex items-center justify-between">
+         <div class="flex flex-wrap gap-1.5">
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">ASP.NET Core</span>
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">RESTful API</span>
+         </div>
+         <span class="text-xs text-[var(--accent)] flex items-center gap-1 font-medium group-hover:translate-x-0.5 transition-transform">
+          Details <i class="hgi-stroke hgi-arrow-up-right-01 text-10"></i>
+         </span>
+        </div>
+       </div>
+
+       <!-- Project 5: OKR Management -->
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('okr')">
+        <div>
+         <div class="flex items-center justify-between gap-2">
+          <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">Productivity</span>
+          <span class="text-10 text-emerald-400 font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> KPI Engine</span>
+         </div>
+         <h3 class="text-base font-semibold text-primary mt-3 group-hover:text-[var(--accent)] transition-colors">OKR & Goal Tracking System</h3>
+         <p class="text-xs text-muted mt-2 leading-relaxed">Company-wide objective alignment, cascading department goals, milestone tracking, and automated performance reporting.</p>
+         
+         <div class="mt-4 p-2.5 rounded-lg bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-11 text-secondary">
+          <span class="text-[var(--accent)] font-medium">Key Result:</span> Clear accountability matrix connecting company OKRs to daily developer tasks.
+         </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-[var(--accent)]/8 flex items-center justify-between">
+         <div class="flex flex-wrap gap-1.5">
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">ASP.NET Core</span>
+          <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70">PostgreSQL</span>
+         </div>
+         <span class="text-xs text-[var(--accent)] flex items-center gap-1 font-medium group-hover:translate-x-0.5 transition-transform">
+          Details <i class="hgi-stroke hgi-arrow-up-right-01 text-10"></i>
+         </span>
+        </div>
+       </div>
+
+       <!-- Project 6: Custom Project CTA Card -->
+       <div class="rounded-xl p-5 border border-dashed border-[var(--accent)]/30 bg-[var(--accent)]/[0.02] hover:bg-[var(--accent)]/[0.05] transition-all duration-300 flex flex-col justify-between">
+        <div>
+         <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/20 font-medium">Have a Custom Idea?</span>
+         <h3 class="text-base font-semibold text-primary mt-3">Need a Tailored System for Your Business?</h3>
+         <p class="text-xs text-muted mt-2 leading-relaxed">From architecture design to end-to-end full-stack development, I turn complex specifications into rock-solid software.</p>
+         
+         <div class="mt-4 space-y-1.5 text-11 text-secondary">
+          <div class="flex items-center gap-2"><i class="hgi-stroke hgi-tick-02 text-[var(--accent)] text-xs"></i> <span>Fixed-price or dedicated hourly contract</span></div>
+          <div class="flex items-center gap-2"><i class="hgi-stroke hgi-tick-02 text-[var(--accent)] text-xs"></i> <span>Direct daily communication & fast delivery</span></div>
+         </div>
+        </div>
+
+        <div class="mt-5 pt-3">
+         <button onclick="requestCustomService('Custom Enterprise Solution')" class="w-full btn-primary !py-2.5 text-xs flex items-center justify-center gap-1.5">
+          <span>Start Your Project</span>
+          <i class="hgi-stroke hgi-arrow-right-01 text-xs"></i>
+         </button>
+        </div>
+       </div>
+
       </div>
+
      </div>
     </section>
 
@@ -285,82 +369,220 @@
 
      <!-- Services Tab -->
      <section class="tab-content relative hidden min-h-full w-full flex-col" data-tab-name="services">
-      <div class="tab-panel-inner flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[8%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
-       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
-        <div class="flex items-center gap-2.5 mb-3">
-         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-          <i class="hgi-stroke hgi-code"></i>
-         </div>
-         <span class="text-sm font-medium text-primary max-md:text-xs">Custom Software Development</span>
+      <div class="tab-panel-inner flex min-h-full w-full flex-col p-[5%] px-[8%] max-lg:px-6 max-md:px-4 gap-8">
+       
+       <!-- Section Header -->
+       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[var(--accent)]/10 pb-4">
+        <div>
+         <span class="text-10 text-dim uppercase tracking-wider">// what_i_offer & client_services</span>
+         <h2 class="text-2xl font-semibold text-primary mt-1 max-md:text-xl">Specialized Engineering Services</h2>
         </div>
-        <p class="text-xs text-muted leading-relaxed max-md:text-11">Tailored desktop and enterprise applications built with Clean Architecture, SOLID principles, and scalable .NET patterns.</p>
-        <div class="flex flex-wrap gap-1.5 mt-3">
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">C#</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">ASP.NET Core</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
+        <p class="text-xs text-muted max-w-[380px] max-md:text-11">
+         Choose a default service package or request a custom build. Click <strong>"Inquire Now"</strong> to start.
+        </p>
+       </div>
+
+       <!-- Services Grid -->
+       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        
+        <!-- Service 1 -->
+        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+         <div>
+          <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-lg mb-3">
+           <i class="hgi-stroke hgi-cloud"></i>
+          </div>
+          <h3 class="text-base font-semibold text-primary">SaaS Platform Development</h3>
+          <p class="text-xs text-muted mt-2 leading-relaxed">Turn your product idea into a secure, multi-tenant SaaS application ready for paying customers.</p>
+          
+          <ul class="mt-4 space-y-2 text-xs text-secondary">
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Multi-tenant data architecture</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Granular RBAC & JWT Authentication</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Subscription & billing integration</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Admin control & analytics dashboards</li>
+          </ul>
+         </div>
+
+         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+          <button onclick="requestCustomService('SaaS Platform Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+           <span>Inquire for SaaS</span>
+           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+          </button>
+          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20discuss%20a%20SaaS%20Platform%20Development%20project." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+           <i class="hgi-stroke hgi-whatsapp"></i>
+          </a>
+         </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+         <div>
+          <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-lg mb-3">
+           <i class="hgi-stroke hgi-code"></i>
+          </div>
+          <h3 class="text-base font-semibold text-primary">Custom Enterprise Software</h3>
+          <p class="text-xs text-muted mt-2 leading-relaxed">Bespoke ERP, HRM, inventory, and internal operations tools tailored precisely to your workflow.</p>
+          
+          <ul class="mt-4 space-y-2 text-xs text-secondary">
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Clean Architecture & maintainable C#</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Workflow approval automation</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Audit logging & enterprise compliance</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Legacy system migration & refactoring</li>
+          </ul>
+         </div>
+
+         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+          <button onclick="requestCustomService('Custom Enterprise Software')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+           <span>Inquire for Software</span>
+           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+          </button>
+          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20need%20Custom%20Enterprise%20Software%20development." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+           <i class="hgi-stroke hgi-whatsapp"></i>
+          </a>
+         </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+         <div>
+          <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-lg mb-3">
+           <i class="hgi-stroke hgi-api"></i>
+          </div>
+          <h3 class="text-base font-semibold text-primary">REST API & Microservices</h3>
+          <p class="text-xs text-muted mt-2 leading-relaxed">High-throughput, secure backend APIs designed for mobile apps, web clients, and third-party integrations.</p>
+          
+          <ul class="mt-4 space-y-2 text-xs text-secondary">
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> ASP.NET Core Web API (.NET 8)</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Rate limiting, caching, and JWT auth</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Swagger & Postman documentation</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Stripe, bKash & 3rd-party webhook hooks</li>
+          </ul>
+         </div>
+
+         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+          <button onclick="requestCustomService('REST API & Backend Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+           <span>Inquire for APIs</span>
+           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+          </button>
+          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20need%20REST%20API%20and%20backend%20development%20work." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+           <i class="hgi-stroke hgi-whatsapp"></i>
+          </a>
+         </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+         <div>
+          <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-lg mb-3">
+           <i class="hgi-stroke hgi-database"></i>
+          </div>
+          <h3 class="text-base font-semibold text-primary">Database Design & Speed Tuning</h3>
+          <p class="text-xs text-muted mt-2 leading-relaxed">Fix slow database queries, restructure schemas, and eliminate bottlenecks in PostgreSQL & SQL Server.</p>
+          
+          <ul class="mt-4 space-y-2 text-xs text-secondary">
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Query optimization & index profiling</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> EF Core LINQ performance tuning</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Complex schema modeling & migration</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Automated backup & data integrity audits</li>
+          </ul>
+         </div>
+
+         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+          <button onclick="requestCustomService('Database Optimization & Tuning')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+           <span>Inquire for Database</span>
+           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+          </button>
+          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20have%20a%20database%20optimization%20requirement." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+           <i class="hgi-stroke hgi-whatsapp"></i>
+          </a>
+         </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+         <div>
+          <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-lg mb-3">
+           <i class="hgi-stroke hgi-globe"></i>
+          </div>
+          <h3 class="text-base font-semibold text-primary">Full-Stack Web Development</h3>
+          <p class="text-xs text-muted mt-2 leading-relaxed">End-to-end modern web applications with seamless frontend UI, interactive dashboards, and robust backend.</p>
+          
+          <ul class="mt-4 space-y-2 text-xs text-secondary">
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> ASP.NET Core MVC / Web API + Modern UI</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Responsive Tailwind CSS / Bootstrap</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Fast load speeds & SEO friendly</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Smooth client feedback loop</li>
+          </ul>
+         </div>
+
+         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+          <button onclick="requestCustomService('Full-Stack Web Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+           <span>Inquire for Full-Stack</span>
+           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+          </button>
+          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20build%20a%20Full-Stack%20Web%20Application." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+           <i class="hgi-stroke hgi-whatsapp"></i>
+          </a>
+         </div>
+        </div>
+
+        <!-- Service 6: Custom Contract / Consultation -->
+        <div class="rounded-xl p-5 border border-[var(--accent)]/20 bg-[var(--accent)]/[0.03] hover:border-[var(--accent)]/40 transition-all duration-300 flex flex-col justify-between">
+         <div>
+          <div class="w-10 h-10 rounded-lg bg-[var(--accent)]/15 flex items-center justify-center text-[var(--accent)] text-lg mb-3">
+           <i class="hgi-stroke hgi-user-star"></i>
+          </div>
+          <h3 class="text-base font-semibold text-primary">Dedicated Developer / Contract</h3>
+          <p class="text-xs text-muted mt-2 leading-relaxed">Hire me as your dedicated backend engineer for ongoing sprint cycles, product features, or code audit.</p>
+          
+          <ul class="mt-4 space-y-2 text-xs text-secondary">
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Hourly or monthly retainer contracts</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Direct Git pull requests & code reviews</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Async + daily sprint alignment</li>
+           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> 100% IP ownership & NDA ready</li>
+          </ul>
+         </div>
+
+         <div class="mt-6 pt-4 border-t border-[var(--accent)]/15 flex items-center gap-2">
+          <button onclick="requestCustomService('Dedicated Developer / Retainer Contract')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+           <span>Hire Dedicated</span>
+           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+          </button>
+          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20hire%20you%20as%20a%20dedicated%20developer%20or%20contractor." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+           <i class="hgi-stroke hgi-whatsapp"></i>
+          </a>
+         </div>
+        </div>
+
+       </div>
+
+       <!-- Client Workflow Section: How We Work Together -->
+       <div class="mt-4 rounded-2xl p-6 bg-card border border-[var(--accent)]/15">
+        <div class="mb-4">
+         <span class="text-10 text-[var(--accent)] uppercase tracking-wider">// working_process</span>
+         <h3 class="text-lg font-semibold text-primary mt-1">How We Work Together (Step-by-Step)</h3>
+         <p class="text-xs text-muted mt-1">A transparent, reliable process from first message to deployment.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+         <div class="p-3.5 rounded-xl bg-[var(--accent)]/5 border border-[var(--accent)]/8">
+          <div class="text-sm font-semibold text-[var(--accent)]">01. Discovery</div>
+          <p class="text-xs text-muted mt-1.5 leading-relaxed">We discuss your feature requirements, user personas, timeline, and tech constraints.</p>
+         </div>
+         <div class="p-3.5 rounded-xl bg-[var(--accent)]/5 border border-[var(--accent)]/8">
+          <div class="text-sm font-semibold text-[var(--accent)]">02. Architecture</div>
+          <p class="text-xs text-muted mt-1.5 leading-relaxed">I draft the database schema, API contracts, security layer, and milestone roadmap.</p>
+         </div>
+         <div class="p-3.5 rounded-xl bg-[var(--accent)]/5 border border-[var(--accent)]/8">
+          <div class="text-sm font-semibold text-[var(--accent)]">03. Build & Test</div>
+          <p class="text-xs text-muted mt-1.5 leading-relaxed">Clean code development with regular progress updates, testing, and continuous feedback.</p>
+         </div>
+         <div class="p-3.5 rounded-xl bg-[var(--accent)]/5 border border-[var(--accent)]/8">
+          <div class="text-sm font-semibold text-[var(--accent)]">04. Launch & Support</div>
+          <p class="text-xs text-muted mt-1.5 leading-relaxed">Production deployment, thorough documentation, and post-launch bug fixes & support.</p>
+         </div>
         </div>
        </div>
 
-       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
-        <div class="flex items-center gap-2.5 mb-3">
-         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-          <i class="hgi-stroke hgi-cloud"></i>
-         </div>
-         <span class="text-sm font-medium text-primary max-md:text-xs">SaaS Platform Development</span>
-        </div>
-        <p class="text-xs text-muted leading-relaxed max-md:text-11">Multi-tenant SaaS products with RBAC, subscription management, real-time analytics, and cloud-native architecture.</p>
-        <div class="flex flex-wrap gap-1.5 mt-3">
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Multi-tenancy</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">RBAC</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Azure</span>
-        </div>
-       </div>
-
-       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
-        <div class="flex items-center gap-2.5 mb-3">
-         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-          <i class="hgi-stroke hgi-globe"></i>
-         </div>
-         <span class="text-sm font-medium text-primary max-md:text-xs">Website Development</span>
-        </div>
-        <p class="text-xs text-muted leading-relaxed max-md:text-11">Modern, responsive frontends and full-stack websites with clean UI/UX, SEO optimization, and fast performance.</p>
-        <div class="flex flex-wrap gap-1.5 mt-3">
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">HTML5</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">CSS3</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">JavaScript</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Bootstrap</span>
-        </div>
-       </div>
-
-       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
-        <div class="flex items-center gap-2.5 mb-3">
-         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-          <i class="hgi-stroke hgi-api"></i>
-         </div>
-         <span class="text-sm font-medium text-primary max-md:text-xs">API & Backend Development</span>
-        </div>
-        <p class="text-xs text-muted leading-relaxed max-md:text-11">Secure, high-performance RESTful APIs with JWT authentication, rate limiting, caching, and comprehensive documentation.</p>
-        <div class="flex flex-wrap gap-1.5 mt-3">
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">REST API</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">JWT</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">Swagger</span>
-        </div>
-       </div>
-
-       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
-        <div class="flex items-center gap-2.5 mb-3">
-         <div class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-xs">
-          <i class="hgi-stroke hgi-database"></i>
-         </div>
-         <span class="text-sm font-medium text-primary max-md:text-xs">Database Design & Optimization</span>
-        </div>
-        <p class="text-xs text-muted leading-relaxed max-md:text-11">Robust data modeling, query optimization, indexing strategies, and migration planning for PostgreSQL and SQL Server.</p>
-        <div class="flex flex-wrap gap-1.5 mt-3">
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">PostgreSQL</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">SQL Server</span>
-         <span class="text-10 px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60">EF Core</span>
-        </div>
-       </div>
       </div>
      </section>
 
@@ -568,85 +790,129 @@
      <div class="tab-panel-inner flex min-h-full w-full gap-10 p-[5%] px-[8%] max-lg:flex-col max-lg:gap-8 max-lg:px-6 max-md:px-4 max-md:gap-6">
       <!-- Left: Contact Info -->
       <div class="flex-1 flex flex-col justify-center">
-       <h2 class="text-3xl font-semibold text-primary tracking-tight mb-2 max-md:text-2xl">Let's Talk</h2>
-       <p class="text-sm text-muted mb-8 leading-relaxed max-md:text-xs max-md:mb-6">Have a project in mind or want to connect about a role?<br class="max-md:hidden">Email is fastest, WhatsApp works for quick questions.</p>
+       <div class="text-10 uppercase tracking-widest text-[var(--accent)] mb-2">// let_s_connect</div>
+       <h2 class="text-3xl font-semibold text-primary tracking-tight mb-2 max-md:text-2xl">Start a Project or Hire Me</h2>
+       <p class="text-sm text-muted mb-6 leading-relaxed max-md:text-xs">
+        Have a specific scope, an existing project that needs backend expertise, or want a custom quote? Fill out the project brief form or reach out directly for a rapid response.
+       </p>
 
-       <div class="space-y-4 max-md:space-y-3">
+       <div class="space-y-3.5 max-md:space-y-3">
         <a href="mailto:mdborhan.dev@gmail.com" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300 max-md:p-3 max-md:gap-3">
          <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm group-hover:scale-105 transition-transform max-md:w-9 max-md:h-9 max-md:text-xs">
           <i class="hgi-stroke hgi-mail-01"></i>
          </div>
          <div>
-          <p class="text-10 text-dim uppercase tracking-wider">email</p>
-          <p class="text-sm text-primary max-md:text-xs">mdborhan.dev@gmail.com</p>
+          <p class="text-10 text-dim uppercase tracking-wider">email (direct)</p>
+          <p class="text-sm text-primary max-md:text-xs font-medium">mdborhan.dev@gmail.com</p>
          </div>
         </a>
-        <a href="tel:01906750597" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300 max-md:p-3 max-md:gap-3">
-         <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm group-hover:scale-105 transition-transform max-md:w-9 max-md:h-9 max-md:text-xs">
-          <i class="hgi-stroke hgi-phone-check"></i>
+        
+        <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group p-4 rounded-xl bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 transition-all duration-300 max-md:p-3 max-md:gap-3">
+         <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-sm group-hover:scale-105 transition-transform max-md:w-9 max-md:h-9 max-md:text-xs">
+          <i class="hgi-stroke hgi-whatsapp"></i>
          </div>
          <div>
-          <p class="text-10 text-dim uppercase tracking-wider">phone</p>
-          <p class="text-sm text-primary max-md:text-xs">01906750597</p>
+          <p class="text-10 text-dim uppercase tracking-wider">whatsapp (instant response)</p>
+          <p class="text-sm text-primary max-md:text-xs font-medium">+880 1906 750597</p>
          </div>
         </a>
+
         <div class="flex items-center gap-4 p-4 rounded-xl bg-card border border-[var(--accent)]/8 max-md:p-3 max-md:gap-3">
          <div class="w-11 h-11 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)]/70 text-sm max-md:w-9 max-md:h-9 max-md:text-xs">
           <i class="hgi-stroke hgi-location-01"></i>
          </div>
          <div>
-          <p class="text-10 text-dim uppercase tracking-wider">location</p>
-          <p class="text-sm text-primary max-md:text-xs">Chattogram, Bangladesh</p>
+          <p class="text-10 text-dim uppercase tracking-wider">location & availability</p>
+          <p class="text-sm text-primary max-md:text-xs font-medium">Chattogram, Bangladesh (Remote Worldwide)</p>
          </div>
         </div>
        </div>
 
-       <div class="mt-6">
-        <p class="text-10 text-dim uppercase tracking-wider mb-3">quick actions</p>
-        <div class="flex flex-wrap gap-3">
-         <a href="mailto:mdborhan.dev@gmail.com" class="px-4 py-2 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] text-xs border border-[var(--accent)]/10 hover:bg-[var(--accent)]/15 transition-colors">
-          Email
-         </a>
-         <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] text-xs border border-[var(--accent)]/10 hover:bg-[var(--accent)]/15 transition-colors">
-          WhatsApp
-         </a>
-         <a href="https://linkedin.com/in/borhan-uddin-fahim" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] text-xs border border-[var(--accent)]/10 hover:bg-[var(--accent)]/15 transition-colors">
-          LinkedIn
-         </a>
-        </div>
+       <div class="mt-6 p-4 rounded-xl bg-[var(--accent)]/5 border border-[var(--accent)]/10">
+        <p class="text-11 text-secondary font-medium flex items-center gap-2">
+         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block"></span>
+         Currently accepting new client projects & contract roles
+        </p>
+        <p class="text-10 text-muted mt-1">Guaranteed reply within 24 hours with project analysis.</p>
        </div>
       </div>
 
-      <!-- Right: Contact Form -->
+      <!-- Right: Detailed Client Requirement Form -->
       <div class="flex-1 flex flex-col justify-center">
-       <h2 class="text-3xl font-semibold text-primary tracking-tight mb-4 max-md:text-2xl">Send a message</h2>
-       <p class="text-sm text-muted mb-5 leading-relaxed max-md:text-xs max-md:mb-4">Tell me what you're building, your timeline, and how you want to work together.</p>
-       <form id="contact-form" class="space-y-4 max-md:space-y-3">
-        <div class="grid sm:grid-cols-2 gap-4 max-md:gap-3">
-         <input type="text" id="name" name="name" required placeholder="Your Name"
-          class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 max-md:py-3 max-md:text-xs">
-         <input type="email" id="email" name="email" required placeholder="Your Email"
-          class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 max-md:py-3 max-md:text-xs">
-        </div>
-        <input type="text" id="subject" name="subject" placeholder="Subject"
-         class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 max-md:py-3 max-md:text-xs">
-        <textarea id="message" name="message" rows="5" required placeholder="Your Message"
-         class="w-full px-4 py-3.5 bg-card border border-[var(--accent)]/10 rounded-xl text-sm text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)]/30 transition-all duration-300 resize-none max-md:py-3 max-md:text-xs max-md:rows-4"></textarea>
-        <button type="submit" id="submit-btn"
-         class="w-full btn-primary !py-3.5 flex items-center justify-center gap-2 max-md:!py-3">
-         <i class="hgi-stroke hgi-mail-send-01 text-xs"></i>
-         Send Message
-        </button>
-        <p class="text-10 text-dim text-center tracking-wider">
-         Typical response time: within 24 hours
-        </p>
-        <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-xl"></div>
-       </form>
+       <div class="p-6 rounded-2xl bg-card border border-[var(--accent)]/15 max-md:p-4">
+        <h2 class="text-2xl font-semibold text-primary tracking-tight mb-1 max-md:text-xl">Send Project Requirement</h2>
+        <p class="text-xs text-muted mb-5 leading-relaxed">Tell me about your project, timeline, and target budget to receive a detailed breakdown.</p>
+        
+        <form id="contact-form" class="space-y-3.5 max-md:space-y-3">
+         <div class="grid sm:grid-cols-2 gap-3.5 max-md:gap-3">
+          <div>
+           <label for="name" class="block text-10 text-dim uppercase tracking-wider mb-1">Your Name *</label>
+           <input type="text" id="name" name="name" required placeholder="e.g. John Doe / Company"
+            class="w-full px-3.5 py-2.5 bg-[var(--bg)] border border-[var(--accent)]/15 rounded-lg text-xs text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)] transition-all">
+          </div>
+          <div>
+           <label for="email" class="block text-10 text-dim uppercase tracking-wider mb-1">Your Email *</label>
+           <input type="email" id="email" name="email" required placeholder="john@example.com"
+            class="w-full px-3.5 py-2.5 bg-[var(--bg)] border border-[var(--accent)]/15 rounded-lg text-xs text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)] transition-all">
+          </div>
+         </div>
+
+         <div class="grid sm:grid-cols-2 gap-3.5 max-md:gap-3">
+          <div>
+           <label for="service-select" class="block text-10 text-dim uppercase tracking-wider mb-1">Service Needed</label>
+           <select id="service-select" name="service"
+            class="w-full px-3.5 py-2.5 bg-[var(--bg)] border border-[var(--accent)]/15 rounded-lg text-xs text-primary focus:outline-none focus:border-[var(--accent)] transition-all">
+            <option value="Custom Software Development">Custom Software Development</option>
+            <option value="SaaS Platform Development">SaaS Platform Development</option>
+            <option value="REST API & Backend Development">REST API & Backend Development</option>
+            <option value="Database Optimization & Tuning">Database Optimization & Tuning</option>
+            <option value="Full-Stack Web Development">Full-Stack Web Development</option>
+            <option value="Dedicated Developer / Retainer Contract">Dedicated Developer / Retainer</option>
+            <option value="Other / Custom Inquiry">Other / Custom Inquiry</option>
+           </select>
+          </div>
+          <div>
+           <label for="budget-select" class="block text-10 text-dim uppercase tracking-wider mb-1">Estimated Budget (USD)</label>
+           <select id="budget-select" name="budget"
+            class="w-full px-3.5 py-2.5 bg-[var(--bg)] border border-[var(--accent)]/15 rounded-lg text-xs text-primary focus:outline-none focus:border-[var(--accent)] transition-all">
+            <option value="Under $500">&lt; $500 (Small Task / Fix)</option>
+            <option value="$500 - $1,500" selected>$500 - $1,500 (MVP / Module)</option>
+            <option value="$1,500 - $3,500">$1,500 - $3,500 (Full Platform)</option>
+            <option value="$3,500+">$3,500+ (Enterprise System)</option>
+            <option value="Hourly / Retainer">Hourly / Monthly Retainer</option>
+           </select>
+          </div>
+         </div>
+
+         <div>
+          <label for="subject" class="block text-10 text-dim uppercase tracking-wider mb-1">Project Title / Short Summary</label>
+          <input type="text" id="subject" name="subject" placeholder="e.g. Multi-tenant Inventory API with Role-Based Access"
+           class="w-full px-3.5 py-2.5 bg-[var(--bg)] border border-[var(--accent)]/15 rounded-lg text-xs text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)] transition-all">
+         </div>
+
+         <div>
+          <label for="message" class="block text-10 text-dim uppercase tracking-wider mb-1">Project Details & Requirements *</label>
+          <textarea id="message" name="message" rows="4" required placeholder="Describe your product requirements, desired features, deadlines, or existing tech stack..."
+           class="w-full px-3.5 py-2.5 bg-[var(--bg)] border border-[var(--accent)]/15 rounded-lg text-xs text-primary placeholder-[var(--text-dim)] focus:outline-none focus:border-[var(--accent)] transition-all resize-none"></textarea>
+         </div>
+
+         <button type="submit" id="submit-btn"
+          class="w-full btn-primary !py-3 flex items-center justify-center gap-2">
+          <i class="hgi-stroke hgi-mail-send-01 text-sm"></i>
+          <span>Submit Project Inquiry</span>
+         </button>
+         
+         <div class="flex items-center justify-between text-10 text-dim pt-1">
+          <span>🔒 100% confidential & NDA-safe</span>
+          <span>⚡ Fast response &lt; 24h</span>
+         </div>
+         
+         <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-xl font-medium"></div>
+        </form>
+       </div>
       </div>
      </div>
     </section>
-
-<div class="flex-1 overflow-y-auto min-h-0 max-lg:min-h-0">
 
     <!-- Project Modals -->
     <div id="project-modal" class="modal-overlay hidden fixed inset-0 z-[100] flex items-center justify-center p-4" onclick="closeModal(event)">
@@ -673,9 +939,7 @@
     </div>
 
    </div>
-
-  </div>
- </main>
+  </main>
 
  <!-- Theme Switcher -->
  <button id="theme-switcher" class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-card border border-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center transition-all duration-300 hover:bg-[var(--accent)]/20 text-sm shadow-lg backdrop-blur-sm max-lg:bottom-20 max-lg:right-4" title="Toggle theme">

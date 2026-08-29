@@ -254,6 +254,40 @@
   window.addEventListener('resize', updateScrollProgress);
   requestAnimationFrame(updateScrollProgress);
 
+  // ===== Direct Service Request & Cross-linking =====
+  window.requestCustomService = function (serviceName) {
+    openTabByIndex(5); // Switch to Contact tab
+    setTimeout(function () {
+      var serviceSelect = document.getElementById('service-select');
+      var subjectInput = document.getElementById('subject');
+      var messageInput = document.getElementById('message');
+
+      if (serviceSelect && serviceName) {
+        // Try matching select option or fallback to Custom
+        var matched = false;
+        for (var i = 0; i < serviceSelect.options.length; i++) {
+          if (serviceSelect.options[i].value.toLowerCase().includes(serviceName.toLowerCase()) ||
+              serviceName.toLowerCase().includes(serviceSelect.options[i].value.toLowerCase())) {
+            serviceSelect.selectedIndex = i;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          serviceSelect.value = 'Other / Custom Inquiry';
+        }
+      }
+
+      if (subjectInput && serviceName) {
+        subjectInput.value = 'Inquiry: ' + serviceName;
+      }
+
+      if (messageInput) {
+        messageInput.focus();
+      }
+    }, 300);
+  };
+
   // ===== Contact Form (EmailJS) =====
   (function () {
     emailjs.init('UfmpMSg2KlcJjyIX0');
@@ -281,18 +315,20 @@
         return;
       }
 
-      submitBtn.textContent = 'Sending...';
+      var originalBtnHtml = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="hgi-stroke hgi-loading-02 animate-spin text-sm"></i> Sending Requirement...';
       submitBtn.disabled = true;
 
       emailjs.sendForm('service_vxkwckv', 'template_txkht7q', this)
         .then(function () {
-          showFormMessage('Message sent successfully!', true);
+          showFormMessage('Thank you! Your project requirement has been sent. I will review it and reply within 24 hours.', true);
           contactForm.reset();
-          submitBtn.textContent = 'Send Message';
+          submitBtn.innerHTML = originalBtnHtml;
           submitBtn.disabled = false;
-        }, function () {
-          showFormMessage('Failed to send message. Please try again.', false);
-          submitBtn.textContent = 'Send Message';
+        }, function (error) {
+          console.error('EmailJS Error:', error);
+          showFormMessage('Failed to send message via web form. Please email directly to mdborhan.dev@gmail.com or message on WhatsApp.', false);
+          submitBtn.innerHTML = originalBtnHtml;
           submitBtn.disabled = false;
         });
     });
@@ -300,105 +336,91 @@
 
   function showFormMessage(text, isSuccess) {
     formMessage.textContent = text;
-    formMessage.className = 'block text-xs text-center py-2.5 rounded-lg';
+    formMessage.className = 'block text-xs text-center py-3 rounded-lg font-medium';
     if (isSuccess) {
-      formMessage.classList.add('bg-emerald-500/10', 'text-emerald-600', 'border', 'border-emerald-500/15');
+      formMessage.classList.add('bg-emerald-500/15', 'text-emerald-400', 'border', 'border-emerald-500/25');
     } else {
-      formMessage.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/15');
+      formMessage.classList.add('bg-red-500/15', 'text-red-400', 'border', 'border-red-500/25');
     }
     setTimeout(function () {
       formMessage.classList.add('hidden');
-    }, 5000);
+    }, 7000);
   }
 
-  // ===== Project Modals =====
+  // ===== Detailed Project Case Studies =====
   var projects = {
     halda: {
-      tag: 'Enterprise',
-      title: 'Halda - Enterprise SaaS HRM',
-      desc: 'A comprehensive multi-tenant Human Resource Management system designed for enterprise-level organizations. Built with Clean Architecture and modern .NET practices to handle complex HR workflows at scale.',
+      tag: 'Enterprise SaaS HRM',
+      title: 'Halda - Multi-Tenant Enterprise HRM',
+      desc: 'Architected and built a multi-tenant Human Resource Management SaaS platform for enterprise-scale organizations. Solved data isolation and automated complex salary formulas across multiple shifts.',
       features: [
-        'Multi-tenant architecture with isolated data per organization',
-        'Payroll management with automated salary calculations',
-        'Attendance tracking with shift scheduling',
-        'Role-Based Access Control (RBAC) with granular permissions',
-        'Performance review and appraisal management',
-        'Employee onboarding and offboarding workflows',
-        'Reporting and analytics dashboards'
+        'Multi-tenant architecture with separate tenant databases & shared cache',
+        'Automated payroll engine with tax calculations, bonus rules & deductions',
+        'Real-time biometric & web attendance tracking with shift schedules',
+        'Fine-grained Role-Based Access Control (RBAC) with dynamic permission matrices',
+        'Employee lifecycle management: Onboarding, probation, reviews & offboarding',
+        'Comprehensive audit logging and performance appraisal workflows'
       ],
-      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'JWT Auth', 'RBAC', 'Clean Architecture']
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'JWT Auth', 'RBAC', 'Clean Architecture'],
+      ctaService: 'SaaS Platform Development'
     },
     erp: {
-      tag: 'ERP',
-      title: 'Enterprise ERP System',
-      desc: 'A full-featured Enterprise Resource Planning system integrating inventory, supply chain, human resources, and finance modules with automated workflow engine.',
+      tag: 'ERP Platform',
+      title: 'Enterprise ERP & Supply Chain System',
+      desc: 'Engineered an end-to-end ERP platform unifying procurement, multi-warehouse inventory management, vendor lifecycle, and financial general ledgers into automated approval workflows.',
       features: [
-        'Inventory management with real-time stock tracking',
-        'Supply chain management and vendor tracking',
-        'HR module with employee lifecycle management',
-        'Finance module with general ledger and reporting',
-        'Workflow automation for approval processes',
-        'Role-based dashboards for different departments',
-        'Audit logging and compliance tracking'
+        'Multi-warehouse stock tracking with automated reorder triggers',
+        'Supply chain & vendor quote comparison engine',
+        'Multi-level hierarchy approval engine for purchase orders',
+        'General ledger integration with double-entry accounting entries',
+        'Departmental analytics dashboards & exportable audit reports',
+        'Strict concurrency handling to eliminate duplicate transactions'
       ],
-      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'Clean Architecture', 'SOLID Principles']
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'Clean Architecture', 'SOLID Principles'],
+      ctaService: 'Custom Enterprise Software'
     },
     atrai: {
-      tag: 'Finance',
-      title: 'Atrai - Accounting System',
-      desc: 'A modern accounting system providing comprehensive financial management capabilities including expense tracking, general ledger, and financial reporting.',
+      tag: 'FinTech & Accounting',
+      title: 'Atrai - Automated Accounting System',
+      desc: 'Designed a reliable financial management system for SMEs and enterprises providing real-time ledger generation, automated bank reconciliation, and multi-currency billing.',
       features: [
-        'Expense tracking and categorization',
-        'General ledger with double-entry bookkeeping',
-        'Financial reporting with profit & loss statements',
-        'Bank reconciliation and transaction matching',
-        'Invoice generation and management',
-        'Tax calculation and reporting',
-        'Analytics dashboards with key financial metrics'
+        'Double-entry general ledger with automatic debit/credit balancing',
+        'Invoice generation, PDF export, and payment status tracking',
+        'Automated bank statement reconciliation and transaction matching',
+        'Real-time financial statements (Profit & Loss, Balance Sheet, Cash Flow)',
+        'VAT / Tax computation engine with customizable fiscal rules',
+        'Multi-currency transaction support and exchange rate auditing'
       ],
-      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API']
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API', 'Clean Architecture'],
+      ctaService: 'REST API & Backend Development'
     },
     okr: {
-      tag: 'Productivity',
-      title: 'OKR & Task Management',
-      desc: 'An objectives and key results platform with integrated task management, designed to align team goals with organizational strategy.',
+      tag: 'Productivity & Goal Alignment',
+      title: 'Enterprise OKR & KPI Tracking Platform',
+      desc: 'Built an objectives and key results tracking application connecting executive goals with team sprints, progress velocity, and measurable KPI benchmarks.',
       features: [
-        'OKR creation and tracking with progress indicators',
-        'KPI monitoring with customizable metrics',
-        'Goal alignment across departments',
-        'Task management with priorities and deadlines',
-        'Analytics dashboards for performance insights',
-        'Team collaboration and status updates',
-        'Automated progress reporting'
+        'Quarterly & yearly OKR planning with cascading parent-child goal relations',
+        'Dynamic key result tracking with custom metric milestones & sliders',
+        'Automated weekly check-in reminders and confidence scoring',
+        'Interactive team leaderboards and executive progress dashboards',
+        'Sprint task board integration linking daily work directly to OKRs'
       ],
-      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API']
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API'],
+      ctaService: 'Custom Enterprise Software'
     },
     smartslead: {
-      tag: 'CRM',
-      title: 'SmartSLead - CRM',
-      desc: 'A customer relationship management system focused on lead tracking, sales pipeline management, and conversion analytics.',
+      tag: 'CRM & Pipeline Automation',
+      title: 'SmartSLead - Sales & Pipeline CRM',
+      desc: 'A sales execution CRM focusing on lead ingestion, drag-and-drop pipeline stages, deal velocity analytics, and automated sales rep task assignment.',
       features: [
-        'Lead capture and qualification workflows',
-        'Sales pipeline with stage-based tracking',
-        'Contact and company management',
-        'Conversion analytics and reporting',
-        'Email integration for communication tracking',
-        'Task and follow-up reminders',
-        'Sales forecasting and target management'
+        'Visual drag-and-drop Kanban sales pipeline for deal progression',
+        'Multi-source lead capture with automated qualification scoring',
+        'Contact & organization hierarchy management with interaction timelines',
+        'Conversion funnel analytics and quarterly revenue forecasting',
+        'Automated follow-up reminders and team activity tracking'
       ],
-      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API']
-    },
-    services: {
-      tag: 'Services',
-      title: 'What I Can Do For You',
-      desc: 'I build scalable backend systems and SaaS platforms. Click a service to inquire about it.',
-      features: [
-        'Custom Software Development',
-        'SaaS Platform Development',
-        'Website Development'
-      ],
-      tech: ['ASP.NET Core', 'C#', 'PostgreSQL', 'Entity Framework Core'],
-      clickable: true
+      tech: ['ASP.NET Core', 'Entity Framework Core', 'PostgreSQL', 'RESTful API'],
+      ctaService: 'SaaS Platform Development'
     }
   };
 
@@ -420,34 +442,40 @@
     modalFeatures.innerHTML = '';
     p.features.forEach(function (f) {
       var li = document.createElement('li');
-      if (p.clickable) {
-        li.className = 'flex items-center gap-2.5 text-xs text-muted max-md:text-[11px] p-2.5 rounded-lg bg-card border border-[var(--accent)]/8 hover:border-[var(--accent)]/25 cursor-pointer transition-all duration-300';
-        li.innerHTML = '<i class="hgi-stroke hgi-arrow-right-01 text-[var(--accent)]/50 text-10"></i><span class="text-primary">' + f + '</span>';
-        li.addEventListener('click', function () {
-          closeModal();
-          setTimeout(function () {
-            openTabByIndex(4);
-            var subjectInput = document.getElementById('subject');
-            if (subjectInput) {
-              subjectInput.value = f;
-              subjectInput.focus();
-            }
-          }, 350);
-        });
-      } else {
-        li.className = 'flex items-start gap-2.5 text-xs text-muted max-md:text-[11px]';
-        li.innerHTML = '<span class="text-[var(--accent)] mt-0.5 text-10">&#9656;</span><span>' + f + '</span>';
-      }
+      li.className = 'flex items-start gap-2.5 text-xs text-muted max-md:text-[11px]';
+      li.innerHTML = '<span class="text-[var(--accent)] mt-0.5 text-10">&#9656;</span><span>' + f + '</span>';
       modalFeatures.appendChild(li);
     });
 
     modalTech.innerHTML = '';
     p.tech.forEach(function (t) {
       var span = document.createElement('span');
-      span.className = 'text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/60';
+      span.className = 'text-[10px] px-2 py-0.5 rounded bg-[var(--accent)]/5 border border-[var(--accent)]/8 text-[var(--accent)]/70 font-medium';
       span.textContent = t;
       modalTech.appendChild(span);
     });
+
+    // Add direct CTA button to modal
+    var existingModalCta = document.getElementById('modal-cta-btn');
+    if (existingModalCta) {
+      existingModalCta.remove();
+    }
+    
+    var modalContent = modal.querySelector('.modal-content');
+    var ctaContainer = document.createElement('div');
+    ctaContainer.id = 'modal-cta-btn';
+    ctaContainer.className = 'mt-6 pt-4 border-t border-[var(--accent)]/15 flex items-center justify-between gap-3';
+    ctaContainer.innerHTML = '<span class="text-xs text-muted">Need a similar solution?</span>' +
+      '<button class="btn-primary !py-2 !px-4 text-xs flex items-center gap-1.5">' +
+      '<span>Inquire for Similar Project</span> <i class="hgi-stroke hgi-arrow-right-01 text-xs"></i>' +
+      '</button>';
+    
+    ctaContainer.querySelector('button').addEventListener('click', function () {
+      closeModal();
+      requestCustomService(p.ctaService || p.title);
+    });
+
+    modalContent.appendChild(ctaContainer);
 
     modal.classList.remove('hidden');
     requestAnimationFrame(function () {
