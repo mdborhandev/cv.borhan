@@ -303,7 +303,11 @@
 
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
+      const service = document.getElementById('service-select').value.trim();
+      const budget = document.getElementById('budget-select').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const messageInput = document.getElementById('message');
+      const message = messageInput.value.trim();
 
       if (!name || !email || !message) {
         showFormMessage('Please fill in all required fields.', false);
@@ -319,6 +323,22 @@
       submitBtn.innerHTML = '<i class="hgi-stroke hgi-loading-02 animate-spin text-sm"></i> Sending Requirement...';
       submitBtn.disabled = true;
 
+      // EmailJS templates commonly render only {{message}} in the email body.
+      // Merge every form value into it so no project information is omitted.
+      const mergedMessage = [
+        'Project Inquiry',
+        '================',
+        'Name: ' + name,
+        'Email: ' + email,
+        'Service Needed: ' + (service || 'Not provided'),
+        'Estimated Budget: ' + (budget || 'Not provided'),
+        'Project Title / Short Summary: ' + (subject || 'Not provided'),
+        '',
+        'Project Details & Requirements:',
+        message
+      ].join('\n');
+      messageInput.value = mergedMessage;
+
       emailjs.sendForm('service_vxkwckv', 'template_txkht7q', this)
         .then(function () {
           showFormMessage('Thank you! Your project requirement has been sent. I will review it and reply within 24 hours.', true);
@@ -328,6 +348,7 @@
         }, function (error) {
           console.error('EmailJS Error:', error);
           showFormMessage('Failed to send message via web form. Please email directly to mdborhan.dev@gmail.com or message on WhatsApp.', false);
+          messageInput.value = message;
           submitBtn.innerHTML = originalBtnHtml;
           submitBtn.disabled = false;
         });
