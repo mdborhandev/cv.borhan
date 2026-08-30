@@ -163,14 +163,14 @@
     <!-- Header with Tabs -->
     <header class="relative flex w-full shrink-0 p-2 lg:h-[72px] max-lg:h-16 max-lg:items-center max-lg:justify-center sticky top-0 z-50 bg-[var(--bg)] border-b border-[var(--accent)]/10">
      <!-- Tabs -->
-     <div class="flex gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-w-full scrollbar-hide mx-auto">
-      <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
-      <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
-      <button class="tab-btn" onclick="openTab(event, 'services')">Services</button>
-      <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
-      <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
-      <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
-     </div>
+      <div class="flex gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-w-full scrollbar-hide mx-auto">
+       <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
+       <button class="tab-btn tab-btn-highlight" onclick="openTab(event, 'services')"><span class="tab-text-highlight">Services</span></button>
+       <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
+       <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
+       <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
+       <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
+      </div>
     </header>
 
     <!-- Tab Contents Container (Scrollable) -->
@@ -923,17 +923,17 @@
             <option value="Other / Custom Inquiry">Other / Custom Inquiry</option>
            </select>
           </div>
-          <div>
-           <label for="budget-select" class="block text-10 text-dim uppercase tracking-wider mb-1">Estimated Budget (USD)</label>
-           <select id="budget-select" name="budget"
-            class="w-full px-3.5 py-2.5 bg-[var(--bg)] border border-[var(--accent)]/15 rounded-lg text-xs text-primary focus:outline-none focus:border-[var(--accent)] transition-all">
-            <option value="Under $500">&lt; $500 (Small Task / Fix)</option>
-            <option value="$500 - $1,500" selected>$500 - $1,500 (MVP / Module)</option>
-            <option value="$1,500 - $3,500">$1,500 - $3,500 (Full Platform)</option>
-            <option value="$3,500+">$3,500+ (Enterprise System)</option>
-            <option value="Hourly / Retainer">Hourly / Monthly Retainer</option>
-           </select>
-          </div>
+           <div>
+            <label for="budget-select" class="block text-10 text-dim uppercase tracking-wider mb-1">Estimated Budget (BDT)</label>
+            <select id="budget-select" name="budget"
+             class="w-full px-3.5 py-2.5 bg-[var(--bg)] border border-[var(--accent)]/15 rounded-lg text-xs text-primary focus:outline-none focus:border-[var(--accent)] transition-all">
+             <option value="Under ৳50,000">Under ৳50,000 (Small Task / Fix)</option>
+             <option value="৳50,000 - ৳1,50,000">৳50,000 - ৳1,50,000 (MVP / Module)</option>
+             <option value="৳1,50,000 - ৳3,50,000">৳1,50,000 - ৳3,50,000 (Full Platform)</option>
+             <option value="৳3,50,000+">৳3,50,000+ (Enterprise System)</option>
+             <option value="Negotiable" selected>Negotiable</option>
+            </select>
+           </div>
          </div>
 
          <div>

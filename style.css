@@ -543,18 +543,21 @@ body {
   transform: translateY(-1px);
 }
 
-/* ===== Form ===== */
-input, textarea, select {
-  transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
-  font-family: inherit;
-}
-select option {
-  background: var(--bg-sidebar);
-  color: var(--text-primary);
-}
-input:focus, textarea:focus, select:focus {
-  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.25), 0 0 20px rgba(var(--accent-rgb), 0.08);
-}
+ /* ===== Form ===== */
+ input, textarea, select {
+   transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+   font-family: inherit;
+ }
+ select option {
+   background: var(--bg-sidebar);
+   color: var(--text-primary);
+ }
+ input::placeholder, textarea::placeholder {
+   opacity: 0.25;
+ }
+ input:focus, textarea:focus, select:focus {
+   box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.25), 0 0 20px rgba(var(--accent-rgb), 0.08);
+ }
 
 /* ===== Theme Utility Classes ===== */
 .text-primary { color: var(--text-primary); }
