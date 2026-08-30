@@ -126,13 +126,13 @@
     if (currentTab && !isSameTab) {
       currentTab.setAttribute('data-tab-state', 'leaving');
       currentTab.removeAttribute('data-tab-active');
+      currentTab.setAttribute('data-tab-hidden', 'true');
       tabLeaveTimer = setTimeout(function () {
-        currentTab.classList.add('hidden');
         currentTab.removeAttribute('data-tab-state');
       }, 420);
     }
 
-    targetTab.classList.remove('hidden');
+    targetTab.removeAttribute('data-tab-hidden');
     targetTab.setAttribute('data-tab-active', 'true');
     targetTab.setAttribute('data-tab-state', 'entering');
     replayTabMotion(targetTab);
@@ -165,11 +165,16 @@
   // Initialize first tab
   var firstTab = document.querySelector('.tab-content[data-tab-name="about"]');
   if (firstTab) {
-    firstTab.classList.remove('hidden');
+    firstTab.removeAttribute('data-tab-hidden');
     firstTab.setAttribute('data-tab-active', 'true');
     firstTab.setAttribute('data-tab-state', 'active');
     replayTabMotion(firstTab);
   }
+
+  // Hide all other tabs initially (using data attribute, not display:none)
+  document.querySelectorAll('.tab-content:not([data-tab-name="about"])').forEach(function(tab) {
+    tab.setAttribute('data-tab-hidden', 'true');
+  });
 
   // ===== Animated Counters =====
   function animateSingleCounter(counter) {
