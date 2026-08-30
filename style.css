@@ -280,20 +280,21 @@ body {
   color: var(--accent);
 }
 
-/* ===== Tab Content ===== */
-.tab-content {
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(24px) scale(0.985);
-  filter: blur(12px);
-  pointer-events: none;
-  will-change: opacity, transform, filter;
-  transition:
-    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.55s ease;
-}
+ /* ===== Tab Content ===== */
+ .tab-content {
+   position: relative;
+   overflow: hidden;
+   opacity: 0;
+   transform: translateY(24px) scale(0.985);
+   filter: blur(12px);
+   pointer-events: none;
+   will-change: opacity, transform, filter;
+   transition:
+     opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+     filter 0.55s ease;
+   min-height: 100%;
+ }
 .tab-content[data-tab-active="true"] {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -346,11 +347,16 @@ body {
   animation-delay: calc(var(--tab-item-index, 0) * 70ms + 90ms);
 }
 
-/* ===== Scrollable Tab Content ===== */
-[data-tab-active="true"] {
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
-}
+ /* ===== Scrollable Tab Content ===== */
+ .flex-1.overflow-y-auto {
+   scrollbar-width: thin;
+   scrollbar-color: var(--border) transparent;
+ }
+
+ /* Ensure tab content fills scrollable area */
+ .flex-1.overflow-y-auto > .tab-content {
+   min-height: min-content;
+ }
 
 /* ===== Primary Button ===== */
 .btn-primary {
@@ -567,24 +573,29 @@ input:focus, textarea:focus, select:focus {
 @media (max-width: 1023px) { .heading-xl { font-size: 2.1rem; line-height: 44px; } }
 @media (max-width: 767px) { .heading-xl { font-size: 1.85rem; line-height: 28px; } }
 
-/* ===== Responsive: Tablet (max-width: 1023px) ===== */
-@media (max-width: 1023px) {
-  .orb {
-    filter: blur(80px);
-  }
-  .orb-1 { width: 300px; height: 300px; }
-  .orb-2 { width: 250px; height: 250px; }
-  .orb-3 { width: 200px; height: 200px; }
+ /* ===== Responsive: Tablet (max-width: 1023px) ===== */
+ @media (max-width: 1023px) {
+   .orb {
+     filter: blur(80px);
+   }
+   .orb-1 { width: 300px; height: 300px; }
+   .orb-2 { width: 250px; height: 250px; }
+   .orb-3 { width: 200px; height: 200px; }
 
-  /* Sidebar visible on top on mobile */
-  .sidebar-panel {
-    position: relative;
-    width: 100%;
-    height: auto;
-    max-height: none;
-    border-bottom: 1px solid rgba(var(--accent-rgb), 0.08);
-  }
-}
+   /* Sidebar visible on top on mobile */
+   .sidebar-panel {
+     position: relative;
+     width: 100%;
+     height: auto;
+     max-height: none;
+     border-bottom: 1px solid rgba(var(--accent-rgb), 0.08);
+   }
+
+   /* On mobile, don't constrain tab content height */
+   .flex-1.overflow-y-auto {
+     overflow-y: visible;
+   }
+ }
 
 /* ===== Responsive: Mobile (max-width: 767px) ===== */
 @media (max-width: 767px) {

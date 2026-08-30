@@ -234,7 +234,7 @@
 
   // ===== Scroll Progress =====
   var scrollProgress = document.getElementById('scroll-progress');
-  var scrollContainer = document.querySelector('main > div > div.flex-1.overflow-y-auto') || document.scrollingElement || document.documentElement;
+  var scrollContainer = document.querySelector('main > div > div.flex-1.overflow-y-auto') || document.querySelector('.flex-1.overflow-y-auto') || document.scrollingElement || document.documentElement;
 
   function updateScrollProgress() {
     if (!scrollProgress || !scrollContainer) return;

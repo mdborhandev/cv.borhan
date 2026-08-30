@@ -106,25 +106,25 @@
    </div>
   </aside>
 
-  <!-- ===== RIGHT PANEL ===== -->
-  <div class="h-full w-full flex flex-col min-w-0 max-lg:h-auto max-lg:min-h-0 max-lg:flex-1">
-   <!-- Header with Tabs -->
-   <header class="relative flex w-full shrink-0 p-2 lg:h-[72px] max-lg:h-16 max-lg:items-center max-lg:justify-center">
-    <!-- Tabs -->
-    <div class="flex gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-w-full scrollbar-hide mx-auto">
-     <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
-     <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
-     <button class="tab-btn" onclick="openTab(event, 'services')">Services</button>
-     <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
-     <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
-     <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
-    </div>
-   </header>
+   <!-- ===== RIGHT PANEL ===== -->
+   <div class="h-full w-full flex flex-col min-w-0 max-lg:h-auto max-lg:min-h-0 max-lg:flex-1 overflow-hidden">
+    <!-- Header with Tabs -->
+    <header class="relative flex w-full shrink-0 p-2 lg:h-[72px] max-lg:h-16 max-lg:items-center max-lg:justify-center sticky top-0 z-50 bg-[var(--bg)] border-b border-[var(--accent)]/10">
+     <!-- Tabs -->
+     <div class="flex gap-1.5 overflow-x-auto rounded-md border-2 border-[var(--accent)]/15 p-1 px-2 max-w-full scrollbar-hide mx-auto">
+      <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
+      <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
+      <button class="tab-btn" onclick="openTab(event, 'services')">Services</button>
+      <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
+      <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
+      <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
+     </div>
+    </header>
 
-   <!-- Tab Contents -->
-   
+    <!-- Tab Contents Container (Scrollable) -->
+    <div class="flex-1 overflow-y-auto overflow-x-hidden">
 
-    <!-- About Tab -->
+     <!-- About Tab -->
     <section class="tab-content relative flex min-h-full w-full flex-col" data-tab-name="about">
      <div class="tab-panel-inner flex min-h-full w-full gap-8 p-[5%] max-lg:flex-col max-lg:gap-6 max-lg:p-6 max-md:p-4">
       <!-- Left: Text + Buttons -->
@@ -912,7 +912,9 @@
        </div>
       </div>
      </div>
-    </section>
+     </section>
+
+    </div><!-- End Tab Contents Container (Scrollable) -->
 
     <!-- Project Modals -->
     <div id="project-modal" class="modal-overlay hidden fixed inset-0 z-[100] flex items-center justify-center p-4" onclick="closeModal(event)">
