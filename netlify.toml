@@ -1,0 +1,28 @@
+[build]
+  publish = "."
+  command = "echo 'Static site — no build needed'"
+
+# Force HTTPS redirect
+[[redirects]]
+  from = "http://*/*"
+  to = "https://:host/:splat"
+  status = 301
+  force = true
+
+# X-Robots-Tag header for all HTML pages
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    X-Robots-Tag = "index, follow"
+
+# Cache static assets aggressively
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# No-cache HTML to always serve latest
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
