@@ -9,8 +9,9 @@
    --text-primary: #ffffff;
    --text-secondary: #ffffff;
    --text-muted: #ffffff;
-   --text-dim: #e0e0e0;
-   --border: rgba(var(--accent-rgb), 0.08);
+    --text-dim: #e0e0e0;
+    --placeholder: #6b7280;
+    --border: rgba(var(--accent-rgb), 0.08);
    --border-light: rgba(var(--accent-rgb), 0.05);
    --shadow: rgba(var(--accent-rgb), 0.05);
  }
@@ -24,8 +25,9 @@
    --text-primary: #000000;
    --text-secondary: #000000;
    --text-muted: #000000;
-   --text-dim: #333333;
-   --border: #e2e4e9;
+    --text-dim: #333333;
+    --placeholder: #9ca3af;
+    --border: #e2e4e9;
    --border-light: #e8eaf0;
    --shadow: rgba(0, 0, 0, 0.04);
  }
@@ -572,7 +574,7 @@ body {
 /* ===== Typography Utilities ===== */
 .text-10 { font-size: 10px; }
 .text-11 { font-size: 11px; }
-.heading-xl { font-size: 2.2rem; font-weight: 600; line-height: 48px; }
+.heading-xl { font-size: 2.2rem; font-weight: 800; line-height: 48px; }
 @media (max-width: 1279px) { .heading-xl { font-size: 2.5rem; line-height: 48px; } }
 @media (max-width: 1023px) { .heading-xl { font-size: 2.1rem; line-height: 44px; } }
 @media (max-width: 767px) { .heading-xl { font-size: 1.85rem; line-height: 28px; } }
