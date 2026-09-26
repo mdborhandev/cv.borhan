@@ -383,6 +383,18 @@ body {
   z-index: 0;
 }
 
+/* Resting inactive panel — MUST be collapsed.
+   An absolutely-positioned box extends the scrollable overflow of an ancestor
+   scroll container, so an un-collapsed inactive panel still pushes the scroll
+   range open. That let the tallest tab (Services) dictate the scroll height for
+   every tab, so short tabs scrolled hundreds of px into empty space.
+   height:0 + overflow:hidden keeps the box from contributing any overflow. */
+.tab-content:not([data-tab-active="true"]):not([data-tab-state]) {
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
 .tab-content[data-tab-active="true"] {
   opacity: 1;
   pointer-events: auto;
@@ -402,7 +414,17 @@ body {
   animation: tabPanelEntrance 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Outgoing panel: still painted so the cross-fade is visible, but clamped to the
+   scroller's own height so it cannot open up the scroll range while it fades. */
 .tab-content[data-tab-state="leaving"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
   opacity: 0;
   transform: translateY(-18px) scale(0.975);
   filter: blur(14px);
@@ -767,7 +789,10 @@ input:focus, textarea:focus, select:focus {
     border-right: none;
   }
 
-  /* On mobile, don't constrain tab content height */
+  /* On mobile this wrapper has no fixed height, so it grows to fit its tab and
+     never scrolls itself — the page scrolls instead. Note `overflow-y: visible`
+     is NOT usable here: with the element's overflow-x:hidden, CSS forces a
+     visible overflow-y to compute to auto anyway. */
   .flex-1.overflow-y-auto {
     overflow-y: visible;
   }
