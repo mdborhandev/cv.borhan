@@ -73,10 +73,29 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ==========================================================================
+   TYPOGRAPHY — the whole site's type is controlled from these 3 variables.
+   Swap a family here and it applies everywhere, no markup changes.
+   All three are variable fonts (wght ranges), so any weight is real, not faked.
+   ========================================================================== */
+:root {
+  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Kept defined so technical labels can be monospaced again with one line,
+     but deliberately unused in the client-facing UI. */
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Fluid hero scale — no media queries needed */
+  --hero-size: clamp(1.75rem, 3.4vw, 2.9rem);
+  --hero-gradient: linear-gradient(100deg, var(--accent) 0%, #a5b4fc 48%, var(--accent-3) 100%);
+}
+
 body {
   min-height: 100vh;
   color: var(--text-primary);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
   transition: background 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
   /* Layered ambient wash — the colour that shows through the glass */
@@ -158,10 +177,54 @@ body {
   .glass,
   .bg-card,
   .glass-header,
+  .stack-col,
   .modal-content {
     background: var(--bg-sidebar);
   }
 }
+
+/* ==========================================================================
+   TECH STACK GRID — capability, grouped by category
+   ========================================================================== */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.stack-col {
+  padding: 0.65rem 0.75rem 0.75rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 0.7rem;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: var(--glass-inset);
+}
+
+.stack-col-head {
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.6rem;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.stack-col-body { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+.stack-item {
+  padding: 0.15rem 0.5rem;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.35rem;
+}
+
+@media (max-width: 1023px) { .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .stack-grid { grid-template-columns: 1fr; } }
 
 /* ===== Film Grain ===== */
 .noise-overlay {
@@ -305,7 +368,8 @@ body {
     border-color 0.3s ease,
     box-shadow 0.35s ease;
   white-space: nowrap;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
 }
 
 .tab-btn::before {
@@ -763,12 +827,54 @@ input:focus, textarea:focus, select:focus {
 .border-theme { border-color: var(--border); }
 
 /* ===== Typography Utilities ===== */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Small meta text uses the body face for a consistent, client-friendly read.
+   To bring back a monospace texture on technical labels only, set
+   `font-family: var(--font-mono)` on this rule. */
+.text-10,
+.text-11,
+.skill-badge,
+.chip-glass {
+  font-family: var(--font-body);
+}
+
 .text-10 { font-size: 10px; }
 .text-11 { font-size: 11px; }
-.heading-xl { font-size: 2.2rem; font-weight: 800; line-height: 48px; }
-@media (max-width: 1279px) { .heading-xl { font-size: 2.5rem; line-height: 48px; } }
-@media (max-width: 1023px) { .heading-xl { font-size: 2.1rem; line-height: 44px; } }
-@media (max-width: 767px) { .heading-xl { font-size: 1.85rem; line-height: 28px; } }
+
+/* ===== Hero Headline =====
+   Gradient fill is driven by --hero-gradient, so recolouring the hero is a
+   one-line change in :root. Remove the class to get flat --text-primary. */
+.heading-xl {
+  font-family: var(--font-display);
+  font-size: var(--hero-size);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  background-image: var(--hero-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Optional glow. Add alongside .heading-xl if you want it. */
+.heading-xl-glow {
+  filter: drop-shadow(0 6px 26px rgba(var(--accent-rgb), 0.35));
+}
+
+/* Without background-clip:text support, fall back to a solid accent colour
+   rather than invisible text. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .heading-xl {
+    color: var(--accent);
+    -webkit-text-fill-color: currentColor;
+    background-image: none;
+  }
+}
 
 /* ===== Responsive: Tablet (max-width: 1023px) ===== */
 @media (max-width: 1023px) {

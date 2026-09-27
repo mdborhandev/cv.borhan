@@ -23,7 +23,7 @@
  <link rel="canonical" href="https://borhanuddinfahim.netlify.app">
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -38,7 +38,7 @@
       }
     }
   </script>
- <link rel="stylesheet" href="style.css?v=15">
+ <link rel="stylesheet" href="style.css?v=18">
  <title>Mohammed Borhan Uddin Fahim | Software Engineer | ASP.NET Core | SaaS Developer</title>
 
  <!-- Schema.org Structured Data -->
@@ -182,64 +182,117 @@
 
      <!-- About Tab -->
      <section class="tab-content flex min-h-full w-full flex-col" data-tab-name="about">
-     <div class="tab-panel-inner flex min-h-full w-full gap-8 p-[5%] max-lg:flex-col max-lg:gap-6 max-lg:p-6 max-md:p-4">
-      <!-- Left: Text + Buttons -->
-      <div class="flex-1 flex flex-col justify-center">
-       <div class="text-10 uppercase tracking-[0.25em] text-[var(--accent)]/70 mb-3 flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> // backend & saas software engineer
-       </div>
-       <h1 class="heading-xl">
-        Building high-performance backends &amp; scalable SaaS applications
-       </h1>
-       <div class="mt-4 max-w-[540px] text-justify max-lg:max-w-full text-sm text-muted leading-relaxed max-md:text-xs">
-        I engineer production-grade web systems, multi-tenant SaaS platforms, and secure REST APIs for startups and businesses. Specializing in ASP.NET Core, PostgreSQL, and Clean Architecture for zero-downtime reliability.
-       </div>
-       
-       <div class="mt-5 flex flex-wrap gap-2 max-w-[540px]">
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">ASP.NET Core</span>
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">C#</span>
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">PostgreSQL</span>
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">Multi-Tenancy & RBAC</span>
-        <span class="text-10 px-2.5 py-1 rounded-full bg-[var(--accent)]/8 border border-[var(--accent)]/15 text-[var(--accent)] font-medium">Clean Architecture</span>
-       </div>
+     <div class="tab-panel-inner flex min-h-full w-full flex-col gap-7 px-[5%] py-[4%] max-lg:gap-6 max-lg:p-6 max-md:p-4">
+      <div class="flex w-full gap-8 max-lg:flex-col max-lg:gap-6">
+       <!-- Left: positioning + CTAs -->
+       <div class="flex-1 flex flex-col justify-center">
+        <div class="text-10 uppercase tracking-[0.25em] text-[var(--accent)]/70 mb-3 flex items-center gap-2">
+         <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Available for new projects
+        </div>
+        <h1 class="heading-xl heading-xl-glow">
+         Reliable software, delivered on schedule
+        </h1>
+        <div class="mt-4 max-w-[540px] text-justify max-lg:max-w-full text-sm text-muted leading-relaxed max-md:text-xs">
+         I build and maintain the backend systems your business runs on &mdash; secure APIs, databases and integrations that keep working after launch. Every engagement comes with a clear scope, a fixed timeline, and documentation your next developer can actually use.
+        </div>
 
         <div class="mt-6 flex flex-wrap gap-3">
-         <button onclick="requestCustomService('New Project Consultation')" class="btn-primary btn-lg transition-transform duration-300 hover:scale-[1.02] flex items-center gap-2 border-2 border-[var(--accent)]">
-          <i class="hgi-stroke hgi-flash text-xs"></i>
-          <span>Hire / Start Project</span>
+         <button onclick="requestCustomService('New Project Consultation')" class="btn-primary btn-lg transition-transform duration-300 hover:scale-[1.02] flex items-center gap-2">
+          <span>Start a Project</span>
          </button>
-        <a href="#projects" onclick="openTabByIndex(1)" class="btn-outline transition-transform duration-300 hover:scale-[1.02]">
-         <span>Explore Case Studies</span>
-        </a>
+         <a href="#projects" onclick="openTabByIndex(1)" class="btn-outline transition-transform duration-300 hover:scale-[1.02]">
+          <span>View Case Studies</span>
+         </a>
+        </div>
+
+        <div class="mt-5 text-11 text-dim tracking-wide max-md:text-10 flex flex-wrap items-center gap-x-4 gap-y-1.5">
+         <span class="flex items-center gap-1.5"><i class="hgi-stroke hgi-shield-check text-emerald-400 text-xs"></i> NDA-ready &amp; full IP ownership</span>
+         <span class="flex items-center gap-1.5"><i class="hgi-stroke hgi-clock-01 text-xs"></i> Replies within 24 hours</span>
+         <span class="flex items-center gap-1.5"><i class="hgi-stroke hgi-maps-pin-01 text-xs"></i> Remote, worldwide</span>
+        </div>
        </div>
-       
-       <div class="mt-4 text-11 text-dim tracking-wide max-md:text-10 flex items-center gap-2">
-        <i class="hgi-stroke hgi-shield-check text-emerald-400 text-xs"></i>
-        <span>Available for project-based contracts & dedicated full-time engineering</span>
+
+       <!-- Right: what the client actually receives -->
+       <div class="flex-1 flex flex-col justify-center max-lg:w-full">
+        <div class="glass glass-sheen rounded-xl p-6 max-md:p-5">
+         <h2 class="text-base font-semibold text-primary mb-1">What you get</h2>
+         <p class="text-11 text-dim mb-4 max-md:text-10">The same commitments on every engagement.</p>
+         <ul class="flex flex-col gap-3">
+          <li class="flex items-start gap-2.5">
+           <i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-xs mt-0.5 shrink-0"></i>
+           <div>
+            <div class="text-xs font-medium text-primary">Clear scope &amp; fixed timeline</div>
+            <div class="text-11 text-dim mt-0.5 max-md:text-10">You approve the scope and price before any work starts.</div>
+           </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+           <i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-xs mt-0.5 shrink-0"></i>
+           <div>
+            <div class="text-xs font-medium text-primary">Documented, maintainable code</div>
+            <div class="text-11 text-dim mt-0.5 max-md:text-10">Handed over with comments and setup instructions, never a black box.</div>
+           </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+           <i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-xs mt-0.5 shrink-0"></i>
+           <div>
+            <div class="text-xs font-medium text-primary">Support after launch</div>
+            <div class="text-11 text-dim mt-0.5 max-md:text-10">A bug-fix window after every release, plus ongoing maintenance available.</div>
+           </div>
+          </li>
+          <li class="flex items-start gap-2.5">
+           <i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-xs mt-0.5 shrink-0"></i>
+           <div>
+            <div class="text-xs font-medium text-primary">You talk to me directly</div>
+            <div class="text-11 text-dim mt-0.5 max-md:text-10">No account managers, no hand-offs, no waiting in a queue.</div>
+           </div>
+          </li>
+         </ul>
+        </div>
        </div>
       </div>
 
-      <!-- Right: Stats & Trust Metrics -->
-      <div class="flex-1 grid grid-cols-2 gap-4 content-center max-md:gap-3">
-       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4 hover:border-[var(--accent)]/25 transition-all">
-        <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="2" data-suffix=".5+">0</div>
-        <div class="text-xs text-primary font-medium mt-1 max-md:text-11">Years Experience</div>
-        <div class="text-10 text-muted mt-0.5">Production .NET & SaaS</div>
+      <!-- Tech stack -->
+      <div class="w-full">
+       <div class="text-10 uppercase tracking-[0.25em] text-[var(--accent)]/70 mb-3">
+        Tech stack
        </div>
-       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4 hover:border-[var(--accent)]/25 transition-all">
-        <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="10">0</div>
-        <div class="text-xs text-primary font-medium mt-1 max-md:text-11">Projects Delivered</div>
-        <div class="text-10 text-muted mt-0.5">SaaS, ERP & FinTech</div>
-       </div>
-       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4 hover:border-[var(--accent)]/25 transition-all">
-        <div class="text-3xl font-semibold text-emerald-400 max-md:text-2xl" data-target="99" data-suffix=".9%">0</div>
-        <div class="text-xs text-primary font-medium mt-1 max-md:text-11">Reliability & Uptime</div>
-        <div class="text-10 text-muted mt-0.5">Stable Architecture</div>
-       </div>
-       <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card text-center max-md:p-4 hover:border-[var(--accent)]/25 transition-all">
-        <div class="text-3xl font-semibold text-primary max-md:text-2xl" data-target="30" data-suffix="%+">0</div>
-        <div class="text-xs text-primary font-medium mt-1 max-md:text-11">Performance Boost</div>
-        <div class="text-10 text-muted mt-0.5">API & DB Optimization</div>
+       <div class="stack-grid">
+        <div class="stack-col">
+         <div class="stack-col-head">Backend</div>
+         <div class="stack-col-body">
+          <span class="stack-item">C#</span><span class="stack-item">ASP.NET Core</span><span class="stack-item">Web API</span><span class="stack-item">MVC</span><span class="stack-item">RESTful API Design</span>
+         </div>
+        </div>
+        <div class="stack-col">
+         <div class="stack-col-head">Databases</div>
+         <div class="stack-col-body">
+          <span class="stack-item">PostgreSQL</span><span class="stack-item">SQL Server</span><span class="stack-item">MySQL</span><span class="stack-item">EF Core</span><span class="stack-item">LINQ</span>
+         </div>
+        </div>
+        <div class="stack-col">
+         <div class="stack-col-head">Architecture</div>
+         <div class="stack-col-body">
+          <span class="stack-item">Clean Architecture</span><span class="stack-item">SOLID</span><span class="stack-item">Repository</span><span class="stack-item">Dependency Injection</span>
+         </div>
+        </div>
+        <div class="stack-col">
+         <div class="stack-col-head">Security</div>
+         <div class="stack-col-body">
+          <span class="stack-item">JWT Auth</span><span class="stack-item">RBAC</span>
+         </div>
+        </div>
+        <div class="stack-col">
+         <div class="stack-col-head">Frontend</div>
+         <div class="stack-col-body">
+          <span class="stack-item">HTML5</span><span class="stack-item">CSS3</span><span class="stack-item">JavaScript</span><span class="stack-item">Tailwind</span><span class="stack-item">Bootstrap 5</span>
+         </div>
+        </div>
+        <div class="stack-col">
+         <div class="stack-col-head">Tools &amp; Cloud</div>
+         <div class="stack-col-body">
+          <span class="stack-item">Git</span><span class="stack-item">GitHub</span><span class="stack-item">Docker</span><span class="stack-item">Azure</span><span class="stack-item">IIS</span><span class="stack-item">Swagger</span><span class="stack-item">Postman</span>
+         </div>
+        </div>
        </div>
       </div>
      </div>
@@ -254,7 +307,7 @@
       <!-- Section Header -->
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[var(--accent)]/10 pb-4">
        <div>
-        <span class="text-10 text-dim uppercase tracking-wider">// proof_of_work & case_studies</span>
+        <span class="text-10 text-dim uppercase tracking-wider">Proof of work &amp; case studies</span>
         <h2 class="text-2xl font-semibold text-primary mt-1 max-md:text-xl">Featured Client & Enterprise Projects</h2>
        </div>
        <p class="text-xs text-muted max-w-[360px] max-md:text-11">
@@ -430,7 +483,7 @@
        <!-- Section Header -->
        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[var(--accent)]/10 pb-4">
         <div>
-         <span class="text-10 text-dim uppercase tracking-wider">// what_i_offer & client_services</span>
+         <span class="text-10 text-dim uppercase tracking-wider">What I offer</span>
          <h2 class="text-2xl font-semibold text-primary mt-1 max-md:text-xl">Specialized Engineering Services</h2>
         </div>
         <p class="text-xs text-muted max-w-[380px] max-md:text-11">
@@ -614,7 +667,7 @@
        <!-- Client Workflow Section: How We Work Together -->
        <div class="mt-4 rounded-2xl p-6 bg-card border border-[var(--accent)]/15">
         <div class="mb-4">
-         <span class="text-10 text-[var(--accent)] uppercase tracking-wider">// working_process</span>
+         <span class="text-10 text-[var(--accent)] uppercase tracking-wider">How I work</span>
          <h3 class="text-lg font-semibold text-primary mt-1">How We Work Together (Step-by-Step)</h3>
          <p class="text-xs text-muted mt-1">A transparent, reliable process from first message to deployment.</p>
         </div>
@@ -758,7 +811,7 @@
       <div class="timeline flex flex-col gap-5 w-full">
        <!-- Experience Label -->
        <div class="relative pl-8 py-2">
-        <span class="text-10 text-dim uppercase tracking-wider">// experience</span>
+        <span class="text-10 text-dim uppercase tracking-wider">Experience</span>
        </div>
 
        <!-- Job 1 -->
@@ -809,7 +862,7 @@
 
        <!-- Education Label -->
        <div class="relative pl-8 py-2">
-        <span class="text-10 text-dim uppercase tracking-wider">// education</span>
+        <span class="text-10 text-dim uppercase tracking-wider">Education</span>
        </div>
 
        <!-- BSc -->
@@ -854,7 +907,7 @@
      <div class="tab-panel-inner flex min-h-full w-full gap-10 p-[5%] px-[8%] max-lg:flex-col max-lg:gap-8 max-lg:px-6 max-md:px-4 max-md:gap-6">
       <!-- Left: Contact Info -->
       <div class="flex-1 flex flex-col justify-center">
-       <div class="text-10 uppercase tracking-widest text-[var(--accent)] mb-2">// let_s_connect</div>
+       <div class="text-10 uppercase tracking-widest text-[var(--accent)] mb-2">Let&rsquo;s connect</div>
        <h2 class="text-3xl font-semibold text-primary tracking-tight mb-2 max-md:text-2xl">Start a Project or Hire Me</h2>
        <p class="text-sm text-muted mb-6 leading-relaxed max-md:text-xs">
         Have a specific scope, an existing project that needs backend expertise, or want a custom quote? Fill out the project brief form or reach out directly for a rapid response.
@@ -962,13 +1015,12 @@
 
          <button type="submit" id="submit-btn"
           class="w-full btn-primary !py-3 flex items-center justify-center gap-2">
-          <i class="hgi-stroke hgi-mail-send-01 text-sm"></i>
-          <span>Submit Project Inquiry</span>
+          <span>Send Message</span>
          </button>
          
          <div class="flex items-center justify-between text-10 text-dim pt-1">
-          <span>🔒 100% confidential & NDA-safe</span>
-          <span>⚡ Fast response &lt; 24h</span>
+          <span class="flex items-center gap-1.5"><i class="hgi-stroke hgi-checkmark text-emerald-400 text-xs"></i> NDA-ready</span>
+          <span>Reply within 24 hours</span>
          </div>
          
          <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-xl font-medium"></div>
@@ -994,11 +1046,11 @@
       </div>
       <p id="modal-desc" class="text-sm text-muted leading-relaxed mb-5 max-md:text-xs"></p>
       <div id="modal-features-section">
-       <h4 class="text-xs font-medium text-primary mb-3">// features</h4>
+       <h4 class="text-xs font-medium text-primary mb-3">Features</h4>
        <ul id="modal-features" class="space-y-2"></ul>
       </div>
       <div class="mt-5">
-       <h4 class="text-xs font-medium text-primary mb-3">// tech_stack</h4>
+       <h4 class="text-xs font-medium text-primary mb-3">Tech Stack</h4>
        <div id="modal-tech" class="flex flex-wrap gap-1.5"></div>
       </div>
      </div>
@@ -1023,6 +1075,6 @@
  </div>
 
  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="script.js?v=15"></script>
+  <script src="script.js?v=18"></script>
 </body>
 </html>
