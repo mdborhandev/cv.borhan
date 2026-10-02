@@ -1,24 +1,19 @@
 (function () {
   'use strict';
 
-  // ===== Theme Switcher (Light/Dark Toggle) =====
+  // ===== Theme =====
+  // Dark ("night") only. Tokens live on :root in style.css, so there is no
+  // theme state to read or write — we just clear any value left behind by the
+  // old light/dark switcher so nothing can flip the site back to light.
   const html = document.documentElement;
-  const themeBtn = document.getElementById('theme-switcher');
-  const themeIcon = document.getElementById('theme-icon');
-  let currentTheme = localStorage.getItem('theme') || 'dark';
 
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    currentTheme = theme;
-    localStorage.setItem('theme', theme);
-    themeIcon.className = theme === 'dark' ? 'hgi-stroke hgi-sun-01' : 'hgi-stroke hgi-moon';
+  html.setAttribute('data-theme', 'dark');
+
+  try {
+    localStorage.removeItem('theme');
+  } catch (e) {
+    /* Private mode / storage blocked — dark is the default anyway. */
   }
-
-  applyTheme(currentTheme);
-
-  themeBtn.addEventListener('click', function () {
-    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-  });
 
   // ===== Sidebar Entrance Motion =====
   function setupSidebarMotion() {
