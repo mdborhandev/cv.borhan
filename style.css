@@ -937,6 +937,266 @@ h1, h2, h3, h4 {
   }
 }
 
+/* ===== Borhan's pocket-size portfolio guide ===== */
+.portfolio-guide {
+  position: fixed;
+  z-index: 84;
+  right: clamp(1rem, 2.4vw, 2.25rem);
+  bottom: 1.5rem;
+  width: min(360px, calc(100vw - 2rem));
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 420ms ease, transform 560ms cubic-bezier(.2,.75,.25,1);
+}
+.portfolio-guide[data-visible="true"] { opacity: 1; transform: translateY(0); }
+.guide-character, .guide-popover { pointer-events: auto; }
+.guide-character {
+  position: relative;
+  display: block;
+  width: 124px;
+  height: 166px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.guide-character:focus-visible, .guide-dismiss:focus-visible,
+.guide-actions button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.guide-character-shadow {
+  position: absolute;
+  bottom: 3px;
+  left: 22px;
+  width: 78px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .22);
+  filter: blur(5px);
+  transition: transform 450ms ease, opacity 450ms ease;
+}
+.guide-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-origin: 50% 100%;
+  animation: guideIdle 4.6s ease-in-out infinite;
+}
+.guide-eyes { transform-box: fill-box; transform-origin: center; animation: guideBlink 5.4s infinite; }
+.guide-pupils { transform: translate(var(--gaze-x, 0px), var(--gaze-y, 0px)); transition: transform 360ms cubic-bezier(.2,.7,.2,1); }
+.guide-mouth { transform-box: fill-box; transform-origin: center; }
+.guide-art.is-speaking .guide-mouth { animation: guideSpeak 180ms ease-in-out 4 alternate; }
+.guide-breathe { transform-box: fill-box; transform-origin: center 55%; animation: guideBreath 3.8s ease-in-out infinite; }
+.guide-leg { transform-box: fill-box; transform-origin: 50% 0; }
+.guide-leg-front, .guide-leg-back { animation: none; }
+.guide-character-hint {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  padding: .16rem .42rem;
+  border: 1px solid #39443c;
+  border-radius: 3px;
+  color: #a8b4a9;
+  background: #171c19;
+  font: 600 9px/1.2 var(--font-body);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.guide-character:hover .guide-character-hint,
+.guide-character:focus-visible .guide-character-hint { opacity: 1; transform: translateY(0); }
+.guide-character:hover .guide-art, .guide-character:focus-visible .guide-art { animation-duration: 2.2s; }
+.guide-character.is-walking .guide-art { animation: guideWalk .42s ease-in-out 2; }
+.guide-character.is-walking .guide-leg-front { animation: guideStride .21s ease-in-out 4 alternate; }
+.guide-character.is-walking .guide-leg-back { animation: guideStride .21s ease-in-out 4 alternate-reverse; }
+.guide-character.is-preparing .guide-art { animation: guideAnticipate 180ms ease-in both; }
+.guide-character.is-turning .guide-art { animation: guideTurn 220ms ease-in-out both; }
+.guide-character.is-settling .guide-art { animation: guideSettle 420ms ease-out both; }
+.guide-character.is-waving .guide-breathe { animation: guideWave .42s ease-in-out 3; }
+.guide-character.is-waving .guide-art { animation: guideNod .5s ease-in-out 2; }
+.guide-wave-arm { transform-box: fill-box; transform-origin: 0% 100%; }
+.guide-character.is-waving .guide-wave-arm { animation: guideArmWave .42s ease-in-out 3; }
+
+.guide-popover {
+  position: absolute;
+  right: 72px;
+  bottom: 112px;
+  width: min(306px, calc(100vw - 2rem));
+  padding: 1rem 1rem .9rem;
+  border: 1px solid #39443c;
+  border-radius: 8px 8px 2px 8px;
+  background: #1a211c;
+  box-shadow: 0 12px 38px rgba(0, 0, 0, .3);
+  transform: translateY(8px) scale(.985);
+  transform-origin: 100% 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms ease, transform 360ms cubic-bezier(.2,.75,.25,1),
+    top 520ms cubic-bezier(.22,.68,.12,1), left 520ms cubic-bezier(.22,.68,.12,1),
+    visibility 0s linear 280ms;
+}
+.guide-popover::after {
+  content: '';
+  position: absolute;
+  right: 17px;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  background: #1a211c;
+  border-right: 1px solid #39443c;
+  border-bottom: 1px solid #39443c;
+  transform: rotate(45deg);
+}
+.portfolio-guide[data-open="true"] .guide-popover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+.portfolio-guide.is-tour-mode {
+  right: auto;
+  bottom: auto;
+  width: 124px;
+  transform: none;
+  left: var(--guide-x, 0px);
+  top: var(--guide-y, 0px);
+}
+.portfolio-guide.is-tour-mode .guide-character { margin: 0; }
+.portfolio-guide.is-tour-mode.is-returning { width: var(--return-width, 360px); }
+.portfolio-guide.is-tour-mode.is-returning .guide-character { margin-left: auto; }
+.portfolio-guide.is-tour-mode .guide-popover {
+  position: fixed;
+  right: auto;
+  bottom: auto;
+  left: var(--bubble-x, 8px);
+  top: var(--bubble-y, 8px);
+}
+.guide-actions.guide-tour-actions { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; }
+.guide-tour-actions .guide-primary { justify-content: center; }
+.guide-menu {
+  display: flex;
+  flex: 0 0 100%;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .8rem;
+  margin-top: .2rem;
+  padding-top: .45rem;
+  border-top: 1px solid #303a33;
+  animation: guideSpeechIn 180ms ease both;
+}
+.guide-menu[hidden] { display: none; }
+.guide-tour-actions .guide-end { margin-left: 0; text-align: right; }
+.guide-tour-target {
+  position: relative !important;
+  z-index: 4 !important;
+  border-radius: 4px;
+  outline: 1px solid rgba(var(--accent-rgb), .88);
+  outline-offset: 6px;
+  box-shadow: 0 0 0 10px rgba(var(--accent-rgb), .075);
+  transition: outline-color 220ms ease, box-shadow 220ms ease;
+}
+.guide-popover-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.guide-kicker { margin: 0; color: #8daf98; font-size: 9px; font-weight: 700; letter-spacing: .14em; }
+.guide-step { margin: .25rem 0 0; color: #829087; font-size: 10px; font-variant-numeric: tabular-nums; }
+.guide-dismiss {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  margin: -.35rem -.35rem 0 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #859087;
+  font: 400 21px/1 var(--font-body);
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease;
+}
+.guide-dismiss:hover { color: #f0f2ed; background: #29322c; }
+.guide-speech {
+  min-height: 2.7em;
+  margin: .7rem 0 .85rem;
+  color: #edf0e9;
+  font-size: 13px;
+  line-height: 1.55;
+  letter-spacing: -.01em;
+  animation: guideSpeechIn 260ms ease both;
+}
+.guide-speech.is-changing { animation: guideSpeechIn 260ms ease both; }
+.guide-actions { display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; }
+.guide-actions[hidden] { display: none; }
+.guide-actions button { font-family: var(--font-body); cursor: pointer; }
+.guide-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .52rem .72rem;
+  border: 1px solid #8daf98;
+  border-radius: 3px;
+  background: #8daf98;
+  color: #162019;
+  font-size: 11px;
+  font-weight: 700;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+.guide-primary:hover { background: #a8c5ad; border-color: #a8c5ad; transform: translateY(-1px); }
+.guide-quiet, .guide-end {
+  padding: .45rem .4rem;
+  border: 0;
+  background: transparent;
+  color: #a1aaa1;
+  font-size: 10px;
+  transition: color 160ms ease;
+}
+.guide-quiet:hover, .guide-end:hover { color: #eff2eb; }
+.guide-end { margin-left: auto; color: #78827a; }
+
+@keyframes guideIdle { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3px) rotate(.35deg); } }
+@keyframes guideBlink { 0%, 2%, 4%, 49%, 51%, 100% { transform: scaleY(1); } 3%, 50% { transform: scaleY(.08); } }
+@keyframes guideSpeak { from { transform: scaleY(.8); } to { transform: scaleY(1.65); } }
+@keyframes guideBreath { 0%, 100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(1px) scaleY(1.012); } }
+@keyframes guideStep { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(2deg); } }
+@keyframes guideWalk { 0%, 100% { transform: translateX(0) rotate(0); } 25% { transform: translateX(-4px) rotate(-2deg); } 75% { transform: translateX(4px) rotate(2deg); } }
+@keyframes guideStride { from { transform: rotate(-7deg); } to { transform: rotate(7deg); } }
+@keyframes guideAnticipate { from { transform: translateY(0) scaleY(1); } to { transform: translateY(2px) scaleY(.975); } }
+@keyframes guideTurn { 0% { transform: perspective(500px) rotateY(0); } 55% { transform: perspective(500px) rotateY(72deg); } 100% { transform: perspective(500px) rotateY(0); } }
+@keyframes guideSettle { 0% { transform: translateY(2px) rotate(1deg); } 50% { transform: translateY(-1px) rotate(-.7deg); } 100% { transform: translateY(0) rotate(0); } }
+@keyframes guideWave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-1deg) translateY(-1px); } }
+@keyframes guideArmWave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(8deg); } }
+@keyframes guideNod { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(2px) rotate(-1deg); } }
+@keyframes guideSpeechIn { from { opacity: .25; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1023px) {
+  .portfolio-guide { right: .65rem; bottom: 5.6rem; width: min(340px, calc(100vw - 1.3rem)); }
+  .guide-character { width: 106px; height: 143px; }
+  .guide-popover { right: 58px; bottom: 99px; width: min(288px, calc(100vw - 1.3rem)); }
+}
+@media (max-width: 380px) {
+  .portfolio-guide { right: .45rem; width: calc(100vw - .9rem); }
+  .guide-popover { right: 38px; width: calc(100vw - 1.2rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-guide, .guide-popover, .guide-character-shadow,
+  .guide-character-hint, .guide-speech, .guide-primary, .guide-quiet,
+  .guide-end, .guide-art, .guide-eyes, .guide-breathe, .guide-leg, .guide-wave-arm, .guide-pupils, .guide-mouth,
+  .guide-character.is-walking .guide-art, .guide-character.is-waving .guide-breathe {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 /* ===== Editorial refinement =====
    Keep the existing ink-and-cyan identity, but let typography, spacing and
    useful content carry the page instead of layered ambient effects. */
