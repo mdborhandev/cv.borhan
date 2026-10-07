@@ -1011,6 +1011,17 @@ body {
   border-color: var(--border) !important;
   box-shadow: none !important;
 }
+.form-control {
+  border: 1px solid #3a443d !important;
+  border-radius: 4px !important;
+  background: #141a16 !important;
+  color: var(--text-primary) !important;
+}
+.form-control:focus {
+  border-color: var(--accent) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--accent-rgb), .14) !important;
+}
 .glass-sheen::after { display: none; }
 .glass-header {
   background: rgba(16, 19, 17, .96) !important;
