@@ -242,7 +242,7 @@
     removeFocus();
     activeLine = steps[step].line;
     stepLabel.hidden = false;
-    stepLabel.textContent = String(step + 1).padStart(2, '0') + ' / 06  ·  ' + steps[step].name;
+    stepLabel.textContent = String(step + 1).padStart(2, '0') + ' / ' + String(steps.length).padStart(2, '0') + '  ·  ' + steps[step].name;
     guideMenu.hidden = true;
     menuToggle.setAttribute('aria-expanded', 'false');
     nextButton.innerHTML = step === steps.length - 1 ? 'Finish <span aria-hidden="true">✓</span>' : 'Skip stop <span aria-hidden="true">→</span>';
@@ -483,7 +483,10 @@
   dismissButton.addEventListener('click', exitTour);
 
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && isPopoverOpen) exitTour();
+    if (event.key !== 'Escape' || !isPopoverOpen) return;
+    var projectModal = document.getElementById('project-modal');
+    if (projectModal && !projectModal.classList.contains('hidden')) return;
+    exitTour();
   });
 
   document.addEventListener('click', function (event) {
@@ -523,6 +526,7 @@
 
   window.setTimeout(function () {
     guide.setAttribute('data-visible', 'true');
+    guide.removeAttribute('aria-hidden');
     if (!alreadyDismissed) window.setTimeout(function () {
       if (!alreadyDismissed && !isTouring) {
         setPopoverOpen(true);

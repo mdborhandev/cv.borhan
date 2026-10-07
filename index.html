@@ -18,7 +18,7 @@
  <meta property="og:title" content="Mohammed Borhan Uddin Fahim | Software Engineer">
  <meta property="og:description" content="Backend-focused Software Engineer, 3+ years ASP.NET Core, C#, scalable enterprise apps. Available for hire.">
  <meta name="twitter:card" content="summary_large_image">
- <meta name="theme-color" content="#00d4ff">
+ <meta name="theme-color" content="#101311">
  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
  <link rel="canonical" href="https://borhanuddinfahim.netlify.app">
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
  <link rel="preload" href="https://use.hugeicons.com/font/icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
  <noscript><link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css"></noscript>
  <link rel="stylesheet" href="utilities.css?v=1">
- <link rel="stylesheet" href="style.css?v=24">
+ <link rel="stylesheet" href="style.css?v=25">
  <title>Mohammed Borhan Uddin Fahim | Software Engineer | ASP.NET Core | SaaS Developer</title>
 
  <!-- Schema.org Structured Data -->
@@ -97,7 +97,7 @@
     </div>
    </div>
 
-   <h1 class="text-xl font-semibold text-primary text-center leading-tight max-md:text-lg">Mohammed Borhan<br>Uddin Fahim</h1>
+   <p class="profile-name text-xl font-semibold text-primary text-center leading-tight max-md:text-lg">Mohammed Borhan<br>Uddin Fahim</p>
 
    <p class="text-[var(--accent)] text-sm font-medium text-center max-md:text-xs">&gt; Software Engineer</p>
 
@@ -112,9 +112,9 @@
    </div>
 
    <!-- Contact Me Button -->
-    <a href="#contact" onclick="openTabByIndex(5)" class="btn-outline w-full max-w-[280px] transition-transform duration-300 hover:scale-[1.02] mt-2">
+    <button type="button" onclick="openTabByIndex(5)" class="btn-outline w-full max-w-[280px] transition-transform duration-300 hover:scale-[1.02] mt-2">
     <i class="hgi-stroke hgi-mail-01 mr-1.5" aria-hidden="true"></i>Contact Me
-   </a>
+   </button>
 
    <!-- CV Download -->
    <a href="assets/Mohammed_Borhan_Uddin_Fahim_CV_2026.pdf" download class="btn-outline w-full max-w-[280px] transition-transform duration-300 hover:scale-[1.02]">
@@ -146,21 +146,21 @@
     <!-- Header with Tabs -->
     <header class="glass-header relative flex w-full shrink-0 p-2 lg:h-[72px] max-lg:h-16 max-lg:items-center max-lg:justify-center sticky top-0 z-50">
      <!-- Tabs -->
-      <div class="glass glass-sheen nav-justified flex gap-1.5 overflow-x-auto rounded-xl border p-1 px-2 max-w-full scrollbar-hide mx-auto">
-       <button class="tab-btn tab-active" onclick="openTab(event, 'about')">About</button>
-       <button class="tab-btn tab-btn-highlight" onclick="openTab(event, 'services')"><span class="tab-text-highlight">Services</span></button>
-       <button class="tab-btn" onclick="openTab(event, 'projects')">Projects</button>
-       <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
-       <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
-       <button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button>
-      </div>
+      <nav class="glass glass-sheen nav-justified flex gap-1.5 overflow-x-auto rounded-xl border p-1 px-2 max-w-full scrollbar-hide mx-auto" role="tablist" aria-label="Portfolio sections">
+       <button type="button" id="tab-trigger-about" class="tab-btn tab-active" data-tab-target="about" role="tab" aria-controls="tab-about" aria-selected="true" tabindex="0">About</button>
+       <button type="button" id="tab-trigger-services" class="tab-btn tab-btn-highlight" data-tab-target="services" role="tab" aria-controls="tab-services" aria-selected="false" tabindex="-1"><span class="tab-text-highlight">Services</span></button>
+       <button type="button" id="tab-trigger-projects" class="tab-btn" data-tab-target="projects" role="tab" aria-controls="tab-projects" aria-selected="false" tabindex="-1">Projects</button>
+       <button type="button" id="tab-trigger-skills" class="tab-btn" data-tab-target="skills" role="tab" aria-controls="tab-skills" aria-selected="false" tabindex="-1">Skills</button>
+       <button type="button" id="tab-trigger-experience" class="tab-btn" data-tab-target="experience" role="tab" aria-controls="tab-experience" aria-selected="false" tabindex="-1">Experience</button>
+       <button type="button" id="tab-trigger-contact" class="tab-btn" data-tab-target="contact" role="tab" aria-controls="tab-contact" aria-selected="false" tabindex="-1">Contact</button>
+      </nav>
     </header>
 
     <!-- Tab Contents Container (Scrollable) -->
     <div class="flex-1 overflow-y-auto overflow-x-hidden">
 
      <!-- About Tab -->
-     <section class="tab-content flex min-h-full w-full flex-col" data-tab-name="about">
+     <section class="tab-content flex min-h-full w-full flex-col" id="tab-about" role="tabpanel" aria-labelledby="tab-trigger-about" aria-hidden="false" data-tab-name="about">
      <div class="tab-panel-inner flex min-h-full w-full flex-col gap-7 px-[5%] py-[4%] max-lg:gap-6 max-lg:p-6 max-md:p-4">
       <div class="flex w-full gap-8 max-lg:flex-col max-lg:gap-6">
        <!-- Left: positioning + CTAs -->
@@ -179,9 +179,9 @@
          <button onclick="requestCustomService('New Project Consultation')" class="btn-primary btn-lg transition-transform duration-300 hover:scale-[1.02] flex items-center gap-2">
           <span>Start a Project</span>
          </button>
-         <a href="#projects" onclick="openTabByIndex(1)" class="btn-outline transition-transform duration-300 hover:scale-[1.02]">
+         <button type="button" onclick="openTabByIndex(2)" class="btn-outline transition-transform duration-300 hover:scale-[1.02]">
           <span>View Case Studies</span>
-         </a>
+         </button>
         </div>
 
         <div class="mt-5 text-11 text-dim tracking-wide max-md:text-10 flex flex-wrap items-center gap-x-4 gap-y-1.5">
@@ -280,7 +280,7 @@
 
 
      <!-- Projects Tab -->
-     <section class="tab-content flex min-h-full w-full flex-col" data-tab-name="projects">
+     <section class="tab-content flex min-h-full w-full flex-col" id="tab-projects" role="tabpanel" aria-labelledby="tab-trigger-projects" aria-hidden="true" data-tab-name="projects">
      <div class="tab-panel-inner flex min-h-full w-full flex-col p-[5%] px-[8%] max-lg:px-6 max-md:px-4 gap-6">
       
       <!-- Section Header -->
@@ -298,7 +298,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 
        <!-- Project 1: Halda -->
-       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('halda')">
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" role="button" tabindex="0" aria-label="Open Halda case study" aria-haspopup="dialog" aria-controls="project-modal" onclick="openModal('halda', this)">
         <div>
          <div class="flex items-center justify-between gap-2">
           <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">Enterprise SaaS</span>
@@ -324,7 +324,7 @@
        </div>
 
        <!-- Project 2: ERP -->
-       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('erp')">
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" role="button" tabindex="0" aria-label="Open ERP case study" aria-haspopup="dialog" aria-controls="project-modal" onclick="openModal('erp', this)">
         <div>
          <div class="flex items-center justify-between gap-2">
           <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">ERP Platform</span>
@@ -350,7 +350,7 @@
        </div>
 
        <!-- Project 3: Atrai Accounting -->
-       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('atrai')">
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" role="button" tabindex="0" aria-label="Open Atrai case study" aria-haspopup="dialog" aria-controls="project-modal" onclick="openModal('atrai', this)">
         <div>
          <div class="flex items-center justify-between gap-2">
           <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">FinTech & Ledger</span>
@@ -376,7 +376,7 @@
        </div>
 
        <!-- Project 4: SmartSLead CRM -->
-       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('smartslead')">
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" role="button" tabindex="0" aria-label="Open SmartSLead case study" aria-haspopup="dialog" aria-controls="project-modal" onclick="openModal('smartslead', this)">
         <div>
          <div class="flex items-center justify-between gap-2">
           <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">CRM & Sales</span>
@@ -402,7 +402,7 @@
        </div>
 
        <!-- Project 5: OKR Management -->
-       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" onclick="openModal('okr')">
+       <div class="project-card group rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer" role="button" tabindex="0" aria-label="Open OKR case study" aria-haspopup="dialog" aria-controls="project-modal" onclick="openModal('okr', this)">
         <div>
          <div class="flex items-center justify-between gap-2">
           <span class="text-10 text-[var(--accent)] px-2.5 py-0.5 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/15 font-medium">Productivity</span>
@@ -456,7 +456,7 @@
 
 
       <!-- Services Tab -->
-      <section class="tab-content flex min-h-full w-full flex-col" data-tab-name="services">
+      <section class="tab-content flex min-h-full w-full flex-col" id="tab-services" role="tabpanel" aria-labelledby="tab-trigger-services" aria-hidden="true" data-tab-name="services">
       <div class="tab-panel-inner flex min-h-full w-full flex-col p-[5%] px-[8%] max-lg:px-6 max-md:px-4 gap-8">
        
        <!-- Section Header -->
@@ -688,7 +688,7 @@
 
 
      <!-- Skills Tab -->
-     <section class="tab-content flex min-h-full w-full flex-col" data-tab-name="skills">
+     <section class="tab-content flex min-h-full w-full flex-col" id="tab-skills" role="tabpanel" aria-labelledby="tab-trigger-skills" aria-hidden="true" data-tab-name="skills">
      <div class="tab-panel-inner flex min-h-full w-full flex-wrap gap-4 p-[5%] px-[10%] max-lg:px-6 max-md:px-4 max-md:gap-3 content-start">
       <!-- Languages & Frameworks -->
       <div class="rounded-xl p-5 border border-[var(--accent)]/8 bg-card hover:border-[var(--accent)]/25 transition-all duration-500 w-[280px] max-md:w-full max-md:p-4">
@@ -797,7 +797,7 @@
 
 
      <!-- Experience Tab -->
-     <section class="tab-content flex min-h-full w-full flex-col" data-tab-name="experience">
+     <section class="tab-content flex min-h-full w-full flex-col" id="tab-experience" role="tabpanel" aria-labelledby="tab-trigger-experience" aria-hidden="true" data-tab-name="experience">
      <div class="tab-panel-inner flex min-h-full w-full p-[5%] px-[8%] max-lg:px-6 max-md:px-4">
       <div class="timeline flex flex-col gap-5 w-full">
        <!-- Experience Label -->
@@ -894,7 +894,7 @@
 
 
      <!-- Contact Tab -->
-     <section class="tab-content flex min-h-full w-full flex-col" data-tab-name="contact">
+     <section class="tab-content flex min-h-full w-full flex-col" id="tab-contact" role="tabpanel" aria-labelledby="tab-trigger-contact" aria-hidden="true" data-tab-name="contact">
      <div class="tab-panel-inner flex min-h-full w-full gap-10 p-[5%] px-[8%] max-lg:flex-col max-lg:gap-8 max-lg:px-6 max-md:px-4 max-md:gap-6">
       <!-- Left: Contact Info -->
       <div class="flex-1 flex flex-col justify-center">
@@ -938,7 +938,7 @@
 
        <div class="mt-6 p-4 rounded-xl bg-[var(--accent)]/5 border border-[var(--accent)]/10">
         <p class="text-11 text-secondary font-medium flex items-center gap-2">
-         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block"></span>
+         <span class="availability-dot" aria-hidden="true"></span>
          Currently accepting new client projects & contract roles
         </p>
         <p class="text-10 text-muted mt-1">Guaranteed reply within 24 hours with project analysis.</p>
@@ -955,12 +955,12 @@
          <div class="grid sm:grid-cols-2 gap-3.5 max-md:gap-3">
           <div>
            <label for="name" class="block text-10 text-dim uppercase tracking-wider mb-1">Your Name *</label>
-           <input type="text" id="name" name="name" required
+           <input type="text" id="name" name="name" autocomplete="name" required
             class="form-control w-full glass-input px-3.5 py-2.5 rounded-lg text-xs text-primary focus:outline-none focus:border-[var(--accent)] transition-all">
           </div>
           <div>
            <label for="email" class="block text-10 text-dim uppercase tracking-wider mb-1">Your Email *</label>
-           <input type="email" id="email" name="email" required
+           <input type="email" id="email" name="email" autocomplete="email" required
             class="form-control w-full glass-input px-3.5 py-2.5 rounded-lg text-xs text-primary focus:outline-none focus:border-[var(--accent)] transition-all">
           </div>
          </div>
@@ -1014,7 +1014,7 @@
           <span>Reply within 24 hours</span>
          </div>
          
-         <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-xl font-medium"></div>
+         <div id="form-message" class="hidden text-xs text-center py-2.5 rounded-xl font-medium" role="status" aria-live="polite" aria-atomic="true"></div>
         </form>
        </div>
       </div>
@@ -1024,14 +1024,14 @@
     </div><!-- End Tab Contents Container (Scrollable) -->
 
     <!-- Project Modals -->
-    <div id="project-modal" class="modal-overlay hidden fixed inset-0 z-[100] flex items-center justify-center p-4" onclick="closeModal(event)">
+    <div id="project-modal" class="modal-overlay hidden fixed inset-0 z-[100] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" aria-hidden="true" onclick="closeModal(event)">
      <div class="modal-content glass-sheen border rounded-2xl w-full max-w-[500px] max-h-[80vh] overflow-y-auto p-6 max-md:p-5" onclick="event.stopPropagation()">
       <div class="flex items-start justify-between gap-4 mb-5">
        <div>
         <span id="modal-tag" class="text-10 text-[var(--accent)]/60 px-2 py-0.5 rounded-md border border-[var(--accent)]/10"></span>
         <h2 id="modal-title" class="text-xl font-semibold text-primary mt-2 max-md:text-lg"></h2>
        </div>
-       <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] transition-colors text-sm shrink-0">
+       <button type="button" id="modal-close" onclick="closeModal()" aria-label="Close project details" class="w-8 h-8 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-muted hover:text-[var(--accent)] transition-colors text-sm shrink-0">
         <i class="hgi-stroke hgi-remove-circle"></i>
        </button>
       </div>
@@ -1051,17 +1051,17 @@
   </main>
 
  <!-- Mobile Sticky CTA -->
- <div class="fixed bottom-0 left-0 right-0 z-[90] hidden max-lg:flex items-center gap-3 p-3 glass border-t">
-   <a href="#contact" onclick="openTabByIndex(5)" class="flex-1 btn-primary !py-3 text-sm">
+ <div class="mobile-quick-actions fixed bottom-0 left-0 right-0 z-[90] hidden max-lg:flex items-center gap-3 p-3 glass border-t" role="group" aria-label="Quick contact actions">
+   <button type="button" onclick="openTabByIndex(5)" class="flex-1 btn-primary !py-3 text-sm">
    Contact
-  </a>
+  </button>
   <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="flex-1 btn-outline !py-3 text-sm">
    WhatsApp
   </a>
  </div>
 
  <!-- Optional portfolio tour guide -->
- <aside id="portfolio-guide" class="portfolio-guide" aria-label="Portfolio tour guide" data-visible="false">
+ <aside id="portfolio-guide" class="portfolio-guide" aria-label="Portfolio tour guide" aria-hidden="true" data-visible="false">
   <section id="guide-popover" class="guide-popover" aria-labelledby="guide-heading" aria-live="polite" aria-hidden="true">
    <div class="guide-popover-top">
     <div>
@@ -1134,12 +1134,12 @@
   </button>
  </aside>
 
- <script defer src="script.js?v=20"></script>
+ <script defer src="script.js?v=21"></script>
  <script>
   document.addEventListener('DOMContentLoaded', function () {
    var loadGuide = function () {
     var script = document.createElement('script');
-    script.src = 'guide.js?v=2';
+    script.src = 'guide.js?v=3';
     script.async = true;
     document.body.appendChild(script);
    };

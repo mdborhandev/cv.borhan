@@ -144,9 +144,18 @@
     var currentTab = document.querySelector('.tab-content[data-tab-active="true"]');
     var isSameTab = currentTab === targetTab;
 
-    // Deactivate all tab buttons first so the active tab can re-apply cleanly.
+    // Finish an interrupted outgoing transition before selecting the next panel.
+    document.querySelectorAll('.tab-content[data-tab-state="leaving"]').forEach(function (tab) {
+      tab.removeAttribute('data-tab-state');
+    });
+    if (!isSameTab && scrollContainer) scrollContainer.scrollTop = 0;
+
+    // Keep the tab pattern's selected state in sync for keyboard and screen reader users.
     document.querySelectorAll('.tab-btn').forEach(function (btn) {
       btn.classList.remove('tab-active');
+      var selected = btn.getAttribute('data-tab-target') === tabName;
+      btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+      btn.tabIndex = selected ? 0 : -1;
     });
 
     // Activate clicked tab
@@ -163,12 +172,14 @@
       currentTab.setAttribute('data-tab-state', 'leaving');
       currentTab.removeAttribute('data-tab-active');
       currentTab.setAttribute('data-tab-hidden', 'true');
+      currentTab.setAttribute('aria-hidden', 'true');
       tabLeaveTimer = setTimeout(function () {
         currentTab.removeAttribute('data-tab-state');
       }, 420);
     }
 
     targetTab.removeAttribute('data-tab-hidden');
+    targetTab.setAttribute('aria-hidden', 'false');
     targetTab.setAttribute('data-tab-active', 'true');
     targetTab.setAttribute('data-tab-state', 'entering');
     replayTabMotion(targetTab);
@@ -176,7 +187,9 @@
 
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        targetTab.setAttribute('data-tab-state', 'active');
+        if (targetTab.getAttribute('data-tab-active') === 'true') {
+          targetTab.setAttribute('data-tab-state', 'active');
+        }
       });
     });
     requestAnimationFrame(updateScrollProgress);
@@ -188,6 +201,28 @@
 
   // Make openTab globally available
   window.openTab = openTab;
+
+  var tabList = document.querySelector('[role="tablist"]');
+  if (tabList) {
+    tabList.addEventListener('click', function (event) {
+      var button = event.target.closest('.tab-btn[data-tab-target]');
+      if (button) openTab({ currentTarget: button }, button.getAttribute('data-tab-target'));
+    });
+    tabList.addEventListener('keydown', function (event) {
+      var buttons = Array.prototype.slice.call(tabList.querySelectorAll('.tab-btn[data-tab-target]'));
+      var currentIndex = buttons.indexOf(event.target);
+      if (currentIndex < 0) return;
+      var nextIndex = currentIndex;
+      if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % buttons.length;
+      else if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = buttons.length - 1;
+      else return;
+      event.preventDefault();
+      buttons[nextIndex].focus();
+      buttons[nextIndex].click();
+    });
+  }
 
   // Open tab by index (for cross-linking)
   function openTabByIndex(index) {
@@ -205,12 +240,14 @@
     firstTab.removeAttribute('data-tab-hidden');
     firstTab.setAttribute('data-tab-active', 'true');
     firstTab.setAttribute('data-tab-state', 'active');
+    firstTab.setAttribute('aria-hidden', 'false');
     replayTabMotion(firstTab);
   }
 
   // Hide all other tabs initially (using data attribute, not display:none)
   document.querySelectorAll('.tab-content:not([data-tab-name="about"])').forEach(function(tab) {
     tab.setAttribute('data-tab-hidden', 'true');
+    tab.setAttribute('aria-hidden', 'true');
   });
   if (firstTab) setupRevealMotion(firstTab);
 
@@ -341,11 +378,24 @@
         provider.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
         provider.async = true;
         provider.onload = function () {
-          if (!window.emailjs) return reject(new Error('Email service failed to initialize.'));
-          window.emailjs.init('UfmpMSg2KlcJjyIX0');
-          resolve(window.emailjs);
+          if (!window.emailjs) {
+            emailJsPromise = null;
+            provider.remove();
+            return reject(new Error('Email service failed to initialize.'));
+          }
+          try {
+            window.emailjs.init('UfmpMSg2KlcJjyIX0');
+            resolve(window.emailjs);
+          } catch (error) {
+            emailJsPromise = null;
+            reject(error);
+          }
         };
-        provider.onerror = function () { reject(new Error('Email service failed to load.')); };
+        provider.onerror = function () {
+          emailJsPromise = null;
+          provider.remove();
+          reject(new Error('Email service failed to load.'));
+        };
         document.head.appendChild(provider);
       });
     }
@@ -355,6 +405,7 @@
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
   const submitBtn = document.getElementById('submit-btn');
+  var formMessageTimer = null;
 
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
@@ -379,8 +430,9 @@
       }
 
       var originalBtnHtml = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<i class="hgi-stroke hgi-loading-02 animate-spin text-sm"></i> Sending Requirement...';
+      submitBtn.innerHTML = '<i class="hgi-stroke hgi-loading-02 animate-spin text-sm" aria-hidden="true"></i> Sending Requirement...';
       submitBtn.disabled = true;
+      contactForm.setAttribute('aria-busy', 'true');
 
       // EmailJS templates commonly render only {{message}} in the email body.
       // Merge every form value into it so no project information is omitted.
@@ -406,20 +458,23 @@
           contactForm.reset();
           submitBtn.innerHTML = originalBtnHtml;
           submitBtn.disabled = false;
+          contactForm.removeAttribute('aria-busy');
         }, function (error) {
           console.error('EmailJS Error:', error);
           showFormMessage('Failed to send message via web form. Please email directly to mdborhan.dev@gmail.com or message on WhatsApp.', false);
           messageInput.value = message;
           submitBtn.innerHTML = originalBtnHtml;
           submitBtn.disabled = false;
+          contactForm.removeAttribute('aria-busy');
         });
     });
   }
 
   function showFormMessage(text, isSuccess) {
+    window.clearTimeout(formMessageTimer);
     formMessage.textContent = text;
     formMessage.className = 'form-message is-visible ' + (isSuccess ? 'is-success' : 'is-error');
-    setTimeout(function () {
+    formMessageTimer = setTimeout(function () {
       formMessage.classList.remove('is-visible');
     }, 7000);
   }
@@ -507,10 +562,26 @@
   var modalDesc = document.getElementById('modal-desc');
   var modalFeatures = document.getElementById('modal-features');
   var modalTech = document.getElementById('modal-tech');
+  var modalTrigger = null;
+  var modalCloseTimer = null;
 
-  window.openModal = function (projectKey) {
+  document.querySelectorAll('.project-card[role="button"]').forEach(function (card) {
+    card.addEventListener('keydown', function (event) {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      card.click();
+    });
+  });
+
+  window.openModal = function (projectKey, trigger) {
     var p = projects[projectKey];
     if (!p) return;
+
+    if (modalCloseTimer) {
+      clearTimeout(modalCloseTimer);
+      modalCloseTimer = null;
+    }
+    modalTrigger = trigger || document.activeElement;
 
     modalTag.textContent = p.tag;
     modalTitle.textContent = p.title;
@@ -543,7 +614,7 @@
     ctaContainer.id = 'modal-cta-btn';
     ctaContainer.className = 'mt-6 pt-4 border-t border-[var(--accent)]/15 flex items-center justify-between gap-3';
     ctaContainer.innerHTML = '<span class="text-xs text-muted">Need a similar solution?</span>' +
-      '<button class="btn-primary !py-2 !px-4 text-xs flex items-center gap-1.5">' +
+      '<button type="button" class="btn-primary !py-2 !px-4 text-xs flex items-center gap-1.5">' +
       '<span>Inquire for Similar Project</span> <i class="hgi-stroke hgi-arrow-right-01 text-xs"></i>' +
       '</button>';
     
@@ -555,24 +626,48 @@
     modalContent.appendChild(ctaContainer);
 
     modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
     requestAnimationFrame(function () {
       modal.classList.add('modal-show');
+      document.getElementById('modal-close').focus();
     });
     document.body.style.overflow = 'hidden';
   };
 
   window.closeModal = function (e) {
     if (e && e.target !== modal) return;
+    if (modal.classList.contains('hidden') || modalCloseTimer) return;
     modal.classList.remove('modal-show');
-    setTimeout(function () {
+    modalCloseTimer = setTimeout(function () {
       modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+      modalCloseTimer = null;
+      document.body.style.overflow = '';
+      if (modalTrigger && modalTrigger.isConnected && !modalTrigger.closest('[aria-hidden="true"]')) {
+        modalTrigger.focus();
+      }
+      modalTrigger = null;
     }, 300);
-    document.body.style.overflow = '';
   };
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    if (modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
       window.closeModal();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    var focusable = modal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey && (document.activeElement === first || !modal.contains(document.activeElement))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+      e.preventDefault();
+      first.focus();
     }
   });
 })();

@@ -47,15 +47,13 @@ html {
 }
 
 /* ==========================================================================
-   TYPOGRAPHY — the whole site's type is controlled from these 3 variables.
-   Swap a family here and it applies everywhere, no markup changes.
-   All three are variable fonts (wght ranges), so any weight is real, not faked.
+   TYPOGRAPHY — display and body families are provided as variable fonts.
+   Monospace labels use a platform font to avoid another font request.
    ========================================================================== */
 :root {
   --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  /* Kept defined so technical labels can be monospaced again with one line,
-     but deliberately unused in the client-facing UI. */
+  /* Kept available for future technical labels without another font request. */
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* Fluid hero scale — no media queries needed */
@@ -233,7 +231,11 @@ body {
   white-space: nowrap;
   font-family: var(--font-body);
   font-size: 0.78rem;
+  min-height: 40px;
 }
+
+.nav-justified { width: min(100%, 760px); }
+.nav-justified > .tab-btn { flex: 1 0 0; }
 
 .tab-btn::before {
   content: '';
@@ -347,10 +349,12 @@ body {
   min-height: 0;
   max-height: 100%;
   overflow: hidden;
+  visibility: visible;
   opacity: 0;
-  transform: translateY(-18px) scale(0.975);
-  filter: blur(14px);
+  transform: translate3d(0, -8px, 0);
+  filter: none;
   pointer-events: none;
+  transition: opacity 220ms ease, transform 280ms cubic-bezier(.2,.7,.2,1);
 }
 
 .tab-content::before {
@@ -805,11 +809,12 @@ h1, h2, h3, h4 {
   bottom: 1.5rem;
   width: min(360px, calc(100vw - 2rem));
   pointer-events: none;
+  visibility: hidden;
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity 420ms ease, transform 560ms cubic-bezier(.2,.75,.25,1);
+  transition: opacity 420ms ease, transform 560ms cubic-bezier(.2,.75,.25,1), visibility 0s linear 560ms;
 }
-.portfolio-guide[data-visible="true"] { opacity: 1; transform: translateY(0); }
+.portfolio-guide[data-visible="true"] { visibility: visible; opacity: 1; transform: translateY(0); transition-delay: 0s; }
 .guide-character, .guide-popover { pointer-events: auto; }
 .guide-character {
   position: relative;
@@ -1044,7 +1049,7 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 380px) {
   .portfolio-guide { right: .45rem; width: calc(100vw - .9rem); }
-  .guide-popover { right: 38px; width: calc(100vw - 1.2rem); }
+  .guide-popover { right: 0; width: calc(100vw - 1.2rem); }
 }
 @media (prefers-reduced-motion: reduce) {
   .portfolio-guide, .guide-popover, .guide-character-shadow,
@@ -1113,7 +1118,7 @@ body {
   background: #222923;
   box-shadow: none;
 }
-.sidebar-panel > h1 { text-align: center !important; font-size: 1.35rem !important; line-height: 1.2 !important; }
+.sidebar-panel > .profile-name { text-align: center !important; font-size: 1.35rem !important; line-height: 1.2 !important; letter-spacing: -.025em; }
 .sidebar-panel > p,
 .sidebar-panel > div:nth-of-type(2) { text-align: center !important; }
 .sidebar-panel .chip-glass { border-radius: 3px; padding: .3rem .55rem; }
@@ -1140,12 +1145,13 @@ body {
   outline: none;
   box-shadow: 0 0 0 2px rgba(var(--accent-rgb), .14) !important;
 }
+.form-control:focus-visible { outline: 2px solid rgba(var(--accent-rgb), .75); outline-offset: 2px; }
 .glass-sheen::after { display: none; }
 .glass-header {
   background: rgba(16, 19, 17, .96) !important;
   border-bottom-color: var(--border) !important;
 }
-.glass-header > div { border: 0 !important; background: transparent !important; }
+.glass-header > .nav-justified { border: 0 !important; background: transparent !important; }
 
 .heading-xl {
   color: var(--text-primary);
@@ -1172,6 +1178,15 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
   transform: none;
   box-shadow: none;
   animation: none;
+}
+.tab-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.link:focus-visible,
+.project-card:focus-visible,
+#modal-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 .tab-content::before { display: none; }
 .tab-content[data-tab-state="entering"] { animation: none; }
@@ -1218,13 +1233,16 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
     border-bottom: 1px solid var(--border);
   }
   .sidebar-panel > .relative > div { width: 128px; height: 150px; }
-  .sidebar-panel > h1, .sidebar-panel > p,
+  .sidebar-panel > .profile-name, .sidebar-panel > p,
   .sidebar-panel > div:nth-of-type(2) { text-align: center !important; }
   .sidebar-panel .btn-primary, .sidebar-panel .btn-outline { max-width: 280px; }
 }
 
 @media (max-width: 767px) {
+  .nav-justified { width: 100%; }
   .tab-btn { padding: .45rem .7rem; font-size: .72rem; }
+  .form-control { font-size: 16px !important; }
+  .mobile-quick-actions { padding-bottom: calc(.75rem + env(safe-area-inset-bottom)); }
   .tab-panel-inner { gap: 1.5rem; }
   .heading-xl { font-size: clamp(2rem, 9vw, 2.65rem); }
   .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1256,9 +1274,19 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
   font-weight: 500;
   text-align: center;
 }
-.form-message.is-visible { display: block; }
+.form-message.is-visible { display: block; animation: formMessageIn 180ms ease-out both; }
 .form-message.is-success { color: #34d399; background: rgb(16 185 129 / .15); border-color: rgb(16 185 129 / .25); }
 .form-message.is-error { color: #f87171; background: rgb(239 68 68 / .15); border-color: rgb(239 68 68 / .25); }
+@keyframes formMessageIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+
+.availability-dot {
+  width: .5rem;
+  height: .5rem;
+  flex: 0 0 .5rem;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgb(52 211 153 / .12);
+}
 
 .motion-reveal {
   opacity: 0;
