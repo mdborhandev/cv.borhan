@@ -47,6 +47,79 @@
 
   setupSidebarMotion();
 
+  // ===== A quieter, scroll-led reveal system =====
+  var revealObserver = null;
+  var revealSelector = '.tab-panel-inner > *, .project-card, .timeline-container, .stack-col, #contact-form .grid > *';
+
+  function setupRevealMotion(scope) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    if (!('IntersectionObserver' in window)) {
+      (scope || document).querySelectorAll(revealSelector).forEach(function (item) {
+        item.classList.add('is-revealed');
+      });
+      return;
+    }
+
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-revealed');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    }
+
+    (scope || document).querySelectorAll(revealSelector).forEach(function (item, index) {
+      if (item.classList.contains('is-revealed')) return;
+      item.classList.add('motion-reveal');
+      item.style.setProperty('--reveal-delay', Math.min(index % 4, 3) * 65 + 'ms');
+      revealObserver.observe(item);
+    });
+  }
+
+  setupRevealMotion();
+
+  var heroHeading = document.querySelector('.heading-xl');
+  if (heroHeading && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroHeading.classList.add('hero-reveal');
+  }
+
+  // The portrait and main actions respond just enough to reward a pointer.
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.btn-primary').forEach(function (button) {
+      button.classList.add('magnetic-control');
+      button.addEventListener('pointermove', function (event) {
+        var rect = button.getBoundingClientRect();
+        var x = (event.clientX - rect.left - rect.width / 2) / rect.width;
+        var y = (event.clientY - rect.top - rect.height / 2) / rect.height;
+        button.style.setProperty('--mag-x', (x * 5).toFixed(2) + 'px');
+        button.style.setProperty('--mag-y', (y * 4).toFixed(2) + 'px');
+      });
+      button.addEventListener('pointerleave', function () {
+        button.style.setProperty('--mag-x', '0px');
+        button.style.setProperty('--mag-y', '0px');
+      });
+    });
+
+    var portrait = document.querySelector('.sidebar-panel > .relative > div');
+    if (portrait) {
+      portrait.addEventListener('pointermove', function (event) {
+        var rect = portrait.getBoundingClientRect();
+        var x = (event.clientX - rect.left) / rect.width - .5;
+        var y = (event.clientY - rect.top) / rect.height - .5;
+        portrait.style.setProperty('--portrait-x', (x * 2).toFixed(2) + 'deg');
+        portrait.style.setProperty('--portrait-y', (y * -2).toFixed(2) + 'deg');
+      });
+      portrait.addEventListener('pointerleave', function () {
+        portrait.style.setProperty('--portrait-x', '0deg');
+        portrait.style.setProperty('--portrait-y', '0deg');
+      });
+    }
+  }
+
   // ===== Tab Switching =====
   var tabLeaveTimer = null;
 
@@ -131,6 +204,7 @@
     targetTab.setAttribute('data-tab-active', 'true');
     targetTab.setAttribute('data-tab-state', 'entering');
     replayTabMotion(targetTab);
+    setupRevealMotion(targetTab);
 
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
@@ -170,6 +244,7 @@
   document.querySelectorAll('.tab-content:not([data-tab-name="about"])').forEach(function(tab) {
     tab.setAttribute('data-tab-hidden', 'true');
   });
+  if (firstTab) setupRevealMotion(firstTab);
 
   // ===== Animated Counters =====
   function animateSingleCounter(counter) {

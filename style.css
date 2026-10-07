@@ -1119,3 +1119,86 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* ===== Signature motion ===== */
+.sidebar-panel.sidebar-ready .sidebar-motion-item,
+.sidebar-panel.sidebar-ready .sidebar-motion-hero,
+.sidebar-panel.sidebar-ready .sidebar-motion-badge,
+.sidebar-panel.sidebar-ready .sidebar-motion-socials {
+  animation: none !important;
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.sidebar-panel.sidebar-ready .sidebar-motion-hero > div { box-shadow: none; }
+
+.motion-reveal {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition: opacity 560ms cubic-bezier(.2,.7,.2,1), transform 680ms cubic-bezier(.2,.7,.2,1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.motion-reveal.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+.project-card.motion-reveal { transform: translate3d(0, 20px, 0); }
+.project-card.motion-reveal.is-revealed { transform: translate3d(0, 0, 0); }
+
+.tab-content[data-tab-state="entering"] {
+  animation: tabCinematicIn 380ms cubic-bezier(.2,.75,.25,1) both;
+}
+.tab-content[data-tab-state="leaving"] {
+  opacity: 0;
+  transform: translate3d(0, -8px, 0);
+  filter: none;
+  transition: opacity 220ms ease, transform 280ms cubic-bezier(.2,.7,.2,1);
+}
+@keyframes tabCinematicIn {
+  from { opacity: 0; transform: translate3d(0, 11px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.hero-reveal {
+  animation: titleUnmask 900ms cubic-bezier(.2,.75,.25,1) both;
+}
+@keyframes titleUnmask {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(12px); opacity: .35; }
+  to { clip-path: inset(0 0 0 0); transform: translateY(0); opacity: 1; }
+}
+
+.sidebar-panel > .relative > div {
+  transform: perspective(900px) rotateX(var(--portrait-y, 0deg)) rotateY(var(--portrait-x, 0deg));
+  transition: transform 420ms cubic-bezier(.2,.7,.2,1), border-color 220ms ease;
+  will-change: transform;
+}
+.sidebar-panel > .relative > div:hover { border-color: #53655a; }
+.sidebar-panel > .relative img {
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 500ms ease;
+}
+.sidebar-panel > .relative > div:hover img { transform: scale(1.035); filter: saturate(1.04); }
+.magnetic-control {
+  transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+  transition: transform 220ms cubic-bezier(.2,.75,.25,1), background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+.magnetic-control:hover { transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0); }
+
+.project-card, .link, .tab-btn, .stack-col, .skill-badge {
+  transition-timing-function: cubic-bezier(.2,.7,.2,1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal, .motion-reveal.is-revealed,
+  .hero-reveal, .sidebar-panel > .relative > div,
+  .sidebar-panel > .relative img, .magnetic-control,
+  .tab-content[data-tab-state="entering"], .tab-content[data-tab-state="leaving"] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+}
