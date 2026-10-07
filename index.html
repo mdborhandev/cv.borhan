@@ -19,26 +19,16 @@
  <meta property="og:description" content="Backend-focused Software Engineer, 3+ years ASP.NET Core, C#, scalable enterprise apps. Available for hire.">
  <meta name="twitter:card" content="summary_large_image">
  <meta name="theme-color" content="#00d4ff">
- <link rel="icon" type="image/png" href="assets/profile.png?v=1">
+ <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
  <link rel="canonical" href="https://borhanuddinfahim.netlify.app">
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontSize: {
-            '10': ['10px', { lineHeight: '10px' }],
-            '11': ['11px', { lineHeight: '11px' }],
-          }
-        }
-      }
-    }
-  </script>
- <link rel="stylesheet" href="style.css?v=23">
+ <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500..700&family=Inter:wght@300..700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+ <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500..700&family=Inter:wght@300..700&display=swap"></noscript>
+ <link rel="preload" href="https://use.hugeicons.com/font/icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+ <noscript><link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css"></noscript>
+ <link rel="stylesheet" href="utilities.css?v=1">
+ <link rel="stylesheet" href="style.css?v=24">
  <title>Mohammed Borhan Uddin Fahim | Software Engineer | ASP.NET Core | SaaS Developer</title>
 
  <!-- Schema.org Structured Data -->
@@ -95,7 +85,7 @@
  <main class="flex h-screen w-full overflow-hidden max-lg:flex-col max-lg:h-auto max-lg:min-h-screen max-lg:overflow-y-auto max-lg:pb-24">
   <!-- Scroll Progress -->
   <div class="fixed top-0 left-0 right-0 z-[120] h-1 bg-transparent pointer-events-none">
-   <div id="scroll-progress" class="h-full w-0 bg-[var(--accent)] shadow-[0_0_12px_var(--accent)] transition-[width] duration-100"></div>
+   <div id="scroll-progress" class="scroll-progress-fill h-full w-0 bg-[var(--accent)] shadow-[0_0_12px_var(--accent)]"></div>
   </div>
 
   <!-- ===== SIDEBAR ===== -->
@@ -103,7 +93,7 @@
    <!-- Profile Image -->
    <div class="relative mb-2">
     <div class="w-48 h-56 rounded-2xl overflow-hidden glass max-md:w-36 max-md:h-44">
-     <img src="assets/profile.png" alt="Mohammed Borhan Uddin Fahim" class="w-full h-full object-cover">
+     <img src="assets/profile.webp" alt="Mohammed Borhan Uddin Fahim" width="352" height="469" fetchpriority="high" decoding="async" class="w-full h-full object-cover">
     </div>
    </div>
 
@@ -1144,8 +1134,18 @@
   </button>
  </aside>
 
- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="script.js?v=19"></script>
-  <script src="guide.js?v=2"></script>
+ <script defer src="script.js?v=20"></script>
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+   var loadGuide = function () {
+    var script = document.createElement('script');
+    script.src = 'guide.js?v=2';
+    script.async = true;
+    document.body.appendChild(script);
+   };
+   if ('requestIdleCallback' in window) requestIdleCallback(loadGuide, { timeout: 1800 });
+   else setTimeout(loadGuide, 500);
+  }, { once: true });
+ </script>
 </body>
 </html>

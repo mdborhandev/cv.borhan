@@ -56,7 +56,7 @@ html {
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   /* Kept defined so technical labels can be monospaced again with one line,
      but deliberately unused in the client-facing UI. */
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* Fluid hero scale — no media queries needed */
   --hero-size: clamp(1.75rem, 3.4vw, 2.9rem);
@@ -190,74 +190,6 @@ body {
 @media (max-width: 1023px) { .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 639px) { .stack-grid { grid-template-columns: 1fr; } }
 
-/* ===== Film Grain ===== */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: var(--grain-opacity);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ===== Ambient Orbs ===== */
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(110px);
-  pointer-events: none;
-  z-index: 0;
-  transition: background 0.6s ease;
-}
-.orb-1 {
-  width: 620px;
-  height: 620px;
-  top: -18%;
-  left: -12%;
-  background: rgba(var(--accent-rgb), 0.34);
-  animation: orbFloat 25s ease-in-out infinite;
-}
-.orb-2 {
-  width: 520px;
-  height: 520px;
-  bottom: -14%;
-  right: -8%;
-  background: rgba(129, 140, 248, 0.3);
-  animation: orbFloat 30s ease-in-out infinite reverse;
-}
-.orb-3 {
-  width: 440px;
-  height: 440px;
-  top: 38%;
-  right: 26%;
-  background: rgba(244, 114, 182, 0.22);
-  animation: orbFloat 20s ease-in-out infinite 5s;
-}
-
-@keyframes orbFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(40px, -60px) scale(1.1); }
-  50% { transform: translate(-30px, 30px) scale(0.95); }
-  75% { transform: translate(60px, 40px) scale(1.05); }
-}
-
-/* ===== Grid Overlay ===== */
-/* The grid sits behind every glass panel — it is the high-frequency detail
-   that makes the blur actually read as refraction. Keep it clearly visible. */
-.grid-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.3;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
-  background-size: 52px 52px;
-  -webkit-mask: radial-gradient(ellipse 95% 75% at 50% 40%, #000 25%, transparent 82%);
-  mask: radial-gradient(ellipse 95% 75% at 50% 40%, #000 25%, transparent 82%);
-}
-
 /* ===== Sidebar Panel ===== */
 .sidebar-panel {
   position: relative;
@@ -268,28 +200,6 @@ body {
   border-right: 1px solid var(--glass-border);
   box-shadow: 1px 0 0 rgba(255, 255, 255, 0.05), 24px 0 60px rgba(2, 2, 10, 0.35);
   transition: background 0.4s ease, border-color 0.4s ease;
-}
-
-.sidebar-motion-item {
-  will-change: transform;
-}
-
-.sidebar-panel.sidebar-ready .sidebar-motion-item {
-  animation: sidebarRise 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(min(var(--sidebar-item-index, 0), 8) * 85ms + 80ms);
-}
-
-.sidebar-panel.sidebar-ready .sidebar-motion-hero {
-  animation-duration: 1100ms;
-  animation-delay: 0ms;
-}
-
-.sidebar-panel.sidebar-ready .sidebar-motion-badge {
-  animation-name: sidebarBadgePop;
-}
-
-.sidebar-panel.sidebar-ready .sidebar-motion-hero > div {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 24px 60px rgba(2, 2, 10, 0.5);
 }
 
 /* ===== Glass Header ===== */
@@ -657,39 +567,6 @@ body {
   }
 }
 
-@keyframes sidebarRise {
-  0% {
-    opacity: 0;
-    transform: translateY(22px) scale(0.97);
-    filter: blur(12px);
-  }
-  65% {
-    opacity: 1;
-    transform: translateY(-2px) scale(1.01);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: none;
-  }
-}
-
-@keyframes sidebarBadgePop {
-  0% {
-    opacity: 0;
-    transform: translateY(14px) scale(0.85);
-  }
-  70% {
-    opacity: 1;
-    transform: translateY(-1px) scale(1.03);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 @keyframes tabRevealUp {
   0% {
     opacity: 0;
@@ -821,13 +698,6 @@ h1, h2, h3, h4 {
 
 /* ===== Responsive: Tablet (max-width: 1023px) ===== */
 @media (max-width: 1023px) {
-  .orb {
-    filter: blur(80px);
-  }
-  .orb-1 { width: 360px; height: 360px; }
-  .orb-2 { width: 300px; height: 300px; }
-  .orb-3 { width: 240px; height: 240px; }
-
   /* Sidebar visible on top on mobile */
   .sidebar-panel {
     position: relative;
@@ -849,13 +719,6 @@ h1, h2, h3, h4 {
 
 /* ===== Responsive: Mobile (max-width: 767px) ===== */
 @media (max-width: 767px) {
-  .orb {
-    filter: blur(60px);
-  }
-  .orb-1 { width: 240px; height: 240px; }
-  .orb-2 { width: 180px; height: 180px; }
-  .orb-3 { width: 140px; height: 140px; }
-
   /* Timeline on mobile */
   .timeline-container {
     padding-left: 1.5rem;
@@ -921,8 +784,6 @@ h1, h2, h3, h4 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sidebar-motion-item,
-  .sidebar-panel.sidebar-ready .sidebar-motion-item,
   .tab-btn,
   .tab-content,
   .tab-motion-item,
@@ -930,8 +791,7 @@ h1, h2, h3, h4 {
   .modal-content,
   .skill-badge,
   .project-card,
-  .link,
-  .orb {
+  .link {
     animation: none !important;
     transition: none !important;
   }
@@ -1231,8 +1091,6 @@ body {
   transition: none;
 }
 
-.noise-overlay, .grid-overlay, .orb { display: none !important; }
-
 .sidebar-panel {
   width: 320px !important;
   flex: 0 0 320px;
@@ -1381,16 +1239,26 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
 }
 
 /* ===== Signature motion ===== */
-.sidebar-panel.sidebar-ready .sidebar-motion-item,
-.sidebar-panel.sidebar-ready .sidebar-motion-hero,
-.sidebar-panel.sidebar-ready .sidebar-motion-badge,
-.sidebar-panel.sidebar-ready .sidebar-motion-socials {
-  animation: none !important;
-  opacity: 1;
-  transform: none;
-  filter: none;
+.scroll-progress-fill {
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
 }
-.sidebar-panel.sidebar-ready .sidebar-motion-hero > div { box-shadow: none; }
+
+.form-message {
+  display: none;
+  padding: .75rem;
+  border: 1px solid transparent;
+  border-radius: .5rem;
+  font-size: .75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+.form-message.is-visible { display: block; }
+.form-message.is-success { color: #34d399; background: rgb(16 185 129 / .15); border-color: rgb(16 185 129 / .25); }
+.form-message.is-error { color: #f87171; background: rgb(239 68 68 / .15); border-color: rgb(239 68 68 / .25); }
 
 .motion-reveal {
   opacity: 0;

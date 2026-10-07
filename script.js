@@ -15,38 +15,6 @@
     /* Private mode / storage blocked — dark is the default anyway. */
   }
 
-  // ===== Sidebar Entrance Motion =====
-  function setupSidebarMotion() {
-    var sidebar = document.querySelector('.sidebar-panel');
-    if (!sidebar) return;
-
-    var items = Array.prototype.slice.call(sidebar.children);
-    items.forEach(function (item, index) {
-      item.classList.add('sidebar-motion-item');
-      item.style.setProperty('--sidebar-item-index', index);
-    });
-
-    if (items[0]) {
-      items[0].classList.add('sidebar-motion-hero');
-    }
-
-    if (items[4]) {
-      items[4].classList.add('sidebar-motion-badge');
-    }
-
-    if (items[6]) {
-      items[6].classList.add('sidebar-motion-socials');
-    }
-
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        sidebar.classList.add('sidebar-ready');
-      });
-    });
-  }
-
-  setupSidebarMotion();
-
   // ===== A quieter, scroll-led reveal system =====
   var revealObserver = null;
   var revealSelector = '.tab-panel-inner > *, .project-card, .timeline-container, .stack-col, #contact-form .grid > *';
@@ -320,7 +288,7 @@
     var maxScroll = scrollHeight - clientHeight;
     var progress = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
 
-    scrollProgress.style.width = progress + '%';
+    scrollProgress.style.transform = 'scaleX(' + progress / 100 + ')';
   }
 
   if (scrollContainer) {
@@ -363,10 +331,26 @@
     }, 300);
   };
 
-  // ===== Contact Form (EmailJS) =====
-  (function () {
-    emailjs.init('UfmpMSg2KlcJjyIX0');
-  })();
+  // Load the contact provider only when a visitor submits the form.
+  var emailJsPromise;
+  function loadEmailJS() {
+    if (window.emailjs) return Promise.resolve(window.emailjs);
+    if (!emailJsPromise) {
+      emailJsPromise = new Promise(function (resolve, reject) {
+        var provider = document.createElement('script');
+        provider.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+        provider.async = true;
+        provider.onload = function () {
+          if (!window.emailjs) return reject(new Error('Email service failed to initialize.'));
+          window.emailjs.init('UfmpMSg2KlcJjyIX0');
+          resolve(window.emailjs);
+        };
+        provider.onerror = function () { reject(new Error('Email service failed to load.')); };
+        document.head.appendChild(provider);
+      });
+    }
+    return emailJsPromise;
+  }
 
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
@@ -414,7 +398,9 @@
       ].join('\n');
       messageInput.value = mergedMessage;
 
-      emailjs.sendForm('service_vxkwckv', 'template_txkht7q', this)
+      loadEmailJS().then(function (emailjs) {
+        return emailjs.sendForm('service_vxkwckv', 'template_txkht7q', contactForm);
+      })
         .then(function () {
           showFormMessage('Thank you! Your project requirement has been sent. I will review it and reply within 24 hours.', true);
           contactForm.reset();
@@ -432,14 +418,9 @@
 
   function showFormMessage(text, isSuccess) {
     formMessage.textContent = text;
-    formMessage.className = 'block text-xs text-center py-3 rounded-lg font-medium';
-    if (isSuccess) {
-      formMessage.classList.add('bg-emerald-500/15', 'text-emerald-400', 'border', 'border-emerald-500/25');
-    } else {
-      formMessage.classList.add('bg-red-500/15', 'text-red-400', 'border', 'border-red-500/25');
-    }
+    formMessage.className = 'form-message is-visible ' + (isSuccess ? 'is-success' : 'is-error');
     setTimeout(function () {
-      formMessage.classList.add('hidden');
+      formMessage.classList.remove('is-visible');
     }, 7000);
   }
 
@@ -538,7 +519,7 @@
     modalFeatures.innerHTML = '';
     p.features.forEach(function (f) {
       var li = document.createElement('li');
-      li.className = 'flex items-start gap-2.5 text-xs text-muted max-md:text-[11px]';
+      li.className = 'flex items-start gap-2.5 text-xs text-muted max-md:text-11';
       li.innerHTML = '<span class="text-[var(--accent)] mt-0.5 text-10">&#9656;</span><span>' + f + '</span>';
       modalFeatures.appendChild(li);
     });
