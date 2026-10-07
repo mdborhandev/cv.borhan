@@ -336,7 +336,7 @@
 
   // ===== Direct Service Request & Cross-linking =====
   window.requestCustomService = function (serviceName) {
-    openTabByIndex(5); // Switch to Contact tab
+    openTabByIndex(4); // Switch to Contact tab
     setTimeout(function () {
       var serviceSelect = document.getElementById('service-select');
       var subjectInput = document.getElementById('subject');
