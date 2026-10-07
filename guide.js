@@ -39,11 +39,10 @@
   var focusedTarget = null;
   var steps = [
     { name: 'ABOUT', tab: 0, target: '.tab-content[data-tab-name="about"] .heading-xl', line: 'I build the reliable bits behind useful products.' },
-    { name: 'SKILLS', tab: 3, target: '.tab-content[data-tab-name="skills"] .tab-panel-inner > div:first-child', line: 'C#, .NET, databases. And a healthy respect for logs.' },
     { name: 'PROJECTS', tab: 2, target: '.tab-content[data-tab-name="projects"] .project-card', line: 'Real systems, each with its own knot to untangle.' },
     { name: 'SERVICES', tab: 1, target: '.tab-content[data-tab-name="services"] .tab-panel-inner > div:nth-child(2) > div:first-child', line: 'From a focused API to a full product build, here’s how I help.' },
-    { name: 'EXPERIENCE', tab: 4, target: '.tab-content[data-tab-name="experience"] .timeline-container', line: 'A few years of features, fixes, and production lessons.' },
-    { name: 'CONTACT', tab: 5, target: '#contact-form', line: 'Have a system that needs untangling? Your turn.' }
+    { name: 'EXPERIENCE', tab: 3, target: '.tab-content[data-tab-name="experience"] .timeline-container', line: 'A few years of features, fixes, and production lessons.' },
+    { name: 'CONTACT', tab: 4, target: '#contact-form', line: 'Have a system that needs untangling? Your turn.' }
   ];
 
   function setPopoverOpen(open) {
