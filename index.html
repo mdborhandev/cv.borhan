@@ -966,28 +966,22 @@
   <section id="guide-popover" class="guide-popover" aria-labelledby="guide-heading" aria-live="polite" aria-hidden="true">
    <div class="guide-popover-top">
     <div>
-     <p id="guide-heading" class="guide-kicker">A QUICK TOUR WITH BORHAN</p>
+     <p id="guide-heading" class="guide-kicker">ASK BORHAN'S GUIDE</p>
      <p class="guide-step" id="guide-step" hidden></p>
     </div>
-    <button type="button" class="guide-dismiss" id="guide-dismiss" aria-label="Dismiss the tour guide">×</button>
+    <button type="button" class="guide-dismiss" id="guide-dismiss" aria-label="Dismiss the guide">×</button>
    </div>
-   <p class="guide-speech" id="guide-speech">Welcome to my portfolio. Want a quick look around?</p>
-   <div class="guide-actions" id="guide-invite-actions">
-    <button type="button" class="guide-primary" id="guide-start">Show me around <span aria-hidden="true">→</span></button>
-    <button type="button" class="guide-quiet" id="guide-later">Maybe later</button>
+   <p class="guide-speech" id="guide-speech">Hi! Ask me anything about Borhan — his skills, projects, experience, services, or how to get in touch.</p>
+   <div class="guide-actions guide-qa-actions" id="guide-qa-actions">
+    <input id="guide-input" class="guide-input" type="text" placeholder="e.g. What are your skills? What projects have you built?" autocomplete="off" spellcheck="false" />
+    <button type="button" class="guide-primary" id="guide-ask">Ask <span aria-hidden="true">→</span></button>
    </div>
-   <div class="guide-actions guide-tour-actions" id="guide-tour-actions" hidden>
-    <button type="button" class="guide-quiet" id="guide-pause">Pause</button>
-    <button type="button" class="guide-primary" id="guide-next">Skip stop <span aria-hidden="true">→</span></button>
-    <button type="button" class="guide-quiet" id="guide-menu-toggle" aria-expanded="false" aria-controls="guide-menu">More</button>
-    <div class="guide-menu" id="guide-menu" hidden>
-     <button type="button" class="guide-quiet" id="guide-replay">Replay tour</button>
-     <button type="button" class="guide-end" id="guide-end">Exit tour</button>
-    </div>
-   </div>
+   <div class="guide-answer" id="guide-answer" hidden aria-live="polite"></div>
+   <button type="button" class="guide-suggest" id="guide-suggest" hidden style="display:none;"></button>
+   <button type="button" class="guide-quiet guide-clear" id="guide-clear" hidden>Clear answer</button>
   </section>
 
-  <button type="button" class="guide-character" id="guide-character" aria-label="Open Borhan’s portfolio tour" aria-controls="guide-popover" aria-expanded="false">
+  <button type="button" class="guide-character" id="guide-character" aria-label="Open Borhan’s asking guide" aria-controls="guide-popover" aria-expanded="false">
    <span class="guide-character-shadow" aria-hidden="true"></span>
    <svg class="guide-art" viewBox="0 0 144 188" role="img" aria-labelledby="guide-art-title">
     <title id="guide-art-title">An illustrated miniature guide based on Borhan</title>
@@ -1040,7 +1034,7 @@
   document.addEventListener('DOMContentLoaded', function () {
    var loadGuide = function () {
     var script = document.createElement('script');
-    script.src = 'guide.js?v=4';
+    script.src = 'guide.js?v=40';
     script.async = true;
     document.body.appendChild(script);
    };

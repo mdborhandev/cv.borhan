@@ -10,107 +10,202 @@
   var pupils = character.querySelector('.guide-pupils');
   var speech = document.getElementById('guide-speech');
   var stepLabel = document.getElementById('guide-step');
-  var inviteActions = document.getElementById('guide-invite-actions');
-  var tourActions = document.getElementById('guide-tour-actions');
-  var startButton = document.getElementById('guide-start');
-  var laterButton = document.getElementById('guide-later');
-  var pauseButton = document.getElementById('guide-pause');
-  var nextButton = document.getElementById('guide-next');
-  var menuToggle = document.getElementById('guide-menu-toggle');
-  var guideMenu = document.getElementById('guide-menu');
-  var replayButton = document.getElementById('guide-replay');
-  var endButton = document.getElementById('guide-end');
+  var qaActions = document.getElementById('guide-qa-actions');
+  var guideInput = document.getElementById('guide-input');
+  var guideAskBtn = document.getElementById('guide-ask');
+  var guideAnswer = document.getElementById('guide-answer');
+  var guideClearBtn = document.getElementById('guide-clear');
+  var guideSuggestBtn = document.getElementById('guide-suggest');
   var dismissButton = document.getElementById('guide-dismiss');
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var isTouring = false;
+
   var isPopoverOpen = false;
-  var isPaused = false;
-  var isAtStop = false;
-  var currentStep = 0;
-  var travelToken = 0;
-  var activeLine = '';
-  var autoTimer = null;
-  var introTimer = null;
-  var isStarting = false;
-  var moveAnimation = null;
-  var walkTimer = null;
   var speechTimer = null;
   var mouthTimer = null;
-  var focusedTarget = null;
-  var steps = [
-    { name: 'ABOUT', tab: 0, target: '.tab-content[data-tab-name="about"] .heading-xl', line: 'I build the reliable bits behind useful products.' },
-    { name: 'PROJECTS', tab: 2, target: '.tab-content[data-tab-name="projects"] .project-card', line: 'Real systems, each with its own knot to untangle.' },
-    { name: 'SERVICES', tab: 1, target: '.tab-content[data-tab-name="services"] .tab-panel-inner > div:nth-child(2) > div:first-child', line: 'From a focused API to a full product build, here’s how I help.' },
-    { name: 'EXPERIENCE', tab: 3, target: '.tab-content[data-tab-name="experience"] .timeline-container', line: 'A few years of features, fixes, and production lessons.' },
-    { name: 'CONTACT', tab: 4, target: '#contact-form', line: 'Have a system that needs untangling? Your turn.' }
+  var thinkingTimer = null;
+
+  var DEFAULT_GREETING = "Hi! Ask me anything about Borhan — his skills, projects, experience, services, or how to get in touch.";
+  var NOT_FOUND_ANSWERS = [
+    "I'm not sure about that one. Try asking about his skills, projects, experience, services, or contact details.",
+    "Could you rephrase that? I can answer about skills, projects, experience, services, or how to reach Borhan.",
+    "Not quite sure. Try: 'What are your skills?', 'Show me projects', or 'How can I contact you?'",
+    "I can help with Borhan's skills, projects, experience, services, or contact info. What would you like to know?"
   ];
+
+  var KB = [
+    {
+      keywords: ['name', 'full name', 'who are you', 'who is he', 'borhan', 'fahim'],
+      answer: "I'm Borhan Uddin Fahim — an ASP.NET Core & SaaS Backend Developer focused on building secure, scalable, production-ready systems."
+    },
+    {
+      keywords: ['role', 'title', 'job', 'position', 'what do you do', 'backend developer'],
+      answer: "I'm an ASP.NET Core & C# Backend Developer. I design and build reliable APIs, databases, multi-tenant architectures, and business logic that keeps products stable in production."
+    },
+    {
+      keywords: ['about', 'bio', 'summary', 'overview', 'tell me about yourself', 'introduce'],
+      answer: "I'm Borhan Uddin Fahim, a backend developer for hire with 3+ years of experience delivering secure, scalable SaaS and enterprise applications. I specialise in ASP.NET Core, C#, Entity Framework Core, Clean Architecture, and multi-tenant systems. I focus on building software that's reliable, maintainable, and delivered on schedule."
+    },
+    {
+      keywords: ['available', 'hire', 'for hire', 'freelance', 'contract', 'remote', 'open to work', 'availability'],
+      answer: "I'm available for new freelance, contract, and remote backend projects worldwide. If you have a SaaS, API, or enterprise backend to build or untangle, I'd be happy to discuss it."
+    },
+    {
+      keywords: ['skills', 'tech', 'stack', 'technologies', 'tools', 'what do you use', 'expertise'],
+      answer: "Core skills: ASP.NET Core, C#, Entity Framework Core, Web API, Clean Architecture, Domain-Driven Design, RESTful APIs, Authentication/Authorization (JWT, RBAC).\n\nDatabases: SQL Server, PostgreSQL, Database Design, Query Optimization, Migrations.\n\nArchitecture & Dev: Multi-Tenant SaaS, Modular Monoliths, Repository/Unit of Work, Validation, Logging, Background Jobs.\n\nFrontend/Other: HTML, CSS, JavaScript, Git, GitHub, Postman, Swagger, Vercel/Deployment workflows."
+    },
+    {
+      keywords: ['languages', 'programming languages', 'c#', '.net', 'dotnet', 'asp.net', 'aspnet core'],
+      answer: "Primary: C# and ASP.NET Core (.NET). I work with Entity Framework Core, LINQ, and follow Clean Architecture principles for maintainable backends."
+    },
+    {
+      keywords: ['database', 'sql', 'postgres', 'postgresql', 'sql server', 'ef', 'ef core', 'optimization', 'performance'],
+      answer: "I work with SQL Server and PostgreSQL, focusing on relational schema design, indexing, query optimisation, data integrity, and performance tuning for production workloads."
+    },
+    {
+      keywords: ['architecture', 'clean architecture', 'ddd', 'domain driven', 'multi-tenant', 'multitenant', 'saas architecture', 'rbac', 'roles'],
+      answer: "I build with Clean Architecture and Domain-Driven Design where it fits. Strong in multi-tenant SaaS (tenant isolation), granular RBAC, modular design, and keeping business logic separated from infrastructure."
+    },
+    {
+      keywords: ['projects', 'work', 'portfolio', 'built', 'case studies', 'show me projects', 'what have you built'],
+      answer: "Key projects:\n\n• Multi-Tenant HRM & Payroll System – Tenant isolation, automated payroll, attendance, leave, shifts, granular RBAC.\n\n• ERP & Accounting Platform – Modular ERP with accounting, inventory, approvals, reporting, and role-based access.\n\n• CRM & OKR Management – Lead tracking, pipelines, OKRs, goals, team workflows.\n\n• Enterprise Business Applications – Scalable APIs and admin panels with production-grade data models.\n\nWant details on any of these? Just say the project name."
+    },
+    {
+      keywords: ['hrm', 'payroll', 'attendance', 'leave', 'human resource', 'hr'],
+      answer: "HRM & Payroll project: Multi-tenant architecture with strict tenant isolation, automated payroll calculations, attendance & shift management, leave tracking, and granular role-based access control (RBAC)."
+    },
+    {
+      keywords: ['erp', 'accounting', 'inventory', 'finance'],
+      answer: "ERP & Accounting: Modular, multi-tenant ERP covering accounting, inventory, approvals, workflows, and reporting — built to keep data isolated and operations auditable."
+    },
+    {
+      keywords: ['crm', 'okr', 'goals', 'pipeline', 'leads'],
+      answer: "CRM & OKR: Lead/pipeline management with OKR goal tracking, team alignment, and clean data models for reporting and automation."
+    },
+    {
+      keywords: ['experience', 'work experience', 'career', 'background', 'history'],
+      answer: "Experience:\n\n• Junior Software Engineer – Focused on backend features, APIs, data models, bug fixes, and production-readiness.\n\n3+ years building secure, scalable SaaS and enterprise apps with ASP.NET Core & C#."
+    },
+    {
+      keywords: ['services', 'what can you do', 'offer', 'offerings', 'service'],
+      answer: "Services I offer:\n\n• SaaS Platform Development – Multi-tenant, auth, billing-ready foundations, scalable APIs.\n\n• Custom Enterprise Software – Internal tools, ERPs, HRMs, CRMs tailored to workflows.\n\n• REST API & Backend Development – Clean, documented APIs, business logic, integrations.\n\n• Database Design & Optimization – Schemas, indexing, migrations, query/perf tuning.\n\n• Full-Stack Web Applications – ASP.NET Core backend + maintainable frontend integration.\n\n• Dedicated Developer / Contract – Long-term, reliable backend work on retainer/contract."
+    },
+    {
+      keywords: ['saas', 'saas platform', 'multi tenant saas'],
+      answer: "SaaS Platform Development: I build multi-tenant SaaS with proper tenant isolation, RBAC, extensible modules, clean APIs, and a solid foundation for scaling and maintainability."
+    },
+    {
+      keywords: ['api', 'apis', 'rest', 'rest api', 'web api', 'backend api', 'endpoint'],
+      answer: "REST API & Backend Development: I build clean, versionable, well-structured Web APIs with proper validation, error handling, authentication, authorization, and Swagger/OpenAPI documentation."
+    },
+    {
+      keywords: ['enterprise', 'custom software', 'internal tools'],
+      answer: "Custom Enterprise Software: Tailored ERPs, HRMs, CRMs, and internal tools designed around your actual workflows — focusing on security, auditability, and maintainability."
+    },
+    {
+      keywords: ['database design', 'tuning', 'optimize database'],
+      answer: "Database Design & Optimization: Normalised schemas, strategic indexing, EF Core migrations, slow query analysis, and performance tuning to reduce load and keep things fast in production."
+    },
+    {
+      keywords: ['full stack', 'full-stack', 'fullstack'],
+      answer: "Full-Stack Web Applications: ASP.NET Core backend with clean API contracts, solid data layer, and pragmatic frontend integration to deliver end-to-end, maintainable features."
+    },
+    {
+      keywords: ['dedicated', 'retainer', 'contractor', 'hire full time', 'long term'],
+      answer: "Dedicated Developer / Contract: Reliable, long-term backend support. I focus on clear communication, predictable delivery, clean code, and treating your product like it's my own."
+    },
+    {
+      keywords: ['contact', 'reach', 'email', 'mail', 'whatsapp', 'phone', 'get in touch', 'hire me', 'message'],
+      answer: "Ways to reach Borhan:\n\n• Email: mdborhan.dev@gmail.com\n\n• WhatsApp: https://wa.me/8801906750597\n\n• Contact form on this portfolio (Contact tab).\n\nTell me about your project, timeline, and budget — I'll get back with a clear, honest breakdown."
+    },
+    {
+      keywords: ['email address', 'gmail'],
+      answer: "Email: mdborhan.dev@gmail.com"
+    },
+    {
+      keywords: ['whatsapp', 'chat', 'message me'],
+      answer: "WhatsApp: https://wa.me/8801906750597 — feel free to say hi with a quick project brief."
+    },
+    {
+      keywords: ['location', 'based', 'country', 'bangladesh', 'timezone'],
+      answer: "Based in Bangladesh, working globally as a remote freelance/contract backend developer (available worldwide)."
+    },
+    {
+      keywords: ['education', 'degree', 'study', 'university', 'college'],
+      answer: "Education info is on the Experience/Education section of this portfolio. Core focus has been practical software engineering and building production systems."
+    },
+    {
+      keywords: ['cv', 'resume', 'resume pdf', 'cv download'],
+      answer: "You can download his CV from the profile section on this portfolio (Download CV button)."
+    },
+    {
+      keywords: ['timeline', 'years', 'experience years', 'how many years'],
+      answer: "3+ years of professional experience building secure, scalable SaaS and enterprise applications with ASP.NET Core, C#, and SQL databases."
+    },
+    {
+      keywords: ['quality', 'reliable', 'production', 'maintainable', 'clean code'],
+      answer: "I focus on reliability first — clean, maintainable code, proper validation, error handling, tenant/data isolation, and production-readiness so systems keep running after launch."
+    },
+    {
+      keywords: ['start project', 'consultation', 'quote', 'estimate', 'budget', 'timeline'],
+      answer: "To get started: share your problem, core features, timeline, and rough budget via Email, WhatsApp, or the Contact form. I'll reply with a clear scope, suggested approach, and honest estimate — no pressure."
+    },
+    {
+      keywords: ['thanks', 'thank you', 'ty', 'appreciate'],
+      answer: "You're welcome! Feel free to ask anything else about Borhan's work or how to get started."
+    },
+    {
+      keywords: ['hi', 'hello', 'hey', 'yo', 'greetings', 'good morning', 'good afternoon', 'good evening'],
+      answer: "Hey there! 👋 Ask me about Borhan's skills, projects, experience, services, or how to reach him."
+    },
+    {
+      keywords: ['bye', 'goodbye', 'see you', 'later'],
+      answer: "Take care! If you need anything about Borhan later, just reopen me here."
+    }
+  ];
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(value, max));
+  }
 
   function setPopoverOpen(open) {
     isPopoverOpen = open;
     popover.setAttribute('aria-hidden', open ? 'false' : 'true');
+    guide.setAttribute('data-open', open ? 'true' : 'false');
     character.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (open) guide.setAttribute('data-open', 'true');
-    else guide.removeAttribute('data-open');
-  }
-
-  function setSpeech(line) {
-    window.clearTimeout(speechTimer);
-    speech.classList.remove('is-changing');
-    speech.textContent = line;
-    speechTimer = window.setTimeout(function () { speech.classList.add('is-changing'); }, 20);
-    window.clearTimeout(mouthTimer);
-    guideArt.classList.remove('is-speaking');
-    void guideArt.offsetWidth;
-    guideArt.classList.add('is-speaking');
-    mouthTimer = window.setTimeout(function () { guideArt.classList.remove('is-speaking'); }, 800);
-  }
-
-  function delay(ms) {
-    return new Promise(function (resolve) { window.setTimeout(resolve, ms); });
-  }
-
-  function settleTarget(target, token) {
-    if (reducedMotion) return Promise.resolve();
-    return new Promise(function (resolve) {
-      var lastTop = NaN;
-      var steadyFrames = 0;
-      var started = performance.now();
-      function check(now) {
-        if (!isTouring || token !== travelToken || now - started > 1700) { resolve(); return; }
-        var top = target.getBoundingClientRect().top;
-        if (Math.abs(top - lastTop) < .5) steadyFrames++;
-        else steadyFrames = 0;
-        lastTop = top;
-        if (steadyFrames >= 8) resolve();
-        else requestAnimationFrame(check);
-      }
-      requestAnimationFrame(check);
-    });
-  }
-
-  function wave() {
-    if (reducedMotion) return;
-    character.classList.remove('is-waving');
-    void character.offsetWidth;
-    character.classList.add('is-waving');
-    window.setTimeout(function () { character.classList.remove('is-waving'); }, 1350);
-  }
-
-  function removeFocus() {
-    if (focusedTarget) focusedTarget.classList.remove('guide-tour-target');
-    focusedTarget = null;
-  }
-
-  function setFocus(target) {
-    removeFocus();
-    if (target) {
-      target.classList.add('guide-tour-target');
-      focusedTarget = target;
+    if (open && guideInput) {
+      window.setTimeout(function () {
+        try { guideInput.focus(); } catch (e) {}
+      }, 60);
     }
   }
 
-  function clamp(value, min, max) {
-    return Math.max(min, Math.min(value, max));
+  function animateSpeech() {
+    if (!guideArt) return;
+    guideArt.classList.remove('is-speaking');
+    void guideArt.offsetWidth;
+    guideArt.classList.add('is-speaking');
+    window.clearTimeout(mouthTimer);
+    mouthTimer = window.setTimeout(function () {
+      if (guideArt) guideArt.classList.remove('is-speaking');
+    }, 900);
+  }
+
+  function setSpeech(text) {
+    if (!speech) return;
+    window.clearTimeout(speechTimer);
+    speech.classList.remove('is-changing');
+    void speech.offsetWidth;
+    speech.textContent = text || '';
+    speech.classList.add('is-changing');
+    animateSpeech();
+  }
+
+  function wave() {
+    if (!character) return;
+    character.classList.remove('is-waving');
+    void character.offsetWidth;
+    character.classList.add('is-waving');
+    window.setTimeout(function () { if (character) character.classList.remove('is-waving'); }, 1260);
   }
 
   function glanceAt(targetRect) {
@@ -124,413 +219,300 @@
     pupils.style.setProperty('--gaze-y', clamp(dy / 150, -1, 1).toFixed(2) + 'px');
   }
 
-  function setBubblePosition(x, y, targetRect) {
+  function resetGaze() {
+    if (pupils) {
+      pupils.style.setProperty('--gaze-x', '0px');
+      pupils.style.setProperty('--gaze-y', '0px');
+    }
+  }
+
+  function setBubblePosition() {
     var box = popover.getBoundingClientRect();
     var width = box.width || 306;
     var height = box.height || 150;
+    var charRect = character.getBoundingClientRect();
+    var x = charRect.left;
+    var y = charRect.top;
+
     var bubbleX = clamp(x - width - 16, 10, window.innerWidth - width - 10);
-    // On narrow screens, put the bubble to the right of the character when it fits.
     if (window.innerWidth < 560 && bubbleX < 12) {
       bubbleX = clamp(x + 90, 10, window.innerWidth - width - 10);
     }
-    var preferredY = targetRect ? targetRect.top + targetRect.height * .5 - height * .5 : y - height - 18;
+    var preferredY = y - height - 18;
     var topLimit = 76;
     var bottomLimit = window.innerHeight - height - (window.innerWidth < 1024 ? 100 : 16);
     var bubbleY = clamp(preferredY, topLimit, Math.max(topLimit, bottomLimit));
+
     guide.style.setProperty('--bubble-x', Math.round(bubbleX) + 'px');
     guide.style.setProperty('--bubble-y', Math.round(bubbleY) + 'px');
   }
 
-  function enterTourMode() {
-    if (guide.classList.contains('is-tour-mode')) return;
-    var rect = character.getBoundingClientRect();
-    guide.style.setProperty('--guide-x', Math.round(rect.left) + 'px');
-    guide.style.setProperty('--guide-y', Math.round(rect.top) + 'px');
-    guide.classList.add('is-tour-mode');
-    setBubblePosition(rect.left, rect.top, null);
+  function normalize(text) {
+    if (!text) return '';
+    return text
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
-  function walkTo(target, token) {
-    var targetRect = target.getBoundingClientRect();
-    var narrow = window.innerWidth < 1024;
-    var charWidth = narrow ? 106 : 124;
-    var charHeight = narrow ? 143 : 166;
-    var safeBottom = narrow ? 102 : 18;
-    var rightX = targetRect.right + 15;
-    var leftX = targetRect.left - charWidth - 15;
-    var x = rightX + charWidth <= window.innerWidth - 12 ? rightX :
-      (leftX >= 12 ? leftX : window.innerWidth - charWidth - 12);
-    var y = clamp(targetRect.top + targetRect.height * .5 - charHeight * .48, 88,
-      window.innerHeight - charHeight - safeBottom);
-    x = clamp(x, 12, window.innerWidth - charWidth - 12);
-    glanceAt(targetRect);
-    setBubblePosition(x, y, targetRect);
+  function findAnswer(q) {
+    var norm = normalize(q);
+    if (!norm) return null;
 
-    character.classList.add('is-preparing');
-    return delay(reducedMotion ? 0 : 180).then(async function () {
-      character.classList.remove('is-preparing');
-      if (!isTouring || token !== travelToken) return false;
-      var from = guide.getBoundingClientRect();
-      if (moveAnimation) {
-        guide.style.setProperty('--guide-x', Math.round(from.left) + 'px');
-        guide.style.setProperty('--guide-y', Math.round(from.top) + 'px');
-        moveAnimation.cancel();
-        moveAnimation = null;
+    var best = { score: 0, answer: null };
+
+    for (var i = 0; i < KB.length; i++) {
+      var item = KB[i];
+      var score = 0;
+      for (var j = 0; j < item.keywords.length; j++) {
+        var kw = item.keywords[j];
+        if (!kw) continue;
+        var k = kw.toLowerCase();
+        if (norm === k) {
+          score += 3;
+        } else if (k.indexOf(' ') === -1 && norm.split(' ').indexOf(k) !== -1) {
+          score += 2;
+        } else if (norm.indexOf(k) !== -1) {
+          score += 1.2;
+        }
       }
-      var dx = x - from.left;
-      var dy = y - from.top;
-      if (Math.abs(dx) < 2 && Math.abs(dy) < 2 || reducedMotion) {
-        guide.style.setProperty('--guide-x', Math.round(x) + 'px');
-        guide.style.setProperty('--guide-y', Math.round(y) + 'px');
-        return true;
+      if (score > best.score) {
+        best.score = score;
+        best.answer = item.answer;
       }
-
-      var walkGroup = character.querySelector('.guide-walk');
-      var targetIsLeft = targetRect.left + targetRect.width * .5 < x + charWidth * .5;
-      if (walkGroup) walkGroup.setAttribute('transform', targetIsLeft ? 'translate(144 0) scale(-1 1)' : '');
-      character.classList.add('is-turning');
-      await delay(220);
-      character.classList.remove('is-turning');
-      if (!isTouring || token !== travelToken) return false;
-
-      character.classList.add('is-walking');
-      moveAnimation = guide.animate([
-        { transform: 'translate3d(0, 0, 0)' },
-        { transform: 'translate3d(' + dx + 'px, ' + dy + 'px, 0)' }
-      ], { duration: clamp(Math.hypot(dx, dy) * .8, 850, 1500), easing: 'cubic-bezier(.22,.68,.12,1)', fill: 'forwards' });
-      if (isPaused) moveAnimation.pause();
-
-      return moveAnimation.finished.then(function () {
-        if (token !== travelToken) return false;
-        guide.style.setProperty('--guide-x', Math.round(x) + 'px');
-        guide.style.setProperty('--guide-y', Math.round(y) + 'px');
-        moveAnimation.cancel();
-        moveAnimation = null;
-        character.classList.remove('is-walking');
-        character.classList.add('is-settling');
-        window.setTimeout(function () { character.classList.remove('is-settling'); }, 420);
-        return true;
-      }).catch(function () { return false; });
-    });
-  }
-
-  function scheduleNext() {
-    window.clearTimeout(autoTimer);
-    if (!isTouring || isPaused || !isAtStop) return;
-    autoTimer = window.setTimeout(function () {
-      if (currentStep >= steps.length - 1) finishTour();
-      else goToStep(currentStep + 1);
-    }, 3900);
-  }
-
-  async function goToStep(index) {
-    if (!isTouring) return;
-    window.clearTimeout(introTimer);
-    introTimer = null;
-    isStarting = false;
-    if (isPaused) {
-      isPaused = false;
-      pauseButton.textContent = 'Pause';
-      if (moveAnimation) moveAnimation.play();
+      if (best.score >= 3) break;
     }
-    var step = Math.max(0, Math.min(index, steps.length - 1));
-    currentStep = step;
-    var token = ++travelToken;
-    isAtStop = false;
-    window.clearTimeout(autoTimer);
-    removeFocus();
-    activeLine = steps[step].line;
-    stepLabel.hidden = false;
-    stepLabel.textContent = String(step + 1).padStart(2, '0') + ' / ' + String(steps.length).padStart(2, '0') + '  ·  ' + steps[step].name;
-    guideMenu.hidden = true;
-    menuToggle.setAttribute('aria-expanded', 'false');
-    nextButton.innerHTML = step === steps.length - 1 ? 'Finish <span aria-hidden="true">✓</span>' : 'Skip stop <span aria-hidden="true">→</span>';
-    setSpeech(activeLine);
-    enterTourMode();
-    setPopoverOpen(true);
 
-    if (typeof window.openTabByIndex === 'function') window.openTabByIndex(steps[step].tab);
-    await delay(410);
-    if (!isTouring || token !== travelToken) return;
+    if (best.score >= 0.9 && best.answer) return best.answer;
+    return null;
+  }
 
-    var target = document.querySelector(steps[step].target);
-    if (!target) {
-      // A missing optional section should not strand the guide.
-      if (step < steps.length - 1) goToStep(step + 1);
-      else finishTour();
+  function suggestTab(text) {
+    text = text.toLowerCase();
+    if (text.includes('skill') || text.includes('tech') || text.includes('stack') || text.includes('tool') || text.includes('language') || text.includes('expertise') || text.includes('service') || text.includes('offer') || text.includes('pricing') || text.includes('consult') || text.includes('dedicated') || text.includes('retainer')) {
+      return { tab: 1, label: 'See the Skills & Services section →' };
+    }
+    if (text.includes('experience') || text.includes('work') || text.includes('career') || text.includes('background') || text.includes('timeline') || text.includes('year') || text.includes('years') || text.includes('education') || text.includes('job') || text.includes('role') || text.includes('company') || text.includes('intern') || text.includes('junior')) {
+      return { tab: 3, label: 'See the Experience section →' };
+    }
+    if (text.includes('project') || text.includes('case') || text.includes('built') || text.includes('hrm') || text.includes('erp') || text.includes('crm') || text.includes('okr')) {
+      return { tab: 2, label: 'See the Projects section →' };
+    }
+    if (text.includes('contact') || text.includes('email') || text.includes('whatsapp') || text.includes('hire') || text.includes('reach') || text.includes('get in touch') || text.includes('message')) {
+      return { tab: 4, label: 'Go to Contact →' };
+    }
+    if (text.includes('about') || text.includes('bio') || text.includes('who') || text.includes('name') || text.includes('introduce') || text.includes('summary') || text.includes('available') || text.includes('freelance')) {
+      return { tab: 0, label: 'See the About section →' };
+    }
+    return null;
+  }
+
+  function tryAutoNavigate(ans, q) {
+    if (typeof window.openTabByIndex !== 'function') return;
+    var pick = suggestTab((ans + ' ' + q).toLowerCase());
+    if (pick) window.openTabByIndex(pick.tab);
+  }
+
+  function getRandomFallback() {
+    var idx = Math.floor(Math.random() * NOT_FOUND_ANSWERS.length);
+    return NOT_FOUND_ANSWERS[idx];
+  }
+
+  function showThinking() {
+    window.clearTimeout(thinkingTimer);
+    setSpeech('Hmm, let me think...');
+    animateSpeech();
+    if (guideAnswer) guideAnswer.hidden = true;
+    if (guideClearBtn) guideClearBtn.hidden = true;
+    if (guideSuggestBtn) guideSuggestBtn.hidden = true;
+    thinkingTimer = window.setTimeout(function () {
+    }, 250);
+  }
+
+  function hideThinking() {
+    window.clearTimeout(thinkingTimer);
+  }
+
+  function askQuestion() {
+    var q = guideInput ? guideInput.value : '';
+    if (!q || !q.trim()) {
+      setSpeech('Type a question first — e.g. "What are your skills?"');
+      if (guideAnswer) guideAnswer.hidden = true;
+      if (guideClearBtn) guideClearBtn.hidden = true;
+      if (guideSuggestBtn) guideSuggestBtn.hidden = true;
+      wave();
+      if (guideInput) guideInput.focus();
       return;
     }
-    target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center', inline: 'nearest' });
-    await settleTarget(target, token);
-    if (!isTouring || token !== travelToken) return;
 
-    var arrived = await walkTo(target, token);
-    if (!arrived || !isTouring || token !== travelToken) return;
-    setFocus(target);
-    isAtStop = true;
-    scheduleNext();
-  }
+    showThinking();
 
-  function beginTour() {
-    isTouring = true;
-    isPaused = false;
-    isAtStop = false;
-    currentStep = 0;
-    pauseButton.textContent = 'Pause';
-    character.setAttribute('aria-label', 'Pause Borhan’s portfolio tour');
-    inviteActions.hidden = true;
-    tourActions.hidden = false;
-    enterTourMode();
-    setPopoverOpen(true);
-    activeLine = 'Welcome to my portfolio. I’ll show you around, one stop at a time.';
-    setSpeech(activeLine);
-    wave();
-    window.clearTimeout(autoTimer);
-    isStarting = true;
-    introTimer = window.setTimeout(function () {
-      introTimer = null;
-      isStarting = false;
-      if (isTouring && !isPaused) goToStep(0);
-    }, 1450);
-  }
+    window.setTimeout(function () {
+      hideThinking();
+      var ans = findAnswer(q);
+      if (!ans) ans = getRandomFallback();
 
-  function pauseTour() {
-    if (!isTouring) return;
-    isPaused = !isPaused;
-    if (isPaused) {
-      window.clearTimeout(autoTimer);
-      if (introTimer) { window.clearTimeout(introTimer); introTimer = null; }
-      if (moveAnimation) moveAnimation.pause();
-      pauseButton.textContent = 'Resume';
-      character.setAttribute('aria-label', 'Resume Borhan’s portfolio tour');
-      setSpeech('Paused. Take your time; I’ll wait here.');
-    } else {
-      pauseButton.textContent = 'Pause';
-      if (moveAnimation) moveAnimation.play();
-      setSpeech(activeLine);
-      character.setAttribute('aria-label', 'Pause Borhan’s portfolio tour');
-      if (isStarting) {
-        isStarting = false;
-        introTimer = window.setTimeout(function () { introTimer = null; if (isTouring && !isPaused) goToStep(0); }, 250);
-        return;
+      // Don't repeat answer in speech bubble; show only full answer below input
+      setSpeech('');
+      if (guideAnswer) {
+        var cleanAns = ans.replace(/^\s*\n+/, '').replace(/\n\s*\n\s*\n+/g, '\n\n').trim();
+        guideAnswer.textContent = cleanAns;
+        guideAnswer.hidden = false;
       }
-      scheduleNext();
-    }
-  }
-
-  function returnToDock() {
-    if (!guide.classList.contains('is-tour-mode')) return Promise.resolve();
-    var charRect = character.getBoundingClientRect();
-    if (moveAnimation) { moveAnimation.cancel(); moveAnimation = null; }
-    var charWidth = window.innerWidth < 1024 ? 106 : 124;
-    var charHeight = window.innerWidth < 1024 ? 143 : 166;
-    var narrow = window.innerWidth < 1024;
-    var rightInset = narrow ? (window.innerWidth <= 380 ? 7.2 : 10.4) : clamp(window.innerWidth * .024, 16, 36);
-    var bottomInset = window.innerWidth < 1024 ? 90 : 24;
-    var wrapperWidth = narrow ? (window.innerWidth <= 380 ? window.innerWidth - 14.4 : Math.min(340, window.innerWidth - 20.8)) : 360;
-    guide.style.setProperty('--return-width', Math.round(wrapperWidth) + 'px');
-    guide.style.setProperty('--guide-x', Math.round(charRect.left - (wrapperWidth - charWidth)) + 'px');
-    guide.style.setProperty('--guide-y', Math.round(charRect.top) + 'px');
-    guide.classList.add('is-returning');
-    var dockX = window.innerWidth - wrapperWidth - rightInset;
-    var dockY = window.innerHeight - charHeight - bottomInset;
-    var from = guide.getBoundingClientRect();
-    var dx = dockX - from.left;
-    var dy = dockY - from.top;
-    character.classList.add('is-walking');
-    moveAnimation = guide.animate([
-      { transform: 'translate3d(0, 0, 0)' },
-      { transform: 'translate3d(' + dx + 'px, ' + dy + 'px, 0)' }
-    ], { duration: reducedMotion ? 0 : 700, easing: 'cubic-bezier(.22,.68,.12,1)', fill: 'forwards' });
-    var returnAnimation = moveAnimation;
-    return returnAnimation.finished.catch(function () {}).then(function () {
-      if (moveAnimation !== returnAnimation) return;
-      guide.style.setProperty('--guide-x', Math.round(dockX) + 'px');
-      guide.style.setProperty('--guide-y', Math.round(dockY) + 'px');
-      returnAnimation.cancel();
-      moveAnimation = null;
-      character.classList.remove('is-walking');
-      guide.style.removeProperty('--guide-x');
-      guide.style.removeProperty('--guide-y');
-      guide.style.removeProperty('--bubble-x');
-      guide.style.removeProperty('--bubble-y');
-      guide.style.removeProperty('--return-width');
-      guide.classList.remove('is-tour-mode');
-      guide.classList.remove('is-returning');
-      var walkGroup = character.querySelector('.guide-walk');
-      if (walkGroup) walkGroup.setAttribute('transform', 'translate(144 0) scale(-1 1)');
-      if (pupils) {
-        pupils.style.setProperty('--gaze-x', '0px');
-        pupils.style.setProperty('--gaze-y', '0px');
+      if (guideClearBtn) guideClearBtn.hidden = false;
+      // Suggestion button based on the topic
+      var ql = q.toLowerCase();
+      var combined = (ans + ' ' + ql).toLowerCase();
+      var pick = suggestTab(ql);
+      if (!pick) pick = suggestTab(combined); // prefer user question first, then answer+question
+      if (!pick) {
+        if (ql.indexOf('exp') !== -1) pick = { tab: 3, label: 'See the Experience section →' };
       }
-    });
+      if (guideSuggestBtn && pick) {
+        guideSuggestBtn.textContent = pick.label;
+        guideSuggestBtn.setAttribute('data-tab', String(pick.tab));
+        guideSuggestBtn.removeAttribute('hidden');
+        guideSuggestBtn.hidden = false;
+        guideSuggestBtn.style.display = 'block';
+      } else if (guideSuggestBtn) {
+        guideSuggestBtn.setAttribute('hidden', '');
+        guideSuggestBtn.hidden = true;
+        guideSuggestBtn.style.display = 'none';
+      }
+      wave();
+      setBubblePosition();
+
+    }, reducedMotion ? 80 : 320);
   }
 
-  async function finishTour() {
-    isTouring = false;
-    isPaused = false;
-    isAtStop = false;
-    travelToken++;
-    window.clearTimeout(autoTimer);
-    window.clearTimeout(introTimer);
-    removeFocus();
-    pauseButton.textContent = 'Pause';
-    stepLabel.hidden = true;
-    tourActions.hidden = true;
-    guideMenu.hidden = true;
-    menuToggle.setAttribute('aria-expanded', 'false');
-    inviteActions.hidden = false;
-    startButton.innerHTML = 'Take the tour again <span aria-hidden="true">↻</span>';
-    laterButton.textContent = 'Close';
-    activeLine = 'That’s the tour. The hard part is usually behind the scenes.';
-    setSpeech(activeLine);
-    await returnToDock();
-    setPopoverOpen(true);
-    character.setAttribute('aria-label', 'Open Borhan’s portfolio tour');
-    wave();
-  }
-
-  async function exitTour() {
-    if (!isTouring) { closePopover(); return; }
-    isTouring = false;
-    isPaused = false;
-    isAtStop = false;
-    travelToken++;
-    window.clearTimeout(autoTimer);
-    window.clearTimeout(introTimer);
-    removeFocus();
-    if (moveAnimation) {
-      var current = character.getBoundingClientRect();
-      guide.style.setProperty('--guide-x', Math.round(current.left) + 'px');
-      guide.style.setProperty('--guide-y', Math.round(current.top) + 'px');
-      moveAnimation.cancel();
-      moveAnimation = null;
+  function clearAnswer() {
+    if (guideAnswer) {
+      guideAnswer.hidden = true;
+      guideAnswer.textContent = '';
     }
-    await returnToDock();
-    closePopover();
+    if (guideClearBtn) guideClearBtn.hidden = true;
+    if (guideSuggestBtn) guideSuggestBtn.hidden = true;
+    setSpeech(DEFAULT_GREETING);
+    if (guideInput) {
+      guideInput.value = '';
+      guideInput.focus();
+    }
+    resetGaze();
+    setBubblePosition();
   }
 
   function closePopover() {
-    isTouring = false;
-    tourActions.hidden = true;
-    guideMenu.hidden = true;
-    menuToggle.setAttribute('aria-expanded', 'false');
-    stepLabel.hidden = true;
-    inviteActions.hidden = false;
+    isPopoverOpen = false;
     setPopoverOpen(false);
-    character.setAttribute('aria-label', 'Open Borhan’s portfolio tour');
+    resetGaze();
     character.focus();
   }
 
-  function restartTour() {
-    travelToken++;
-    window.clearTimeout(autoTimer);
-    window.clearTimeout(introTimer);
-    isTouring = false;
-    isPaused = false;
-    isAtStop = false;
-    removeFocus();
-    if (moveAnimation) {
-      var current = character.getBoundingClientRect();
-      guide.style.setProperty('--guide-x', Math.round(current.left) + 'px');
-      guide.style.setProperty('--guide-y', Math.round(current.top) + 'px');
-      moveAnimation.cancel();
-      moveAnimation = null;
-      character.classList.remove('is-walking');
-    }
-    beginTour();
-  }
-
-  function selectedTabReaction() {
-    var active = document.querySelector('.tab-content[data-tab-active="true"]');
-    if (!active) return;
-    var lines = {
-      about: 'The short version. A reliable backend makes the rest possible.',
-      skills: 'A practical toolkit. Nothing in here is just for show.',
-      projects: 'Pick a case study. The details are where it gets good.',
-      experience: 'Production has a way of teaching you what matters.',
-      contact: 'My favorite section. No pressure, just say hello.',
-      services: 'A few ways I can help. The custom option is always open.'
-    };
-    if (isPopoverOpen) setSpeech(lines[active.getAttribute('data-tab-name')] || 'Have a look around.');
-    wave();
-  }
-
   character.addEventListener('click', function () {
-    if (isTouring) { pauseTour(); return; }
     if (!isPopoverOpen) {
-      setSpeech('Welcome to my portfolio. Want a quick look around?');
-      inviteActions.hidden = false;
-      tourActions.hidden = true;
+      setSpeech(DEFAULT_GREETING);
+      if (guideAnswer) guideAnswer.hidden = true;
+      if (guideClearBtn) guideClearBtn.hidden = true;
+      if (guideSuggestBtn) guideSuggestBtn.hidden = true;
+      if (guideInput) guideInput.value = '';
       setPopoverOpen(true);
-    } else closePopover();
+      wave();
+      setBubblePosition();
+    } else {
+      closePopover();
+    }
   });
 
-  startButton.addEventListener('click', beginTour);
-  laterButton.addEventListener('click', closePopover);
-  pauseButton.addEventListener('click', pauseTour);
-  menuToggle.addEventListener('click', function () {
-    guideMenu.hidden = !guideMenu.hidden;
-    menuToggle.setAttribute('aria-expanded', guideMenu.hidden ? 'false' : 'true');
+  if (guideAskBtn) guideAskBtn.addEventListener('click', askQuestion);
+  if (guideInput) {
+    guideInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        askQuestion();
+      }
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closePopover();
+      }
+    });
+  }
+  if (guideClearBtn) guideClearBtn.addEventListener('click', clearAnswer);
+  if (guideSuggestBtn) guideSuggestBtn.addEventListener('click', function () {
+    var tab = parseInt(guideSuggestBtn.getAttribute('data-tab'), 10);
+    if (!isNaN(tab) && typeof window.openTabByIndex === 'function') window.openTabByIndex(tab);
+    // Close guide after showing the section
+    window.setTimeout(function () { closePopover(); }, 180);
   });
-  nextButton.addEventListener('click', function () {
-    if (currentStep === steps.length - 1) finishTour();
-    else goToStep(currentStep + 1);
-  });
-  replayButton.addEventListener('click', restartTour);
-  endButton.addEventListener('click', exitTour);
-  dismissButton.addEventListener('click', exitTour);
+  if (dismissButton) dismissButton.addEventListener('click', closePopover);
 
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape' || !isPopoverOpen) return;
     var projectModal = document.getElementById('project-modal');
     if (projectModal && !projectModal.classList.contains('hidden')) return;
-    exitTour();
+    closePopover();
   });
 
   document.addEventListener('click', function (event) {
-    if (guide.contains(event.target) || isTouring) return;
-    if (event.target.closest('.tab-btn')) { selectedTabReaction(); return; }
+    if (guide.contains(event.target)) return;
+    if (event.target.closest('.tab-btn')) {
+      if (isPopoverOpen) {
+        var active = document.querySelector('.tab-content[data-tab-active="true"]');
+        var name = active ? active.getAttribute('data-tab-name') : '';
+        var lines = {
+          about: 'Ask me about Borhan, skills, or availability.',
+          skills: 'Want to know his tech stack or strongest areas?',
+          projects: 'Ask me about any project — HRM, ERP, CRM, or OKR.',
+          experience: 'Ask about his work experience or timeline.',
+          contact: 'Ask how to reach Borhan or start a project.',
+          services: 'Ask what services he offers or pricing approach.'
+        };
+        setSpeech(lines[name] || 'Go ahead, ask me anything about Borhan.');
+        wave();
+      }
+      return;
+    }
     if (event.target.closest('.project-card')) {
-      if (isPopoverOpen) setSpeech('Open a case study to see what’s under the hood.');
-      wave();
+      if (isPopoverOpen) {
+        setSpeech('Ask me about this project or any other one he built.');
+        wave();
+      }
       return;
     }
     if (event.target.closest('.btn-primary:not(#submit-btn)')) {
-      if (isPopoverOpen) setSpeech('A good next step. I’ll leave the details to you.');
-      wave();
+      if (isPopoverOpen) {
+        setSpeech('Want to start a project? Ask me for details or how to reach him.');
+        wave();
+      }
     }
   });
 
   var alreadyDismissed = false;
-  try { alreadyDismissed = sessionStorage.getItem('portfolioGuideDismissed') === 'true'; } catch (e) { /* Optional preference only. */ }
+  try { alreadyDismissed = sessionStorage.getItem('portfolioGuideDismissed') === 'true'; } catch (e) {}
+
   function rememberDismissal() {
     alreadyDismissed = true;
-    try { sessionStorage.setItem('portfolioGuideDismissed', 'true'); } catch (e) { /* Optional preference only. */ }
+    try { sessionStorage.setItem('portfolioGuideDismissed', 'true'); } catch (e) {}
   }
-  dismissButton.addEventListener('click', rememberDismissal);
-  laterButton.addEventListener('click', rememberDismissal);
+  if (dismissButton) dismissButton.addEventListener('click', rememberDismissal);
 
   window.addEventListener('resize', function () {
-    if (!isTouring || !focusedTarget) return;
-    var rect = focusedTarget.getBoundingClientRect();
-    var charWidth = window.innerWidth < 1024 ? 106 : 124;
-    var charHeight = window.innerWidth < 1024 ? 143 : 166;
-    var x = clamp(rect.right + 15, 12, window.innerWidth - charWidth - 12);
-    var y = clamp(rect.top + rect.height * .5 - charHeight * .48, 88, window.innerHeight - charHeight - 100);
-    guide.style.setProperty('--guide-x', Math.round(x) + 'px');
-    guide.style.setProperty('--guide-y', Math.round(y) + 'px');
-    setBubblePosition(x, y, rect);
+    if (isPopoverOpen) setBubblePosition();
   });
 
   window.setTimeout(function () {
     guide.setAttribute('data-visible', 'true');
     guide.removeAttribute('aria-hidden');
-    if (!alreadyDismissed) window.setTimeout(function () {
-      if (!alreadyDismissed && !isTouring) {
-        setPopoverOpen(true);
-        wave();
-      }
-    }, 520);
+    setBubblePosition();
+    if (!alreadyDismissed) {
+      window.setTimeout(function () {
+        if (!alreadyDismissed && !isPopoverOpen) {
+          setSpeech(DEFAULT_GREETING);
+          setPopoverOpen(true);
+          wave();
+          setBubblePosition();
+        }
+      }, 520);
+    }
   }, 1700);
 })();
