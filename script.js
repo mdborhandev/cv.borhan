@@ -332,8 +332,9 @@
       setTimeout(window.resetCounters, 100);
     }
 
-    // Reflect the active tab in the URL so each tab is its own page.
-    applyRoute(tabName, true);
+    // This is a single-page site: the URL never changes, but the document
+    // head still follows the active tab for a nicer share/tab title.
+    setTabMeta(tabName);
   }
 
   // Make openTab globally available
@@ -344,8 +345,8 @@
     tabList.addEventListener('click', function (event) {
       var button = event.target.closest('.tab-btn[data-tab-target]');
       if (!button) return;
-      // Let modified clicks (new tab/window) use the real href.
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      // These are in-page controls, not links — a click always switches the
+      // panel and never navigates, in every environment.
       event.preventDefault();
       openTab({ currentTarget: button }, button.getAttribute('data-tab-target'));
     });
@@ -375,75 +376,51 @@
 
   window.openTabByIndex = openTabByIndex;
 
-  // ===== Routing: each tab is its own indexable URL =====
-  var SITE_URL = 'https://borhanuddinfahim.vercel.app';
+  // ===== Tab meta =====
+  // Single-page site: the URL stays exactly where it is. These entries only
+  // drive document.title/description so a tab change still reads correctly in
+  // the browser tab and when the page is shared.
   var TAB_META = {
     about: {
-      path: '/',
       title: 'Hire Borhan Uddin Fahim | ASP.NET Core & C# Backend Developer',
       desc: 'Hire Borhan Uddin Fahim, ASP.NET Core & C# backend developer with 3+ years building secure, scalable SaaS and enterprise apps. Freelance & contract work worldwide.'
     },
     services: {
-      path: '/services',
       title: 'ASP.NET Core & Backend Development Services | Borhan Uddin Fahim',
       desc: 'Hire Borhan Uddin Fahim for ASP.NET Core and C# backend development — SaaS platforms, custom enterprise software, REST APIs, and database performance tuning.'
     },
     projects: {
-      path: '/projects',
       title: 'Projects & Case Studies | Borhan Uddin Fahim',
       desc: 'Enterprise ASP.NET Core projects by Borhan Uddin Fahim: multi-tenant SaaS HRM, ERP, accounting, CRM, and OKR systems built to scale.'
     },
     experience: {
-      path: '/experience',
       title: 'Experience & Education | Borhan Uddin Fahim',
       desc: 'Experience and education of Borhan Uddin Fahim — backend software engineer working with ASP.NET Core, C#, and SQL Server.'
     },
     contact: {
-      path: '/contact',
       title: 'Contact & Hire | Borhan Uddin Fahim — ASP.NET Core Developer',
       desc: 'Contact Borhan Uddin Fahim to hire an ASP.NET Core backend developer for freelance or contract work. Email, WhatsApp, or send your project requirements.'
     }
   };
-
-  function tabFromPath(pathname) {
-    var path = (pathname || '/').replace(/\/+$/, '') || '/';
-    for (var name in TAB_META) {
-      if (TAB_META[name].path === path) return name;
-    }
-    return 'about';
-  }
 
   function setMeta(selector, attr, value) {
     var el = document.querySelector(selector);
     if (el) el.setAttribute(attr, value);
   }
 
-  function setRouteMeta(tabName) {
+  function setTabMeta(tabName) {
     var meta = TAB_META[tabName];
     if (!meta) return;
-    var url = SITE_URL + meta.path;
     document.title = meta.title;
     setMeta('meta[name="description"]', 'content', meta.desc);
     setMeta('meta[property="og:title"]', 'content', meta.title);
     setMeta('meta[property="og:description"]', 'content', meta.desc);
-    setMeta('meta[property="og:url"]', 'content', url);
     setMeta('meta[name="twitter:title"]', 'content', meta.title);
     setMeta('meta[name="twitter:description"]', 'content', meta.desc);
-    setMeta('link[rel="canonical"]', 'href', url);
   }
 
-  // Update the address bar + document head for the active tab.
-  function applyRoute(tabName, push) {
-    var meta = TAB_META[tabName];
-    if (!meta) return;
-    if (push && location.pathname !== meta.path) {
-      history.pushState({ tab: tabName }, '', meta.path);
-    }
-    setRouteMeta(tabName);
-  }
-
-  // Initialize the tab for the current URL (each tab is a real page/URL).
-  var firstTab = getTabByName(tabFromPath(location.pathname)) || document.querySelector('.tab-content[data-tab-name="about"]');
+  // The site always opens on the About tab.
+  var firstTab = document.querySelector('.tab-content[data-tab-name="about"]');
   if (firstTab) {
     firstTab.removeAttribute('data-tab-hidden');
     firstTab.setAttribute('data-tab-active', 'true');
@@ -460,7 +437,7 @@
     tab.setAttribute('aria-hidden', 'true');
   });
 
-  // Sync the nav's selected state with the initial route.
+  // Sync the nav's selected state with the initial tab.
   document.querySelectorAll('.tab-btn').forEach(function (btn) {
     var selected = !!firstTab && btn.getAttribute('data-tab-target') === firstTab.getAttribute('data-tab-name');
     btn.classList.toggle('tab-active', selected);
@@ -468,14 +445,7 @@
     btn.tabIndex = selected ? 0 : -1;
   });
 
-  applyRoute(firstTab ? firstTab.getAttribute('data-tab-name') : 'about', false);
-
-  // Back/forward buttons move between tab "pages".
-  window.addEventListener('popstate', function () {
-    var name = tabFromPath(location.pathname);
-    var btn = document.querySelector('.tab-btn[data-tab-target="' + name + '"]');
-    if (btn) openTab({ currentTarget: btn }, name);
-  });
+  setTabMeta(firstTab ? firstTab.getAttribute('data-tab-name') : 'about');
 
   // ===== Animated Counters =====
   function animateSingleCounter(counter) {
