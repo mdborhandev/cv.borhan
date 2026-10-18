@@ -1197,7 +1197,10 @@
      <p id="guide-heading" class="guide-kicker">ASK BORHAN'S GUIDE</p>
      <p class="guide-step" id="guide-step" hidden></p>
     </div>
-    <button type="button" class="guide-dismiss" id="guide-dismiss" aria-label="Dismiss the guide">×</button>
+    <div class="guide-popover-tools">
+     <button type="button" class="guide-dismiss guide-minimize" id="guide-minimize" aria-label="Minimize the guide to a small icon">–</button>
+     <button type="button" class="guide-dismiss" id="guide-dismiss" aria-label="Dismiss the guide">×</button>
+    </div>
    </div>
    <p class="guide-speech" id="guide-speech">Hi! Ask me anything about Borhan — his skills, projects, experience, services, or how to get in touch.</p>
    <div class="guide-actions guide-qa-actions" id="guide-qa-actions">
@@ -1262,7 +1265,7 @@
   document.addEventListener('DOMContentLoaded', function () {
    var loadGuide = function () {
     var script = document.createElement('script');
-    script.src = 'guide.js?v=40';
+    script.src = 'guide.js?v=41';
     script.async = true;
     document.body.appendChild(script);
    };

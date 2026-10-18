@@ -17,6 +17,7 @@
   var guideClearBtn = document.getElementById('guide-clear');
   var guideSuggestBtn = document.getElementById('guide-suggest');
   var dismissButton = document.getElementById('guide-dismiss');
+  var minimizeButton = document.getElementById('guide-minimize');
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var isPopoverOpen = false;
@@ -409,7 +410,33 @@
     character.focus();
   }
 
+  var isMinimized = false;
+
+  function setMinimized(minimized) {
+    isMinimized = minimized;
+    guide.setAttribute('data-minimized', minimized ? 'true' : 'false');
+    if (minimized) {
+      closePopover();
+      character.setAttribute('aria-label', 'Restore Borhan’s asking guide');
+      try { sessionStorage.setItem('portfolioGuideMinimized', 'true'); } catch (e) {}
+    } else {
+      character.setAttribute('aria-label', 'Open Borhan’s asking guide');
+      try { sessionStorage.setItem('portfolioGuideMinimized', 'false'); } catch (e) {}
+    }
+  }
+
+  try {
+    if (sessionStorage.getItem('portfolioGuideMinimized') === 'true') setMinimized(true);
+  } catch (e) {}
+
+  if (minimizeButton) minimizeButton.addEventListener('click', function () {
+    setMinimized(true);
+  });
+
   character.addEventListener('click', function () {
+    if (isMinimized) {
+      setMinimized(false);
+    }
     if (!isPopoverOpen) {
       setSpeech(DEFAULT_GREETING);
       if (guideAnswer) guideAnswer.hidden = true;
@@ -504,9 +531,9 @@
     guide.setAttribute('data-visible', 'true');
     guide.removeAttribute('aria-hidden');
     setBubblePosition();
-    if (!alreadyDismissed) {
+    if (!alreadyDismissed && !isMinimized) {
       window.setTimeout(function () {
-        if (!alreadyDismissed && !isPopoverOpen) {
+        if (!alreadyDismissed && !isMinimized && !isPopoverOpen) {
           setSpeech(DEFAULT_GREETING);
           setPopoverOpen(true);
           wave();

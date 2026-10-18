@@ -1000,6 +1000,7 @@ h1, h2, h3, h4 {
 .guide-popover-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
 .guide-kicker { margin: 0; color: #8daf98; font-size: 9px; font-weight: 700; letter-spacing: .14em; }
 .guide-step { margin: .25rem 0 0; color: #829087; font-size: 10px; font-variant-numeric: tabular-nums; }
+.guide-popover-tools { display: flex; align-items: flex-start; gap: .15rem; }
 .guide-dismiss {
   display: grid;
   place-items: center;
@@ -1015,6 +1016,56 @@ h1, h2, h3, h4 {
   transition: color 160ms ease, background 160ms ease;
 }
 .guide-dismiss:hover { color: #f0f2ed; background: #29322c; }
+.guide-minimize { font-size: 22px; padding-bottom: 4px; }
+
+/* ===== Minimized guide: a small chip that sits out of the way ===== */
+.portfolio-guide[data-minimized="true"] .guide-popover {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px) scale(.985);
+  transition: opacity 200ms ease, transform 200ms ease, visibility 0s linear 220ms;
+}
+.portfolio-guide[data-minimized="true"] .guide-character {
+  width: 56px;
+  height: 56px;
+  margin-right: .35rem;
+  border: 1px solid #39443c;
+  border-radius: 50%;
+  background: #1a211c;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .32);
+  overflow: hidden;
+  transition: transform 240ms ease, border-color 180ms ease, box-shadow 240ms ease;
+}
+.portfolio-guide[data-minimized="true"] .guide-character:hover,
+.portfolio-guide[data-minimized="true"] .guide-character:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .38);
+}
+.portfolio-guide[data-minimized="true"] .guide-art {
+  animation: none;
+  /* Zoom onto the head and centre it inside the round chip. */
+  transform: translateY(8.5%) scale(1.8);
+  transform-origin: 50% 29%;
+}
+.portfolio-guide[data-minimized="true"] .guide-character-shadow,
+.portfolio-guide[data-minimized="true"] .guide-character-hint { display: none; }
+.portfolio-guide[data-minimized="true"]::after {
+  content: 'Ask';
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  padding: .12rem .34rem;
+  border: 1px solid #39443c;
+  border-radius: 4px;
+  background: #171c19;
+  color: #a8b4a9;
+  font: 700 8px/1.4 var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
 .guide-speech {
   min-height: 0;
   margin: .5rem 0 .6rem;
