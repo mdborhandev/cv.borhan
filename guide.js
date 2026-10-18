@@ -18,6 +18,7 @@
   var guideSuggestBtn = document.getElementById('guide-suggest');
   var dismissButton = document.getElementById('guide-dismiss');
   var minimizeButton = document.getElementById('guide-minimize');
+  var suggestionsBox = document.getElementById('guide-suggestions');
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var isPopoverOpen = false;
@@ -162,6 +163,19 @@
       keywords: ['bye', 'goodbye', 'see you', 'later'],
       answer: "Take care! If you need anything about Borhan later, just reopen me here."
     }
+  ];
+
+  var SUGGESTIONS = [
+    'What are his skills?',
+    'What projects has he built?',
+    'What services does he offer?',
+    'How can I contact him?',
+    "What's his experience?",
+    'Is he available for hire?',
+    'Tell me about the HRM & payroll system',
+    'What databases does he use?',
+    'How much does a project cost?',
+    'Where is he based?'
   ];
 
   function clamp(value, min, max) {
@@ -335,6 +349,41 @@
     window.clearTimeout(thinkingTimer);
   }
 
+  var lastSuggestions = [];
+
+  function pickSuggestions() {
+    var pool = SUGGESTIONS.slice();
+    var picks = [];
+    // Prefer questions the guide can actually answer well.
+    while (picks.length < 3 && pool.length) {
+      var idx = Math.floor(Math.random() * pool.length);
+      var choice = pool.splice(idx, 1)[0];
+      if (lastSuggestions.indexOf(choice) === -1 || pool.length === 0) picks.push(choice);
+    }
+    lastSuggestions = picks;
+    return picks;
+  }
+
+  function renderSuggestions() {
+    if (!suggestionsBox) return;
+    suggestionsBox.textContent = '';
+    var picks = pickSuggestions();
+    for (var i = 0; i < picks.length; i++) {
+      (function (question) {
+        var chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'guide-chip';
+        chip.textContent = question;
+        chip.addEventListener('click', function () {
+          if (guideInput) guideInput.value = question;
+          askQuestion();
+        });
+        suggestionsBox.appendChild(chip);
+      })(picks[i]);
+    }
+    suggestionsBox.hidden = false;
+  }
+
   function askQuestion() {
     var q = guideInput ? guideInput.value : '';
     if (!q || !q.trim()) {
@@ -382,6 +431,7 @@
         guideSuggestBtn.style.display = 'none';
       }
       wave();
+      renderSuggestions();
       setBubblePosition();
 
     }, reducedMotion ? 80 : 320);
@@ -395,6 +445,7 @@
     if (guideClearBtn) guideClearBtn.hidden = true;
     if (guideSuggestBtn) guideSuggestBtn.hidden = true;
     setSpeech(DEFAULT_GREETING);
+    renderSuggestions();
     if (guideInput) {
       guideInput.value = '';
       guideInput.focus();
@@ -445,6 +496,7 @@
       if (guideInput) guideInput.value = '';
       setPopoverOpen(true);
       wave();
+      renderSuggestions();
       setBubblePosition();
     } else {
       closePopover();
@@ -537,6 +589,7 @@
           setSpeech(DEFAULT_GREETING);
           setPopoverOpen(true);
           wave();
+          renderSuggestions();
           setBubblePosition();
         }
       }, 520);

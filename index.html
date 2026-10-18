@@ -1207,6 +1207,7 @@
     <input id="guide-input" class="guide-input" type="text" placeholder="e.g. What are your skills? What projects have you built?" autocomplete="off" spellcheck="false" />
     <button type="button" class="guide-primary" id="guide-ask">Ask <span aria-hidden="true">→</span></button>
    </div>
+   <div class="guide-suggestions" id="guide-suggestions" role="group" aria-label="Suggested questions"></div>
    <div class="guide-answer" id="guide-answer" hidden aria-live="polite"></div>
    <button type="button" class="guide-suggest" id="guide-suggest" hidden style="display:none;"></button>
    <button type="button" class="guide-quiet guide-clear" id="guide-clear" hidden>Clear answer</button>
@@ -1265,7 +1266,7 @@
   document.addEventListener('DOMContentLoaded', function () {
    var loadGuide = function () {
     var script = document.createElement('script');
-    script.src = 'guide.js?v=41';
+    script.src = 'guide.js?v=42';
     script.async = true;
     document.body.appendChild(script);
    };
