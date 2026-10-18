@@ -913,4 +913,75 @@
       first.focus();
     }
   });
+
+  // ===== CV preview modal =====
+  var cvModal = document.getElementById('cv-modal');
+  var cvFrame = document.getElementById('cv-frame');
+  var cvTrigger = null;
+  var cvCloseTimer = null;
+  var CV_FILE = 'assets/Mohammed_Borhan_Uddin_Fahim_CV_2026.pdf';
+
+  window.openCVPreview = function (trigger) {
+    if (!cvModal) return;
+
+    if (cvCloseTimer) {
+      clearTimeout(cvCloseTimer);
+      cvCloseTimer = null;
+    }
+    cvTrigger = trigger || document.activeElement;
+
+    // Only pull the PDF in when the visitor actually asks for a preview.
+    if (cvFrame && cvFrame.dataset.loaded !== '1') {
+      cvFrame.src = CV_FILE + '#view=FitH';
+      cvFrame.dataset.loaded = '1';
+    }
+
+    cvModal.classList.remove('hidden');
+    cvModal.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(function () {
+      cvModal.classList.add('modal-show');
+      var closeBtn = cvModal.querySelector('button[aria-label="Close CV preview"]');
+      if (closeBtn) closeBtn.focus();
+    });
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeCVPreview = function (e) {
+    if (!cvModal) return;
+    if (e && e.target !== cvModal) return;
+    if (cvModal.classList.contains('hidden') || cvCloseTimer) return;
+
+    cvModal.classList.remove('modal-show');
+    cvCloseTimer = setTimeout(function () {
+      cvModal.classList.add('hidden');
+      cvModal.setAttribute('aria-hidden', 'true');
+      cvCloseTimer = null;
+      // Leave the page locked if the project modal is still open.
+      if (!modal.classList.contains('hidden')) return;
+      document.body.style.overflow = '';
+      if (cvTrigger && cvTrigger.isConnected) cvTrigger.focus();
+      cvTrigger = null;
+    }, 300);
+  };
+
+  document.addEventListener('keydown', function (e) {
+    if (!cvModal || cvModal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      window.closeCVPreview();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    var focusable = cvModal.querySelectorAll('button:not([disabled]), a[href], iframe, [tabindex]:not([tabindex="-1"])');
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey && (document.activeElement === first || !cvModal.contains(document.activeElement))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (document.activeElement === last || !cvModal.contains(document.activeElement))) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
 })();

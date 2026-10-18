@@ -1324,6 +1324,76 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
 .btn-primary:hover { transform: none; background: var(--accent-hover); box-shadow: none; }
 .btn-outline { background: transparent; border-color: #48524b; }
 .btn-outline:hover { transform: none; background: var(--glass-2); border-color: var(--accent); box-shadow: none; }
+
+/* Sidebar children keep their natural size on short screens; the panel
+   scrolls instead of squashing controls (a squashed split button clips its
+   icons because of its overflow: hidden). */
+.sidebar-panel {
+  justify-content: safe center;
+}
+.sidebar-panel > * {
+  flex-shrink: 0;
+}
+
+/* ===== CV button: label + download + preview, side by side and centred ===== */
+.cv-actions {
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
+  flex-shrink: 0;
+  padding: 0;
+  gap: 0.2rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.cv-actions:hover { transform: scale(1.02); }
+.cv-actions > a,
+.cv-actions > button {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.35rem;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+/* icon size matches the Contact Me button (0.8rem inherited from .btn-outline) */
+.cv-actions > a i,
+.cv-actions > button i {
+  font-size: 0.8rem;
+  line-height: inherit;
+  flex-shrink: 0;
+}
+.cv-actions > a:hover,
+.cv-actions > button:hover {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.12);
+}
+.cv-actions > a:focus-visible,
+.cv-actions > button:focus-visible {
+  outline: none;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.14);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+.cv-actions .cv-label {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+}
 .link {
   border-radius: 4px;
   background: transparent;
@@ -1342,6 +1412,60 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
 .modal-overlay { -webkit-backdrop-filter: none; backdrop-filter: none; }
 .modal-content { transform: translateY(8px); border-radius: 8px; }
 .modal-overlay.modal-show .modal-content { transform: translateY(0); }
+
+/* CV preview modal — tall and narrow so far more of the CV page fits on
+   screen (a portrait page gains height from every pixel of width saved). */
+#cv-modal .cv-panel {
+  width: 100%;
+  max-width: 560px;
+  height: 92vh;
+  height: 92dvh;
+}
+#cv-modal .cv-stage {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+#cv-modal .cv-stage iframe {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border: 0;
+  display: block;
+}
+/* header controls: the build has no !py-1.5/!px-3/!text-xs, so size them here */
+#cv-modal .cv-head-action {
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.72rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+#cv-modal .cv-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+#cv-modal .cv-close:hover {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.2);
+}
+#cv-modal .cv-close:focus-visible,
+#cv-modal .cv-head-action:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
 
 @media (max-width: 1023px) {
   .sidebar-panel {
