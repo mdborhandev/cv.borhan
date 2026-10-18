@@ -1015,22 +1015,17 @@
           </div>
          </div>
 
-         <!-- Category 4: Hiring Models (Highlighted) -->
-         <div class="border-t border-[var(--accent)]/10 pt-6" data-category="engagement"><div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-lg mx-auto">
+         <!-- Category 4: Engagement Model -->
+         <div data-category="engagement"><div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-lg mx-auto">
           
-           <!-- Dedicated Developer / Contract - HIGHLIGHTED -->
-           <div class="rounded-xl p-6 border-2 border-[var(--accent)]/40 bg-gradient-to-br from-[var(--accent)]/[0.06] via-transparent to-transparent hover:border-[var(--accent)]/60 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
-            <!-- Subtle accent glow -->
-            <div class="absolute inset-0 bg-gradient-to-r from-[var(--accent)]/5 via-transparent to-transparent pointer-events-none"></div>
-            <div class="relative z-10">
+           <!-- Dedicated Developer / Contract -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
              <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 shrink-0 rounded-lg bg-[var(--accent)]/15 flex items-center justify-center text-[var(--accent)] text-lg ring-2 ring-[var(--accent)]/20">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/15 flex items-center justify-center text-[var(--accent)] text-base">
                <i class="hgi-stroke hgi-user-star"></i>
               </div>
-              <div>
-               <h3 class="text-base font-semibold text-primary leading-snug">Dedicated Developer / Contract</h3>
-               <span class="inline-block mt-1 px-2 py-0.5 text-[9px] font-medium text-[var(--accent)] bg-[var(--accent)]/10 rounded">Best Value</span>
-              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">Dedicated Developer / Contract</h3>
              </div>
              <p class="text-xs text-muted mt-2 leading-relaxed">Hire me as your dedicated backend engineer for ongoing sprint cycles, product features, or code audit.</p>
              
@@ -1042,8 +1037,8 @@
              </ul>
             </div>
 
-            <div class="mt-6 pt-4 border-t border-[var(--accent)]/15 flex items-center gap-2 relative z-10">
-             <button onclick="requestCustomService('Dedicated Developer / Retainer Contract')" class="flex-1 btn-primary !py-2.5 text-xs flex items-center justify-center gap-1 shadow-lg shadow-[var(--accent)]/20">
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/15 flex items-center gap-2">
+             <button onclick="requestCustomService('Dedicated Developer / Retainer Contract')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
               <span>Hire Dedicated</span>
               <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
              </button>
@@ -1456,12 +1451,12 @@
   </button>
  </aside>
 
- <script defer src="script.js?v=28"></script>
+ <script defer src="script.js?v=29"></script>
  <script>
   document.addEventListener('DOMContentLoaded', function () {
    var loadGuide = function () {
     var script = document.createElement('script');
-    script.src = 'guide.js?v=51';
+    script.src = 'guide.js?v=52';
     script.async = true;
     document.body.appendChild(script);
    };
