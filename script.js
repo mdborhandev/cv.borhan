@@ -530,6 +530,53 @@
   window.addEventListener('resize', updateScrollProgress);
   requestAnimationFrame(updateScrollProgress);
 
+  // ===== Gentle auto-peek: glide down to the Tech stack =====
+  // A few seconds after the About tab settles, nudge the visitor down so they
+  // actually see the Tech stack. Runs once, only if they have not already
+  // scrolled or interacted, and never for reduced-motion users.
+  (function () {
+    var techStack = document.getElementById('about-tech-stack');
+    if (!techStack) return;
+
+    var AUTO_PEEK_DELAY = 6000;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var timer = null;
+    var enabled = true;
+
+    function stop() {
+      enabled = false;
+      if (timer) { clearTimeout(timer); timer = null; }
+    }
+
+    function peek() {
+      timer = null;
+      if (!enabled) return;
+
+      var about = document.getElementById('tab-about');
+      if (!about || about.getAttribute('data-tab-active') !== 'true') return;
+
+      // Already comfortably on screen — leave the reader alone.
+      if (techStack.getBoundingClientRect().top < window.innerHeight * 0.55) {
+        stop();
+        return;
+      }
+
+      stop();
+      techStack.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Any sign of the visitor taking over cancels the peek for good.
+    ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function (type) {
+      window.addEventListener(type, stop, { passive: true });
+    });
+    if (scrollContainer) scrollContainer.addEventListener('scroll', stop, { passive: true });
+    window.addEventListener('scroll', stop, { passive: true });
+
+    timer = setTimeout(peek, AUTO_PEEK_DELAY);
+  })();
+
   // ===== Direct Service Request & Cross-linking =====
   window.requestCustomService = function (serviceName) {
     openTabByIndex(4); // Switch to Contact tab

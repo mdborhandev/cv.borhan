@@ -154,6 +154,9 @@ body {
   gap: 0.75rem;
 }
 
+/* Leaves room under the sticky header when we glide down to the stack. */
+#about-tech-stack { scroll-margin-top: 84px; }
+
 .stack-col {
   padding: 0.65rem 0.75rem 0.75rem;
   border: 1px solid var(--glass-border);
