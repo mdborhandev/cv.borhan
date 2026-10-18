@@ -1403,6 +1403,170 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
 .project-card.motion-reveal { transform: translate3d(0, 20px, 0); }
 .project-card.motion-reveal.is-revealed { transform: translate3d(0, 0, 0); }
 
+/* ===== "Why work with me" auto-rotating vertical slider ===== */
+.cow-viewport {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  border-radius: .75rem;
+  outline: none;
+}
+.cow-viewport:focus-visible { box-shadow: 0 0 0 2px rgba(var(--accent-rgb), .45); }
+
+.cow-card {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding: 1.05rem 1.15rem;
+  border: 1px solid var(--glass-3);
+  border-radius: .75rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .015));
+  opacity: 0;
+  transform: translate3d(0, 106%, 0) scale(.965);
+  /* Leaving card: eases out unhurried but not sluggish. */
+  transition:
+    opacity 620ms cubic-bezier(.4, 0, .2, 1),
+    transform 880ms cubic-bezier(.33, .86, .28, 1),
+    border-color .5s ease,
+    box-shadow .5s ease;
+  pointer-events: none;
+  backface-visibility: hidden;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+.cow-card.is-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  pointer-events: auto;
+  border-color: rgba(var(--accent-rgb), .28);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .26), 0 0 0 1px rgba(var(--accent-rgb), .1);
+  /* Arriving card: waits a beat for the old one to clear, then glides in. */
+  transition:
+    opacity 700ms cubic-bezier(.4, 0, .2, 1) 110ms,
+    transform 1000ms cubic-bezier(.16, 1, .3, 1) 90ms,
+    border-color .5s ease,
+    box-shadow .5s ease;
+}
+.cow-card.is-above { transform: translate3d(0, -106%, 0) scale(.965); }
+
+/* Downward step (next): the card rises up from underneath with a long, soft glide. */
+.cow-viewport[data-cow-dir="down"] .cow-card.is-active {
+  transition:
+    opacity 700ms cubic-bezier(.4, 0, .2, 1) 110ms,
+    transform 1000ms cubic-bezier(.16, 1, .3, 1) 90ms,
+    border-color .5s ease,
+    box-shadow .5s ease;
+}
+.cow-viewport[data-cow-dir="down"] .cow-card { transform: translate3d(0, 106%, 0) scale(.965); }
+.cow-viewport[data-cow-dir="down"] .cow-card.is-above { transform: translate3d(0, -106%, 0) scale(.985); }
+.cow-viewport[data-cow-dir="down"] .cow-card.is-active { transform: translate3d(0, 0, 0) scale(1); }
+
+/* Upward step (previous): the card drops in from overhead — quicker, denser,
+   so reversing direction reads as a different motion, not a mirror of it. */
+.cow-viewport[data-cow-dir="up"] .cow-card.is-active {
+  transition:
+    opacity 560ms cubic-bezier(.4, 0, .2, 1) 70ms,
+    transform 820ms cubic-bezier(.22, .9, .26, 1) 50ms,
+    border-color .5s ease,
+    box-shadow .5s ease;
+}
+.cow-viewport[data-cow-dir="up"] .cow-card { transform: translate3d(0, 112%, 0) scale(.95); }
+.cow-viewport[data-cow-dir="up"] .cow-card.is-above { transform: translate3d(0, -102%, 0) scale(.99); }
+.cow-viewport[data-cow-dir="up"] .cow-card.is-active { transform: translate3d(0, 0, 0) scale(1); }
+
+.cow-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .25rem;
+}
+.cow-num {
+  font-size: .625rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--text-dim);
+}
+.cow-icon { color: var(--accent); font-size: 1.05rem; }
+.cow-title { font-size: .875rem; font-weight: 600; color: var(--text-primary); }
+.cow-text { font-size: .7rem; line-height: 1.1rem; color: var(--text-dim); }
+
+/* Accent line-art illustration, drawn in when its card takes the stage. */
+.cow-art {
+  display: block;
+  width: 100%;
+  height: 74px;
+  margin-bottom: .55rem;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cow-art .soft { stroke: var(--accent-2); opacity: .85; }
+.cow-art .dim { stroke: var(--text-dim); opacity: .5; stroke-dasharray: 3 4; }
+.cow-art .dot { fill: var(--accent); stroke: none; }
+.cow-art [data-draw] { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.cow-card.is-active .cow-art [data-draw] {
+  animation: cowDraw 1.15s cubic-bezier(.33, .86, .28, 1) var(--d, 0ms) forwards;
+}
+@keyframes cowDraw { to { stroke-dashoffset: 0; } }
+
+.cow-points { display: grid; gap: .34rem; margin-top: .5rem; }
+.cow-points li {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .7rem;
+  line-height: 1rem;
+  color: var(--text-muted);
+}
+.cow-points i { color: var(--accent); font-size: .7rem; flex-shrink: 0; }
+
+/* Each card ends in an action that opens the prefilled contact form. */
+.cow-cta {
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+  gap: .35rem;
+  font-size: .7rem;
+  letter-spacing: .01em;
+}
+.cow-cta i { font-size: .7rem; }
+
+.cow-dots { display: flex; gap: .3rem; justify-content: center; margin-top: .7rem; }
+.cow-dot {
+  width: .375rem;
+  height: .375rem;
+  border-radius: 999px;
+  background: var(--glass-3);
+  transition: background-color .25s ease, width .35s cubic-bezier(.2, .7, .2, 1);
+}
+.cow-dot:hover { background: var(--text-dim); }
+.cow-dot.is-active {
+  width: 1.1rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* Stacked vertically — the slider moves up and down. */
+.cow-nav { display: flex; flex-direction: column; gap: .25rem; flex-shrink: 0; }
+.cow-nav-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--glass-3);
+  border-radius: .5rem;
+  background: var(--glass-2);
+  color: var(--text-muted);
+  font-size: .75rem;
+  transition: color .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.cow-nav-btn:hover {
+  color: var(--accent);
+  border-color: rgba(var(--accent-rgb), .4);
+}
+
 .tab-content[data-tab-state="entering"] {
   animation: tabCinematicIn 380ms cubic-bezier(.2,.75,.25,1) both;
 }
@@ -1449,6 +1613,8 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
   .motion-reveal, .motion-reveal.is-revealed,
   .hero-reveal, .sidebar-panel > .relative > div,
   .sidebar-panel > .relative img, .magnetic-control,
+  .cow-card, .cow-card.is-active, .cow-card.is-above,
+  .cow-nav-btn, .cow-dot,
   .tab-content[data-tab-state="entering"], .tab-content[data-tab-state="leaving"] {
     animation: none !important;
     opacity: 1 !important;
@@ -1457,4 +1623,10 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
     transition: none !important;
     will-change: auto !important;
   }
+  /* Show one card at a time instead of rotating them */
+  .cow-viewport { height: auto; overflow: visible; }
+  .cow-card { display: none; }
+  .cow-card.is-active { display: flex; }
+  /* Art is drawn by animation; without motion it must simply be visible */
+  .cow-art [data-draw] { stroke-dashoffset: 0 !important; animation: none !important; }
 }

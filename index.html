@@ -201,41 +201,233 @@
         </div>
        </div>
 
-       <!-- Right: what the client actually receives -->
+       <!-- Right: the standout — what makes me different -->
        <div class="flex-1 flex flex-col justify-center max-lg:w-full">
         <div class="glass glass-sheen rounded-xl p-6 max-md:p-5">
-         <h2 class="text-base font-semibold text-primary mb-1">What you get</h2>
-         <p class="text-11 text-dim mb-4 max-md:text-10">The same commitments on every engagement.</p>
-         <ul class="flex flex-col gap-3">
-          <li class="flex items-start gap-2.5">
-           <i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-xs mt-0.5 shrink-0"></i>
-           <div>
-            <div class="text-xs font-medium text-primary">Clear scope &amp; fixed timeline</div>
-            <div class="text-11 text-dim mt-0.5 max-md:text-10">You approve the scope and price before any work starts.</div>
+         <div class="flex items-start justify-between gap-3 mb-1">
+          <div>
+           <div class="text-10 uppercase tracking-[0.25em] text-[var(--accent)]/70 mb-1.5">Why work with me</div>
+           <h2 class="text-base font-semibold text-primary">What makes me different</h2>
+          </div>
+          <div class="cow-nav">
+           <button type="button" class="cow-nav-btn" data-cow-prev aria-label="Previous card">
+            <i class="hgi-stroke hgi-arrow-up-01"></i>
+           </button>
+           <button type="button" class="cow-nav-btn" data-cow-next aria-label="Next card">
+            <i class="hgi-stroke hgi-arrow-down-01"></i>
+           </button>
+          </div>
+         </div>
+         <p class="text-11 text-dim mb-4 max-md:text-10">Why clients hire me — and what you get when you do.</p>
+
+         <div class="cow-viewport" data-cow-slider role="group" aria-label="What makes me different, rotating cards" tabindex="0">
+          <article class="cow-card is-active" data-cow-card aria-hidden="false">
+           <svg class="cow-art" viewBox="0 0 200 72" aria-hidden="true">
+            <g style="--d:0ms">
+             <path data-draw pathLength="1" d="M30 14 H84 a5 5 0 0 1 5 5 V28 a5 5 0 0 1 -5 5 H30 a5 5 0 0 1 -5 -5 V19 a5 5 0 0 1 5 -5 Z"/>
+             <path data-draw pathLength="1" d="M116 14 H170 a5 5 0 0 1 5 5 V28 a5 5 0 0 1 -5 5 H116 a5 5 0 0 1 -5 -5 V19 a5 5 0 0 1 5 -5 Z"/>
+            </g>
+            <g style="--d:170ms">
+             <path data-draw pathLength="1" d="M57 33 V40 H79 V47"/>
+             <path data-draw pathLength="1" d="M143 33 V40 H121 V47"/>
+             <path data-draw pathLength="1" d="M100 47 V40"/>
+            </g>
+            <g style="--d:320ms">
+             <path data-draw pathLength="1" d="M64 47 H136 a5 5 0 0 1 5 5 V59 a5 5 0 0 1 -5 5 H64 a5 5 0 0 1 -5 -5 V52 a5 5 0 0 1 5 -5 Z"/>
+             <circle class="dot" cx="30" cy="23.5" r="2"/>
+             <circle class="dot" cx="170" cy="23.5" r="2"/>
+            </g>
+           </svg>
+           <div class="cow-card-top">
+            <span class="cow-num">01</span>
+            <i class="hgi-stroke hgi-cloud cow-icon"></i>
            </div>
-          </li>
-          <li class="flex items-start gap-2.5">
-           <i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-xs mt-0.5 shrink-0"></i>
-           <div>
-            <div class="text-xs font-medium text-primary">Documented, maintainable code</div>
-            <div class="text-11 text-dim mt-0.5 max-md:text-10">Handed over with comments and setup instructions, never a black box.</div>
+           <h3 class="cow-title">Launch a SaaS that scales</h3>
+           <p class="cow-text">Multi-tenant HRM running payroll for 1,000+ employees — tenant isolation, RBAC and billing built in, so you launch without a rewrite later.</p>
+           <ul class="cow-points">
+            <li><i class="hgi-stroke hgi-tick-02"></i>Tenant isolation &amp; granular RBAC</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Automated payroll at scale</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Subscriptions &amp; billing flows</li>
+           </ul>
+           <button type="button" class="cow-cta btn-primary !py-2 text-xs" onclick="requestCustomService('SaaS Platform Development')">
+            <span>Discuss my SaaS</span><i class="hgi-stroke hgi-arrow-right-01"></i>
+           </button>
+          </article>
+          <article class="cow-card" data-cow-card aria-hidden="true">
+           <svg class="cow-art" viewBox="0 0 200 72" aria-hidden="true">
+            <g style="--d:0ms">
+             <path data-draw pathLength="1" d="M76 8 H126 a6 6 0 0 1 6 6 V58 a6 6 0 0 1 -6 6 H76 a6 6 0 0 1 -6 -6 V14 a6 6 0 0 1 6 -6 Z"/>
+            </g>
+            <g style="--d:170ms">
+             <path class="soft" data-draw pathLength="1" d="M82 22 H128"/>
+             <path class="soft" data-draw pathLength="1" d="M82 32 H128"/>
+             <path class="soft" data-draw pathLength="1" d="M82 42 H112"/>
+            </g>
+            <g style="--d:320ms">
+             <path class="dim" d="M30 18 V56"/>
+             <circle class="dot" cx="30" cy="18" r="2.4"/>
+             <circle class="dot" cx="30" cy="37" r="2.4"/>
+             <circle class="dot" cx="30" cy="56" r="2.4"/>
+             <path data-draw pathLength="1" d="M40 18 H58"/>
+             <path data-draw pathLength="1" d="M40 37 H58"/>
+            </g>
+           </svg>
+           <div class="cow-card-top">
+            <span class="cow-num">02</span>
+            <i class="hgi-stroke hgi-checkmark-circle-01 cow-icon"></i>
            </div>
-          </li>
-          <li class="flex items-start gap-2.5">
-           <i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-xs mt-0.5 shrink-0"></i>
-           <div>
-            <div class="text-xs font-medium text-primary">Support after launch</div>
-            <div class="text-11 text-dim mt-0.5 max-md:text-10">A bug-fix window after every release, plus ongoing maintenance available.</div>
+           <h3 class="cow-title">Know the price up front</h3>
+           <p class="cow-text">You approve the scope, timeline and price before I write a line of code — so the budget you sign is the budget you pay.</p>
+           <ul class="cow-points">
+            <li><i class="hgi-stroke hgi-tick-02"></i>Written scope before kickoff</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Milestone-based payments</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Fixed-price or hourly</li>
+           </ul>
+           <button type="button" class="cow-cta btn-primary !py-2 text-xs" onclick="requestCustomService('Custom Software Development')">
+            <span>Get a scope &amp; quote</span><i class="hgi-stroke hgi-arrow-right-01"></i>
+           </button>
+          </article>
+          <article class="cow-card" data-cow-card aria-hidden="true">
+           <svg class="cow-art" viewBox="0 0 200 72" aria-hidden="true">
+            <g style="--d:0ms">
+             <path data-draw pathLength="1" d="M14 10 H64 a5 5 0 0 1 5 5 V24 a5 5 0 0 1 -5 5 H14 a5 5 0 0 1 -5 -5 V15 a5 5 0 0 1 5 -5 Z"/>
+             <path data-draw pathLength="1" d="M14 28 H64 a5 5 0 0 1 5 5 V42 a5 5 0 0 1 -5 5 H14 a5 5 0 0 1 -5 -5 V33 a5 5 0 0 1 5 -5 Z"/>
+             <path data-draw pathLength="1" d="M14 46 H64 a5 5 0 0 1 5 5 V60 a5 5 0 0 1 -5 5 H14 a5 5 0 0 1 -5 -5 V51 a5 5 0 0 1 5 -5 Z"/>
+            </g>
+            <g style="--d:210ms">
+             <circle class="dot" cx="22" cy="19.5" r="2"/>
+             <circle class="dot" cx="22" cy="37.5" r="2"/>
+             <circle class="dot" cx="22" cy="55.5" r="2"/>
+             <path class="soft" data-draw pathLength="1" d="M38 19.5 H56"/>
+             <path class="soft" data-draw pathLength="1" d="M38 37.5 H56"/>
+             <path class="soft" data-draw pathLength="1" d="M38 55.5 H56"/>
+            </g>
+            <g style="--d:380ms">
+             <path data-draw pathLength="1" d="M84 38 H100 L110 22 L122 54 L132 38 H186"/>
+             <circle class="dot" cx="186" cy="38" r="2.6"/>
+            </g>
+           </svg>
+           <div class="cow-card-top">
+            <span class="cow-num">03</span>
+            <i class="hgi-stroke hgi-server cow-icon"></i>
            </div>
-          </li>
-          <li class="flex items-start gap-2.5">
-           <i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-xs mt-0.5 shrink-0"></i>
-           <div>
-            <div class="text-xs font-medium text-primary">You talk to me directly</div>
-            <div class="text-11 text-dim mt-0.5 max-md:text-10">No account managers, no hand-offs, no waiting in a queue.</div>
+           <h3 class="cow-title">Hire a builder, not a tinkerer</h3>
+           <p class="cow-text">3+ years shipping live ASP.NET Core and C# systems — Clean Architecture and EF Core, so your team can maintain the code after I hand it over.</p>
+           <ul class="cow-points">
+            <li><i class="hgi-stroke hgi-tick-02"></i>Production, not prototypes</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Clean Architecture &amp; SOLID</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Docs &amp; setup handover</li>
+           </ul>
+           <button type="button" class="cow-cta btn-primary !py-2 text-xs" onclick="requestCustomService('Dedicated Developer / Retainer Contract')">
+            <span>Hire me for a build</span><i class="hgi-stroke hgi-arrow-right-01"></i>
+           </button>
+          </article>
+          <article class="cow-card" data-cow-card aria-hidden="true">
+           <svg class="cow-art" viewBox="0 0 200 72" aria-hidden="true">
+            <g style="--d:0ms">
+             <path data-draw pathLength="1" d="M24 10 V62 H80"/>
+            </g>
+            <g style="--d:180ms">
+             <path data-draw pathLength="1" d="M34 62 V46 H44 V62"/>
+             <path data-draw pathLength="1" d="M54 62 V36 H64 V62"/>
+             <path data-draw pathLength="1" d="M74 62 V26 H84 V62"/>
+            </g>
+            <g style="--d:360ms">
+             <path data-draw pathLength="1" d="M104 56 L130 40 L152 46 L182 18"/>
+             <path data-draw pathLength="1" d="M170 18 H182 V30"/>
+             <circle class="dot" cx="104" cy="56" r="2.6"/>
+             <circle class="dot" cx="130" cy="40" r="2.6"/>
+             <circle class="dot" cx="152" cy="46" r="2.6"/>
+            </g>
+           </svg>
+           <div class="cow-card-top">
+            <span class="cow-num">04</span>
+            <i class="hgi-stroke hgi-chart-line cow-icon"></i>
            </div>
-          </li>
-         </ul>
+           <h3 class="cow-title">Build something that performs</h3>
+           <p class="cow-text">Payroll for 1,000+ employees with zero calculation lag, 40% faster approvals, and instant P&amp;L reports you can audit line by line.</p>
+           <ul class="cow-points">
+            <li><i class="hgi-stroke hgi-tick-02"></i>40% faster approval workflows</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Instant P&amp;L, 100% audit accuracy</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Query &amp; index performance tuning</li>
+           </ul>
+           <button type="button" class="cow-cta btn-primary !py-2 text-xs" onclick="requestCustomService('Database Optimization & Tuning')">
+            <span>Speed up my system</span><i class="hgi-stroke hgi-arrow-right-01"></i>
+           </button>
+          </article>
+          <article class="cow-card" data-cow-card aria-hidden="true">
+           <svg class="cow-art" viewBox="0 0 200 72" aria-hidden="true">
+            <g style="--d:0ms">
+             <path data-draw pathLength="1" d="M74 32 V24 a16 16 0 0 1 32 0 V32"/>
+             <path data-draw pathLength="1" d="M68 32 H112 a5 5 0 0 1 5 5 V58 a5 5 0 0 1 -5 5 H68 a5 5 0 0 1 -5 -5 V37 a5 5 0 0 1 5 -5 Z"/>
+            </g>
+            <g style="--d:180ms">
+             <path data-draw pathLength="1" d="M90 45 V52"/>
+             <circle class="dot" cx="90" cy="41" r="3"/>
+            </g>
+            <g style="--d:340ms">
+             <path data-draw pathLength="1" d="M150 36 a7 7 0 1 1 0.01 0 Z"/>
+             <path data-draw pathLength="1" d="M157 43 H186"/>
+             <path data-draw pathLength="1" d="M176 43 V51"/>
+             <path data-draw pathLength="1" d="M186 43 V53"/>
+            </g>
+           </svg>
+           <div class="cow-card-top">
+            <span class="cow-num">05</span>
+            <i class="hgi-stroke hgi-lock cow-icon"></i>
+           </div>
+           <h3 class="cow-title">Ship without security debt</h3>
+           <p class="cow-text">JWT authentication, role-based access and audit logging built in from the start — plus NDA-ready terms where you keep 100% of the IP.</p>
+           <ul class="cow-points">
+            <li><i class="hgi-stroke hgi-tick-02"></i>JWT auth &amp; role-based access</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>NDA-ready, 100% IP ownership</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Audit logging &amp; compliance</li>
+           </ul>
+           <button type="button" class="cow-cta btn-primary !py-2 text-xs" onclick="requestCustomService('REST API & Backend Development')">
+            <span>Build a secure API</span><i class="hgi-stroke hgi-arrow-right-01"></i>
+           </button>
+          </article>
+          <article class="cow-card" data-cow-card aria-hidden="true">
+           <svg class="cow-art" viewBox="0 0 200 72" aria-hidden="true">
+            <g style="--d:0ms">
+             <path data-draw pathLength="1" d="M20 12 H96 a6 6 0 0 1 6 6 V36 a6 6 0 0 1 -6 6 H52 l-14 12 V42 H20 a6 6 0 0 1 -6 -6 V18 a6 6 0 0 1 6 -6 Z"/>
+            </g>
+            <g style="--d:170ms">
+             <path class="soft" data-draw pathLength="1" d="M32 24 H84"/>
+             <path class="soft" data-draw pathLength="1" d="M32 33 H68"/>
+            </g>
+            <g style="--d:320ms">
+             <path data-draw pathLength="1" d="M118 30 H184 a6 6 0 0 1 6 6 V52 a6 6 0 0 1 -6 6 H130 l-12 10 V58 H118 a6 6 0 0 1 -6 -6 V36 a6 6 0 0 1 6 -6 Z"/>
+             <circle class="dot" cx="130" cy="47" r="2.2"/>
+             <circle class="dot" cx="142" cy="47" r="2.2"/>
+             <circle class="dot" cx="154" cy="47" r="2.2"/>
+            </g>
+           </svg>
+           <div class="cow-card-top">
+            <span class="cow-num">06</span>
+            <i class="hgi-stroke hgi-user-check-01 cow-icon"></i>
+           </div>
+           <h3 class="cow-title">Talk to the developer, not a queue</h3>
+           <p class="cow-text">No account managers, no hand-offs. You message me, I answer — usually within 24 hours, with work landing in your repo as pull requests.</p>
+           <ul class="cow-points">
+            <li><i class="hgi-stroke hgi-tick-02"></i>Direct chat, no middlemen</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>Reply within 24 hours</li>
+            <li><i class="hgi-stroke hgi-tick-02"></i>PRs in your repo + code reviews</li>
+           </ul>
+           <button type="button" class="cow-cta btn-primary !py-2 text-xs" onclick="requestCustomService('New Project Consultation')">
+            <span>Start a project</span><i class="hgi-stroke hgi-arrow-right-01"></i>
+           </button>
+          </article>
+         </div>
+
+         <div class="cow-dots" data-cow-dots role="tablist" aria-label="Choose a card">
+          <button type="button" class="cow-dot is-active" role="tab" aria-selected="true" aria-label="Card 1: Launch a SaaS that scales"></button>
+          <button type="button" class="cow-dot" role="tab" aria-selected="false" aria-label="Card 2: Know the price up front"></button>
+          <button type="button" class="cow-dot" role="tab" aria-selected="false" aria-label="Card 3: Hire a builder, not a tinkerer"></button>
+          <button type="button" class="cow-dot" role="tab" aria-selected="false" aria-label="Card 4: Build something that performs"></button>
+          <button type="button" class="cow-dot" role="tab" aria-selected="false" aria-label="Card 5: Ship without security debt"></button>
+          <button type="button" class="cow-dot" role="tab" aria-selected="false" aria-label="Card 6: Talk to the developer, not a queue"></button>
+         </div>
         </div>
        </div>
       </div>

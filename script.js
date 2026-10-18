@@ -54,6 +54,140 @@
     heroHeading.classList.add('hero-reveal');
   }
 
+  // ===== "Why work with me" auto-rotating vertical slider =====
+  (function () {
+    var viewport = document.querySelector('[data-cow-slider]');
+    if (!viewport) return;
+
+    var cards = Array.prototype.slice.call(viewport.querySelectorAll('[data-cow-card]'));
+    var dots = Array.prototype.slice.call(document.querySelectorAll('[data-cow-dots] .cow-dot'));
+    if (cards.length < 2) return;
+
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var index = 0;
+    var timer = null;
+    var ROTATE_MS = 4800;
+
+    function show(next, direction) {
+      var count = cards.length;
+      index = (next % count + count) % count;
+
+      // Cards are laid out as a vertical ring: everything the deck has passed
+      // (behind the active card) parks above, everything still to come parks
+      // below. So stepping down brings the next card up from underneath, and
+      // stepping up brings the previous card down from overhead.
+      if (direction) viewport.setAttribute('data-cow-dir', direction > 0 ? 'down' : 'up');
+
+      cards.forEach(function (card, i) {
+        var active = i === index;
+        var behind = ((i - index) + count) % count > count / 2;
+        card.classList.toggle('is-active', active);
+        card.classList.toggle('is-above', !active && behind);
+        card.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+
+      dots.forEach(function (dot, i) {
+        var active = i === index;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    }
+
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    function start() {
+      stop();
+      if (prefersReduced) return;
+      timer = setInterval(function () { show(index + 1, 1); }, ROTATE_MS);
+    }
+
+    var prevBtn = document.querySelector('[data-cow-prev]');
+    var nextBtn = document.querySelector('[data-cow-next]');
+    if (prevBtn) prevBtn.addEventListener('click', function () { show(index - 1, -1); start(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { show(index + 1, 1); start(); });
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { show(i, i > index ? 1 : -1); start(); });
+    });
+
+    // Pause while the visitor is reading, and respect reduced-motion.
+    viewport.addEventListener('pointerenter', stop);
+    viewport.addEventListener('pointerleave', start);
+    viewport.addEventListener('focusin', stop);
+    viewport.addEventListener('focusout', start);
+
+    // Keyboard: up/down or left/right moves through the cards.
+    viewport.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+        show(index + 1, 1); start(); event.preventDefault();
+      } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+        show(index - 1, -1); start(); event.preventDefault();
+      }
+    });
+
+    // Vertical swipe on touch devices.
+    var startY = null;
+    viewport.addEventListener('pointerdown', function (event) {
+      if (event.pointerType === 'touch') startY = event.clientY;
+    });
+    viewport.addEventListener('pointerup', function (event) {
+      if (startY === null) return;
+      var delta = event.clientY - startY;
+      startY = null;
+      if (Math.abs(delta) < 24) return;
+      show(index + (delta < 0 ? 1 : -1), delta < 0 ? 1 : -1);
+      start();
+    });
+    viewport.addEventListener('pointercancel', function () { startY = null; });
+
+    // Mouse wheel slides the cards instead of scrolling the page.
+    // At the first/last card the wheel is released so the page can scroll on.
+    var wheelLock = false;
+    var wheelAccum = 0;
+    var wheelDir = 0;
+    var WHEEL_STEP = 20; // px of accumulated delta that counts as one nudge
+    viewport.addEventListener('wheel', function (event) {
+      var scale = event.deltaMode === 1 ? 16 : 1;
+      var delta = event.deltaY * scale;
+      if (Math.abs(delta) < 3) return;
+
+      var direction = delta > 0 ? 1 : -1;
+      var atEdge = direction > 0 ? index === cards.length - 1 : index === 0;
+      if (atEdge) return; // no card left in that direction — let the page scroll
+
+      event.preventDefault();
+      if (wheelLock) return; // mid-slide: swallow so one gesture stays one step
+
+      // Same-direction deltas accumulate, so a slow scroll still registers
+      // while a flick advances only once.
+      if (direction !== wheelDir) { wheelDir = direction; wheelAccum = 0; }
+      wheelAccum += Math.abs(delta);
+      if (wheelAccum < (event.deltaMode === 1 ? 16 : WHEEL_STEP)) return;
+
+      wheelAccum = 0;
+      wheelLock = true;
+      show(index + direction, direction);
+      stop();
+      // Held for most of the arrival easing so the slide always completes.
+      window.setTimeout(function () { wheelLock = false; }, 680);
+    }, { passive: false });
+
+    // Only rotate while the card is actually on screen.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) start(); else stop();
+        });
+      }, { threshold: 0.35 }).observe(viewport);
+    } else {
+      start();
+    }
+
+    show(0);
+  })();
+
   // The portrait and main actions respond just enough to reward a pointer.
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
       !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
