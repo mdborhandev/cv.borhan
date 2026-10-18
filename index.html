@@ -678,199 +678,388 @@
        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[var(--accent)]/10 pb-4">
         <div>
          <span class="text-10 text-dim uppercase tracking-wider">What I offer</span>
-         <h2 class="text-2xl font-semibold text-primary mt-1 max-md:text-xl">ASP.NET Core &amp; Backend Development Services</h2>
+         <h2 class="text-2xl font-semibold text-primary mt-1 max-md:text-xl">ASP.NET Core & Backend Development Services</h2>
         </div>
         <p class="text-xs text-muted max-w-[380px] max-md:text-11">
          Choose a default service package or request a custom build. Click <strong>"Inquire Now"</strong> to start.
         </p>
        </div>
 
-       <!-- Services Grid -->
-       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-        
-        <!-- Service 1 -->
-        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
-         <div>
-          <div class="flex items-center gap-3 mb-3">
-           <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
-            <i class="hgi-stroke hgi-cloud"></i>
-           </div>
-           <h3 class="text-base font-semibold text-primary leading-snug">SaaS Platform Development</h3>
-          </div>
-          <p class="text-xs text-muted mt-2 leading-relaxed">Turn your product idea into a secure, multi-tenant SaaS application ready for paying customers.</p>
-          
-          <ul class="mt-4 space-y-2 text-xs text-secondary">
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Multi-tenant data architecture</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Granular RBAC & JWT Authentication</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Subscription & billing integration</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Admin control & analytics dashboards</li>
-          </ul>
-         </div>
-
-         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
-          <button onclick="requestCustomService('SaaS Platform Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
-           <span>Inquire for SaaS</span>
-           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
-          </button>
-          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20discuss%20a%20SaaS%20Platform%20Development%20project." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
-           <i class="hgi-stroke hgi-whatsapp"></i>
-          </a>
-         </div>
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Service categories">
+         <button type="button" class="service-filter-tab btn-primary !px-3 !py-1.5 text-xs whitespace-nowrap transition-all" role="tab" aria-selected="true" data-filter="all">All Services</button>
+         <button type="button" class="service-filter-tab btn-outline !px-3 !py-1.5 text-xs whitespace-nowrap transition-all" role="tab" aria-selected="false" data-filter="product">Product Development</button>
+         <button type="button" class="service-filter-tab btn-outline !px-3 !py-1.5 text-xs whitespace-nowrap transition-all" role="tab" aria-selected="false" data-filter="platform">Platform Engineering</button>
+         <button type="button" class="service-filter-tab btn-outline !px-3 !py-1.5 text-xs whitespace-nowrap transition-all" role="tab" aria-selected="false" data-filter="integration">Integration & Recovery</button>
+         <button type="button" class="service-filter-tab btn-outline !px-3 !py-1.5 text-xs whitespace-nowrap transition-all" role="tab" aria-selected="false" data-filter="engagement">Engagement Model</button>
         </div>
 
-        <!-- Service 2 -->
-        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
-         <div>
-          <div class="flex items-center gap-3 mb-3">
-           <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
-            <i class="hgi-stroke hgi-code"></i>
-           </div>
-           <h3 class="text-base font-semibold text-primary leading-snug">Custom Enterprise Software</h3>
-          </div>
-          <p class="text-xs text-muted mt-2 leading-relaxed">Bespoke ERP, HRM, inventory, and internal operations tools tailored precisely to your workflow.</p>
+        <!-- Services Grid -->
+        <div class="space-y-10" id="services-grid">
+         
+         <!-- Category 1: Product Development -->
+         <div data-category="product"><div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           
-          <ul class="mt-4 space-y-2 text-xs text-secondary">
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Clean Architecture & maintainable C#</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Workflow approval automation</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Audit logging & enterprise compliance</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Legacy system migration & refactoring</li>
-          </ul>
-         </div>
+           <!-- SaaS Platform Development -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-cloud"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">SaaS Platform Development</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Turn your product idea into a secure, multi-tenant SaaS application ready for paying customers.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Multi-tenant data architecture</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Granular RBAC & JWT Authentication</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Subscription & billing integration</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Admin control & analytics dashboards</li>
+             </ul>
+            </div>
 
-         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
-          <button onclick="requestCustomService('Custom Enterprise Software')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
-           <span>Inquire for Software</span>
-           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
-          </button>
-          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20need%20Custom%20Enterprise%20Software%20development." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
-           <i class="hgi-stroke hgi-whatsapp"></i>
-          </a>
-         </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
-         <div>
-          <div class="flex items-center gap-3 mb-3">
-           <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
-            <i class="hgi-stroke hgi-api"></i>
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('SaaS Platform Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Inquire for SaaS</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20discuss%20a%20SaaS%20Platform%20Development%20project." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
            </div>
-           <h3 class="text-base font-semibold text-primary leading-snug">REST API &amp; Microservices</h3>
-          </div>
-          <p class="text-xs text-muted mt-2 leading-relaxed">High-throughput, secure backend APIs designed for mobile apps, web clients, and third-party integrations.</p>
-          
-          <ul class="mt-4 space-y-2 text-xs text-secondary">
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> ASP.NET Core Web API (.NET 8)</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Rate limiting, caching, and JWT auth</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Swagger & Postman documentation</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Stripe, bKash & 3rd-party webhook hooks</li>
-          </ul>
-         </div>
 
-         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
-          <button onclick="requestCustomService('REST API & Backend Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
-           <span>Inquire for APIs</span>
-           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
-          </button>
-          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20need%20REST%20API%20and%20backend%20development%20work." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
-           <i class="hgi-stroke hgi-whatsapp"></i>
-          </a>
-         </div>
-        </div>
+           <!-- REST API & Backend Development -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-api"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">REST API & Backend Development</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">High-throughput, secure backend APIs for mobile apps, web clients, and third-party integrations.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> ASP.NET Core Web API (.NET 8 / .NET 9)</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Rate limiting, caching, JWT auth & RBAC</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Swagger/OpenAPI & Postman documentation</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Stripe, bKash, 3rd-party webhook hooks</li>
+             </ul>
+            </div>
 
-        <!-- Service 4 -->
-        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
-         <div>
-          <div class="flex items-center gap-3 mb-3">
-           <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
-            <i class="hgi-stroke hgi-database"></i>
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('REST API & Backend Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Inquire for APIs</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20need%20REST%20API%20and%20backend%20development%20work." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
            </div>
-           <h3 class="text-base font-semibold text-primary leading-snug">Database Design &amp; Speed Tuning</h3>
-          </div>
-          <p class="text-xs text-muted mt-2 leading-relaxed">Fix slow database queries, restructure schemas, and eliminate bottlenecks in PostgreSQL & SQL Server.</p>
-          
-          <ul class="mt-4 space-y-2 text-xs text-secondary">
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Query optimization & index profiling</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> EF Core LINQ performance tuning</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Complex schema modeling & migration</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Automated backup & data integrity audits</li>
-          </ul>
-         </div>
 
-         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
-          <button onclick="requestCustomService('Database Optimization & Tuning')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
-           <span>Inquire for Database</span>
-           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
-          </button>
-          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20have%20a%20database%20optimization%20requirement." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
-           <i class="hgi-stroke hgi-whatsapp"></i>
-          </a>
-         </div>
-        </div>
+           <!-- Full-Stack Web Development -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-globe"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">Full-Stack Web Development</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">End-to-end web apps with robust ASP.NET Core backend, clean APIs, and modern responsive UI.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> ASP.NET Core MVC / Razor Pages / Web API</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Responsive Tailwind CSS / Bootstrap UI</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Server-side rendering for SEO & speed</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> CI/CD, Docker, Azure/AWS/Vercel deploy</li>
+             </ul>
+            </div>
 
-        <!-- Service 5 -->
-        <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
-         <div>
-          <div class="flex items-center gap-3 mb-3">
-           <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
-            <i class="hgi-stroke hgi-globe"></i>
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('Full-Stack Web Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Build Full-Stack</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20build%20a%20Full-Stack%20Web%20Application." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
            </div>
-           <h3 class="text-base font-semibold text-primary leading-snug">Full-Stack Web Development</h3>
-          </div>
-          <p class="text-xs text-muted mt-2 leading-relaxed">End-to-end modern web applications with seamless frontend UI, interactive dashboards, and robust backend.</p>
-          
-          <ul class="mt-4 space-y-2 text-xs text-secondary">
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> ASP.NET Core MVC / Web API + Modern UI</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Responsive Tailwind CSS / Bootstrap</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Fast load speeds & SEO friendly</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Smooth client feedback loop</li>
-          </ul>
-         </div>
 
-         <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
-          <button onclick="requestCustomService('Full-Stack Web Development')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
-           <span>Inquire for Full-Stack</span>
-           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
-          </button>
-          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20build%20a%20Full-Stack%20Web%20Application." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
-           <i class="hgi-stroke hgi-whatsapp"></i>
-          </a>
-         </div>
-        </div>
+           <!-- Software R&D / Prototyping -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-flask"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">Software R&D / Prototyping</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Explore new tech, validate ideas, or build proof-of-concepts before committing to full development.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Technical feasibility studies & spikes</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Rapid prototypes & MVPs in weeks</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Architecture decision records (ADRs)</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> New stack evaluation (e.g., .NET Aspire, Dapr)</li>
+             </ul>
+            </div>
 
-        <!-- Service 6: Custom Contract / Consultation -->
-        <div class="rounded-xl p-5 border border-[var(--accent)]/20 bg-[var(--accent)]/[0.03] hover:border-[var(--accent)]/40 transition-all duration-300 flex flex-col justify-between">
-         <div>
-          <div class="flex items-center gap-3 mb-3">
-           <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/15 flex items-center justify-center text-[var(--accent)] text-base">
-            <i class="hgi-stroke hgi-user-star"></i>
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('Software R&D / Prototyping')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Start R&D</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20do%20software%20R%26D%20or%20build%20a%20prototype." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
            </div>
-           <h3 class="text-base font-semibold text-primary leading-snug">Dedicated Developer / Contract</h3>
+
           </div>
-          <p class="text-xs text-muted mt-2 leading-relaxed">Hire me as your dedicated backend engineer for ongoing sprint cycles, product features, or code audit.</p>
+         </div>
+
+         <!-- Category 2: Platform Engineering -->
+         <div data-category="platform"><div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           
-          <ul class="mt-4 space-y-2 text-xs text-secondary">
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Hourly or monthly retainer contracts</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Direct Git pull requests & code reviews</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Async + daily sprint alignment</li>
-           <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> 100% IP ownership & NDA ready</li>
-          </ul>
+           <!-- Database Design & Optimization -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-database"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">Database Design & Optimization</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Fix slow queries, restructure schemas, and eliminate bottlenecks in PostgreSQL & SQL Server.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Query optimization & index profiling</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> EF Core LINQ performance tuning</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Complex schema modeling & migration</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Automated backup & data integrity audits</li>
+             </ul>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('Database Design & Optimization')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Fix My Database</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20have%20a%20database%20optimization%20requirement." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
+           </div>
+
+           <!-- Performance Booster for Your Existing Apps -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-rocket"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">Performance Booster for Your Existing Apps</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Your app works but it's slow. I profile, cache, optimize queries, and tune the stack so it scales.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Profiling & bottleneck detection (dotTrace, PerfView)</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Redis caching & response compression</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> EF Core query optimization & N+1 fixes</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Load testing & capacity planning</li>
+             </ul>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('Performance Booster for Your Existing Apps')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Boost Performance</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20my%20application%20is%20slow%20and%20needs%20performance%20optimization." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
+           </div>
+
+           <!-- Background Jobs & Worker Services -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-cpu"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">Background Jobs & Worker Services</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Reliable async processing — queues, scheduling, retries, and long-running tasks that don't block your API.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Hangfire, Quartz, MassTransit, hosted services</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Job queues, retries, dead-letter handling</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Scheduled/cron jobs & recurring tasks</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Distributed locking & idempotency</li>
+             </ul>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('Background Jobs & Worker Services')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Add Background Jobs</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20need%20background%20job%20processing%20or%20worker%20services." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
+           </div>
+
+           <!-- Legacy .NET Migration & Modernization -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-arrow-up-right-01"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">Legacy .NET Migration & Modernization</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Move from .NET Framework to .NET 8/9, monolith to modular, or upgrade outdated stacks safely.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> .NET Framework → .NET 8/9 migration</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Monolith → modular / clean architecture</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> EF6 → EF Core, WebForms → Razor/Pages</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Zero-downtime migration strategies</li>
+             </ul>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('Legacy .NET Migration & Modernization')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Modernize Legacy</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20need%20to%20migrate%20my%20legacy%20.NET%20application." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
+           </div>
+
+          </div>
          </div>
 
-         <div class="mt-6 pt-4 border-t border-[var(--accent)]/15 flex items-center gap-2">
-          <button onclick="requestCustomService('Dedicated Developer / Retainer Contract')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
-           <span>Hire Dedicated</span>
-           <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
-          </button>
-          <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20hire%20you%20as%20a%20dedicated%20developer%20or%20contractor." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
-           <i class="hgi-stroke hgi-whatsapp"></i>
-          </a>
+         <!-- Category 3: Integration & Recovery -->
+         <div data-category="integration"><div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          
+           <!-- API Integration & Webhooks -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-link"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">API Integration & Webhooks</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Connect your app to the services your business runs on — payments, messaging, ERPs, CRMs, and more.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Stripe, PayPal, bKash, Nagad, SSLCommerz</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Twilio/SMS, SendGrid/Email, push notifications</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> ERP, CRM, accounting & shipping APIs</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Webhook receivers, retries, idempotency</li>
+             </ul>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('API Integration & Webhooks')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Integrate APIs</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20need%20API%20integration%20or%20webhook%20implementation." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
+           </div>
+
+           <!-- Bug Fixing & Project Rescue -->
+           <div class="rounded-xl p-5 border border-[var(--accent)]/10 bg-card hover:border-[var(--accent)]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 shrink-0 rounded-lg bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] text-base">
+               <i class="hgi-stroke hgi-tools"></i>
+              </div>
+              <h3 class="text-base font-semibold text-primary leading-snug">Bug Fixing & Project Rescue</h3>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Your developer left, the app is broken, or performance is tanking. I diagnose, stabilize, and ship fixes fast.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Crash fixes, memory leaks, deadlocks</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Slow query & API latency optimization</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Security audits & vulnerability patching</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Tech debt cleanup & .NET upgrades</li>
+             </ul>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/8 flex items-center gap-2">
+             <button onclick="requestCustomService('Bug Fixing & Project Rescue')" class="flex-1 btn-primary !py-2 text-xs flex items-center justify-center gap-1">
+              <span>Rescue My Project</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20have%20a%20broken%20project%20that%20needs%20urgent%20fixes." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
+           </div>
+
+          </div>
          </div>
-        </div>
 
-       </div>
+         <!-- Category 4: Hiring Models (Highlighted) -->
+         <div class="border-t border-[var(--accent)]/10 pt-6" data-category="engagement"><div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-lg mx-auto">
+          
+           <!-- Dedicated Developer / Contract - HIGHLIGHTED -->
+           <div class="rounded-xl p-6 border-2 border-[var(--accent)]/40 bg-gradient-to-br from-[var(--accent)]/[0.06] via-transparent to-transparent hover:border-[var(--accent)]/60 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+            <!-- Subtle accent glow -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[var(--accent)]/5 via-transparent to-transparent pointer-events-none"></div>
+            <div class="relative z-10">
+             <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 shrink-0 rounded-lg bg-[var(--accent)]/15 flex items-center justify-center text-[var(--accent)] text-lg ring-2 ring-[var(--accent)]/20">
+               <i class="hgi-stroke hgi-user-star"></i>
+              </div>
+              <div>
+               <h3 class="text-base font-semibold text-primary leading-snug">Dedicated Developer / Contract</h3>
+               <span class="inline-block mt-1 px-2 py-0.5 text-[9px] font-medium text-[var(--accent)] bg-[var(--accent)]/10 rounded">Best Value</span>
+              </div>
+             </div>
+             <p class="text-xs text-muted mt-2 leading-relaxed">Hire me as your dedicated backend engineer for ongoing sprint cycles, product features, or code audit.</p>
+             
+             <ul class="mt-4 space-y-2 text-xs text-secondary">
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Hourly or monthly retainer contracts</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Direct Git pull requests & code reviews</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> Async + daily sprint alignment</li>
+              <li class="flex items-center gap-2"><i class="hgi-stroke hgi-checkmark-circle-01 text-[var(--accent)] text-10"></i> 100% IP ownership & NDA ready</li>
+             </ul>
+            </div>
 
-       <!-- Client Workflow Section: How We Work Together -->
+            <div class="mt-6 pt-4 border-t border-[var(--accent)]/15 flex items-center gap-2 relative z-10">
+             <button onclick="requestCustomService('Dedicated Developer / Retainer Contract')" class="flex-1 btn-primary !py-2.5 text-xs flex items-center justify-center gap-1 shadow-lg shadow-[var(--accent)]/20">
+              <span>Hire Dedicated</span>
+              <i class="hgi-stroke hgi-arrow-right-01 text-10"></i>
+             </button>
+             <a href="https://wa.me/8801906750597?text=Hi%20Borhan%2C%20I%20want%20to%20hire%20you%20as%20a%20dedicated%20developer%20or%20contractor." target="_blank" rel="noopener noreferrer" class="link !w-8 !h-8 text-xs" title="Chat on WhatsApp">
+              <i class="hgi-stroke hgi-whatsapp"></i>
+             </a>
+            </div>
+           </div>
+
+           <!-- Empty placeholder for 2-column balance (or could add another engagement model later) -->
+           <div class="hidden md:block"></div>
+
+          </div>
+         </div>
+
+        </div><!-- Client Workflow Section: How We Work Together -->
        <div class="mt-4 rounded-2xl p-6 bg-card border border-[var(--accent)]/15">
         <div class="mb-4">
          <span class="text-10 text-[var(--accent)] uppercase tracking-wider">How I work</span>
@@ -1074,16 +1263,22 @@
          <div class="grid sm:grid-cols-2 gap-3.5 max-md:gap-3">
           <div>
            <label for="service-select" class="block text-10 text-dim uppercase tracking-wider mb-1">Service Needed</label>
-           <select id="service-select" name="service"
-            class="form-control w-full glass-input px-3.5 py-2.5 rounded-lg text-xs text-primary focus:outline-none focus:border-[var(--accent)] transition-all">
-            <option value="Custom Software Development">Custom Software Development</option>
-            <option value="SaaS Platform Development">SaaS Platform Development</option>
-            <option value="REST API & Backend Development">REST API & Backend Development</option>
-            <option value="Database Optimization & Tuning">Database Optimization & Tuning</option>
-            <option value="Full-Stack Web Development">Full-Stack Web Development</option>
-            <option value="Dedicated Developer / Retainer Contract">Dedicated Developer / Retainer</option>
-            <option value="Other / Custom Inquiry">Other / Custom Inquiry</option>
-           </select>
+                       <select id="service-select" name="service"
+             class="form-control w-full glass-input px-3.5 py-2.5 rounded-lg text-xs text-primary focus:outline-none focus:border-[var(--accent)] transition-all">
+             <option value="">Select a service…</option>
+             <option value="SaaS Platform Development">SaaS Platform Development</option>
+             <option value="REST API & Backend Development">REST API & Backend Development</option>
+             <option value="Bug Fixing & Project Rescue">Bug Fixing & Project Rescue</option>
+             <option value="Database Design & Optimization">Database Design & Optimization</option>
+             <option value="Performance Booster for Your Existing Apps">Performance Booster for Your Existing Apps</option>
+             <option value="Full-Stack Web Development">Full-Stack Web Development</option>
+             <option value="Dedicated Developer / Retainer Contract">Dedicated Developer / Contract</option>
+             <option value="API Integration & Webhooks">API Integration & Webhooks</option>
+             <option value="Legacy .NET Migration & Modernization">Legacy .NET Migration & Modernization</option>
+             <option value="Background Jobs & Worker Services">Background Jobs & Worker Services</option>
+             <option value="Software R&D / Prototyping">Software R&D / Prototyping</option>
+             <option value="Other / Custom Inquiry">Other / Custom Inquiry</option>
+            </select>
           </div>
            <div>
             <label for="budget-select" class="block text-10 text-dim uppercase tracking-wider mb-1">Estimated Budget (BDT)</label>
@@ -1261,12 +1456,12 @@
   </button>
  </aside>
 
- <script defer src="script.js?v=24"></script>
+ <script defer src="script.js?v=27"></script>
  <script>
   document.addEventListener('DOMContentLoaded', function () {
    var loadGuide = function () {
     var script = document.createElement('script');
-    script.src = 'guide.js?v=42';
+    script.src = 'guide.js?v=50';
     script.async = true;
     document.body.appendChild(script);
    };

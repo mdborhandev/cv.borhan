@@ -186,7 +186,40 @@
     }
 
     show(0);
-  })();
+  
+
+  // ===== Service Category Filter Tabs =====
+  var filterTabs = document.querySelectorAll('.service-filter-tab');
+  var serviceCategories = document.querySelectorAll('#services-grid > [data-category]');
+
+  filterTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var filter = this.getAttribute('data-filter');
+      
+      // Update tab states
+      filterTabs.forEach(function (t) {
+        t.setAttribute('aria-selected', 'false');
+        t.classList.remove('btn-primary');
+        t.classList.add('btn-outline');
+      });
+      this.setAttribute('aria-selected', 'true');
+      this.classList.remove('btn-outline');
+      this.classList.add('btn-primary');
+      
+      // Filter categories
+      serviceCategories.forEach(function (cat) {
+        var catFilter = cat.getAttribute('data-category');
+        if (filter === 'all' || filter === catFilter) {
+          cat.style.display = '';
+          cat.style.animation = 'fadeIn 300ms ease';
+        } else {
+          cat.style.display = 'none';
+        }
+      });
+    });
+  });
+
+})();
 
   // The portrait and main actions respond just enough to reward a pointer.
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
@@ -575,7 +608,40 @@
     window.addEventListener('scroll', stop, { passive: true });
 
     timer = setTimeout(peek, AUTO_PEEK_DELAY);
-  })();
+  
+
+  // ===== Service Category Filter Tabs =====
+  var filterTabs = document.querySelectorAll('.service-filter-tab');
+  var serviceCategories = document.querySelectorAll('#services-grid > [data-category]');
+
+  filterTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var filter = this.getAttribute('data-filter');
+      
+      // Update tab states
+      filterTabs.forEach(function (t) {
+        t.setAttribute('aria-selected', 'false');
+        t.classList.remove('btn-primary');
+        t.classList.add('btn-outline');
+      });
+      this.setAttribute('aria-selected', 'true');
+      this.classList.remove('btn-outline');
+      this.classList.add('btn-primary');
+      
+      // Filter categories
+      serviceCategories.forEach(function (cat) {
+        var catFilter = cat.getAttribute('data-category');
+        if (filter === 'all' || filter === catFilter) {
+          cat.style.display = '';
+          cat.style.animation = 'fadeIn 300ms ease';
+        } else {
+          cat.style.display = 'none';
+        }
+      });
+    });
+  });
+
+})();
 
   // ===== Direct Service Request & Cross-linking =====
   window.requestCustomService = function (serviceName) {
@@ -984,4 +1050,37 @@
       first.focus();
     }
   });
+
+
+  // ===== Service Category Filter Tabs =====
+  var filterTabs = document.querySelectorAll('.service-filter-tab');
+  var serviceCategories = document.querySelectorAll('#services-grid > [data-category]');
+
+  filterTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var filter = this.getAttribute('data-filter');
+      
+      // Update tab states
+      filterTabs.forEach(function (t) {
+        t.setAttribute('aria-selected', 'false');
+        t.classList.remove('btn-primary');
+        t.classList.add('btn-outline');
+      });
+      this.setAttribute('aria-selected', 'true');
+      this.classList.remove('btn-outline');
+      this.classList.add('btn-primary');
+      
+      // Filter categories
+      serviceCategories.forEach(function (cat) {
+        var catFilter = cat.getAttribute('data-category');
+        if (filter === 'all' || filter === catFilter) {
+          cat.style.display = '';
+          cat.style.animation = 'fadeIn 300ms ease';
+        } else {
+          cat.style.display = 'none';
+        }
+      });
+    });
+  });
+
 })();

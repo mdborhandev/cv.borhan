@@ -96,6 +96,30 @@
       answer: "SaaS Platform Development: I build multi-tenant SaaS with proper tenant isolation, RBAC, extensible modules, clean APIs, and a solid foundation for scaling and maintainability."
     },
     {
+      keywords: ['bug fix', 'bug fixing', 'project rescue', 'rescue project', 'broken app', 'crash fix', 'memory leak', 'deadlock', 'security audit', 'vulnerability', 'tech debt', 'dotnet upgrade'],
+      answer: "Bug Fixing & Project Rescue: Your developer left, the app is broken, or performance is tanking. I diagnose, stabilize, and ship fixes fast — crash fixes, memory leaks, deadlocks, slow query optimization, security audits, vulnerability patching, tech debt cleanup, and .NET upgrades."
+    },
+    {
+      keywords: ['performance booster', 'performance boost', 'slow app', 'speed up', 'profiling', 'redis cache', 'n+1', 'load test', 'capacity planning', 'bottleneck'],
+      answer: "Performance Booster for Your Existing Apps: Your app works but it's slow. I profile, cache, optimize queries, and tune the stack so it scales — profiling & bottleneck detection (dotTrace, PerfView), Redis caching & response compression, EF Core query optimization & N+1 fixes, load testing & capacity planning."
+    },
+    {
+      keywords: ['api integration', 'webhook', 'stripe', 'bkash', 'nagad', 'sslcommerz', 'twilio', 'sendgrid', 'erp integration', 'crm integration', 'shipping api', 'payment gateway', 'idempotency'],
+      answer: "API Integration & Webhooks: Connect your app to the services your business runs on — Stripe, PayPal, bKash, Nagad, SSLCommerz, Twilio/SMS, SendGrid/Email, push notifications, ERP, CRM, accounting & shipping APIs, with webhook receivers, retries, and idempotency."
+    },
+    {
+      keywords: ['legacy migration', '.net framework', 'dotnet framework', 'migrate to .net 8', 'migrate to .net 9', 'monolith to modular', 'ef6 to ef core', 'webforms to razor', 'modernization', 'zero downtime migration'],
+      answer: "Legacy .NET Migration & Modernization: Move from .NET Framework to .NET 8/9, monolith to modular, or upgrade outdated stacks safely — .NET Framework → .NET 8/9 migration, monolith → modular / clean architecture, EF6 → EF Core, WebForms → Razor/Pages, zero-downtime migration strategies."
+    },
+    {
+      keywords: ['background job', 'background jobs', 'worker service', 'hangfire', 'quartz', 'masstransit', 'hosted service', 'scheduled job', 'cron job', 'recurring task', 'dead letter', 'distributed lock', 'idempotency'],
+      answer: "Background Jobs & Worker Services: Reliable async processing — queues, scheduling, retries, and long-running tasks that don't block your API. Hangfire, Quartz, MassTransit, hosted services, job queues, retries, dead-letter handling, scheduled/cron jobs, distributed locking & idempotency."
+    },
+    {
+      keywords: ['r&d', 'research and development', 'prototyping', 'prototype', 'mvp', 'feasibility study', 'spike', 'architecture decision', 'adr', 'new stack', 'dotnet aspire', 'dapr', 'tech evaluation'],
+      answer: "Software R&D / Prototyping: Explore new tech, validate ideas, or build proof-of-concepts before committing to full development — technical feasibility studies & spikes, rapid prototypes & MVPs in weeks, architecture decision records (ADRs), new stack evaluation (e.g., .NET Aspire, Dapr)."
+    },
+    {
       keywords: ['api', 'apis', 'rest', 'rest api', 'web api', 'backend api', 'endpoint'],
       answer: "REST API & Backend Development: I build clean, versionable, well-structured Web APIs with proper validation, error handling, authentication, authorization, and Swagger/OpenAPI documentation."
     },
@@ -172,7 +196,12 @@
     'How can I contact him?',
     "What's his experience?",
     'Is he available for hire?',
-    'Tell me about the HRM & payroll system',
+    'Tell me about Bug Fixing & Project Rescue',
+    'What is Performance Booster for apps?',
+    'How does Legacy .NET Migration work?',
+    'What are Background Jobs & Worker Services?',
+    'Tell me about API Integration & Webhooks',
+    'What is Software R&D / Prototyping?',
     'What databases does he use?',
     'How much does a project cost?',
     'Where is he based?'
@@ -461,7 +490,7 @@
     character.focus();
   }
 
-  var isMinimized = false;
+  var isMinimized = true;
 
   function setMinimized(minimized) {
     isMinimized = minimized;
@@ -477,7 +506,12 @@
   }
 
   try {
-    if (sessionStorage.getItem('portfolioGuideMinimized') === 'true') setMinimized(true);
+    // Default to minimized. Only expand if user explicitly un-minimized before.
+    if (sessionStorage.getItem('portfolioGuideMinimized') === 'false') {
+      setMinimized(false);
+    } else {
+      setMinimized(true); // Ensure aria-label and attributes are set correctly
+    }
   } catch (e) {}
 
   if (minimizeButton) minimizeButton.addEventListener('click', function () {

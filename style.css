@@ -1810,6 +1810,11 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
 }
 @keyframes titleUnmask {
   from { clip-path: inset(0 0 100% 0); transform: translateY(12px); opacity: .35; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
   to { clip-path: inset(0 0 0 0); transform: translateY(0); opacity: 1; }
 }
 
