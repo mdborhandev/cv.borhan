@@ -2003,3 +2003,36 @@ body {
   border-color: var(--border-color) !important;
   color: var(--on-surface) !important;
 }
+
+/* Thin, short sidebar scrollbar */
+.sidebar-panel {
+  scrollbar-width: thin;
+  scrollbar-color: var(--lavender) transparent;
+}
+.sidebar-panel::-webkit-scrollbar { width: 2px; }
+.sidebar-panel::-webkit-scrollbar-track { background: transparent; }
+.sidebar-panel::-webkit-scrollbar-thumb {
+  background: var(--lavender);
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+}
+
+/* Sidebar: vertical scroll only, with a short thumb */
+.sidebar-panel {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+.sidebar-panel::-webkit-scrollbar-thumb {
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+
+/* Sidebar scrollbar: hidden until hover */
+.sidebar-panel { scrollbar-color: transparent transparent; }
+.sidebar-panel::-webkit-scrollbar-thumb { background: transparent; }
+.sidebar-panel:hover,
+.sidebar-panel:focus-within { scrollbar-color: var(--lavender) transparent; }
+.sidebar-panel:hover::-webkit-scrollbar-thumb,
+.sidebar-panel:focus-within::-webkit-scrollbar-thumb { background: var(--lavender); }
