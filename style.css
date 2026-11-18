@@ -2310,3 +2310,44 @@ select:focus {
 .sidebar-panel {
   background-color: #FCFAF6 !important;
 }
+
+/* Sidebar: quick trust info */
+.sidebar-response-time {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--text-muted);
+}
+.sidebar-response-time i {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.sidebar-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  max-width: 260px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.sidebar-stat {
+  padding: .45rem .2rem;
+  text-align: center;
+}
+.sidebar-stat + .sidebar-stat { border-left: 1px solid var(--border); }
+.sidebar-stat strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.1;
+  color: var(--accent);
+}
+.sidebar-stat span {
+  display: block;
+  margin-top: .1rem;
+  font-size: 10px;
+  color: var(--text-muted);
+}
