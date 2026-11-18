@@ -2036,3 +2036,78 @@ body {
 .sidebar-panel:focus-within { scrollbar-color: var(--lavender) transparent; }
 .sidebar-panel:hover::-webkit-scrollbar-thumb,
 .sidebar-panel:focus-within::-webkit-scrollbar-thumb { background: var(--lavender); }
+
+/* ===== Refined buttons (Seatheme) ===== */
+.btn-primary,
+.btn-outline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 36px;
+  padding: .55rem 1.25rem;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  border-radius: 0 !important;
+  text-decoration: none;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease,
+              transform .25s ease, box-shadow .25s ease;
+}
+.btn-primary {
+  background: var(--primary) !important;
+  color: var(--neutral) !important;
+  border: 1px solid var(--primary) !important;
+  box-shadow: none !important;
+}
+.btn-primary::before { display: none !important; }
+.btn-primary:hover {
+  background: var(--secondary) !important;
+  border-color: var(--secondary) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(13, 64, 144, .22) !important;
+}
+.btn-primary:active { transform: translateY(0) !important; box-shadow: none !important; }
+
+.btn-outline {
+  background: var(--neutral) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+.btn-outline:hover {
+  background: var(--muted) !important;
+  border-color: var(--tertiary) !important;
+  color: var(--secondary) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(124, 77, 255, .12) !important;
+}
+.btn-outline:active { transform: translateY(0) !important; box-shadow: none !important; }
+
+.btn-primary i, .btn-outline i { transition: transform .25s ease; }
+.btn-primary:hover i:last-child,
+.btn-outline:hover i:last-child { transform: translateX(3px); }
+
+.btn-lg { padding: .7rem 1.5rem; min-height: 44px; font-size: 15px; }
+
+.btn-primary:focus-visible,
+.btn-outline:focus-visible {
+  outline: 2px solid var(--tertiary);
+  outline-offset: 3px;
+}
+
+/* Hover colour: coral accent */
+.btn-primary:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px rgba(255, 48, 95, .24) !important;
+}
+.btn-outline:hover {
+  background: rgba(255, 48, 95, .06) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  box-shadow: 0 8px 20px rgba(255, 48, 95, .1) !important;
+}
