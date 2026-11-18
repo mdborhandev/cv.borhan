@@ -2259,3 +2259,11 @@ body {
   .tab-panel-inner .section-head { align-items: center !important; }
   .tab-panel-inner .available-badge { margin-left: auto; margin-right: auto; }
 }
+
+/* Guarantee one stack column per row on mobile */
+@media (max-width: 767px) {
+  .stack-grid { grid-template-columns: 1fr !important; }
+  .stack-col { width: 100%; }
+  .stack-col-head, .stack-col-body { text-align: center; }
+  .stack-col-body { justify-content: center; }
+}
