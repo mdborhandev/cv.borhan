@@ -1084,3 +1084,54 @@
   });
 
 })();
+
+  // ===== Live local time + Back to top =====
+  (function () {
+    var timeEl = document.getElementById('local-time');
+
+    function updateTime() {
+      if (!timeEl) return;
+      try {
+        var t = new Date().toLocaleTimeString('en-GB', {
+          timeZone: 'Asia/Dhaka', hour: '2-digit', minute: '2-digit', hour12: false
+        });
+        timeEl.textContent = 'UTC+6 · ' + t;
+      } catch (e) {}
+    }
+    updateTime();
+    setInterval(updateTime, 30000);
+
+    var btn = document.getElementById('back-to-top');
+    var container = document.querySelector('main > div > div.flex-1.overflow-y-auto') ||
+      document.querySelector('.flex-1.overflow-y-auto');
+    var mainEl = document.querySelector('main');
+
+    if (!btn) return;
+
+    function currentScroll() {
+      return window.scrollY ||
+        (document.scrollingElement && document.scrollingElement.scrollTop) ||
+        (container && container.scrollTop) ||
+        0;
+    }
+
+    function toggle() {
+      btn.classList.toggle('visible', currentScroll() > 300);
+    }
+    window.addEventListener('scroll', toggle, { passive: true, capture: true });
+    if (container) container.addEventListener('scroll', toggle, { passive: true });
+    if (mainEl) mainEl.addEventListener('scroll', toggle, { passive: true });
+    window.addEventListener('resize', toggle);
+    toggle();
+
+    btn.addEventListener('click', function () {
+      if (window.scrollY > 0 || (document.scrollingElement && document.scrollingElement.scrollTop > 0)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (container && container.scrollTo) {
+        container.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (container) {
+        container.scrollTop = 0;
+      }
+    });
+  })();
+

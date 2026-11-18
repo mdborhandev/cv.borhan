@@ -31,7 +31,7 @@
  <link rel="preload" href="https://use.hugeicons.com/font/icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
  <noscript><link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css"></noscript>
  <link rel="stylesheet" href="utilities.css?v=1">
- <link rel="stylesheet" href="style.css?v=82">
+ <link rel="stylesheet" href="style.css?v=85">
  <title>Hire Borhan Uddin Fahim | .NET Software Engineer</title>
 
  <!-- Schema.org Structured Data -->
@@ -115,7 +115,7 @@
 
    <div class="sidebar-response-time">
     <i class="hgi-stroke hgi-clock-01" aria-hidden="true"></i>
-    <span>Replies within 24h · UTC+6</span>
+    <span>Replies within 24h · <span id="local-time">UTC+6</span></span>
    </div>
 
    <div class="flex items-center gap-1.5 text-xs text-muted max-md:text-11">
@@ -1244,6 +1244,33 @@
         </p>
         <p class="text-10 text-muted mt-1">Guaranteed reply within 24 hours with project analysis.</p>
        </div>
+
+       <div class="contact-faq">
+        <div class="text-10 uppercase tracking-widest text-[var(--accent)] mt-6 mb-1">FAQ</div>
+        <h3 class="text-lg font-semibold text-primary mb-3 max-md:text-base">Quick answers before you write</h3>
+        <div class="faq-list">
+         <details class="faq-item">
+          <summary>Are you available for new projects?</summary>
+          <p>Yes. I'm currently accepting freelance and contract work worldwide, remotely or hybrid where needed.</p>
+         </details>
+         <details class="faq-item">
+          <summary>What do you need to get started?</summary>
+          <p>A short brief covering your goals, scope, timeline, and budget. Existing code, API docs, or wireframes help me quote accurately.</p>
+         </details>
+         <details class="faq-item">
+          <summary>Do you sign NDAs and transfer IP?</summary>
+          <p>Yes. I'm NDA-ready, and you get full ownership of the code and deliverables once the project is complete.</p>
+         </details>
+         <details class="faq-item">
+          <summary>Do you provide support after launch?</summary>
+          <p>Yes. Post-launch bug fixes and a support window are included, with optional longer-term maintenance retainers.</p>
+         </details>
+         <details class="faq-item">
+          <summary>How quickly will you reply?</summary>
+          <p>Within 24 hours, usually much sooner. For urgent work, WhatsApp is the fastest way to reach me.</p>
+         </details>
+        </div>
+       </div>
       </div>
 
       <!-- Right: Detailed Client Requirement Form -->
@@ -1380,6 +1407,10 @@
    </div>
   </main>
 
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+   <i class="hgi-stroke hgi-arrow-up-01" aria-hidden="true"></i>
+  </button>
+
  <!-- Mobile Sticky CTA -->
  <div class="mobile-quick-actions fixed bottom-0 left-0 right-0 z-[90] hidden max-lg:flex items-center gap-3 p-3 glass border-t" role="group" aria-label="Quick contact actions">
    <button type="button" onclick="openTabByIndex(4)" class="flex-1 btn-primary !py-3 text-sm">
@@ -1462,7 +1493,7 @@
   </button>
  </aside>
 
- <script defer src="script.js?v=31"></script>
+ <script defer src="script.js?v=33"></script>
  <script>
   document.addEventListener('DOMContentLoaded', function () {
    var loadGuide = function () {
