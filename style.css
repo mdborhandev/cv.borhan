@@ -2292,3 +2292,21 @@ html, body, main, .sidebar-panel, .tab-content, .tab-panel-inner {
 .nav-justified {
   background-color: rgb(243 243 243) !important;
 }
+
+/* Inputs: keep the accent border/glow on focus, remove the extra outer outline */
+.form-control:focus,
+.form-control:focus-visible,
+.guide-input:focus,
+.guide-input:focus-visible,
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+/* Sidebar: a warm off-white variation so it stands apart from the page */
+.sidebar-panel {
+  background-color: #FCFAF6 !important;
+}
