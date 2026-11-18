@@ -57,7 +57,7 @@ html {
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* Fluid hero scale — no media queries needed */
-  --hero-size: clamp(0.95rem, 1.4vw, 1.25rem);
+  --hero-size: clamp(1.2rem, 2.2vw, 1.8rem);
   --hero-gradient: linear-gradient(100deg, var(--accent) 0%, #a5b4fc 48%, var(--accent-3) 100%);
 }
 
@@ -1294,7 +1294,7 @@ h1, h2, h3, h4 {
   --border: #2b342e;
   --border-light: #222a24;
   --grain-opacity: 0;
-  --hero-size: clamp(1rem, 1.4vw, 1.3rem);
+  --hero-size: clamp(1.25rem, 2.2vw, 1.85rem);
   --hero-gradient: none;
 }
 
@@ -1575,7 +1575,7 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
   .form-control { font-size: 16px !important; }
   .mobile-quick-actions { padding-bottom: calc(.75rem + env(safe-area-inset-bottom)); }
   .tab-panel-inner { gap: 1.5rem; }
-  .heading-xl { font-size: clamp(0.95rem, 4vw, 1.25rem); }
+  .heading-xl { font-size: clamp(1.2rem, 5vw, 1.6rem); }
   .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
