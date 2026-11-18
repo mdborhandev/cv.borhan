@@ -2111,3 +2111,40 @@ body {
   color: var(--accent) !important;
   box-shadow: 0 8px 20px rgba(255, 48, 95, .1) !important;
 }
+
+/* Contact Me + CV: equal size, side by side (including mobile) */
+.contact-cv-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: .5rem;
+  width: 100%;
+  max-width: 280px;
+  margin-top: .5rem;
+}
+.contact-cv-actions > .btn-outline,
+.contact-cv-actions > .cv-actions {
+  flex: 1 1 0;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0;
+  height: 42px;
+  min-height: 42px;
+  margin-top: 0 !important;
+  font-size: .78rem;
+  padding: 0 .5rem;
+  gap: .35rem;
+}
+.contact-cv-actions > .cv-actions { padding: 0; gap: 0; }
+.contact-cv-actions .cv-actions .cv-label { padding: 0 .25rem; font-size: .72rem; }
+.contact-cv-actions .cv-actions > a,
+.contact-cv-actions .cv-actions > button { padding: 0 .25rem; }
+.contact-cv-actions .cv-actions > a i,
+.contact-cv-actions .cv-actions > button i { font-size: .75rem; }
+
+/* Force exact equal widths for the two sidebar action buttons */
+.contact-cv-actions > .btn-outline,
+.contact-cv-actions > .cv-actions {
+  flex: 0 0 calc(50% - .25rem) !important;
+  width: calc(50% - .25rem) !important;
+}
