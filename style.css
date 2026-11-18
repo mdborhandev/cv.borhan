@@ -2207,3 +2207,55 @@ body {
   letter-spacing: .02em !important;
   gap: .3rem !important;
 }
+
+/* Mobile service filters: swipeable single row, no wrapping */
+@media (max-width: 640px) {
+  .service-filter-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-right: -1rem;
+    padding-right: 1rem;
+    scroll-snap-type: x proximity;
+  }
+  .service-filter-list::-webkit-scrollbar { display: none; }
+  .service-filter-tab {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+}
+
+/* Available badge: a little breathing room on mobile */
+@media (max-width: 767px) {
+  .available-badge {
+    width: max-content;
+    max-width: 100%;
+    padding: .35rem .65rem;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Mobile: centre most content for a cleaner reading rhythm */
+@media (max-width: 767px) {
+  .tab-panel-inner h1,
+  .tab-panel-inner h2,
+  .tab-panel-inner h3,
+  .tab-panel-inner h4,
+  .tab-panel-inner p,
+  .tab-panel-inner .text-justify {
+    text-align: center !important;
+  }
+  .tab-panel-inner .hero-ctas,
+  .tab-panel-inner .section-head,
+  .tab-panel-inner .service-card-head {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .tab-panel-inner .section-head { align-items: center !important; }
+  .tab-panel-inner .available-badge { margin-left: auto; margin-right: auto; }
+}
