@@ -1867,3 +1867,25 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
   /* Art is drawn by animation; without motion it must simply be visible */
   .cow-art [data-draw] { stroke-dashoffset: 0 !important; animation: none !important; }
 }
+
+/* ===== Responsive polish ===== */
+/* Utility missing from the trimmed Tailwind build */
+@media (min-width: 768px) {
+  .md\:block { display: block; }
+}
+
+/* Assistant speech should wrap on narrow screens instead of being clipped */
+.guide-speech {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+@media (max-width: 767px) {
+  .hero-grid { gap: 1.5rem; }
+  .cow-title { font-size: 1.05rem; line-height: 1.25; }
+}
+
+@media (max-width: 420px) {
+  .cow-title { font-size: 1rem; }
+}
