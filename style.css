@@ -695,9 +695,13 @@ h1, h2, h3, h4 {
 .text-10 { font-size: 10px; }
 .text-11 { font-size: 11px; }
 
-/* Bootstrap-like column spans used by the hero layout */
-.col-5 { grid-column: span 5 / span 5; }
-.col-7 { grid-column: span 7 / span 7; }
+/* Hero layout: stacked (up/down) on small screens, 5/7 columns on large */
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .col-5 { grid-column: span 5 / span 5; }
+  .col-7 { grid-column: span 7 / span 7; }
+}
 
 /* ===== Hero Headline =====
    Gradient fill is driven by --hero-gradient, so recolouring the hero is a
