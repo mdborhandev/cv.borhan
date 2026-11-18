@@ -2148,3 +2148,51 @@ body {
   flex: 0 0 calc(50% - .25rem) !important;
   width: calc(50% - .25rem) !important;
 }
+
+/* Open to work badge straddling the bottom-right corner of the profile image */
+.open-to-work-chip {
+  position: absolute;
+  right: 0;
+  bottom: 14px;
+  transform: translateX(50%);
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+  padding: .3rem .55rem;
+  background: var(--neutral);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(7, 18, 38, .14);
+  white-space: nowrap;
+  z-index: 2;
+}
+.open-to-work-chip span:first-child {
+  box-shadow: 0 0 6px rgba(255, 48, 95, .7);
+}
+
+.open-to-work-chip {
+  width: max-content !important;
+  transform: translateX(50%) !important;
+}
+
+.open-to-work-chip {
+  padding: .18rem .38rem !important;
+  gap: .25rem !important;
+}
+.open-to-work-chip span:last-child {
+  font-size: 8px !important;
+  letter-spacing: .08em !important;
+}
+.open-to-work-chip span:first-child {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.open-to-work-chip { height: auto !important; }
+
+/* Keep the badge fully inside the image corner */
+.open-to-work-chip {
+  right: 8px !important;
+  bottom: 8px !important;
+  transform: none !important;
+}
