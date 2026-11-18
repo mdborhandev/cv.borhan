@@ -2428,3 +2428,21 @@ select:focus {
 @media (max-width: 640px) {
   .back-to-top { left: 14px; right: auto; bottom: 88px; }
 }
+
+/* About: tighten the two hero blocks so Tech stack sits higher */
+.hero-grid .col-5 .available-badge { margin-bottom: .4rem !important; }
+.hero-grid .col-5 .heading-xl { margin: 0 !important; line-height: 1.05 !important; }
+.hero-grid .col-5 h4 { margin-top: .25rem !important; }
+.hero-grid .col-5 p { margin-top: .5rem !important; }
+.hero-grid .col-5 .hero-ctas { margin-top: .85rem !important; }
+.hero-grid .col-5 > div:last-child { margin-top: .75rem !important; }
+
+.hero-grid .col-7 > .glass { padding: 1rem !important; }
+.hero-grid .col-7 > .glass > div:first-child { margin-bottom: 0 !important; }
+.hero-grid .col-7 > .glass > p { margin-bottom: .6rem !important; }
+
+.cow-card { padding: .75rem .9rem !important; gap: .2rem !important; }
+.cow-art { height: 56px !important; margin-bottom: .3rem !important; }
+.cow-points { gap: .22rem !important; margin-top: .3rem !important; }
+.cow-cta { padding-top: .4rem !important; padding-bottom: .4rem !important; min-height: 34px !important; }
+.cow-dots { margin-top: .45rem !important; }
