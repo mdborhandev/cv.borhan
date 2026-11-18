@@ -57,7 +57,7 @@ html {
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* Fluid hero scale — no media queries needed */
-  --hero-size: clamp(1.45rem, 2.7vw, 2.35rem);
+  --hero-size: clamp(0.95rem, 1.4vw, 1.25rem);
   --hero-gradient: linear-gradient(100deg, var(--accent) 0%, #a5b4fc 48%, var(--accent-3) 100%);
 }
 
@@ -695,6 +695,10 @@ h1, h2, h3, h4 {
 .text-10 { font-size: 10px; }
 .text-11 { font-size: 11px; }
 
+/* Bootstrap-like column spans used by the hero layout */
+.col-5 { grid-column: span 5 / span 5; }
+.col-7 { grid-column: span 7 / span 7; }
+
 /* ===== Hero Headline =====
    Gradient fill is driven by --hero-gradient, so recolouring the hero is a
    one-line change in :root. Remove the class to get flat --text-primary. */
@@ -1286,7 +1290,7 @@ h1, h2, h3, h4 {
   --border: #2b342e;
   --border-light: #222a24;
   --grain-opacity: 0;
-  --hero-size: clamp(1.6rem, 2.6vw, 2.5rem);
+  --hero-size: clamp(1rem, 1.4vw, 1.3rem);
   --hero-gradient: none;
 }
 
@@ -1567,7 +1571,7 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
   .form-control { font-size: 16px !important; }
   .mobile-quick-actions { padding-bottom: calc(.75rem + env(safe-area-inset-bottom)); }
   .tab-panel-inner { gap: 1.5rem; }
-  .heading-xl { font-size: clamp(1.6rem, 7vw, 2.15rem); }
+  .heading-xl { font-size: clamp(0.95rem, 4vw, 1.25rem); }
   .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -1712,7 +1716,7 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
   color: var(--text-dim);
 }
 .cow-icon { color: var(--accent); font-size: 1.05rem; }
-.cow-title { font-size: .875rem; font-weight: 600; color: var(--text-primary); }
+.cow-title { font-size: 1.25rem; line-height: 1.2; font-weight: 600; color: var(--text-primary); }
 .cow-text { font-size: .7rem; line-height: 1.1rem; color: var(--text-dim); }
 
 /* Accent line-art illustration, drawn in when its card takes the stage. */
